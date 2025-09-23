@@ -85,6 +85,11 @@ HTML 문서에 <p>태그 예시</p> 라는 문장을 코드가 아닌 일반 텍
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>title</title>
+    <style>
+        pre {
+            font-family: 'Courier New', Courier, monospace; /* 고정폭 글꼴 사용 */
+        }
+    </style>   
 </head>
 <body>
     <pre>

@@ -16,7 +16,7 @@ WHERE ENAME = 'SMITH';
 /* 
 # 핵심키워드 암기
 1. 프로그래밍에서는 등호(=)를 두 번 쓰지만, SQL에서는 한 번만 사용한다.
-2. !=, >, <, >=, <=, <> : 같지 않다, 크다, 작다, 크거나 같다, 작거나 같다
+2. !=, >, <, >=, <= : 같지 않다, 크다, 작다, 크거나 같다, 작거나 같다
 3. AND, OR, NOT ; 조건이 2개 이상일 때 사용하는 키워드
    AND : 그리고 (모든 조건이 참일 때)
    OR  : 또는 (조건 중에 하나만 참이어도 됨)
@@ -36,3 +36,29 @@ WHERE JOB = 'CLERK';
 SELECT EMPNO, ENAME, SAL
 FROM EMP
 WHERE EMPNO = 7499;
+
+-- 급여가 3000을 초과하는 데이터의 사원명을 출력
+SELECT ENAME, SAL
+FROM EMP
+WHERE SAL > 3000;
+
+-- 사원번호가 7600 이상인 데이터를 전부 출력하세요
+SELECT *
+FROM EMP
+WHERE EMPNO >= 7600;
+
+-- DEPTNO가 20미만인 데이터를 출력
+SELECT *
+FROM EMP
+WHERE DEPTNO < 20;
+
+-- MGR가 7000초과하는 EMPNO, ENAME, MGR 출력
+SELECT EMPNO, ENAME, MGR
+FROM EMP
+WHERE MGR > 7000;
+
+-- DEPTNO가 10이 아닌 사원 정보 전체 출력
+SELECT *
+FROM EMP
+WHERE DEPTNO != 10;
+

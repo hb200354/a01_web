@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>title</title>
+</head>
+<body>
+    <!-- #특수 문자 엔티티의 개념
+1. html 문서는 < 와 > 같은 특정 문자를 태그의 시작과 끝으로 인식합니다.
+만약 html코드나 일반 텍스트에 이러한 문자를 직접 사용하면, 브라우저는 이를
+태그로 오인하여 화면에 의도치 않은 결과를 출력하거나 레이아웃을 꺠뜨릴 수 있습니다.
+2. 이러한 문제를 해결하기 위해 html은 엔티티(entity)라는 예약된 문자열을 제공합니다.
+엔티티는 항상 앰퍼샌드(&)를 사용하여 세미콜론(;)으로 끝나는 형식을 가집니다.
+3. 엔티티는 두 가지 주요 형식으로 나뉩니다.
+    1) 이름 엔티티(Named Entity): 사람이 기억하기 쉬운 이름을 사용합니다 (dP: &lt, &copy)
+    2) 숫자 엔티티(Numeric Entity): 유니코드 번호를 사용합니다. (예: &#60; &#169;)
+일반적으로 가독성이 좋은 이름 엔티티를 사용하는 것을 권장합니다.
+4. 암기하기 쉬운 핵심 특수 문자 코드
+자주 사용되는 특수 문자들을 그 의미를 연상하기 쉬운 이름을 가지고 있어 암기가 용이합니다.
+
+    <   &lt;    &#60;   less than(보다 적음)
+    >   &gt;    &#62;   greater than(보다 큼)
+    &   &amp;   &#38;   ampersand(앰퍼샌드)
+    "   &quot;  &#34;   quotation mark(큰 따옴표)
+    '   &apos;  &#39;   apostrophe(작은 따옴표)
+    []  &nbsp;  &#160;  non-breaking space(줄바꿈 없는 공백)
+        -html 태그에 위 특수코드로 안 쓰며, 공백을 아무리 넣어도 한 칸 공백만 처리된다.
+        &copy;  &#169;  copyright(저작권)
+        &reg;   &#174;  registered trademark(등록 상표)
+        &trade; &#8482; trademark(상표)
+-->
+    <h1>html 태그를 텍스트로 보여주기</h1> 
+    <p>p 태그는 &lt;p&gt; 이렇게 생겼습니다.</p>
+    <h1>여러 개의 공백 넣기</h1>
+    <p>공백&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        세 개를&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        넣었습니다.</p>
+    <h1>저작권 정보 표시</h1>
+    <p>Copyright &copy; 2025 My company. All rights reserved</p>
+    <h4>따옴표 사용</h4>
+    <p>그가 말했습니다. &quot; html은 &apos;재미있다&apos;고. &quot;</p>
+    <h5>앰퍼샌드 기호</h5>
+    <p>AT&amp;는 유명한 통신 회사입니다.</p>
+</body>
+</html>

@@ -54,3 +54,15 @@ FROM EMP;
 SELECT ENAME || '님의 사원번호는 ' || EMPNO || '입니다.' "!! 사원 소개 !!"
 FROM EMP;
 
+-- 헷갈렸던 문제. 문자열은 작은 따옴표(')인 것을 기억하자. 별칭을 지정헐 때 큰 따옴표("")를 사용
+SELECT '입 사 일 은' || HIREDATE || '입니다.'
+FROM EMP;
+
+SELECT * FROM EMP;
+-- empno(사원번호), ename(이름), job(직책), mgr(관리자번호), hiredate(입사일), sal(급여), comm(보너스), deptno(부서번호)
+-- ex) 나의 사원번호는 @@@ 입니다. alias명은 사원번호 소개
+SELECT '나의 사원번호는 ' || EMPNO || ' 입니다.' "사원번호 소개"
+FROM EMP;
+-- 사원번호 @@@인 @@@(사원명)의 부서번호는 @@@(DEPTNO)이고, 현재 직책은 @@@(JOB) 입니다. "사원정보"
+SELECT '사원번호 ' || EMPNO || '인 ' || ENAME || '의 부서번호는 ' || DEPTNO || '이고, 현재 직책은 ' || JOB || '입니다.' "사원정보"
+FROM EMP;

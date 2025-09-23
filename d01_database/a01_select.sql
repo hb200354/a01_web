@@ -27,6 +27,7 @@ EX) SELECT SAL * 100 SALMULTI
 3. 기본 형식S
 SELECT 컬럼명 AS 별칭 AS : ALIAS(별칭)
        컬럼명 별칭 : 공백으로 별칭을 바로 사용 
+SELECT 컬럼명 "별칭명": ""를 사용하는 가장 큰 이점은 공백이 추가되거나 특수문자를 사용한 별칭을 지정할 때 활용
 */
 SELECT EMPNO AS NO, ENAME NAME 
 FROM EMP;
@@ -42,3 +43,14 @@ FROM EMP;
 -- EX2) EMPNO, ENAME, SAL와 급여의 50%(SAL50PER)를 출력하세요
 SELECT EMPNO, ENAME, SAL, SAL * 0.5 SAL50PER
 FROM EMP;
+-- SELECT 컬럼명 "ALIAS명"
+SELECT ENAME "이 름", JOB "@ 직 책 명 @"
+FROM EMP;
+-- EX1) EMPNO를 "번 호"로 표현, HIREDATE를 "입 사 일"로 표현하여, 번 호, ENAME, 입 사 일로 컬럼명을 지정하여 출력하세요.
+SELECT EMPNO "번 호", ENAME, HIREDATE "입 사 일"
+FROM EMP;
+-- EX2) @@@@님의 사원번호는 @@@입니다. 를 출력하되 컬럼명을 "!! 사원 소개 !!"라고 표현하여 출력.
+-- HINT) ||' 문자열 표현 '|| 활용하여 출력.. @@@님 ==> ENAME, @@@ ==> EMPNO 활용
+SELECT ENAME || '님의 사원번호는 ' || EMPNO || '입니다.' "!! 사원 소개 !!"
+FROM EMP;
+

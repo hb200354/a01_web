@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<!--
+# 테이블로 게시판 만들기
+1. 기본 속성 점검
+    table : border(굵기), align(테이블 위치), width(넓이), height(높이)
+    td : colspan (열단위 확장), rospan(행단위 확장)
+2. 추가 요소 및 속성
+    col 세로 열들의 너비를 미리 width로 지정하여, 각 열의 간격을 절대적/상대적으로 지정하여ㅡ
+    데이터를 적절하게 간격에 따른 출력을 할 수 있게 도와준다.
+    <tr>
+        <col width="30%"><col width="70%"> 두 개의 td의 넓이 단위를 3:7로 설정해준다.
+
+-->
+    <h2 align="center">게시판 형식 테이블 꾸미기</h2>
+    <table border="1" width="80%" align="center">
+        <!-- 테이블의 넓이를 전체 화면대비 80%로 지정, 중앙에 정렬 되게 처리-->
+         <thead>
+            <tr>
+                <th>번호</th> <!-- alt + shift + 화살표 아래-->
+                <th>메뉴명</th>
+                <th>작성자</th>
+                <th>추천수</th>
+            </tr>
+
+         </thead>
+    </table>
+
+    
+</body>
+</html>

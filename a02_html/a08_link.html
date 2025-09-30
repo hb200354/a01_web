@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+	<h2>하이퍼링크(구글로)</h2>
+	<a href="https://www.google.com">외부 세계(google)로 통하는 포탈</a><br>
+	<a href="https://www.youtube.com" target="_blank">지식의 샘(YouTube)포탈(새 차원문)</a><br>
+	<a href="a04_img.html">내부 이미지 페이지로 이동</a><br>
+	<!--
+	ex) 
+	1. 네이버 : https://www.naver.com (새로운 창으로) 이동
+	2. 다음 : https://www.daum.net(현재 페이지) 이동
+	3. 내부페이지 a02_listTag.html(새로운 창으로) 이동
+	 -->
+	<h2>이미지 hyper link 처리</h2>
+	<a href="https://www.naver.com" target="_blank">
+		<img src="naver.png" width="200px" height="50px" />
+	</a>
+	<br>
+	<a href="https://www.daum.net">
+		<img src="daum.png" width="200px" height="50px" />
+	</a>
+	<br>
+	<a href="/webexp/a01_web/a02_html/a02_listTag.html"  target="_blank"><img src="list.png" width="200px" height="50px" /></a><br>
+	<!--  현재 프로젝트 폴드에 절대 주소는 기본 위치는 webapp 하위 폴드.. 
+	프로젝트명(webexp)/ -->
+ 	
+	 
+	 
+	
+	 
+</body>
+</html>
+<!-- ctrl+m (전체화면/부분화면)
+#  html a 태그 : 웹 페이지를 연결하는 마법의 문
+1. a 태그(Anchor의 약자)는 웹 페이지의 가장 핵심적인 기능인 하이퍼링크(Hyperlink)를 만드는 태그입니다.
+이 태그를 사용하면 텍스트나 이미지를 클릭했을 때 다른 페이지로 이동하거나, 특정 파일 다운로드, 이메일 전송 등
+다양한 동작을 실행할 수 있습니다. 한마디로 웹이라는 거대한 공간 속에서 하나의 문서와 다른 문서를 연결하는 문(Portal)
+을 만드는 역할입니다.
+2. 핵심키워드
+	a 태그는 가장 중요한 속성들을 아! 흐타!라는 비명(?)으로 재미있는 암기해봅시다.
+	아( <a> ) : 아! 링크를 만들자!!(링크의 시작과 끝을 감싸는 태그)
+	    ex) <a>구글</a>
+	흐( href 속성) : 흐르는 물처럼 어디로 갈까?(Hypertext Reference, 이동할 목표 주소를 지정하는 핵심 속성)
+	    ex) <a href="https://gogole.com">구글로</a> : 외부페이지 이동
+	    ex) <a href="a02_show.html">내부페이지</a> : 내부페이지 이동
+	타( target 속성 ) : 타! 하고 어떻게 창을 열까?(링크를 열 방식을 지정, 새 탭에서 열지, 현재 탭에서 열지 등)
+	    _blank : 새탭,  _self : 현재 탭 - default
+	    ex) <a href="http://www.naver.com" target="_blank">네이블로(새로운탭에서)</a>
+ -->

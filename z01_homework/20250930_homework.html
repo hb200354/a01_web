@@ -1,0 +1,104 @@
+<database>
+1. [개념] 테이블 구조 변경 명령어의 종류를 기본 에제를 통해 설명하세요.
+구조 변경 명령어 alter table의 종류에는 add, modift, drop, rename이 있다.
+EX)
+ALTER TABLE EMP ADD EMAIL VARCHAR2(100);
+ALTER TABLE EMP MODIFY ENAME VARCHAR2(50);
+ALTER TABLE EMP DROP COLUMN COMM;
+ALTER TABLE EMP RENAME COLUMN ENAME TO EMP_NAME;
+
+2. [실습] 
+ CREATE TABLE COURSES (
+       COURSE_ID NUMBER(5) PRIMARY KEY,
+       TITLE VARCHAR2(100) NOT NULL,
+       INSTRUCTOR VARCHAR2(50),
+       PRICE NUMBER(8,0),
+       OPEN_DATE DATE
+   ); 
+    테이블 생성
+    1) 에(ADD) - 열 추가하기
+    강좌의 난이도('초급', '중급', '고급')를 저장하기 위해 DIFFICULTY 열 (타입: VARCHAR2(20))을 추가하세요.
+    수강생들의 평점과 리뷰 수를 기록할 RATING_SCORE (타입: NUMBER(3,1))와 RATING_COUNT (타입: NUMBER) 열 두 개를 한 번에 추가하세요.    
+    2)모(MODIFY) - 열 속성 수정하기
+    강좌 제목(TITLE)이 100자로는 부족한 경우가 있어, 최대 200자까지 저장할 수 있도록 크기를 변경하세요.
+    숫자로만 관리하던 가격(PRICE)을 모든 신규 강좌에 대해 기본값 10000원이 들어가도록 DEFAULT 속성을 설정하세요.
+
+-- 1) 열 추가
+ALTER TABLE COURSES
+ADD DIFFICULTY VARCHAR2(20);
+
+-- RATING_SCORE, RATING_COUNT 열 추가
+ALTER TABLE COURSES
+ADD (
+    RATING_SCORE NUMBER(3,1),
+    RATING_COUNT NUMBER
+);
+
+-- 2) 열 속성 수정
+ALTER TABLE COURSES
+MODIFY TITLE VARCHAR2(200);
+
+-- PRICE 기본값 10000 설정
+ALTER TABLE COURSES
+MODIFY (PRICE NUMBER(8,0) DEFAULT 10000);
+
+<html>
+1. [실습] 3x2행열 테이블을 만들고, 그 안에 들어갈 이미지 4개(과일)을 다운로드 받은 후, 출력하세요..첫번째 행에서 과일을 이름 th로 출력.
+<table border="1">
+  <tr>
+    <th>사과&포도</th>
+    <th>바나나&오렌지</th>
+  </tr>
+  
+  <tr>
+    <td><img src="apple.jpg" width="100"></td>
+    <td><img src="banana.jpg" width="100"></td>
+  </tr>
+  
+  <tr>
+    <td><img src="grape.jpg" width="100"></td>
+    <td><img src="orange.jpg" width="100"></td>
+  </tr>
+</table>
+
+2. [개념] a link 즉 하이퍼링크의 기본 개념과 핵심 태그 및 속성으로 예제 페이지로 설명하세요.
+<a href="https://www.naver.com" target="_blank" title="네이버 홈페이지">네이버 새 탭</a>
+a link에 핵심 태그/속성엔 이동할 주소를 나타내는 href, 링크를 어떤 방식으로 열지 격ㄹ정하는 target
+(예제에서 blank는 새탭으로 여는것), 링크의 설명을 나타내는 title이 있다.
+
+3. [실습] ol li 태그와 a href 태그를 혼합하여 외부페이지(g마켓), 내부페이지(로그인페이지/상품페이지/관리자 페이지)로 이동하게 처리하세요.
+<ol>
+  <li><a href="https://www.gmarket.co.kr">G마켓</a></li>
+  <li><a href="login.html">로그인 페이지</a></li>
+  <li><a href="product.html">상품 페이지</a></li>
+  <li><a href="admin.html">관리자 페이지</a></li>
+</ol>
+
+4. [실습] table과 img 태그에 link를 연동하여 네이버, 다음, 구글 portal 사이트로 이동하게 하세요..
+<table border="1">
+  <tr>
+    <td><a href="https://www.naver.com"><img src="naver.png" width="100"></a></td>
+    <td><a href="https://www.daum.net"><img src="daum.png" width="100"></a></td>
+    <td><a href="https://www.google.com"><img src="google.png" width="100"></a></td>
+  </tr>
+</table>
+
+5. [개념] iframe의 기본 속성을 간단한 예제와 함께 설명해 보세요.
+<iframe src="https://www.naver.com" width="600" height="400" frameborder="0"></iframe>
+iframe의 기본 속성에는 src, width, height 등이 있다. src는 불러올 페이지의 주소이고, width/height는
+가로와 세로 크기를 정할 때 사용하고, frameborder는 테두리 표시 여부를 결정할 때 사용한다.예제에서 0은 테두리 없음을 의미
+
+6. [실습] 구글지도로 휴먼교육센터와 본인의 집을 url 주소로 복사한 후, 가로로 iframe을 설정하여 화면에 출력하세요.
+<div style="display:flex; gap:20px;">
+  <!-- 휴먼교육센터 -->
+  <iframe 
+    src="https://maps.app.goo.gl/4sfHJsXNnTXW9KPC9"
+    width="400" height="300" style="border:0;">
+  </iframe>
+
+  <!-- 내 집 -->
+  <iframe 
+    src="https://maps.app.goo.gl/71x6XpWqzYMP3tKEA"
+    width="400" height="300" style="border:0;">
+  </iframe>
+</div>

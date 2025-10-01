@@ -20,3 +20,49 @@
 SELECT * FROM EMP01;
 DELETE FROM EMP01 WHERE EMPNO = 7369;
 ROLLBACK;
+
+create table emp01
+as select * from emp;
+
+select * from emp01;
+delete from emp01 where empno=7369;
+ROLLBACK; -- 원복처리
+-- 1. 아이언맨의 은퇴 준비
+SELECT * FROM HERO_LIST where HERO_NAME = '아이언맨';
+
+-- 
+
+SELECT * FROM HERO_LIST;
+SELECT * FROM HERO_LIST WHERE HERO_NAME = '아이언맨';
+update HERO_LIST
+   SET POWER = 0
+WHERE HERO_NAME = '아이언맨';
+ROLLBACK;
+-- SAVEPOINT : 임시 저장 지점 설정
+SAVEPOINT IRONMAN_RETIRED;
+-- 실수로 모든 데이터 삭제 WHERE 구문없이..
+DELETE FROM HERO_LIST;
+-- 모든 데이터 삭제됨.
+SELECT * FROM HERO_LIST;
+ROLLBACK TO IRONMAN_RETIRED;
+
+
+SELECT * FROM EMP01;
+-- 삭제가 되고,
+DELETE FROM EMP01 
+WHERE EMPNO = 7499;
+SELECT * FROM EMP01;
+-- 원복처리하면 ROLLBACK;
+ROLLBACK;
+SELECT * FROM EMP01;
+-- 삭제를 하고,
+DELETE FROM EMP01 
+WHERE EMPNO = 7499;
+SELECT * FROM EMP01;
+COMMIT; -- 삭제된 것을 확정처리하면
+ROLLBACK; -- 더 이상 원복이 되지 않는다..
+SELECT * FROM EMP01;
+
+
+
+

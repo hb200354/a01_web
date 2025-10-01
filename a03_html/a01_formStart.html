@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>form 요소객체 만들기 시작</h2>
+	<h3>로그인</h3>
+	<form action="a02_login_rec.jsp" method="get">
+		<label>아이디</label>
+		<input type="text" name="id" ><br>
+		<label>패스워드</label>
+		<input type="password" name="pwd"><br>
+		<input type="submit" value="로그인">
+	</form>
+</body>
+</html>
+<!-- 
+# 웹 form 요소처리
+1. html 웹 폼(form)은 사용자가 정보를 입력하고 서버로 전송할 수 있게 해주는 필수적인 요소입니다. 마치 온라인에서
+   작성하는 설문지나 주문서와 같습니다.
+   <form> 태그 자체는 눈에 보이지 않는 데이터를 담는 전체 틀(컨테이너)이며, 그 안에 다양한 하위 요소(입력창, 버튼 등)
+   를 배치하여 완성합니다.
+2. 개념 이해: 디지털 우편 시스템
+    1) html 폼을 우편시스템에 비유해서 이해합니다.
+       사용자가 입력한 데이터를 어디로(action), 어떻게(method)보낼지 결정하는 중요한 정보입니다.
+       - action : 데이터가 전송될 목적지 주소입니다. 봉투에 적는 받는 사람 주소와 같습니다.
+                  서버의 프로그램을 받을 수 있는 곳(jsp, php, java(controller), 파이썬)
+       - method : 데이터를 전송하는 방식입니다.
+          get : 엽서처럼 주소창(url)에 데이터를 붙여서 보냅니다. 간단한 데이터에 적합합니다.
+          post : 편지처럼 봉투 안에 데이터를 담아 보냅니다. 보안이 필요하거나 데이터 양이 많을 때 사용합니다.
+    2) form 하위 요소(편지지 내용)
+       사용자가 실제로 정보를 입력하는 부분들입니다. 편지지에 내용을 채워 넣는 것과 같습니다.
+       - input : 텍스트, 비밀번호, 체크박스, 라디오 버튼 등 가장 다재다능한 입력 필드입니다.
+       - label : 각 입력 필드가 무엇을 위한 것인지 알려주는 이름표입니다.
+       - textarea : 여러 줄의 긴 텍스트를 입력받는 공간입니다.
+       - select/option : 여러 옵션 중 하나를 선택하는 드롭다운 메뉴입니다.
+       - button : 클릭할 수 있는 버튼으로, 주로 폼을 제출(submit)하는 역할을 합니다.
+       
+        
+                
+
+ -->

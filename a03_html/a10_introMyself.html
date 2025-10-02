@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>텍스트 입력 폼</title>
+</head>
+<body>
+    <h3>자기 소개서 작성</h3>
+    <hr>
+    <form action="a11_showIntro.jsp"></form>
+        이름: <input name="name" type="text"><br>
+        암호: <input name="pwd" type="password" maxlength="4"><br>
+        자소서: <textarea name="content" cols="29" rows="5" 
+        placeholder="이곳에 작성"></textarea><br>
+        <input type="submit" value="등록">
+    </form>
+    <!-- 
+    a11_showIntro.jsp
+        <h2>등록된 자소서 내용</h2>
+        <h3>이름:${param.name}</h3>
+        <h3>암호:${param.pwd}</h3>
+        <h3>자소서 내용</h3>
+        <textarea cols="29" rows="5">${param.content}</textarea>
+    -->
+</body>
+</html>

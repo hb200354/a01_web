@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label for="id01">아이디 입력</label>
+        <input type="text" name="id01" id="id01" placeholder="아이디를 입력하세요"/><br>
+        <label for="id02">아이디 입력</label>
+        <input type="text" name="id02" id="id02" size="10"/><br>
+        <label for="id03">아이디 입력</label>
+        <input type="text" name="id03" id="id03" maxlength="5"/><br>
+        <label for="id01">아이디 입력</label>
+        <input type="text" name="id04" id="id04" value="himan"/><br>
+        <input type="submit">
+    </form>
+
+    <!-- ex)id01 ==> name01 위에 선언한 속성으로 처리해 보세요 -->
+    <h1>이름을 입력하세요(속성사용)</h1>
+    <form>
+        <label for="name01">이름 입력</label>
+        <input type="text" name="name01" id="name01" placeholder="이름을 입력하세요"/><br>
+    </form>
+
+    <h3>서버에 데이터 전송</h3>
+    <form action="a04_search.jsp" method="post">
+        <label for="search">검색할 내용</label>
+        <input type="text" name="search" id="search" placeholder="검색할 내용 입력">
+    </form>
+    <!-- 
+    a04_search.jsp 파일 생성
+    <h2> 검색된 내용 : ${param.search}</h2>
+    -->
+</body>
+</html>
+<!-- 
+# FORM 하위 텍스트 입력
+1. 웹에서 사용자의 정보를 입력받을 때, 가장 기본이 되는 텍스트 입력에 대한 개념,
+    핵심키워드, 예제를 통해 완벽하게 마스터 해보자.
+2. input type ="text" : 한 줄짜리 만능 입력 상자
+    가장 기본적이고 범용적인 한 줄 텍스트 입력 필드. 
+    아이디, 이름, 이메일 주소, 검색 등 짧은 텍스트를 입력 받을 때 사용
+    1) 특징
+    - 한 줄만 입력 가능(Enter 키를 누르면 폼이 제출될 수 있다 - 자동 submit처리 이벤트 내장)
+    - 입력하는 내용이 화면에 보이고, 가장 활용도가 높음
+    2) 주요 속성
+    <input type="text" 속성="속성값">
+    - name : 서버로 데이터를 전송할 때 사용되는 키(key) 값. 서버는 이 name을
+    기준으로 어떤 필드에서 온 값인지 식별
+    - id: html 문서 내에서 요소를 고유하게 식별하는 이름
+        label의 for 속성값과 연결되어 있어서 사용
+    - value : 입력 필드에 미리 표시될 초기값이다. 사용자가 수정 가능
+    - placeholder: 사용자에게 입력할 값에 대한 힌트나 예시를 제공하는 희미한 텍스트.
+        사용자가 입력 시작하면 사라짐.
+    - size : 화면에서 입력할 크기
+    - maxlength : 입력가능한 크기 지정
+-->

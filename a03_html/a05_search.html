@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>서버에 데이터 전송</h3>
+    <form action="a04_search.jsp" method="get">
+        <label for="search">검색할 내용</label>
+        <input type="text" name="search" id="search" placeholder="검색할 내용 입력"><br>
+        <input type="submit" value="검색">
+    </form>
+<!-- 
+# 전달 해주는 곳 
+action ="a04_search.jsp"
+name="search" value="빅데이터"
+a04_search.jsp?search=빅데이터
+
+# 전달 받는 곳
+a04_search.jsp ${param.search}
+-->
+
+    <!-- 위 검색버튼 클릭 시.. 아래코드 생성
+     http://localhost:8080/webexp/a01_web/a03_html/a04_search.jsp?search=빅데이터
+     form의 action="a04_search.jsp"?search=빅데이터
+        name="search" value="빅데이터" ==> 입력 후, submit 버튼 클릭 시 위와 같은 주소 생성
+     -->
+</body>
+</html>

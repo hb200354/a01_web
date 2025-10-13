@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Combo box(select)</h2>
+    <h3>단일 선택 combo box</h3>
+    좋아하는 과일 선택: 
+    <select>
+        <option>사과</option>
+        <option>바나나</option>
+        <option>딸기</option>
+        <option>오렌지</option>
+        <option>키위</option>
+    </select><br>
+    <!-- ex) 중국식당에서 짜장면/짬뽕/탕수육 중 하나를 주문 메뉴로 선택하게 하세요 -->
+    주문 메뉴 선택:
+    <form action="a02_rev.jsp">
+    <label>
+    <select name="menu">
+        <option>짜장면</option>
+        <option>짬뽕</option>
+        <option>탕수육</option>
+    </select>
+    </label>
+    <input type="submit" value="주문">
+    </form>
+    <!-- a02_rev.jsp
+    <h2>주문한 음식은: ${param.food}</h2>
+
+    ex) 생일선물로 받고 싶은 물건(choice one!)
+        컴퓨터 
+        가방
+        화장품
+        -> a02_rev.jsp로 전달해서 $<param.mychoice>출력되게
+    -->
+    <form action="a02_rev.jsp">
+    <label>
+    <select name="choice">
+        <option>컴퓨터</option>
+        <option>가방</option>
+        <option>화장품</option>
+    </select>
+    </label>
+    <input type="submit" value="선택">
+    </form>
+</body>
+</html>
+<!-- 
+# HTML 콤보박스(comboBox)
+1. HTML 콤보박스는 드롭다운 목록(Drop-down List)형태로, 사용자가 클릭하면 숨겨져 있던 여러 선택 항목이
+펼쳐지는 입력 요소다. 한정된 공간 안에서 다양한 옵션을 제공해야 할 때 유용.
+EX) 회원가입 시 출생연도 선택, 온라인에서 상품 사이즈 고르기
+2. <select> 태그로 전체 박스로 감싸고, <option> 태그로 각각의 선택 항목을 정의.
+3. 핵심 키워드 및 속성
+- <select>: 콤보박스 전체를 감싸는 태그
+- <option>: 콤보박스 내의 각각의 선택 항목을 정의하는 태그
+- <optgroup>: 관련된 옵션들을 그룹화할 때 사용하는 태그
+- name 속성: 폼 데이터 전송 시 선택된 값을 식별하는 데 사용
+- value 속성: 각 옵션의 실제 값을 지정
+- selected 속성: 기본적으로 선택된 옵션을 지정
+- multiple 속성: 사용자가 여러 항목을 동시에 선택할 수 있도록 허용
+- label 태그: optgroup에 레이블을 제공하여 그룹의 의미를 명확히 함
+-->

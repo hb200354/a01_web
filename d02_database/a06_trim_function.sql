@@ -20,3 +20,10 @@ SELECT
     TRIM('    SWAG    ') data7,
     LENGTH(TRIM('    SWAG    ')) data8
 FROM dual;
+
+SELECT 'ㅋㅋㅋㅋ웃겨ㅋㅋㅋㅋ' data1,
+    LTRIM('ㅋㅋㅋㅋ웃겨ㅋㅋㅋㅋ')data2,
+    RTRIM('ㅋㅋㅋㅋ웃겨ㅋㅋㅋㅋ')data3,
+    TRIM('ㅋ' FROM 'ㅋㅋㅋㅋ웃겨ㅋㅋㅋㅋ')data4
+FROM dual;
+-- 주의 공백이 아닌 특정 문자열을 양옆에서 제거할 땐 TRIM('제거할문자' FROM 데이터) 형식으로 처리해야함.

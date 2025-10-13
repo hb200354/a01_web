@@ -27,3 +27,9 @@ SELECT 'ㅋㅋㅋㅋ웃겨ㅋㅋㅋㅋ' data1,
     TRIM('ㅋ' FROM 'ㅋㅋㅋㅋ웃겨ㅋㅋㅋㅋ')data4
 FROM dual;
 -- 주의 공백이 아닌 특정 문자열을 양옆에서 제거할 땐 TRIM('제거할문자' FROM 데이터) 형식으로 처리해야함.
+
+-- ###좋은 하루### 양옆의 #를 제거 후, ' ' 공백도 제거
+SELECT ' ###좋은 하루### 'data1,
+    TRIM('#' FROM ' ###좋은 하루### ')data2,
+    TRIM( TRIM('#' FROM ' ###좋은 하루### ')) data3,
+FROM DUAL;

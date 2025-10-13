@@ -10,3 +10,13 @@
     3) TRIM(옵션, 제거할 문자) FROM 대상 문자열
         옵션 : LEADING(왼쪽), TRAILING(오른쪽), BOTH(양쪽, 기본값)
         제거할 문자 : 딱 하나의 문자만 지정 가능
+*/
+SELECT 
+    '   SWAG    ' data1,
+    LENGTH('    SWAG    ') data2, 
+    LTRIM('    SWAG    ') data3,
+    LENGTH(LTRIM('    SWAG    ')) data4,
+    RTRIM('    SWAG    ') data5,
+    TRIM('    SWAG    ') data7,
+    LENGTH(TRIM('    SWAG    ')) data8
+FROM dual;

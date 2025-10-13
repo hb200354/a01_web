@@ -1,0 +1,23 @@
+# 진행할 내용
+1. 수업 환경 설정
+    1) 기본 툴
+       totalcommnader : 파일 저장관리 - 설치/경로 download/카카오톡다운로드
+          압축풀기/파일이동      
+          - 구글 : total commander 다운로드 검색  64bit 다운로  
+
+          왼쪽은 c:\Users\계정명\Documents\카카오톡 받은 파일\ 오른쪽 c:
+          ==> 
+
+       editplus  
+    2) 데이터베이스 - 다운 및 환경 설정   
+    3) 프로그래밍 툴 - vscode      
+       - 한글 설정
+       - live server 설정 : 고정 ip로 서버 포트 설정  
+       - html 파일 작성 웹서버 기동
+2. html 핵심 내용 및 간단 간단한 코드 연습
+
+
+
+
+
+3. database 핵심 내용 및 간단한 코드 연습

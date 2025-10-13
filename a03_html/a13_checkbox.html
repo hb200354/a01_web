@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+
+<body>
+	<h2>다중선택 checkbox</h2>
+	<!-- 
+	name01=himan
+	name에 있는 속성값  name01,
+	value에 있는 속성값 himan
+	
+	name에 있는 속성값 hobby
+	value에 있는 속성값 reading
+	hobby=reading
+	
+	hobby=reading&name01=himan
+	
+	name에 있는 속성값 hobby
+	value에 있는 속성값 reading
+	
+	name에 있는 속성값 hobby
+	value에 있는 속성값 music	
+	
+	hobby=reading&hobby=music
+	
+	
+	# 체크박스는 여러개의 내용을 하나의 name으로 설정해서 서버에 데이터를 전송할 수 있는데,
+	check된 것만 name과 value으로 전송이된다. 이것을 일반 name과 차이가 난다.
+	
+	 -->
+	<form action="a14_checkboxRev.jsp">
+		<input type="checkbox" name="hobby" id="hobby1" value="reading">
+		<label for="hobby1">독서</label>,
+		<!--  운동도 위 내용과 같이 연결.. hobby2 -->
+		<input type="checkbox" name="hobby" id="hobby2" value="trainning">
+		<label for="hobby2">운동</label>,
+		<input type="checkbox" name="hobby" value="music" checked>음악,
+		<!--  화면 로딩시, check되 되어 처리할 시.. -->
+		<input type="checkbox" name="hobby" value="outeraction" checked disabled>야외
+		<!-- disabled 비활성화 처리 체크가 되더라도 전송시, 데이터를 전달하지 못 한다.-->
+		<br>
+		이름:<input type="text" name="name01"><br>
+		<input type="submit">
+	</form>
+</body>
+</html>
+<!-- 
+# checkbox
+1. 사용자로부터 하나 또는 여러 개의 옵션을 선택했을 때 사용하는 입력 컨트롤입니다.
+설문조사에서 여러 취미를 고르거나, 쇼핑몰에서 여러 상품을 장바구니에 담는 것처럼
+다중 선택이 가능할 때 유용하세 쓰이죠.
+2. 기본 코드
+	<input type="checkbox" name="hobby" value="reading">독서
+	체크박스는 <input> 태그의 type 속성을 checkbox로 지정하여 만듭니다.
+	1) 주요 속성
+		type="checkbox" : 이 input 태그가 체크박스임을 정의합니다.
+		name : 체크박스 그룹을 식별하는 이름입니다. 서버로 데이터를 보낼 때, 같은 name을 가진 체크박스 중
+		    선택된 것들의 value만 전송됩니다. 여러 개의 체크박스가 하나의 질문에 속해 있다면 모두 같은 name을 가져야 합니다.
+		value : 해당 체크박스가 선택되었을 때 서버로 전송될 값입니다. 사용자 눈에는 보이지 않지만, 데이터를 
+		    처리할 때 매우 중요합니다.
+		id : <label> 태그와 연결하기 위한 고유한 id입니다. 텍스트 라벨을 클릭해도 체크박스가 선택되게 하여
+			사용자의 편의성을 높여줍니다.
+		checked : 이 속성이 있으면 페이지가 로드될 때, 기본적으로 체크된 상태로 표시됩니다.
+		disabled : 체크박스를 비활성화하여 사용자가 클릭할 수 없게 만듭니다.
+	2) 핵심 키워드
+		이름(name)은 취미 그룹, 값은 영화보기
+			 name : 이 체크박스들이 어떤 그룹에 속해 있는지를 알려주는 이름표
+			 value : 그 이름 표 안에 내가 선택한 구체적인 값(항목)	
+	
+	
+	
+	
+	
+	
+	
+	
+ -->

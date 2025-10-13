@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h2>여러개 중에 단일 선택 radio</h2>
+	<h3>오늘 점심 뭐 먹을지 골라 보세요!!(단 하나만)</h3>
+	<form>
+		<label><input type="radio" name="lunch" value="짜장면"> 짜장면 </label><br>
+		<label><input type="radio" name="lunch" value="돈까스" checked> 돈까스 </label><br>
+		<label><input type="radio" name="lunch" value="김치찌개"> 김치찌개 </label><br>
+		<label><input type="radio" name="lunch" value="그냥 굶기"> 그냥 굶기" </label><br>
+		<hr>
+		<label><input type="radio" name="bev" value="아메리카노" checked> 아메리카노" </label><br>
+		<label><input type="radio" name="bev" value="콜라"> 콜라" </label><br>
+		<label><input type="radio" name="bev" value="오렌지주스"> 오렌지주스" </label><br>
+		<label><input type="radio" name="bev" value="그냥 물"> 그냥 물" </label><br>
+		<button>결정..</button>
+	</form>
+	<!-- ex) 가장 선호하는 계절은? 초기 가을로 check가 되어 있게..-->
+	<h2>가장 선호하는 계절은?(choice one)</h2>
+	<form action="a16_radio.jsp">
+		<label><input type="radio" name="season" value="spring">봄</label><br>
+		<label><input type="radio" name="season" value="summer">여름</label><br>
+		<label><input type="radio" name="season" value="autumn" checked>가을</label><br>
+		<label><input type="radio" name="season" value="winter">겨울</label><br>
+		<button>계절 결정</button>
+	</form>
+</body>
+</html>
+<!-- 
+1. radio box
+	1) 라디오 버튼은 여러 개가 하나의 그룹으로 묶여 동작하는 것이 가장 큰 특징입니다. 사용자가 한 항목을 선택하면,
+		같은 그룹 내의 다른 항목은 자동으로 선택이 해제됩니다. 마치 옛날 라디오의 채널 버튼을 누르면 이전에 눌려있던
+		버튼이 튀어나오는 것과 같다고 해서 라디오 버튼이라는 이름 붙었습니다.
+	2) 이 그룹을 만들어주는 핵심 속성이 바로 name입니다. name 속성값이 동일한 라디오 버튼들은 하나의 그룹으로 묶여,
+		그 중에서 반드시 하나만 선택할 수 있게 됩니다.
+	3) 핵심 키워드
+		<input type="radio" name="group01" value="값1" id="r01"><label for="r01">단일선택</label>
+	   입안에 내 값 있나 봐
+	   입 : <input> - 모든 입력 요소의 시작
+	   안에 : type="radio" - 종류는 라디오
+	   내 : name 같은 그룹을 묶여주는 이름표
+	   값 : value - 서버로 전송될 실제 값
+	   있나 봐 : 사용자에게 보여줄 설명 텍스트(사용성 향상을 위 for 속성과 id를 연결)
+	4) 서버에 전송도 group별(name 속성)으로 체크된 하나의 key/value만 전송이 된다
+	
+	
+			
+
+
+ -->

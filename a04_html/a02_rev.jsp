@@ -16,5 +16,6 @@
     토핑4: ${paramValues.toppings[3]}
     토핑5: ${paramValues.toppings[4]}
     </p>
+    <h2>선택된 메뉴는: ${param.menu}</h2>
 </body>
 </html>

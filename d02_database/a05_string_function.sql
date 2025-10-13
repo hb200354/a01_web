@@ -41,5 +41,33 @@ FROM BOOKS;
 SELECT TITLE, INSTR(TITLE,'a',1, 2) SCCOND_A_POS
 FROM BOOKS;
 SELECT * FROM BOOKS;
+/*
+# 오라클 LPAD, RPAD(왼쪽/오른쪽 채우기)
+1. 데이터를 일정한 길이로 맞춰야 할 때 사용
+EX) 직원 번호 5자리로 표시할 때 27 -> '00027'
+2. PAD로 빈 공간 채우기
+	1) LPAD(Left PAD) 왼쪽에 지정한 문자를 채워 넣는다
+	2) RPAD(Right PAD) 오른쪽에 지정한 문자를 채워 넣는다
+3. LPAD와 RPAD의 구성
+	1) 대상 문자열: 길이를 맞추고 싶은 데이터(EX: APPLE)
+	2) 최종 길이: 만들고 싶은 총 길이(EX: 10)
+	3) 채울 문자열: 빈 공간에 채울 문자(EX: #)
+*/
+SELECT LPAD('apple',10,'#') FROM dual;
+-- #####apple
+SELECT RPAD('apple',10,'#') FROM dual;
+-- apple#####
 
+-- EX) SQL이라는 글자를 총 7자리로 만들고, 남은 오른쪽 공간을 !로 채워라
+SELECT RPAD('SQL',7,'!') FROM dual;
+-- EX2) 숫자 123을 5자리로 표현. 비어있는 왼쪽 공간을 0으로 채워라
+SELECT LPAD('123',5,'0') FROM dual;
+-- EX3) SAL을 총 5자리를 만들어 왼쪽에 0이 들어가게 표현
+SELECT ENAME, SAL, LPAD(SAL,5,'0') FROM EMP;
+-- SELECT LPAD(SAL,5,'0') FROM EMP;
 
+-- 이메일 주소 google.gmail.com에서 아이디 부분인 google의 뒤 3글자를 *로 마스킹해라
+SELECT 'google.gmail.com' data1, 
+	SUBSTR('google.gmail.com',1,3) data2,
+	RPAD(SUBSTR('google.gmail.com',1,3),6, '*') data2
+FROM dual;

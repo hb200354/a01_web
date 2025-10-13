@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>색상 처리</h2>
+    <label>색상을 선택하세요: <input type="color" onChange="choice()"/></label>
+</body>
+<script type="text/javascript">
+    function choice(color){
+        document.body.bgColor=color
+    }
+</script>
+</html>
+<!-- 
+# input type="color"
+1. 사용자가 웹 페이지에서 직접 색상을 선택할 수 있게 해주는 마법 같은 도구. 클릭 한 번으로 운영체제(OS)의
+색상 선택기가 나타나, 원하는 색을 고르거나 직접 색상 코드를 입력 가능하다.
+2. html 컬러 피커(Color Picker)
+웹 페이지에서 사용자가 색을 고를 수 있도록 컬러 팔레트를 제공하는 input 요소.
+input 태그에 type="color" 속성을 지정하기만 하면 간단하게 만들 수 있다.
+사용자가 색상 상자를 클릭하면, 윈도우나 maxOS같은 운영체제에 내장된 색상 선택 창이 나타난다.
+
+주로 사용자의 프로필 색상을 지정하거나, 웹사이트 테마를 바꿀 때 사용
+3. 핵심 키워드와 속성
+    1) input: 사용자의 데이터를 입력받는 태그
+    2) type="color": input 태그를 일반 텍스트 상자가 아닌 색상 성택기로 만들어준다.
+    3) value: 컬러 피커의 기본 색상 지정. #으로 시작하는 6자리 16진수 색상 코드여야 한다.
+    4) name: form을 통해 서버에 전송
+    5) id: label 연결, css, javascript 식별자로 사용
+-->

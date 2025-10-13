@@ -6,7 +6,32 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h2>옵션 그룹화 처리</h2>
+    <!--
+    <h2>선택된 메뉴는 ${param.menu}</h2> -->
+    <form action="a02_rev.jsp">
+        <label>메뉴:
+            <select name="menu">
+                <option value="">메뉴를 선택해주세요</option>
+                <!-- value는 실제 전송될 데이터와 화면에 선택옵션으로 보이는 내용이 차이 있을 때 사용 -->
+                 <optgroup label="한식">
+                    <option value="bibimbab">비빔밥</option>
+                    <!-- 화면엔 비빔밥으로 보이지만 서버엔 bibimbab으로 전송 -->
+                    <option value="kimchi_jjigae">김치찌개</option>
+                    <option>불고기</option>
+                    <!-- 실제 전송되는 데이터도 불고기 -->
+                 </optgroup>
+                 <optgroup label="양식">
+                    <option value="pasta"selected>파스타(기본 추천)</option>
+                    <!-- selected 초기로딩 화면에서 기본적으로 선택된 옵션 설정 -->
+                    <option value="pizza">피자</option>
+                    <option value="steak">스테이크</option>
+                 </optgroup>
+            </select>
+            <button>선택</button>
+            <!-- 버튼 태그는 default가 type="submit" 이다. -->
+        </label>
+    </form>
 </body>
 </html>
 <!-- 

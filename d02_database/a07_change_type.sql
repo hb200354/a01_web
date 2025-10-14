@@ -32,3 +32,38 @@ FROM DUAL;
 
 SELECT '1,000' "기본 1000표현", TO_NUMBER('1,000', '9,999') + 3000 "연산시1(형변환)"
 FROM DUAL;
+
+/*
+# to_date(문자열, '포맷형식') - 글자를 날짜로 변경하여 처리
+1. 2025-10-26 같은 문자열을 오라클이 이해하는 진짜 날짜 데이터로 만들 때 사용
+2. 형식
+    YYYY : 4자리 연도
+    MM : 2자리 월
+    DD : 2자리 일
+    HH24 : 24시간 형식 시간
+    MI : 2자리 분
+    SS : 2자리 초
+    TO_DATE('2023-10-26', 'YYYY-MM-DD') : 문자열을 날짜로 읽도록 함
+*/
+SELECT TO_DATE('2025-12-25', 'YYYY-MM-DD') - SYSDATE "크리스마스까지 남은 날짜!"
+FROM DUAL;
+
+-- 1초 = 60 => 1분 = 60 => 1시간 = 24 => 1일
+-- 1일 = 1/24 => 1시간 = 1/60 ==> 1분 = 1/60 => 1초
+
+SELECT SYSDATE 오늘날짜, SYSDATE - 1 전날, SYSDATE + 1 내일, SYSDATE + 0.5 "12시간 이후"
+FROM DUAL;
+
+-- 2026-01-01 오늘로부터 몇일 남았는지, 2025/09/22로부터 몇일 지났는지 출력
+SELECT TO_DATE('2026-01-01', 'YYYY-MM-DD') - SYSDATE "몇일 남았나", 
+    SYSDATE - TO_DATE('2025/09/22', 'YYYY-MM-DD') "몇일 지났나"
+FROM DUAL;
+
+/*
+FLOOR() : 소숫점 이하를 절삭해줌
+CEIL() : 올림
+ROUND() : 반올림
+*/
+SELECT FLOOR(TO_DATE('2026-01-01', 'YYYY-MM-DD')) - SYSDATE) "오늘로부터 몇일 남았나",
+    CEIL(SYSDATE - TO_DATE('2025/09/22', 'YYYY-MM-DD')) "오늘일 몇일째인가"
+FROM DUAL;

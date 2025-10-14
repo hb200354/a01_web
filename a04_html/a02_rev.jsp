@@ -17,5 +17,9 @@
     토핑5: ${paramValues.toppings[4]}
     </p>
     <h2>선택된 메뉴는: ${param.menu}</h2>
+
+    <p> 
+        전달한 채널번호:${param.ch}, 전달한 볼륨크기: ${param.val}
+    </p>
 </body>
 </html>

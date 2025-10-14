@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<form>
+    <label>수량(1~10개): <input type="number" min="1" max="10" value="1"/></label>
+    <label>가격(1000~10000원): <input type="number" min="1000" max="10000" value="1000" step="1000"/></label>
+</form>
+    <!-- 
+    ex) TV 채널과 볼륨
+        채널(8~30 - 채널번호, 짝수만 입력되게 step 설정)
+        볼륨(0~100까지 10단위로 볼륨 조절되게 처리)
+    -->
+    <h2>TV 채널과 볼륨</h2>
+    <form action="a02_rev.jsp">
+        <label>채널(8~30): <input type="number" name="ch" min="8" max="30" value="8" step="2"/></label>    
+        <label>볼륨(0~100): <input type="number" name="vol" min="0" max="100" value="50"/></label>  
+        <button>서버에 전송</button> 
+    </form> 
+    <!--
+    a02_rev.jsp ==>
+    <p> 
+        전달한 채널번호:${param.ch}, 전달한 볼륨크기: ${param.val}
+    </p>
+    -->
+    <label>스크롤로 볼륨 처리:
+        <input type="range" min="0" max="100" step="5" value="50"
+            onchange="console.log(this.value)">
+    </label>
+    <!-- 0점에서 10점까지(0,2,4,...10)로 평가할 수 있는 만족도 점수 슬라이더를 만들어 console.log()로 출력 -->
+    <label>만족도 점수(0~10): <input type="range" min="0" max="10" step="2" value="0"
+        onchange="console.log(this.value)"/></label> 
+</body>
+</html>
+<!-- 
+# 숫자 입력
+1. 웹에서 사용자가 숫자를 입력하도록 만드는 두 가지 방법
+    <input type="number"> : 정확한 숫자를 직접 입력하거나 화살표로 조절 시 사용
+    <input type="range"> : 정해진 범위 안에서 대략적 값을 슬라이더로 조절할 때 사용
+2. 속성
+    value : 속성의(기본값) 0 
+    min : 최소 값
+    max : 최대 값
+    step : 증가/감소 간격
+    readonly : 읽기 전용(수정불가)
+-->

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>파일 업로드 예제</h2>
+    <label>첨부할 파일 선택1: <input type="file" onchange="console.log(this.value)"></label><br>
+    <label>첨부할 파일 선택2(다중): <input type="file" multiple="multiple"
+        onchange="console.log(this.value)"></label><br>
+    <label>첨부할 파일 선택3(이미지): <input type="file" accept="image/*"
+        onchange="console.log(this.value)"></label><br>
+</body>
+</html>
+<!-- 
+# 첨부파일 처리 type="file"
+1. 웹 페이지에서 파일 선택 버튼을 만들어 주는 html 태그. 버튼을 눌러 자신의 컴퓨터에 있는 파일 업로드 가능
+2. 핵심 키워드
+    type="file" : 파일 선택 버튼을 만들어줌
+    name="file01" : 서버로 파일을 보낼 때, 파일 데이터를 구분하기 위한 이름 지정
+    multiple="multiple" : 여러 파일 한 번에 선택 가능
+    accept : 업로드 할 수 있는 파일 종류 제한
+-->

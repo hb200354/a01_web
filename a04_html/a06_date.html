@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>날짜를 선택하세요</h2>
+    <label>기본 날짜: <input type="date" onclick="console.log(this.value)"/></label>
+    <!-- onchange 입력값이 변경되었을 때, 처리할 이벤트로 console.log(this.value)
+    현재 이 값에 입력된 내용을 console 창으로 출력 -->
+    
+    <!-- ex) 사원정보 검색시 입사일의 검색범위 시작일과 마지막일을 선택하는 처리를 만드시오
+            시작일 [ ] ~ 마지막일 [ ] -->
+    <h2>사원입사일을 통해 정보검색</h2>
+    <label>시작일: <input type="date" onclick="console.log('시작일:'+this.value)"/></label>
+    <label>마지막일: <input type="date" onclick="console.log('마지막일:'+this.value)"/></label>
+
+    <h1>시간 예행 예약</h1>
+    <p><label>여행 갈 달 선택:<input type="month" onchange="alert(this.value)"></label></p>
+    <p><label>프로젝트 주차 선택:<input type="week" onchange="alert(this.value)"></label></p>
+    <p><label>당신의 생일:<input type="date" onchange="alert(this.value)"></label></p>
+    <p><label>회의 시간:<input type="time" onchange="alert(this.value)"></label></p>
+    <p><label>파티 시간(날짜 + 시간):<input type="datetime-local" onchange="alert(this.value)"></label></p>
+</body>
+</html>
+<!-- 
+# html 날짜 및 시간 입력 유형
+1. html에서 사용자가 날짜나 시간을 쉽게 입력하도록 돕는 입력 유형으로
+month, week, date, time, datetime-local이 있음.
+2. 속성들 (type="속성값")
+    type="month" : 특정 월을 선택할 때 사용
+    type="week" : 특정 주를 선택할 때 사용
+    type="date" : 특정 날짜를 선택할 때 사용
+    type="time" : 특정 시간을 선택할 때 사용
+    type="datetime-local" : 날짜와 시간을 한 번에 선택할 때 사용
+3. 위 날짜/시간 유형 입력 form의 공통 속성
+    value : 입력 필드에 미리 표시될 기본 값
+    min : 선택할 수 있는 가장 빠른 날짜/시간 지정
+    max : 선택할 수 있는 가장 늦은 날짜/시간 지정
+    step : 값의 간격 설정
+
+    * MW-DTL (Month, Week, Date, Time, Datetime-Local)
+-->

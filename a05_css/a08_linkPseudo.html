@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="${encoding}">
+    <title>Insert title here</title>
+    <style type="text/css">
+    /*
+    # 링크 기본 색상
+    1. 초기 : 파란색
+    2. 이동하려고 클릭할 때 : 빨간색
+    3. 이동한 사이트 : 보라색
+    */
+        /* 가상 클래스의 선언을 통해 링크된 색상을 변경 처리..*/
+        a:link{color:orange;font-size:30px;}
+        /* 초기 링크된 글자 색상을 초록색으로 바꾸고 color:green; 
+            테두리를 border:1px solid blue; */
+        a:active{color:pink;} /* 클릭하고 있는 순간에 pink색상으로 변경 */
+        .class01:link{color:green; border:1px solid blue;}
+        .class01:active{color:yellow;}
+        /* 방문한 사이트에 대한 css 설정 :visited */
+        a:visited{color:navy;}
+        /* cls01도 방문 이후에는 green 글자색이 되게 설정 */
+        .class01:visited{color: green;}
+    </style>
+    </head>
+    <body>
+    <h2>링크 처리(기본 설정-색상 확인)</h2>
+    <a href="https://www.naver.com">이동1</a>
+    <a class="class01" href="#a2">이동2</a>
+    <a class="class01" href="#a3">이동3</a>
+    <a href="#a4">이동4</a>
+    <a href="#a5">이동5</a>
+    <a class="class01" href="#a6">이동6</a>
+    <a href="#a7">이동7</a>
+    </body>
+</html>

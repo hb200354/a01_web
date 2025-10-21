@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="${encoding}">
+    <title>Insert title here</title>
+    <style type="text/css">
+    /*
+    # 구조 변경 가상 클래스
+    1. 구조적 가상 클래스는 css가 html의 가족 관계와 순서를 보고 스타일을 적용하는 방법이다.
+    2. 가장 중요한 것은 같은 부모 밑에 있는 형제들 사이에서 순서를 따짐
+    */
+        /* 첫째만 처리(*같은 부모 하위의 첫 째, tag기준이 아님.) */
+        div h1:first-child{background-color:yellow; color:red;}
+        .kids li:first-child{font-weight:bold; background-color: yellow;}
+        /* ex) 테이블의 td 첫 번쨰만 글자색을 파란색으로 설정 */
+        td:first-child{color:blue;}
+        /* 막내만 처리 */
+        h1:last-child{color:green;}
+        /* h3의 3번쨰 형제 */
+        h1:nth-child(3){background-color:pink;}
+        /* kids 클래스의 2번쨰 요소 */
+        .kids li:nth-child(2){color:orange;}
+        /* 반복적 처리 위한 :nth-child(even), :nth-child(odd) */
+        .example tr:nth-child(even){background-color: orange;}
+    </style>
+    </head>
+    <body>
+        <table class="example" width="50%" border>
+            <tr>
+                <td>td형제1</td>
+                <td>td형제2</td>
+                <td>td형제3</td>
+            </tr>
+            <tr>
+                <td>td형제1</td>
+                <td>td형제2</td>
+                <td>td형제3</td>
+            </tr>
+            <tr>
+                <td>td형제1</td>
+                <td>td형제2</td>
+                <td>td형제3</td>
+            </tr>
+            <tr>
+                <td>td형제1</td>
+                <td>td형제2</td>
+                <td>td형제3</td>
+            </tr>
+            <tr>
+                <td>td형제1</td>
+                <td>td형제2</td>
+                <td>td형제3</td>
+            </tr>
+            <tr>
+                <td>td형제1</td>
+                <td>td형제2</td>
+                <td>td형제3</td>
+            </tr>
+        </table>    
+        <ul class="kids">
+            <li>김첫째</li>
+            <li>이둘째</li>
+            <li>박셋째</li>
+        </ul>
+        <ul class="kids">
+            <li>김첫째</li>
+            <li>이둘째</li>
+            <li>박셋째</li>
+        </ul>
+        <div>
+            <h1>h1형제1</h1>
+            <h1>h1형제2</h1>
+            <h1>h1형제3</h1>
+        </div>
+        <div>
+            <h1>h1형제1</h1>
+            <h1>h1형제2</h1>
+            <h1>h1형제3</h1>
+        </div>
+        <table width="50%" border>
+            <tr>
+                <td>td형제1</td>
+                <td>td형제2</td>
+                <td>td형제3</td>
+            </tr>
+            <tr>
+                <td>td형제1</td>
+                <td>td형제2</td>
+                <td>td형제3</td>
+            </tr>
+        </table>
+    </body>
+</html>

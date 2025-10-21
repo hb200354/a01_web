@@ -5,13 +5,58 @@
 <title>Insert title here</title>
 <style type="text/css">
 /*
+# 가상클래스(Pseudo-class)
+1. css의 가상(Pseudo-class)는 html 요소가 특정한 상태에 있을 때만 스타일을 적용한다.
+2. class=".." 처럼 html에 직접 적는 것이 아니라, 브라우저가 상황에 따라 보이지 않는 가상클래스를 붙여줌.
+핵심은 :(콜론)을 사용한다는 것
+3, 가상 클래스의 그룹
+	1) 사용자 동작 : 사용자의 행동에 반응
+		:hover - 요소에 마우스 커서를 올렸을 때
+		:active - 요소를 마우스로 클릭하고 있는 동안
+		:focus - 주로 <input>이나 <a>요소가 키보드 탭 등으로 선택 되었을 때
+	2) 링크 상태
+		<a>태그의 방문 이력 상태
+		:link - 사용자가 아직 방문하지 않은 링크
+		:visited - 사용자가 한 번이라도 방문했던 링크
+	3) 구조적 위치
+		html 구조(형제 관계)상의 위치에 따라 선택
+		:first-child - 형제 요소 중 첫째
+		:last-child - 형제 요소 중 막내
+		:nth-child(n) - 형제 요소 중 n번째
+			:nth-child(odd) - 홀수번째
+			:nth-child(event) - 짝수번째
+			:nth-child(2) - 2번째
+		:not(selector) - 특정 선택자를 제외한 나머지 :not(:last-child) - 마지막 제외
+	# 상태 선택자
+		select:state(선택자:상태)
+		콜론 찍고, 상황(상태)
+		button:hover - 버튼(:) 위에 마우스가 올라감
+		input:focus - 인풋(:)에 커서가 찍힘
+		li:first-child - li(:)가 첫째인 상황
 
+		링크 스타일 순서(나중에 적용된 것이 덮어쓰기에 중요)
+		:link
+		:visited
+		:hiver
+		:active
+		ex)
+		a:link{color:blue;}
+		a:visited{color:purple;}
+		a:hover{color:red;}
+		a:active{color:orange;}
 */
 h1:hover{ font-size:50px;color:navy;background-color:pink;}
 h2:active{ font-size:50px;color:yellow;background-color:purple;}
+/* 1. 마우스를 올렸을 때(hover) */
+.my-btn:hover{background-color: #0056b3;color: yellow;}
+/* 2. 클릭하고 있을 때(active) */
+.my-btn:active{background-color: #003d80;
+	transform:translateY(12px); /* 아래로 12px 이동*/
+}
 </style>
 </head>
 <body>
+	<button type="button" class="my-btn">마우스를 올려 보세요/클릭하고 있어보세요</button>
 	<h1>안녕하세요..!! 바뀌죠..^^</h1>
 	<h2>안녕하세요..!! 바뀌죠..^^</h2>
 

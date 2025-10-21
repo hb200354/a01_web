@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>복합 선택자 예제</title>
+  <style>
+    /* 
+      # 복합 선택자
+
+      1. 다중 선택자(그룹 선택자)
+         - 여러 개의 선택자에 동일한 스타일을 적용할 때 사용
+         - 형식: 선택자1, 선택자2, 선택자3 { 속성: 값; }
+         - 쉼표(,)는 ‘또는(or)’의 의미를 가짐
+
+      2. 계층 구조 선택자
+         - div p : div 내부의 모든 p 선택
+         - tr > td : tr의 직계 자식 td 선택
+         - h2 + p : h2 바로 다음에 오는 p(인접 형제)
+         - h2 ~ li : h2 뒤에 오는 모든 li(일반 형제)
+    */
+
+    /* 인접 형제 선택자: h2 바로 뒤의 p */
+    h2 + p {
+      color: red;
+    }
+
+    /* 일반 형제 선택자: h2 뒤의 모든 li */
+    h2 ~ li {
+      list-style-type: square;
+    }
+
+    /* 다중 선택자: h1과 .special */
+    h1,
+    .special {
+      color: navy;
+      border-bottom: 2px solid navy;
+    }
+
+    /* 배경 강조용 클래스 */
+    .special2 {
+      background-color: yellow;
+    }
+
+    /* 여러 클래스가 함께 적용된 경우 예제 */
+    #main-content,
+    .active1 {
+      background-color: pink;
+    }
+
+    .active2 {
+      border: 1px solid navy;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <h2>CSS 형제 선택자</h2>
+    <p>첫 번째 문단 (h2 + p 에 의해 빨간색)</p>
+    <div>이것은 div 요소 (형제지만 p, li가 아님)</div>
+    <li>항목 1 (h2 ~ li 에 의해 네모 점)</li>
+    <p>두 번째 문단 (h2 + p에 해당하지 않아 일반색)</p>
+    <li>항목 2 (h2 ~ li 에 의해 네모 점)</li>
+  </ul>
+
+  <h1>제목</h1>
+  <h2 id="main-content">연습 예제</h2>
+  <p class="active1 active2">클래스 선언 예제</p>
+
+  <p class="special">특별한 문단 (p.special)</p>
+  <div class="special special2">특별한 박스 (div.special.special2)</div>
+</body>
+</html>

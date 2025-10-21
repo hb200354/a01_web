@@ -1,0 +1,166 @@
+Good Morning QUIZ!! 좋은 하루 시작입니다!!
+
+#### **객관식 문제 (4지 선다형)**
+
+**CSS 파트**
+
+1.  HTML이 웹페이지의 '구조'를 담당한다면, CSS의 핵심 역할로 가장 적절한 것은 무엇인가요? ✏️
+    ① 데이터 저장 및 관리
+    ② 사용자 상호작용 처리
+    #③ 시각적 디자인 및 레이아웃
+    ④ 서버와의 통신
+
+2.  CSS 규칙을 구성하는 두 가지 기본 요소로 올바르게 짝지어진 것은 무엇인가요?
+    ① 속성(Property)과 값(Value)
+    #② 선택자(Selector)와 선언(Declaration)
+    	SELECTOR{
+    		선언
+    	}
+    	h1{ color:blue;}
+    ③ 태그(Tag)와 속성(Attribute)
+    ④ 함수(Function)와 변수(Variable)
+
+3.  문서 내에서 오직 하나의, 고유한 요소에만 스타일을 적용할 때 사용하는 선택자 기호는 무엇인가요?
+    ① `.` (마침표)
+    	.클래스명{속성:속성값}
+    	<h1 class="클래스명">
+    ② `*` (별표)
+    ③ `>` (부등호)
+    ④ `#` (샵)
+    	#아이디명{속성:속성값;}
+    	<h1 id="아이디명">
+
+4.  여러 요소에 동일한 스타일을 그룹으로 적용하기 위해 사용하는 선택자는 무엇인가요?
+    ① 아이디 선택자 (`#myId`)
+    ② 태그 선택자 (`div`)
+    #③ 클래스 선택자 (`.myClass`)
+    ④ 전체 선택자 (`*`)
+
+5.  요소의 배경색을 노란색으로 지정하는 올바른 CSS 코드는 무엇인가요?
+    ① `color: yellow;`
+    ② `border-color: yellow;`
+    #③ `background-color: yellow;`
+    ④ `text-background: yellow;`
+
+6.  요소의 테두리(border)와 내용(content) 사이의 '안쪽 여백'을 조절하는 속성은 무엇인가요?
+	사각형으로 요소를 구성
+	내용(content) ==> padding ==> border ==> margin
+    ① `margin`
+    #② `padding`
+    ③ `space`
+    ④ `outline`
+
+7.  요소와 요소 사이의 '바깥쪽 여백'을 설정하는 CSS 속성은 무엇인가요?
+    #① `margin`
+    ② `padding`
+    ③ `gap`
+    ④ `border-spacing`
+
+8.  CSS 적용 방법 중, 특정 태그에 `style` 속성을 직접 사용하여 적용하는 방식으로 우선순위가 가장 높은 것은 무엇인가요?
+    ① 내부 스타일 시트 (`<style>` 태그) - 현재페이지에 적용   h1{color:red;}
+    ② 외부 스타일 시트 (`.css` 파일) - 해당파일을 호출하는 모든 페이지에 적용  h1{color:blue;}
+    #③ 인라인 스타일 (`style="..."`) - 하나의 태그에 적용  <h1 style="color:orange;">
+    ④ 브라우저 기본 스타일
+
+9.  CSS에서 주석을 올바르게 표기한 것은 무엇인가요?
+    ① `// 이것은 주석입니다.`
+    ② \`\`
+    #③ `/* 이것은 주석입니다. */`
+    ④ \`\# 이것은 주석입니다.\`
+    
+    <!-- html주석 -->
+    -- 데이터베이스 1라인 
+    /* 데이터베이스 여러 라인 주석*/
+    /* css 주석 */
+    <%-- jsp 주석 --%>
+    
+
+10. 글자의 두께를 굵게 만들고 싶을 때 사용하는 CSS 속성은 무엇인가요?
+    ① `font-style`
+    ② `font-size`
+    ③ `text-decoration`
+    #④ `font-weight`
+
+-----
+
+**Oracle JOIN 파트**
+
+11. 여러 테이블에 흩어져 있는 데이터를 특정 조건에 따라 합쳐서 결과를 조회할 때 사용하는 SQL 기술은 무엇인가요? 🧩
+    ① `GROUP BY`
+    ② `ORDER BY`
+    #③ `JOIN`
+    ④ `UNION`
+
+12. 두 테이블을 JOIN할 때, 양쪽 테이블에 모두 매칭되는 데이터만 보여주는(교집합) 가장 기본적인 JOIN 방식은 무엇인가요?
+    ① `LEFT OUTER JOIN`
+    ② `RIGHT OUTER JOIN`
+    ③ `FULL OUTER JOIN`
+    #④ `INNER JOIN`
+
+13. `EMPLOYEES` 테이블을 기준으로, 부서가 없는 직원을 포함한 모든 직원(주인공)의 목록을 보고 싶을 때 가장 적절한 JOIN은 무엇인가요?
+    ① `FROM EMPLOYEES E INNER JOIN DEPARTMENTS D`
+    #② `FROM EMPLOYEES E LEFT OUTER JOIN DEPARTMENTS D`
+    ③ `FROM EMPLOYEES E RIGHT OUTER JOIN DEPARTMENTS D`
+    ④ `FROM EMPLOYEES E FULL OUTER JOIN DEPARTMENTS D`
+
+14. 다음 중 `RIGHT OUTER JOIN`에 대한 설명으로 가장 올바른 것은 무엇인가요?
+    ① 왼쪽 테이블의 모든 데이터를 보여준다.
+    #② 오른쪽 테이블의 모든 데이터를 보여준다.
+    ③ 양쪽 테이블에서 일치하는 데이터만 보여준다.
+    ④ 양쪽 테이블의 모든 데이터를 중복 없이 보여준다.
+
+15. 두 테이블의 모든 데이터를 보여주되, 짝이 없는 데이터는 `NULL`로 표시하여 합집합처럼 결과를 보고 싶을 때 사용하는 JOIN은 무엇인가요?
+    ① `INNER JOIN`
+    ② `LEFT JOIN`
+    ③ `RIGHT JOIN`
+    #④ `FULL OUTER JOIN`
+
+16. `... FROM CUSTOMERS C LEFT OUTER JOIN ORDERS O ...` 쿼리를 실행했습니다. 
+		구매 기록이 없는 고객도 결과에 포함될까요?
+    #① 네, 포함됩니다.
+    ② 아니요, 포함되지 않습니다.
+    ③ 구매 기록이 없는 고객만 나옵니다.
+    ④ 오류가 발생합니다.
+
+17. JOIN을 할 때, 두 테이블을 연결하는 매칭 규칙(조건)을 명시하기 위해 사용하는 키워드는 무엇인가요?
+    ① `WHERE`
+    #② `ON`
+    ③ `HAVING`
+    ④ `USING`
+
+18. OUTER JOIN의 결과에서, 한쪽 테이블에 매칭되는 데이터가 없을 경우 해당 컬럼에 표시되는 값은 무엇인가요?
+    ① `0`
+    ② `""` (빈 문자열)
+    #③ `NULL`
+    ④ `FALSE`
+
+19. `EMP`와 `DEPT` 테이블을 JOIN하여 부서 할당을 받지 않은 사원과, 사원이 한 명도 없는 부서를 모두 보고 싶을 때 사용할 JOIN은 무엇인가요?
+    ① `INNER JOIN`
+    ② `LEFT JOIN`
+    ③ `RIGHT JOIN`
+    #④ `FULL OUTER JOIN`
+
+20. `LEFT JOIN`에서 '주인공'이 되어 모든 데이터가 반드시 결과에 포함되는 테이블은 어느 쪽 테이블인가요?
+    #① 왼쪽 테이블
+    ② 오른쪽 테이블
+    ③ 두 테이블 모두
+    ④ 조건에 따라 다름
+
+-----
+
+#### **주관식 문제**
+
+21. (CSS) 웹페이지의 모든 `h1` 태그의 글자색을 파란색으로 바꾸려고 합니다. `h1 { ( color ): blue; }` 빈칸에 들어갈 올바른 속성(property)은 무엇인가요?
+
+22. (CSS) HTML 요소에 `class="item"` 속성이 지정되어 있을 때, 이 요소를 선택하기 위한 CSS 선택자를 작성하세요. (기호 포함)
+	.item{속성:속성값;}
+
+23. (Oracle) 두 테이블에서 공통된 데이터만 조회하는, 가장 기본적인 JOIN의 이름은 무엇인가요?
+	INNER JOIN
+24. (Oracle) `LEFT OUTER JOIN`을 설명할 때, 왼쪽 테이블이 '주인공'이라면 오른쪽 테이블은 어떤 데이터만 결과에 포함되나요?
+	매칭된 데이터가 없으면 NULL로 표현된다.
+
+25. (CSS/Oracle) CSS에서 여러 규칙을 구분하는 기호와,
+	 Oracle SQL 문장의 끝을 알리는 기호로 공통적으로 사용되는 문자는 무엇인가요?
+	 CSS에서는 속성:속성값;
+	 ORACLE  SELECT * FROM EMP;

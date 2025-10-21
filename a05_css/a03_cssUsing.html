@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+<style type="text/css">
+/*
+# CSS 옷 입히는 3가지 방법
+html이라는 몸에 css라는 옷을 입히는 방법은 크게 세 가지가 있습니다. 상황에 따라 가장 편하고 효율적인 방법을 골라
+쓰면 됩니다.
+1. <style> 태그 (내부 스타일 시트) : 하나의 html문서 안에 head부분에 오늘의 코디를 메모해두는 방식입니다.
+	해당 html 페이지 안에서만 적용되는 스타일 규칙을 한 곳에 모아두는 겁니다.
+2. style 속성(인라인 스타일) : 가장 급하고 직접적인 방법입니다. 티셔츠, 바지 등 옷(태그) 하나하나에 이름표처럼
+	바로 붙여버리는 방식입니다. 딱 그 태그에만 스타일이 적용됩니다. 우선순위로는 가장 높습니다.
+3. 별도 파일(외부 스타일 시트) : 가장 전문적이고 체계적인 방법. mystyle.css 같은 패션 코디북을 따로 만들고,
+	여러 html 파일이 이 코디북을 함께 참고하는 방식입니다. 웹사이트 전체의 디자인을 일관되게 관리할 때 최고입니다.
+	- 하나의 공통 css선언파일통해 여러 html 파일에 동일하게 적용할 때 사용됩니다.	
+
+*/
+	/*1. style태그 선언 - 현재페이지 모두 적용..==> body에 모두 적용..*/
+	h1{ color:navy;border:1px solid green;}
+	/*ex) p태그로 배경색상(background-color:yellow;)과 테두리(border:1px solid blue;) 적용..*/
+	p{background-color:yellow;border:1px solid blue;}
+	/*ex) 안녕하세요3, 안녕하세요5 레이블로 되어 있는 곳에 inline style 
+		넓이(width), 높이(height) 100/200, 200/200으로 설정하고, font-size를 30px, 40px로 지정하세요 */
+		
+</style>
+<link rel="stylesheet" href="myStyle.css">
+</head>
+<body>
+	<div class="notice">
+		오늘은 css 외부 스타일 시트 적용 방법을 배웁니다.
+	</div>
+
+
+	<h1 style="color:yellow;background-color:blue;">안녕하세요1!!</h1>
+	<h2>안녕하세요2!!</h2>
+	<!--  태그 style="속성:속성값;.." -->
+	<p  style="color:yellow;background-color:blue;" >html 태그의 3가지 형식에 대하여 처리합니다.</p>
+	<h1 style="width:100px;height:200px;font-size:30px">안녕하세요3!!</h1>
+	<h1>안녕하세요4!!</h1>
+	<h1 style="width:200px;height:200px;font-size:40px">안녕하세요5!!</h1>
+	<p>html 태그의 3가지 형식에 대하여 처리합니다.</p>
+
+
+</body>
+</html>
+<!--
+
+
+-->

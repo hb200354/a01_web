@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="${encoding}">
+    <title>Insert title here</title>
+    <style type="text/css">
+    /*
+    # css 색 표현 
+        1. 색표현이란?
+            - 컴퓨터 모니터는 빛으로 색을 만든다. 기본(R,G,B)
+            - (0,0,0) = 검정색 
+              (255,255,255) = 흰색
+              (255,0,0) = 빨간색
+        2. 핵심 키워드
+            - 가장 쉬운 방법 - 그냥 색깔 이름 부르기 (ex. red, blue, green, black)
+            - RGB(Red, Green, Blue) : 0~255의 값들 중에 농도 선택
+            - HEX (16진수 코드) : 형식 #RRGGBB 값은 00~FF(255) ex) #ff0000 = 빨강
+
+    */
+        h1:nth-child(1){color:orange;}
+        h1:nth-child(2){color:rgb(0,255,0);}
+    </style>
+    </head>
+    <body onload="call('tomato')">
+        <h1>색상1</h1>
+        <h1>색상2</h1>
+        <h2>색 표현</h2>
+        <input type="color" onchange="call(this.value)"/>
+        <script>
+            function call(color){
+                document.body.bgColor=color
+                document.querySelector("h2").innerText += ":" + color
+            }
+        </script>
+    </body>
+</html>

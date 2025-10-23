@@ -12,3 +12,24 @@
 CREATE SEQUENCE SEQ01;
 SELECT SEQ01.NEXTVAL FROM DUAL;
 SELECT SEQ01.CURRVAL FROM DUAL;
+---ex) 기본 sequence 만들기, 시쿼스명  board_seq01이라고 하고, 데이터가 증가 및 현재 sequence번호를 출력하세요.
+CREATE SEQUENCE BOARD_SEQ01;
+SELECT BOARD_SEQ01.NEXTVAL FROM DUAL;
+SELECT BOARD_SEQ01.CURRVAL FROM DUAL;
+/*
+? 필요한것
+1) 코드값이 정해져서 만들어진 ..- 자리수가 정해지고, 특정 문자 AE00005 조합
+2) 초기값을 1000,  자리수 지정이 필요..
+3) 증가/감소단위 설정하고, 2씩 또는 그 이상으로 증감 처리되게 하는 것이 필요..
+
+# sequence의 기본 옵션들..
+CREATE SEQUENCE 시퀀스명
+	START WITH 시작 숫자
+	INCREMENT BY 증가 숫자
+	MAXVALUE 최대 숫자
+	MINVALUE 최소 숫자;
+	
+	CYCLE/NOCYCL   최대값 도달 시 다시 처음(최소값)부터 시작
+	CACHE/NOCACHE    미리 번호표를 몇 개 뽑아 메모에 둘지, 속도 향상요, 기본값 CACHE 20
+	
+	

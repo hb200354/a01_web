@@ -1,0 +1,204 @@
+Good Morning QUIZ! 벌써 금요일입니다. !!
+즐겁고 유익한 하루/한주간 마무리 합시다. ^^
+
+## 객관식 20문제 (4지선다형)
+
+**[HTML/CSS: Box Model]**
+
+**1. CSS 박스 모델에 대한 설명 중, '택배 상자' 비유가 올바르지 않은 것은?**
+① Content (내용물) - 상자 안의 실제 물건 text, img, 
+② Padding (뽁뽁이) - 물건 보호를 위한 안쪽 완충재 - 간격/방향
+③ Border (상자) - 상자 자체의 두께(테두리) - 간격/방향/스타일/굵기
+#④ Margin (거리) - 상자 안쪽의 개인 공간 - 간격/방향
+
+**2. `padding` 속성에 대한 설명으로 올바르지 않은 것은?**
+① 테두리(border)와 내용물(content) 사이의 안쪽 여백이다.
+② '패딩 점퍼'처럼 안쪽을 빵빵하게 채우는 개념과 유사하다.
+#③ `padding` 영역에는 요소의 배경색이 적용되지 않는다. 
+	- padding 속성으로 색상을 지정하지 않지만 background-color 이 요소객체의 전체
+	배경색상을 지정되어 표현할 수 있다.
+④ `padding-left`, `padding-top` 등으로 방향을 지정할 수 있다.
+
+**3. `margin` 속성에 대한 설명으로 가장 올바른 것은?**
+#① 테두리(border) 바깥쪽의 여백으로, 다른 요소와의 거리를 의미한다.
+② `margin` 영역에는 요소의 배경색이 함께 적용된다.
+③ `margin`은 안쪽 여백을 의미하며 '뽁뽁이'에 비유된다.
+④ `margin` 값은 `px`로만 설정해야 한다.
+
+**4. `border-style` 속성의 값 중 '이중 실선'을 의미하는 것은?**
+① solid
+② dashed(각진) dotted(동글동글) 점선
+③ groove 입체적인 효과
+#④ double
+
+**5. `border-style` 속성의 값 중 '파선(긴 점선)'을 의미하는 것은?**
+① dotted
+#② dashed
+③ inset
+④ solid
+
+**6. `margin: 10px 20px;`와 같이 값을 2개만 설정했을 때, 올바른 해석은?**
+#① 위/아래 10px, 좌/우 20px
+② 위/아래 20px, 좌/우 10px
+③ 위 10px, 좌/우 20px, 아래 10px
+④ 위 10px, 오른쪽 20px, 나머지는 0
+
+**7. `padding: 10px 20px 30px 40px;`와 같이 값을 4개 설정했을 때, 
+      `40px`가 적용되는 방향은?**
+      top시작하여 ==> right ==> bottom ==> left
+① 위 (top)
+② 오른쪽 (right)
+③ 아래 (bottom)
+#④ 왼쪽 (left)
+
+**[HTML/CSS: Units]**
+
+**8. CSS 단위 중, 모니터 화면의 가장 작은 점(화소)을 기준으로 하는 '절대 단위'는 무엇인가?**
+① %  상대
+② em 상대(기준점이 상위 계층의 글자크기)
+③ rem 상대(기준점이 전체(html)의 글자크기)
+#④ px
+
+**9. CSS 단위 중, 부모 요소의 크기에 대한 백분율로 크기가 정해지는 '상대 단위'는 무엇인가?**
+#① %
+② em  부모 요소 크기 기준 배서 1.5 상위 계층의 1.5배 크기..
+③ rem
+④ px
+
+**10. CSS 단위인 `em`의 크기 기준이 되는 것은 무엇인가?**
+① `<html>` 요소의 글자 크기
+#② 부모 요소의 글자 크기
+③ 부모 요소의 너비(width)
+④ 뷰포트(화면)의 높이
+
+**11. CSS 단위인 `rem`의 크기 기준이 되는 것은 무엇인가?**
+#① `<html>` 요소의 글자 크기   root em
+② 부모 요소의 글자 크기
+③ 부모 요소의 너비(width)
+④ 뷰포트(화면)의 너비
+
+**12. `em` 단위와 `rem` 단위를 비교한 설명 중 올바르지 않은 것은?**
+① `rem`은 'Root-EM'의 약자이다.
+② `em`은 요소가 중첩되면 계산이 복잡해질 수 있다.
+③ `rem`은 '현대 반응형 웹 디자인의 표준 단위'로 불린다.
+#④ `em`과 `rem`은 모두 부모 요소의 너비 값을 기준으로 한다.
+
+**[HTML/CSS: Border-Radius]**
+
+**13. 요소의 뾰족한 모서리를 둥글게 깎아주는 CSS 속성은 무엇인가?**
+① `border-style`
+#② `border-radius`	h1{border-radius:10px 20px 30px 40px;}
+                    왼쪽 상단 꼭지점부터 시작해서 시계방향으로 둥글기 설정..
+③ `margin-collapse`
+④ `box-sizing`
+
+**14. `border-radius` 속성에 대한 설명으로 올바르지 않은 것은?**
+① `radius`는 '반지름'을 의미한다.
+② 값이 클수록 모서리가 더 둥글게 깎인다.
+③ `border-top-left-radius`처럼 특정 모서리만 지정할 수 있다.
+#④ `border-radius: 50%;`는 정사각형을 타원으로 만든다.
+	타원 : (eclipse)
+	원 : 가로 세로 같은 circle
+	border-radius:50%; 완전원 circle이 만들어 진다..
+
+**15. `border-radius: 10px 20px;`와 같이 값을 2개 설정했을 때, 
+   `20px`가 적용되는 모서리 조합으로 옳은 것은?**
+   왼쪽위, 오른쪽 위, 오른쪽아래, 왼쪽아래.  모서리 굴곡 지정
+   border-radius: 10px  : 모든 꼭지점
+   border-radius: 10px 20px   왼쪽위 왼쪽아래 (10px) 오른쪽 위 왼쪽아래(20px)
+   border-radius: 10px 20px 30px  왼쪽아래는(20px)
+   
+① 왼쪽 위, 오른쪽 아래
+#② 오른쪽 위, 왼쪽 아래
+③ 왼쪽 위, 왼쪽 아래
+④ 오른쪽 위, 오른쪽 아래
+
+**[Oracle: Foreign Key & DCL]**
+
+**16. 한 테이블의 열이 다른 테이블의 PK나 UK 값을 참조하도록 강제하여, 
+	'유령 데이터(Orphan Data)'를 방지하는 제약 조건은 무엇인가?**
+	Emp에 부서번호를 넣을 때, Dept에 없는 부서번호를 넣을 때, 유령 데이터(Orphan Data)
+	이것을 방지하기 위한 것이 외래키 관계 설정..
+① PRIMARY KEY (기본 키)
+#② FOREIGN KEY (외래 키)
+③ CHECK (체크)
+④ NOT NULL (널 불허)
+
+**17. `CREATE USER`, `GRANT`, `REVOKE`와 같은 명령어들을 묶어서 부르는 
+  데이터 제어어(DCL)의 풀네임(Full-Name)은 무엇인가?**
+#① Data Control Language
+② Data Command Language
+③ Data Creation Language
+④ Data Connection Language
+
+**18. Oracle에서 `GRANT` 명령으로 사용자에게 부여하는 '핵심 열쇠 꾸러미(Role)' 중, 
+	데이터베이스 접속을 위한 가장 기본적인 권한은 무엇인가?**
+① RESOURCE
+② DBA
+#③ CONNECT
+④ SYSTEM
+1. 계정 생성
+	CREATE USER 사용자이름 IDENTIFIED BY 비밀번호; 
+	ex) CREATE USER USER01 IDENTIFIED BY 1234;
+2. 접속권한 부여	
+	
+	GRANT 권한이름1, 권한이름2,... TO 계정
+	기본 접속
+	ex) GRANT CONNECT TO USER01;  (ROLE명)
+	ex) GRANT CREATE SESSION TO USER01;
+	-- 접속을 할 수 있으나, 테이블이나 자원들을 사용할 수 없음
+	자원 사용
+	EX) GRANT RESOURCE TO USER01;
+	-- 테이블도 생성하고 자원들 사용할 수 있음..
+	다른 사용자에 권한부여 권한(관리자권한)
+	EX) GRANT DBA TO USER01;
+3. 권한 제거
+	REVOKE 권한이름1, 권한이름2,.... FROM 사용자이름;
+	EX) REVOKE RESOURCE FROM USER01;	
+4. 계정 삭제
+	DROP USER 사용자이름; - 포함되어 있는 테이블이나 객체가 없을 때.
+	DROP USER 사용자이름 CASCADE;	- 포함되어 있는 테이블이나 객체를 만들었을 때.
+		같이 삭제 처리..
+	EX) DROP USER USER01;
+
+**19. `GRANT` 명령으로 `CONNECT` 권한과 함께 부여하며, 사용자가 테이블이나 시퀀스 등 '자원'을 생성하고 사용할 수 있게 하는 권한(Role)은 무엇인가?**
+#① RESOURCE
+② DBA
+③ CREATE SESSION
+④ IDENTIFIED BY
+
+**20. 'king\_dev'라는 사용자에게 접속 권한과 자원 사용 권한을 동시에 부여하는 
+	올바른 SQL 명령어는?**
+① `GRANT CONNECT, RESOURCE FROM king_dev;`
+② `CREATE USER king_dev GRANT CONNECT, RESOURCE;`
+#③ `GRANT CONNECT, RESOURCE TO king_dev;`
+④ `REVOKE CONNECT, RESOURCE FROM king_dev;`
+
+-----
+
+## 서술형 주관식 5문제
+
+**21. [CSS] CSS 박스 모델을 구성하는 4가지 요소를 '택배 상자' 비유에 따라 
+	가장 안쪽부터 바깥쪽 순서대로 모두 쓰시오.**
+	Content, Padding, Border, Margin
+
+**22. [CSS] CSS 단위 중 `em`과 `rem`의 크기 기준이 되는 대상을 각각 쓰시오.**
+
+  * `em`의 기준: 부모 요소의 글자 크기
+  * `rem`의 기준: 최상위(root/html) 요소의 글자 크기
+
+**23. [CSS] 정사각형 `div` 요소를 완전한 원으로 만들기 위해 `border-radius` 
+	속성에 주어야 하는 값은 ( 괄호 ) 안의 값이다.**
+	div{ border-radius:50%; }
+	
+
+**24. [Oracle] Oracle에서 'USER02'라는 이름의 사용자를 비밀번호 '1234'로 생성하는 
+	전체 SQL 명령어를 쓰시오.**
+	CREATE USER USER02 IDENTIFIED BY 1234;
+
+**25. [Oracle] 'user02' 사용자에게 부여했던 `RESOURCE` 권한을 회수(철회)하는 
+	전체 SQL 명령어를 쓰시오.**
+	REVOKE RESOURCE FROM USER02;
+	
+
+

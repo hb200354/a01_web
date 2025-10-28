@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+ex) div(500 x 500설정, 배경색상은 노랑색상)
+	배경이미지. 사과이미지(apple.png)를 설정하여,
+	반복하지 않게 처리하는 div01, 
+	x축으로만 반복하는 div02를 설정하여 배경 이미지로 처리하여 출력하세요..
+*/
+div{
+	width:500px;height:500px;
+	background-color:yellow;
+	border:1px solid green;
+}
+/*
+# background-position(위치)
+1. 반복 안 할 거면, 벽지(이미지) 위치는 어디에 둘
+2. 배경 이미지 시작 위치를 지정합니다
+	top, bottom, left, right, center
+	50% 50%(가로 50%, 세로 50% = center center)
+	10px 20px(왼쪽 10px, 위에서 20px)
+
+# background-size(크기)
+1. 벽지(이미지) 크기가 방(박스)이라 안 맞네 조절하자.
+2. 배경 이미지의 크기를 조절합니다.
+	auto :원본 이미지 크기(기본값)
+	100px 200px : 가로 100px, 세로 200px로 강제 조절
+	cover : 방(박스)에 꽉 차도록 이미지를 확대/축소. (이미지가 잘릴 수 있음)
+	contain : 이미지가 잘리지 않게, 방(박스)안에 다 보이도록 확대/축소(방에 빈 공간이 생길 수 있음)
+
+# background-attachment(부착/고정)
+1. 이 벽지, 스롤할 때 같이 움직이게 할까, 아니면 벽에 딱 붙여(고정) 버릴까?
+2. 페이지를 스크롤할 때 배경 이미지의 동작을 정합니다.
+	scroll : 스크롤 따라 같이 움직임(기본값)
+	fixed : 스크롤해도 배경 이미지는 그 자리에 고정된(창문에 붙인 시트 효과)
+		
+
+
+*/
+#div05{
+	background-image:url('apple.png');
+	background-repeat:no-repeat;
+	background-position:bottom;
+}
+#div04{
+	background-image:url('apple.png');
+	background-repeat:no-repeat;
+	background-position:50% 50%;
+}
+#div01{
+	background-image:url('apple.png');
+	background-repeat:no-repeat;
+}
+#div02{
+	background-image:url('apple.png');
+	background-repeat:repeat-x;
+}
+#div03{
+	background-image:url('apple.png');
+}
+
+
+
+</style>
+</head>
+<body>
+	<div id="div05"></div>
+	<div id="div04"></div>
+	<div id="div01"></div>
+	<div id="div02"></div>
+	<div id="div03"></div>
+
+</body>
+</html>
+<!--
+
+
+-->

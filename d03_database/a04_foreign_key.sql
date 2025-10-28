@@ -4,7 +4,8 @@
 2. FOREIGN KEY는 두 테이블을 관계로 묶는 제약조건이다.
 3. ORPHAN DATA를 원천 차단함. 뎅터의 일관성과 무결성을 지키는 핵심 장치
 4. 기본형식
-    컬럼명 데이터유형 FOREIGN KEY REFERENCES 참조테이블(참조컬럼)
+    1) 컬럼명 데이터유형 REFERENCES 테이블명(컬럼명)
+    2) CONSTRAINT 컨스레인트명 FOREIGN KEY(컬럼명) REFERENCES 테이블명(컬럼명)	
     
 */
 -- 부모테이블(VIP회원 명단)

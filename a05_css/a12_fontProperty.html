@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# 텍스트 꾸미는 css3 스타일 시트
+1. html의 텍스트를 꾸미는 css는 웹 페이지의 옷이나 화장과 같습니다. 밋밋한 글자에 생동감을 불어 넣죠
+	css3는 여기에 더 화려한 효과를 추가하여 텍스트를 여러 형태로 보이게 합니다.
+2. 주요 속성
+	 text-indent  들여쓰기..(문단 단위로 처리)
+	 text-align : left|right|center|justify  정렬처리
+	 text-decoration : none|underline|overline|line-through 텍스트 꾸미기
+# css 폰트 꾸미기 : 내 글자에 옷 입히기
+1. 글자를 멋지게 스타일링하는 폰트 꾸미기 방법을 배워봅니다.
+2. 폰트 꾸미기란?
+	- 웹사이트의 글자는 모델이라고 상상해 보세요
+	- 지금 여러분의 글자(모델)는 아무것도 안 입은 밋밋한 상태입니다.
+ 	- css 폰트 속성은 이 모델에 옷을 입히고, 키를 조절하고, 체중(굴기)를 바꾸고, 포즈를 취하하는 시타일리스트
+ 		도구입니다.
+ 		font-family : 어떤 옷(글꼴)을 입힐까? (정장? 캐주얼? 손글씨?)
+ 		font-size : 키는 얼마나 크게 할까? (180cm? 160cm?)
+ 		font-weight : 체중은?( 마르게? 굵게?볼드?)
+ 		font-style : 포즈는? (똑바로 서기? 비스듬히/이탤릭?)
+ 		
+ 		이 스타일링을 통해 단순한 텍스트를 멋진 제목이나 읽기 쉬운 본문으로 바꿀 수 있습니다.
+ 3. 핵심 스타일 속성
+ 	1) font-family 
+ 		글자의 생김새, 즉 글꼴을 지정합니다. ex) 굴림, 바탕, Arial, 궁서체
+ 		사용자의 컴퓨터에 해당 글꼴이 없을 수도 있어서 쉼표(,)로 꼭 같이 적어줘야 합니다.
+ 		font-family:'Noto Sans KR', Arial, sans-serif;
+ 		(해석 1순위로 Noto Sans KR 가족을 찾아줘. 없으면 2순위로 Arial 가족 그것도 없으면 그냥 아무
+ 			sans-serif(고딕) 가족이나 데려와!! )
+ 	2) font-size
+ 		글자 크기를 지정
+ 		px(고정값), rem(기준값) 단위를 주로 씁니다.
+ 		font-size:16px(내 글자 크기 16px)
+ 		font-size:2rem(기본 크기의 2배)		
+ 	3) font-weight(글자 무게)
+ 		글자의 굵기 또는 무게(weight)를 지정합니다.
+ 	    키워드(lighter, normal, bold, bolder)	
+ 	    	- light은 표준에서 제외 숫자로 300 설정..
+ 	    숫자(100~900)
+ 	        400 ==> normal
+ 	        700 ==> bold
+ 	 4) font-style   
+ 	 	글자의 스타일, 주로 기울임을 지정합니다.
+ 	 	italic, (기울임꼴)을 가장 많이 씁니다.
+ 	 	font-style:italic;  (글자가 이탤릭 춤을 추듯 기울어짐!!)    
+4. 개별로 설정하기
+*/
+p.cls01{
+	font-style:italic;
+	font-weight:bold;
+	font-size:20px;
+	font-family:굴림체, Arial, sans-serif;
+}
+p.cls02{
+	font:italic lighter 30px 궁서체, Arial, sans-serif;
+}
+/*5. 한번에 주문 하기.*/
+
+</style>
+</head>
+<body>
+	<p class="cls01">안녕하세요(font)</p>
+	<p class="cls02">안녕하세요(font)</p>
+
+	<p >안녕하세요(들여쓰기)</p>
+	<p style="text-indent:3px;">안녕하세요(들여쓰기)</p>
+	<p style="text-indent:13px;">안녕하세요(들여쓰기)</p>
+	<p style="text-indent:33px;">안녕하세요(들여쓰기)</p>
+	<p style="text-align:right;">안녕하세요(오른쪽 정렬)</p>
+	<p style="text-align:center;">안녕하세요(중앙 정렬)</p>
+	<p style="text-decoration:underline">안녕하세요(underline)</p>
+	<p style="text-decoration:overline">안녕하세요(overline)</p>
+	<p style="text-decoration:line-through">안녕하세요(line-through)</p>
+	<a href="#a01">안녕하세요</a><br>
+	<a href="#a02" style="text-decoration:none;">링크이지만 언더라인이 없음..</a>
+	<!--
+	ex) 신문 기사 내기
+		h2 태그를 사용하여 주요 뉴스 : 기록적인 폭염 이라고 가운데 정렬 처리
+		p 태그로 오늘 전국적인 낮 최고 기온이 38도에 육박하면 시작하는 문단 20px만큼 문단 들여쓰기..
+		할일 목록
+		p태그 3개를 사용하여
+		1. 우유사기
+		2. 이메일 확인(완료) ==> 사선 처리
+		3. 저녁운동하기
+	 -->
+	<h2 style="text-align:center;">기록적인 폭염</h2>
+	<p style="text-indent:20px;">오늘 전국적인 낮 최고 기온이 38도에 육박하면</p>	 
+	<p>1. 우유사기</p>
+	<p style="text-decoration:line-through;">2. 이메일 확인(완료)</p>
+	<p>3. 저녁운동하기</p>
+	<ol>
+		<li>우유사기</li>
+		<li style="text-decoration:line-through;">이메일 확인(완료)</li>
+		<li>저녁운동하기</li>
+	</ol>
+</body>
+</html>
+<!--
+
+
+-->

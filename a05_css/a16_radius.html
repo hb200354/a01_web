@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# 뾰쪽뾰쪽 네모난 html 요소들을 귀엽고 말랑하게 만들기..
+1. 둥근 모서리 테두리(border-radius)
+	1) 컴퓨터 화면의 네모 박스(html 태그)는 원래 끝이 뾰쪽한 90도 직각입니다.
+		- 마치 막 자른 나무토막처럼
+	2) border-radius는 이 뾰쪽한 모서리를 둥글게 깎아주는 마법의 사포같은 속성입니다.
+		숫자를 작게 주면 : 모서리를 살짝 깎아서 부드러워져요(예: 10px)
+		숫자를 크게 주면 : 모서리를 많이 깎아서 완전 둥글게 돼요 (예: 100px)
+		특급 비밀(50%) : 만약 정사각형 박스의 모서리를 50%만큼 깎아버리 완전한 원이 되죠..
+2. border-radius는 기본적으로 네 개의 모서리를 한꺼번에 깎아줍니다.
+	h1{ border-radius:20px; }
+	h1{ border-radius:10px 20px 30px 40px;} 왼쪽 상단 꼭지점부터 시계방향으로 깎아줍니다.
+	h1{ border-radius:10px 20px} 생략이 되면 설정되지 않는 대각선의 꼭지점도 동일하게 설정 처리..
+3. 각 꼭지점별로 하나씩 설정..
+	h1{ border-top-left-radius:10px;} 왼쪽 위 모서리 깎기
+	h1{ border-top-right-radius:10px;} 오른쪽 위 모서리 깎기
+	h1{ border-bottom-right-radius:10px;} 오른쪽 아래 모서리 깎기
+	h1{ border-bottom-left-radius:10px;} 왼쪽 아래 모서리 깎기
+4. border-radius
+	border : 테두리
+	radius : 래디어스
+		반지름(수학 시간에 배운 원의 반지름 맞아요..)	
+		반지름이 클수록 더 큰 원으로 자르니, 모서리가 더 둥글게 파먹겠죠..
+	
+	테두리(border)에 둥근 원의 반지름(radius)값을 줘서 깎아버리자...	
+*/
+	div{ border:1px solid green; background-color:yellow; width:200px;height:200px;}
+	/*
+	ex) border-radius 옵션으로  50px  40px 30px 20px 설정 처리,
+	    두개 옵션으로 30px  60px로 설정해보세요..
+	    
+	*/
+	
+</style>
+</head>
+<body>
+	<div style="border-radius:40px;"></div>
+	<div style="border-radius:50%;"></div>
+	<div style="border-radius:10px 20px 30px 40px;"></div>
+	<div style="border-radius:40px 30px;"></div>
+	
+	<div style="border-radius:50px 40px 30px 20px;"></div>
+	<div style="border-radius:30px 60px;"></div>
+
+</body>
+</html>
+<!--
+
+
+-->

@@ -17,14 +17,70 @@
 
     */
         h1{border: 1px solid green;} 
+
+    /*
+    # border
+    1. border, border-width(두께), border-style(선모양), border-color(색)
+    border-left,border-right,border-top,border-bottom
+    2. padding(안쪽여백)을 감싸는 테두리(상자 자체)
+    3. 액자(border) = 사진(content)과 매트(padding)를 감싸는 액자 프레임
+        접두어 B ==> Border 
+    4. border-style(선모양 옵션)	
+        solid :실선
+        dashed : 파선(긴 점선)
+        dotted : 점서
+        double : 이중 실선
+        groove/ridge : 입체적적으로 파이거나 튀어나온 모양
+        inset/outset : 요소 전체가 들어가거나 튀어 나온 모양
+        none : 테두리가 없음(기본값)
+        hidden : none과 같지지 표에서 충돌시 우선 순위가 높음..
+
+    # margin
+    1. margin, margin-top, margin-right, margin-bottom, margin-left
+        
+    2. border 바깥쪽의 여백, 다른 요소와의 거리
+    3. 이 영역은 투명하며, 배경색이 적용되지 않습니다.	
+    4. 거리두기(margin)
+        저 요소랑 마진(margin)을 뒤! = 거리를 둬
+        margin = 바깥쪽 거리두기 (접두어 M - Moeol-li 멀리 떨어져..)
+
+    # margin과 padding을 간격설정 추가 옵션..
+    1. margin과 padding 한 줄로 쓸 때, 값의 순서 시계 방향(top--> right --> bottom -> left)
+    2. padding: 10px 20px 30px 40px	  
+    margin: 10px 20px;   (위/아래 10px, 좌우 20px)
+    
+    ex) 첫번째 div  padding 상하 좌우  설정하고
+        두번째div   margin옵션으로 위, 오른쪽, 아래, 왼쪽 설정하세요..
+    */	
     </style>
     </head>
     <body>
-        <h1 style="padding: 10px;">박스모델...(패딩1)</h1>
-        <h1 style="padding: 20px;">박스모델...(패딩2)</h1>
-        <h1 style="padding: 30px;">박스모델...(패딩3)</h1>
-        <h1 style="padding-top: 20px;">박스모델...(패딩4)</h1>
-        <h1 style="padding-left: 20px;">박스모델...(패딩5)</h1>
-        <h1 style="padding-bottom: 20px;">박스모델...(패딩6)</h1>
+        <div style="padding:20px 40px;">첫번째 div padding(상하/좌우)</div>
+        <div style="margin:40px 30px 20px 10px;">두번째 div margin(위, 오른쪽, 아래, 왼쪽)</div>
+        <div style="margin:20px;">외부간격(20px)</div>
+        <div style="margin:10px 20px;">외부간격(위/아래 10px, 좌우 20px)</div>
+        <div style="margin:10px 20px 30px 40px">외부간격(10px 20px 30px 40px)</div>
+        <div style="padding:10px 20px 30px 40px">내부간격(10px 20px 30px 40px)</div>
+        
+
+
+        <div style="border:5px groove red;">테두리 설정(넓이, 스타일, 색상)groove</div>
+        <div style="border:5px ridge red;">테두리 설정(넓이, 스타일, 색상)ridge</div>
+        <div style="border:5px inset red;">테두리 설정(넓이, 스타일, 색상)inset</div>
+        <div style="border:5px outset red;">테두리 설정(넓이, 스타일, 색상)outset</div>
+        <div style="border-width:20px;">테두리 처리(넓이)</div>
+        <div style="border-style:double;">테두리 처리(스타일-이중선)</div>
+        <div style="border-color:blue;">테두리 처리(색상)</div>
+        <div style="border:5px dashed red;">테두리 설정(넓이, 스타일, 색상)</div>
+        <div style="border-left:5px dotted red;">테두리 설정(넓이, 스타일, 색상)</div>
+        <div style="border-right:5px dotted red;">테두리 설정(넓이, 스타일, 색상)</div>
+        <div style="border-top:5px dotted red;">테두리 설정(넓이, 스타일, 색상)</div>
+        <div style="border-bottom:5px dotted red;">테두리 설정(넓이, 스타일, 색상)</div>
+
+        <div style="padding-left:30px">안녕하세요(왼쪽)</div>
+        <div style="padding-right:30px">안녕하세요(오른쪽)</div>
+        <div style="padding-top:30px">안녕하세요(위)</div>
+        <div style="padding-bottom:30px">안녕하세요(아래)</div>
+        <div style="padding:30px">안녕하세요(전체)</div>
     </body>
 </html>

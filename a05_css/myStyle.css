@@ -1,0 +1,9 @@
+@charset "UTF-8";
+body{
+	background-color:#f0f0f0; /* 전체 페이지 배경은 연한 회색*/	
+}
+.notice{
+	border:2px solid blue;
+	padding:10px; /*내용물과 테두리사이 간격설정*/
+	color:green;	
+}

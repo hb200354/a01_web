@@ -22,6 +22,12 @@
     IDENTIFIED BY : @@로 식별되는 비밀번호 지정
     EX) CREATE USER KING_DEV IDENTIFIED BY 1234
         * KING_DEV라는 ID를 1234 비번으로 발급
+
+# 권한 회수 REVOKE ... FROM ... (열쇠-권한 회수)
+1. REVOKE(회수하라) [열쇠] FROM(으로부터) [누구]		
+2. REVOKE : 취소하다, 철회하다 - 권한을 빼앗을 때 씁니다.
+   FROM : ...로부터. 권한을 빼앗길 대상을 지정합니다.
+   REVOKE RESOURCE FORM user01; (user01로부터 자원 사용권을 회수 한다)
 */
 CREATE USER USER02 IDENTIFIED BY 1234;
 GRANT CONNECT TO USER02;

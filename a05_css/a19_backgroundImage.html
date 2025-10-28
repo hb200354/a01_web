@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# 내방(Box) 꾸미기  : css배경 마스터(background)
+1. 모든 html 태그는 네모난 상자(방)라는 것을 저번 시간에 배웠죠?
+2. 오늘은 그 텅 빈 방에 멋진 인테리어를 하는 방법을 배웁니다. 벽에 페인트를 칠하거나(background-color)
+	화려한 벽지(background-image)를 바르는 방법을 배울 거예요.
+3. css 배경 속성은 모두 background- (배경에 대해서 말인데)라는 접두어로 시작합니다.
+	인테리어 전문가가 방을 꾸미는 순서대로 외워볼까요?
+	1) background-color(색상)
+		일단 방 전체에 페이트부터 칠할까요?
+		배경에 단색을 칠합니다. red, #ffffff, rgb(0,0,0) 등을 사용합니다.
+	2) background-image(이미지)
+		페이트 말고 멋진 벽지(이미지)를 붙이지!!
+		배경을 이미지로 채웁니다. url(경로/이미지.jpg) 형식을 사용합니다.
+	3) background-repeat(반복)
+		이 벽지, 모자라는데... 반복해서 방을 다 채울까?
+		이미지가 박스보다 작을 때 어떻게 할지 정합니다.
+		repeat : 바둑판식으로 반복(기본값-설정하지 않더라도)
+		no-repeat : 딱 한 번만 표시
+		repeat-x : 가로(x축)로만 반복
+		repeat-y : 세로(y축)로만 반복		
+*/
+	div{
+		width:100%;height:1000px;border:1px solid green;
+	}
+	#div01{
+		background-color:red;
+	}
+	#div02{
+		background-image:url('img01.jpg');
+	}	
+	#div03{
+		background-image:url('img01.jpg');
+		background-repeat:no-repeat;
+	}	
+	#div04{
+		background-image:url('img01.jpg');
+		background-repeat:repeat-x;
+	}	
+	#div05{
+		background-image:url('img01.jpg');
+		background-repeat:repeat-y;
+	}	
+	
+			
+</style>
+</head>
+<body>
+	<div id="div01"></div>
+	<div id="div02"></div>
+	<div id="div03"></div>
+	<div id="div04"></div>
+	<div id="div05"></div>
+
+
+</body>
+</html>
+<!--
+
+
+-->

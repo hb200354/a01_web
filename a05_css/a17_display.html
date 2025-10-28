@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# css의 화면 배치처리
+1. 웹화면에서 구성요소의 특징에 따라 배치를 효과적으로 속성에 따라 처리할 수 있다.
+	이것은 파티에 참석한 손님 유형에 비유하면 아주 쉽습니다.
+	- block : VIP(혼자 테이블 다 차지함)
+	- inline : 일반손님(줄 서서 차례대로 입장)
+    - inline-block : 줄 서는 vip(줄도 서고, 내공간도 챙김)
+2. display:block(VIP 룸의 손님)
+	1) 블록은 블로킹 즉 길을 막는다고 외우세요..
+		block요소는 성격이 급한 VIP 손님 입니다. 파티장에 오자마자 이줄 다 비워라고 외치며,
+		자신이 들어갈 줄 전체(가로 100%)를 혼자 다 차지합니다. 그리고 앞뒤로 다른 요소가 오는 것을
+		막아버립니다.(줄 바꿈 발생)    
+	2) 핵심 키워드
+		새 줄에서 시작 : 항상 새로운 줄에서 시작하며, 다음 요소도 무조건 다음 줄로 밀어냅니다.
+		가로 너비 100% : 부모가 물려준 공간의 가로 너비(width)를 100% 꽉 채웁니다.
+		영역 설정(O) : width, height 속성을 마음대로 지정할 수 있습니다.
+		여백 설정(O) : margin, padding이 상하좌우 모두 완벽하게 적용됩니다.
+	- 대표 요소 : div, p, h1~h6, ul, li, form
+	- 앞 뒤로 다 막고(block) 한 줄을 통째로 차지 한다.
+3. display:inline(줄 서는 일반 손님)
+	1) 인라인은 줄(Line) 안에(In) 껴있다.
+	2) inline은 요소는 얌전한 일반 손님입니다. 파티장에서 줄을 서라고 하면 줄(line) 안(in)에 얌전히 껴서
+	들어갑니다. (줄 바꿈x) 자기 몸집(컨텐츠)만큼의 공간만 차지한다.
+	 	
+*/
+	div{ border:1px solid green; width:40%;height:100px; }
+	span{ border:1px solid orange; width:40%;height:100px; }
+	.vip{
+		display:block;
+		background-color:red;
+		border:1px solid blue;
+		width:40%;
+		height:100px;
+	}
+</style>
+</head>
+<body>
+	<h2>화면 배치 처리.</h2>
+	<div>원래 block 속성인 태그..</div>
+	<div>원래 block 속성인 태그..</div>
+	<span>원래 inline 속성인 태그</span>
+	<span>원래 inline 속성인 태그</span>
+	<span class="vip">원래 inline ==> block 변경</span>
+	<span class="vip">원래 inline ==> block 변경</span>
+</body>
+</html>
+<!--
+
+
+-->

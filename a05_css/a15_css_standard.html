@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# css3 표준단위 : 내 마음대로 크기를 조절
+1. 웹사이트의 크기를 다루는 css단위
+	이 버튼은 얼마 크게?, 글자는 얼마나 크게? 이 모든 것을 정하는 규칙..
+2. css 단위 
+	여러분들이 아빠에게 용돈을 받는다고 상상해 보세요. 용돈을 받는 방법은 여러가지 있게죠?
+	1) 아빠, 딱 만 원만 주세요  (고정값)
+	2) 아빠 지갑에 있는 돈의 50% 주세요!! (상대값)
+	3) 우리 집안 기준 용돈의 2배 주세요 (기준값)
+3. css 단위로 똑같습니다.
+	1) 절대 단위(absolute) px
+		딱 100px 모니터가 바뀌지 않는 한, 크기가 고정됩니다.
+	2) 상대 단위(Relative)  %, em, rem, vw, vh
+		부모 크기의 50% - 주변 환경(부모, 화면 크기)에 따라 크기가 바뀝니다.
+	css3에서는 특히 이 상대 단위가 중요합니다. 왜냐하면 스마트폰, 태플릿, pc 등 다양한 화면 크기에 맞춰
+	자동으로 크기가 조절되는 반응형 웹을 만들어야 하니까요!!
+4. 5가지 '마법의 자' 입니다.
+	1) px( Pixel)
+		픽셀
+		모니터 화면을 이루는 가장 작은 점(화소) 하나
+		가장 기본적이고 직관적인 절대 단위. 크기가 변하지 않습니다.
+		절대 군주 px
+			font-size:16px;  글자 크기는 무조건 16개의 점 크기다..
+			접두어 px는 Pics(pictures)의 약자처럼 화면 점으로 기억하세요..
+	2) % (Percent)
+		퍼센트
+		부모(parent)요소의 크기에 대한 백분율
+		부모따라쟁이 %
+		 	width : 50%  = 내 넓이는 무조건 아빠(부모 태그) 넓이의 절반!!		
+	3) em
+		엠
+		부모(parent) 요소의 글자 크기(font-size)에 대한 배수
+		em(엄)마 글자 기준 em
+			font-size:2em  = 내 글자 크기는 엄마(부모 태그)글자 크기의 2배
+			부모다 2em인데 자식이 또 2em이면 4em이 됩니다(계산이 중첩되어 복잡해짐..)	 	
+	4) rem 
+		렘
+		최상위(root, html) 요소의 글자 크기에 대한 배수
+		Root-EM  : 뿌리 기준 em
+		왕(html) 기준 rem
+			font-size:2rem = 내 글자 크기는 무조건 왕(html)글자 크기의 2배
+			em과 달리, 100단계 자손이도 항상 왕 기준이라 계산이 쉽습니다.
+			현대 반응형 웹 디자인의 표준 단위 입니다.
+*/
+	.parent-rem{
+		font-size:1.5rem;
+	} /*주의 계층이 들어가더라도 동일한 크기를 위지 한다.*/
+
+	.parent{
+		width:300px;
+		background-color:lightgray;
+	}
+	.child-percenter{
+		width:50%; /*유동 부모(300px)의 50% 150px*/
+		background-color:yellow;
+	}
+	/*보통 브라우저 기본 글자 크기 16px*/
+	html{
+		font-size:16px;
+	}
+	.parent-em{
+		font-size:1.5em;  /* 16*1.5 = 24px*/
+	}
+	.child-em{
+		font-size:1.5em;  /* 부모(20px) * 1.5 = 36px*/
+	}	
+	/*
+	ex) class로  em02로 설정해서 div에서 글자크기를 확인..
+	*/
+	.em02{
+		font-size:2.0em;
+	}
+</style>
+</head>
+<body>
+	<div class="parent-rem">
+		안녕하세요(rem)
+		<div  class="parent-rem">
+			안녕하세요(rem)-하위!!
+		</div>
+	</div>
+
+	<div class="em02">
+		안녕하세요(em02)
+		<div  class="em02">
+			안녕하세요(em02)-하위!!
+		</div>
+	</div>
+
+	<span>기본 글자</span><br>
+	<span class="parent-em">부모 글자의 1.5em</span><br>
+	<span class="child-em">부모 글자의 1.5em</span><br>
+	<div class="parent-em">
+		부모 글자의 1.5em<br>
+		<span class="child-em">부모 글자의 1.5em</span><br>
+		<span class="parent-em">부모 글자의 1.5em</span>
+	</div>
+	
+
+	<div class="parent">안녕하세요<br>
+		<div class="child-percenter">안녕하세요(유동적)</div>
+	</div>
+	<div class="child-percenter">안녕하세요(유동적)</div>
+	
+
+</body>
+</html>
+<!--
+
+
+-->

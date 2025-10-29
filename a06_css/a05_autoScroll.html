@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+클래스 box로 설정하여 width:250px;height:120px
+				 border:2px solid blue;
+				 margin:20px;
+클래스 long-text background-color:lightcyan;
+1번 박스: 기본값, 내용물이 밖으로 삐져나옴
+	아이디로 box-visible
+2번 박스 : 똑똑하게! 넘치니까 스크롤바 생성
+*/
+.box{
+	width:250px;height:120px;
+	border:2px solid blue;
+	margin:20px;
+}
+.long-text{
+	background-color:lightcyan;
+}
+#box-visible{
+	overflow:visible;
+}
+#box-auto{
+	overflow:auto;
+}
+</style>
+</head>
+<body>
+	<h2>예제: visible vs auto</h2>
+	<div class="box" id="box-visible">
+		<h3>visible 박스(기본)</h3>
+		<p class="long-text">
+			이 가방은 너무 작아요! 옷이 밖으로 삐져나옵니다.
+			css규칙이 없으면 이렇게 밖으로 삐져나와서 아래에 있는 다른 요소들을
+			밀어내고 디자인을 망가뜨려요!
+		</p>
+	</div>
+	<div class="box" id="box-auto">
+	<h3>auto 박스(기본)</h3>
+	<p class="long-text">
+		이 가방은 너무 작아요! 옷이 밖으로 삐져나옵니다.
+		css규칙이 없으면 이렇게 밖으로 삐져나와서 아래에 있는 다른 요소들을
+		밀어내고 디자인을 망가뜨려요!
+	</p>
+	</div>
+</body>
+</html>
+<!--
+
+
+-->

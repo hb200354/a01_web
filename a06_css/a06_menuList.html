@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# CSS 리스트 꾸미기 : 나마느이 스마트 체크리스트 만들기
+1. html 리스트(<ul>, <ol>)는 기본적으로 bullet이나 숫자를 달고 나온다.
+	css의 list-style 속성은 이 기본 마커를 우리가 원하는 대로 꾸밀 수 있게 해준다.
+2. ul : 기본 마커는 bullet(.)
+	ol : 기본 마커는 숫자(1.,2.,3.)
+3. css를 이용하여 이 마커를 마음대로 바꾸거나 아예 없애버릴 수 있다.
+
+# 핵심 키워드
+1. list-style-type : 마커 도장(Marker Stamper) - 제일 중요
+	1) 리스트의 타입을 바꾸는 역할
+	2) 가장 기본이 되는 도구
+	3) 속성값
+		ul 용 : disc, circle, square
+		ol 용 : decimal(기본값), upper-alpha(A,B,C), lower-roman(i,ii,iii)
+		공용 : none - 마커나 번호가 없이 처리
+2. list-style-position : 마커의 영역(Marker's Territory)
+	1) 마커를 텍스트 영역 안에 둘지, 밖에 둘지 결정
+	2) 속성값
+		outside (기본값) : 마커가 텍스트 바깥족(여백)에 찍힘
+		inside : 마커가 안쪽으로 들어와, 텍스트의 첫 글자처럼 취급
+3. list-style:none; 마커 지우개(Eraser) - 제일 많이 사용됨
+	1) 리스트 스타일 없이
+	2) list-style-type의 값 중 하나지만, 중요해서 따로 외워야 함
+4. list-style-image : 나만의 스티커(Custom Sticker)
+	1) 마커 대신 이미지를 붙임
+	2) url("이미지경로.png")
+# 한번에 쓰기
+	list-style:[type][position][image] : 순서대로 한 줄에 쓸 수 있다. 
+	ex) list-style:circle inside;
+		list-style:url('star.png') (이미지를 쓰면 type은 무시됨)
+*/
+
+	/* ul 마커를 원(circle)으로 바꾸기*/
+	#todo-list{
+		list-style-type:circle;
+	}
+	#shopping-list{
+		list-style-type:square;
+	}
+	#ranking{
+		list-style-type:upper-alpha;
+	}
+	/*
+	ex) 시험 범위 공지를 ol태그로 만들었습니다.
+	1. 1단원, 2. 2단원, 3. 3단원으로 설정하게 해당 ol을 css아이디 값으로 설정
+	위 내용을 다시 로마 숫자 대문자를 사용하여 출력되게 리스트를 만드세요.
+	*/
+	#exam{
+		list-style-type:upper-roman;
+	}
+	#nav-menu{
+		list-style:none;
+		padding-left:0; /* 마커가 사라져도 남은 왼쪽 여백을 0으로 설정 */
+	}
+	#nav-menu li{
+		display:inline-block; /* 메뉴 항목을 가로로 배치 */
+		margin-right:20px;
+		background:#eee;
+		padding:5px 10px;
+	}
+	#menubar{
+		background:olive;
+	}
+	#menubar ui{
+		margin:0;padding:0;
+		width:50%;
+	}
+	#menubar ul li{
+		display:inline-block;
+		list-style-type:none;
+		padding:5px 15px;
+	}
+	#menubar ul li a{
+		color:white;
+		text-decoration:none;
+	}
+	#menubar ul li a:hover{
+		color:violet;
+		font-weight:bold;
+	}
+	/* list-style-image 를 통한 이미지 처리.. */
+	#imgList{
+		background:goldenrod;
+		padding:10px 10px 10px 50px;
+		list-style-image:url('marker.png')
+	}
+	#imgList li{
+		background:greenyellow;
+		margin-bottom:5px;
+	}
+
+</style>
+</head>
+<body>
+	<h2>오늘의 할 일(원모양)</h2>
+	<ul id="todo-list">
+		<li>CSS 공부하기</li>
+		<li>자바 복습하기</li>
+		<li>저녁 장보기</li>
+	</ul>
+	<h2>저녁 장보기(네모모양)</h2>
+	<ul id="shopping-list">
+		<li>우유</li>
+		<li>계란</li>
+		<li>파</li>
+	</ul>
+	<h2>맛집 랭킹(알파벳)</h2>
+	<ol id="ranking">
+		<li>제일반점</li>
+		<li>수원왕갈비</li>
+		<li>백년국밥</li>
+	</ol>
+	<h2>시험 범위 공지(로마 숫자 대문자)</h2>
+	<ol id="exam">
+		<li>1단원</li>
+		<li>2단원</li>
+		<li>3단원</li>
+	</ol>
+	<h2>마커 지우기(내비게이션 메뉴)</h2>
+	<ul id="nav-menu">
+		<li>홈</li>
+		<li>소개</li>
+		<li>게시판</li>
+		<li>연락처</li>
+	</ul>
+	<nav id="menubar">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Espresso</a></li>
+			<li><a href="#">Cappuccino</a></li>
+			<li><a href="#">Cafe Latte</a></li>
+			<li><a href="#">F.A.Q</a></li>
+		</ul>
+	</nav>
+	<h2>이미지 리스트</h2>
+	<ul id="imgList">
+		<li>에스프레소</li>
+		<li>카푸치노</li>
+		<li>카페라떼</li>
+	</ul>
+</body>
+</html>
+<!--
+
+
+-->

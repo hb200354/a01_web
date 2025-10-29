@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# overflow 프로퍼티
+1. 이름 글대로 "넘쳐흐르다"라는 뜻
+2. width, height로 크기가 정해져 있다. 
+	Box : div{width:300px, height:200px;}
+	Content: 텍스트나 이미지
+	
+	Box의 크기보다 더 많은 내용물을 넣으려고 할 때, overflow를 사용하여 넘친 내용물을 어떻게 처리할지 Box에 명령하는 규칙이다.
+	
+3. 핵심 키워드 / 속성
+	1) visible (기본값) : 넘쳐도 다 보여주기
+	2) hidden : 넘치는 건 숨기기
+	3) scroll : 스크롤바 설치(넘쳐도 안 넘쳐도 스크롤바가 생김)
+	4) auto : 알아서 처리
+		내용물이 넘치면 스크롤바를 만들고, 넘치지 않으면 안 만듦
+	# 추가 팁 : 가로 / 세로 따로 제어 가능
+		overflow-x : 가로(x축) 스크롤바 제어
+		overflow-y : 세로(y축) 스크롤바 제어
+	
+*/
+	.box{
+		width:200px;height:100px;
+		border:2px solid green;
+		margin:20px;
+	}
+	.over-content{
+		width:200px;height:100px;
+		background:yellow;
+	}
+	#box-hidden{
+		overflow:hidden;
+	}
+	.notice-box{
+		height:50px;width:300px;
+		border:2px solid red;
+		background-color:#fdf7e3;
+	}
+	.hidden01{
+		overflow:hidden;
+	}
+	#box-scroll{
+		overflow:scroll;
+	}
+	#box-auto{
+		overflow:auto;
+	}
+</style>
+</head>
+<body>	
+	<h2>overflow(visible-default)</h2>
+	<div class="box" id="basic">
+		<h3>기본 박스(넘치면?)</h3>
+		<div class="over-content">
+			내용물을 지정해서 기본적으로 넘치면 어떻게?
+		</div>
+	</div>
+	<br><br><br>
+	<h2>overflow(hidden)</h2>
+	<div class="box" id="box-hidden">
+		<h3>hidden 박스(넘치면?)</h3>
+		<div class="over-content">
+			내용물을 지정해서 기본적으로 넘치면 어떻게?
+		</div>
+	</div>
+	<br><br><br>
+	<h2>overflow(scroll)</h2>
+	<div class="box" id="box-scroll">
+		<h3>scroll 박스(넘치면?)</h3>
+		<div class="over-content">
+			내용물을 지정해서 기본적으로 넘치면 어떻게? 1 
+			내용물을 지정해서 기본적으로 넘치면 어떻게? 2
+			내용물을 지정해서 기본적으로 넘치면 어떻게? 3
+			내용물을 지정해서 기본적으로 넘치면 어떻게? 4
+		</div>
+	</div>
+	<br><br><br>
+	<h2>overflow(auto)</h2>
+	<div class="box" id="box-auto">
+		<h3>scroll 박스(안 넘치면?)</h3>
+	</div>
+	<h2>overflow(auto)</h2>
+	<div class="box" id="box-auto">
+		<h3>scroll 박스(넘치면?)</h3>
+		<div class="over-content">
+			내용물을 지정해서 기본적으로 넘치면 어떻게? 1 
+			내용물을 지정해서 기본적으로 넘치면 어떻게? 2
+			내용물을 지정해서 기본적으로 넘치면 어떻게? 3
+		</div>
+	</div>
+	<div class="notice-box">
+		<strong>[긴급 공지]</strong> 10월 29일(수) 오후 3시부터 5시까지 긴급 시스템 점검이 있습니다.
+		이 시간 동안 일부 서비스 접속이 원활하지 않을 수 있습니다. 이용에 불편을 드려 대단히 죄송합니다.
+	</div>
+	<br><br><br><br><br><br>
+	<div class="notice-box hidden01">
+		<strong>[긴급 공지]</strong> 10월 29일(수) 오후 3시부터 5시까지 긴급 시스템 점검이 있습니다.
+		이 시간 동안 일부 서비스 접속이 원활하지 않을 수 있습니다. 이용에 불편을 드려 대단히 죄송합니다.
+	</div>
+
+	
+	
+</body>
+</html>
+<!--
+
+
+-->

@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML/CSS 실습 문제 풀이</title>
+    <style>
+        /* 기본 스타일 */
+        body {
+            font-family: 'Malgun Gothic', sans-serif;
+            background-color: #f9f9f9;
+            margin: 20px;
+            color: #333;
+        }
+        h1 {
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #005a9c;
+            border-left: 5px solid #005a9c;
+            padding-left: 10px;
+            margin-top: 40px;
+        }
+        .container {
+            border: 1px dashed #ccc;
+            padding: 10px;
+            background-color: #fff;
+            min-height: 50px;
+        }
+
+        /* --- 문제 1: 온라인 서점의 가로 책장 --- */
+        .book {
+            display: inline-block; /* [핵심] 가로로 나란히 */
+            width: 120px;
+            height: 180px;
+            background-color: #add8e6;
+            margin: 10px; /* 책들 사이 여백 */
+        }
+
+        /* --- 문제 2: 블로그 태그 --- */
+        .tag {
+            display: inline-block; /* [핵심] inline 요소에 크기/여백 적용 */
+            padding: 8px;
+            background-color: #f0f0f0;
+            margin: 5px;
+            border-radius: 5px; /* 모서리 둥글게 */
+            font-size: 14px;
+        }
+
+        /* --- 문제 3: 패턴 배경 헤더 --- */
+        .pattern-header {
+            width: 100%;
+            height: 100px;
+            /* pattern.png 대신 50x50 크기의 작은 플레이스홀더 이미지 사용 */
+            background-image: url('https://placehold.co/50x50/eeeeee/aaaaaa?text=P');
+            /* background-repeat의 기본값은 'repeat'이므로 바둑판식으로 자동 반복됨 */
+            /* background-repeat: repeat; */ 
+            border: 1px solid #ccc;
+        }
+
+        /* --- 문제 4: 'New' 아이콘 --- */
+        .notice {
+            width: 300px;
+            height: 50px;
+            border: 1px solid #ccc;
+            padding-left: 10px;
+            line-height: 50px; /* 텍스트 세로 정렬 (보너스) */
+            /* new_icon.png 대신 30x30 'N' 아이콘 플레이스홀더 사용 */
+            background-image: url('https://placehold.co/30x30/ff0000/ffffff?text=N');
+            background-repeat: no-repeat; /* [핵심] 반복되지 않도록 */
+            background-position: right center; /* [핵심] 오른쪽 중앙 */
+        }
+
+        /* --- 문제 5: 가로로만 반복되는 배경선 --- */
+        .note-line {
+            width: 100%;
+            height: 50px;
+            border: 1px solid #eee;
+            /* line.png 대신 100x5 크기의 선 이미지 플레이스홀더 사용 */
+            background-image: url('https://placehold.co/100x5/dddddd/dddddd?text=+');
+            background-repeat: repeat-x; /* [핵심] 가로(x축)로만 반복 */
+            background-position: bottom; /* [핵심] 하단에 배치 */
+            padding-left: 10px;
+            font-size: 18px;
+        }
+
+        /* --- 문제 6: 포토 갤러리 썸네일 --- */
+        .gallery-container {
+            width: 210px; /* [핵심] 부모 너비 */
+            border: 1px solid #aaa;
+            padding: 5px; /* (참고) 210px + 5px + 5px = 220px. 자식(110) 두개가 딱 맞음 */
+            /* 위 요구사항의 width: 210px은 (100+5+5) + (100+5+5) = 220px 이므로
+               자식 2개가 한 줄에 들어갈 수 없습니다.
+               따라서 2x2 격자가 자동으로 완성됩니다. 
+               (의도된 문제로 판단)
+            */
+        }
+        .thumbnail {
+            display: inline-block;
+            width: 100px;
+            height: 100px;
+            margin: 5px; /* 상하좌우 5px. 총 width 110px 차지 */
+        }
+        /* 각 썸네일 다른 배경색 */
+        .thumb-1 { background-color: red; }
+        .thumb-2 { background-color: green; }
+        .thumb-3 { background-color: blue; }
+        .thumb-4 { background-color: yellow; }
+
+        /* --- 문제 7: 프로필 카드 (기본) --- */
+        .profile-card {
+            display: inline-block; /* [핵심] 가로 배치 + 크기 적용 */
+            width: 150px;
+            height: 200px;
+            border: 1px solid #ccc;
+            margin: 5px;
+            /* user.png 대신 100x100 사람 아이콘 플레이스홀더 */
+            background-image: url('https://placehold.co/100x100/eaeaea/999?text=User');
+            background-repeat: no-repeat; /* [핵심] 반복 안 함 */
+            background-position: top center; /* [핵심] 상단 중앙 */
+            text-align: center; /* (보너스) 텍스트가 있다면 하단 중앙 */
+            padding-top: 110px; /* (보너스) 이미지 아래에 텍스트 공간 확보 */
+            box-sizing: border-box; /* (보너스) 패딩이 height에 포함되도록 */
+        }
+
+        /* --- 문제 8: 'Cover' vs 'Contain' --- */
+        .compare-box {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            border: 2px solid #333;
+            margin: 10px;
+            /* 800x400 크기의 직사각형 이미지 플레이스홀더 */
+            background-image: url('https://placehold.co/800x400/cccccc/333?text=LANDSCAPE');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        .cover {
+            background-size: cover; /* [핵심] 박스를 가득 채움 (잘릴 수 있음) */
+        }
+        .contain {
+            background-size: contain; /* [핵심] 이미지가 다 보임 (빈 공간 생길 수 있음) */
+        }
+
+        /* --- 문제 9: 아이콘과 텍스트 수직 정렬 --- */
+        .v-align-button {
+            border: 1px solid #999;
+            padding: 10px;
+        }
+        .v-align-icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background-color: blue;
+            vertical-align: middle; /* [핵심] 세로 중앙 정렬 */
+        }
+        .v-align-text {
+            display: inline-block;
+            vertical-align: middle; /* [핵심] 세로 중앙 정렬 */
+            margin-left: 5px;
+        }
+
+        /* --- 문제 10: 픽셀로 배경 위치 지정 (스프라이트) --- */
+        .sprite-box {
+            width: 50px;
+            height: 50px;
+            border: 1px solid red;
+            /* 200x200 크기의 스프라이트 시트 이미지 플레이스홀더 */
+            background-image: url('https://placehold.co/200x200/eeeeee/333?text=SPRITE+SHEET');
+            background-repeat: no-repeat;
+            /* [핵심] x축으로 -50px, y축으로 -100px 이동 */
+            background-position: -50px -100px; 
+        }
+
+        /* --- 문제 11: 고정된 배경 배너 (패럴랙스) --- */
+        .parallax-wrapper {
+            height: 2000px; /* 스크롤 생성을 위한 body 대신 wrapper 사용 */
+        }
+        .parallax-banner {
+            width: 100%;
+            height: 400px;
+            /* city.jpg 대신 1000x400 크기 이미지 플레이스홀더 */
+            background-image: url('https://placehold.co/1000x400/999999/ffffff?text=CITY+SCAPE');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* [핵심] 스크롤해도 배경 고정 */
+            position: relative; /* z-index 적용을 위해 */
+        }
+        .parallax-content {
+            background: rgba(255, 255, 255, 0.7);
+            padding: 20px;
+            margin: 20px;
+        }
+
+        /* --- 문제 12: 높이가 다른 상품 카드 상단 정렬 --- */
+        .product-card {
+            display: inline-block;
+            width: 150px;
+            /* height는 설정하지 않음 */
+            border: 1px solid #ccc;
+            margin: 5px;
+            padding: 10px;
+            background: #fff;
+            vertical-align: top; /* [핵심] 위쪽 라인에 맞춰 정렬 */
+        }
+
+        /* --- 문제 13: 원형 프로필 사진과 텍스트 카드 --- */
+        .complex-card {
+            width: 300px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            background: #fff;
+            box-sizing: border-box; /* 패딩 포함 300px */
+        }
+        .complex-card .avatar {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            /* user.png 대신 80x80 이미지 플레이스홀더 */
+            background-image: url('https://placehold.co/80x80/a9a9a9/ffffff?text=User');
+            background-size: cover; /* [핵심] 영역을 가득 채움 */
+            background-position: center;
+            border-radius: 50%; /* [핵심] 원으로 만듦 */
+            vertical-align: top; /* [핵심] 상단 정렬 */
+        }
+        .complex-card .description {
+            display: inline-block;
+            width: 180px; /* (300 - 15 - 15 - 80 - 10(margin)) */
+            margin-left: 10px;
+            vertical-align: top; /* [핵심] 상단 정렬 */
+            font-size: 14px;
+        }
+        .complex-card .description h4 {
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        /* --- 문제 14: 배경 속성 축약형 (Shorthand) --- */
+        .shorthand-box {
+            width: 400px;
+            height: 300px;
+            border: 1px solid #555;
+            /* [핵심] 단축 속성 사용 */
+            /* logo.png 대신 100x100 로고 플레이스홀더 */
+            background: #f0f0f0 url('https://placehold.co/100x100/333333/ffffff?text=LOGO') no-repeat center;
+        }
+
+        /* --- 문제 15: inline-block 사이의 미세한 간격 문제 --- */
+        .gap-container {
+            width: 100%;
+            border: 2px solid red;
+        }
+        .gap-item {
+            display: inline-block;
+            width: 25%;
+            height: 100px;
+            box-sizing: border-box; /* (보너스) 패딩/테두리 포함 25% */
+            border: 1px solid #fff;
+        }
+        /* 문제 재현 (4개가 한 줄에 안 들어감) */
+        .gap-item.red { background: #ffaaaa; }
+        .gap-item.green { background: #aaffaa; }
+        .gap-item.blue { background: #aaaaff; }
+        .gap-item.yellow { background: #ffffaa; }
+
+        /* [핵심] 해결책: 부모에 font-size: 0 */
+        .gap-fix-container {
+            width: 100%;
+            border: 2px solid blue;
+            font-size: 0; /* [핵심] inline-block 사이의 공백 제거 */
+        }
+        .gap-fix-item {
+            display: inline-block;
+            width: 25%;
+            height: 100px;
+            box-sizing: border-box;
+            border: 1px solid #fff;
+            font-size: 16px; /* [핵심] 자식의 폰트 크기 복원 */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>HTML/CSS 실습 문제 풀이</h1>
+
+    <!-- 문제 1: 온라인 서점의 가로 책장 -->
+    <h2>문제 1: 온라인 서점의 가로 책장</h2>
+    <div class="container">
+        <div class="book"></div>
+        <div class="book"></div>
+        <div class="book"></div>
+    </div>
+
+    <!-- 문제 2: 블로그 태그 꾸미기 -->
+    <h2>문제 2: 블로그 태그 꾸미기</h2>
+    <div class="container">
+        <span class="tag">#자바</span>
+        <span class="tag">#CSS</span>
+        <span class="tag">#공부</span>
+    </div>
+
+    <!-- 문제 3: 웹사이트의 패턴 배경 헤더 -->
+    <h2>문제 3: 웹사이트의 패턴 배경 헤더</h2>
+    <div class="container">
+        <div class="pattern-header"></div>
+    </div>
+
+    <!-- 문제 4: 공지사항의 'New' 아이콘 -->
+    <h2>문제 4: 공지사항의 'New' 아이콘</h2>
+    <div class="container">
+        <div class="notice">새로운 공지사항입니다.</div>
+    </div>
+
+    <!-- 문제 5: 가로로만 반복되는 배경선 -->
+    <h2>문제 5: 가로로만 반복되는 배경선</h2>
+    <div class="container">
+        <div class="note-line">노트 앱의 한 줄입니다.</div>
+    </div>
+
+    <!-- 문제 6: 포토 갤러리 썸네일 -->
+    <h2>문제 6: 포토 갤러리 썸네일</h2>
+    <div class="container gallery-container">
+        <div class="thumbnail thumb-1"></div>
+        <div class="thumbnail thumb-2"></div>
+        <div class="thumbnail thumb-3"></div>
+        <div class="thumbnail thumb-4"></div>
+    </div>
+    <p><b>(참고)</b> 부모 `width: 210px`, 자식 `width: 100px` + `margin: 5px` (총 110px).<br>
+    `110px + 110px = 220px` 이므로 `210px` 부모에 2개가 들어가지 못하고 <b>자동 줄바꿈</b>되어 2x2가 됩니다.</p>
+
+
+    <!-- 문제 7: 프로필 카드 만들기 (기본) -->
+    <h2>문제 7: 프로필 카드 (기본)</h2>
+    <div class="container">
+        <div class="profile-card">홍길동</div>
+        <div class="profile-card">이순신</div>
+    </div>
+
+    <!-- 문제 8: 'Cover' vs 'Contain' 비교하기 -->
+    <h2>문제 8: 'Cover' vs 'Contain' 비교하기</h2>
+    <div class="container">
+        <div class="compare-box cover">
+            <b style="color:white; background:black; padding: 2px;">Cover</b>
+        </div>
+        <div class="compare-box contain">
+            <b style="color:white; background:black; padding: 2px;">Contain</b>
+        </div>
+    </div>
+
+    <!-- 문제 9: 아이콘과 텍스트 수직 정렬 -->
+    <h2>문제 9: 아이콘과 텍스트 수직 정렬</h2>
+    <div class="container">
+        <div class="v-align-button">
+            <div class="v-align-icon"></div>
+            <span class="v-align-text">클릭하세요</span>
+        </div>
+    </div>
+
+    <!-- 문제 10: 픽셀로 배경 위치 지정하기 -->
+    <h2>문제 10: 픽셀로 배경 위치 지정하기</h2>
+    <div class="container">
+        <div class="sprite-box"></div>
+        <p>(200x200 시트에서 (-50, -100) 위치의 50x50 영역을 표시)</p>
+    </div>
+
+    <!-- 문제 11: 고정된 배경 배너 (패럴랙스 효과) -->
+    <h2>문제 11: 고정된 배경 배너 (패럴랙스)</h2>
+    <p><b>아래 영역에서 스크롤</b>을 내려보세요. (이 창이 작다면 전체 Preview에서 확인 필요)</p>
+    <div class="container" style="height: 400px; overflow-y: scroll;">
+        <div class="parallax-wrapper">
+            <div class="parallax-content">스크롤을 내려보세요.</div>
+            <div class="parallax-banner"></div>
+            <div class="parallax-content">배경(도시)은 고정되어 있습니다.</div>
+        </div>
+    </div>
+
+    <!-- 문제 12: 높이가 다른 상품 카드 상단 정렬 -->
+    <h2>문제 12: 높이가 다른 상품 카드 상단 정렬</h2>
+    <div class="container">
+        <div class="product-card">
+            <h4>상품 1</h4>
+            <p>설명이 짧습니다.</p>
+        </div>
+        <div class="product-card">
+            <h4>상품 2</h4>
+            <p>이 상품의 설명은 매우 깁니다. 두 줄, 세 줄이 넘어갈 수도 있습니다. vertical-align: top; 속성으로 정렬됩니다.</p>
+        </div>
+        <div class="product-card">
+            <h4>상품 3</h4>
+            <p>설명이 중간 정도입니다. 위쪽 라인에 맞춰 정렬됩니다.</p>
+        </div>
+    </div>
+
+    <!-- 문제 13: 원형 프로필 사진과 텍스트 카드 -->
+    <h2>문제 13: 원형 프로필 사진과 텍스트 카드</h2>
+    <div class="container">
+        <div class="complex-card">
+            <div class="avatar"></div>
+            <div class="description">
+                <h4>개발자 김철수</h4>
+                <p>자바와 CSS를 공부하는 중입니다. 원형 프로필과 텍스트가 상단 정렬되었습니다.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 문제 14: 배경 속성 축약형 (Shorthand) 사용하기 -->
+    <h2>문제 14: 배경 속성 축약형 (Shorthand)</h2>
+    <div class="container">
+        <div class="shorthand-box"></div>
+    </div>
+
+    <!-- 문제 15: inline-block 사이의 미세한 간격 문제 -->
+    <h2>문제 15: `inline-block` 간격 문제</h2>
+    <p><b>문제 재현 (width: 25% * 4 = 100% 이지만, 공백 때문에 줄바꿈됨)</b></p>
+    <div class="gap-container">
+        <div class="gap-item red">25%</div>
+        <div class="gap-item green">25%</div>
+        <div class="gap-item blue">25%</div>
+        <div class="gap-item yellow">25% (줄바꿈)</div>
+    </div>
+    
+    <p><b>문제 해결 (부모에 `font-size: 0;` 적용)</b></p>
+    <div class="gap-fix-container">
+        <div class="gap-fix-item red">25%</div>
+        <div class="gap-fix-item green">25%</div>
+        <div class="gap-fix-item blue">25%</div>
+        <div class="gap-fix-item yellow">25% (성공!)</div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# css z-index/visibility
+1. position으로 박스를 자유롭게 배치하다 보면 박스들이 겹치는 일이 생깁니다.
+	이때 누가 더 위에 보일지를 정하는 속성이 바로 z-index입니다.
+2. visibility는 박스를 투명화시켜서 자리는 차지하되 눈에는 보이지 않게 만드는 속성입니다.
+3. z-index는 겹쳐 있는 요소들의 쌓임 순서(stacking order)를 제어합니다.
+	1) position으로 겹쳐진 요소들에게 엘리베이터 층수를 지정하는 것과 같습니다.
+	2) z-index는 position 속성이 static아닌 요소(relative, absolute, fixed)에게만 적용됩니다.
+	3) 속성값
+		auto : 부모의 쌓임 순서를 따릅니다.(대부분 0처럼 작동)
+		number : 정수 값을 줍니다.(예) 1, 10, 999)
+		음수(-1 등)도 가능하면, 이 경우 static 요소들보다 뒤에 배치될 수 있습니다.
+4. visibility : 투명화시키기
+	visibility는 요소를 화면에 보여줄지 말지 결정합니다.
+	개념 : 요소에게 투명 망토를 씌우는 것과 같습니다.
+	속성값 : visible - 요소를 보여줍니다.
+		   hidden : 요소를 숨깁니다.
+    가장 중요한 특징 (vs display:none;)
+    	visibility : hidden; (투명화)요소가 안 보일 뿐 원래 차지하던 공간(자리)는 그대로 유지합니다(유령처럼)
+    	display:none; (존재 삭제) 요소가 공간까지 아예 사라집니다.(레이 아웃이 제거됨..)		
+*/
+	img{width:100px;height:140px;position:absolute;}
+	#spade2{z-index:5;left:10px;}
+	#spade3{z-index:4;left:40px;}
+	#spade7{z-index:3;left:70px;}
+	#spadeA{z-index:2;left:100px;visibility:hidden;}
+	/* ex) right:10px... top:10px 아래로 카드가 출력되게하고, spade13은 보이지 않게 처리..
+			우선순위 spade1A 높게..
+	*/
+	#spade12{z-index:9;right:10px;top:10px;}
+	#spade13{z-index:8;right:10px;top:60px;visibility:hidden;}
+	#spade17{z-index:7;right:10px;top:110px;}
+	#spade1A{z-index:6;right:10px;top:160px;}
+</style>
+</head>
+<body>
+<h3>z-index</h3>
+<hr>
+<div>
+	<img id="spade2" src="spade-2.png">
+	<img id="spade3" src="spade-3.png">
+	<img id="spade7" src="spade-7.png">
+	<img id="spadeA" src="spade-A.png">
+	
+	<img id="spade12" src="spade-2.png">
+	<img id="spade13" src="spade-3.png">
+	<img id="spade17" src="spade-7.png">
+	<img id="spade1A" src="spade-A.png">	
+	
+</div>
+
+</body>
+</html>
+<!--
+
+
+-->

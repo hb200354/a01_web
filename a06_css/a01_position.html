@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# css 박스 배치 : position
+1. 웹 페이지의 요소(박스)들을 일반적인 흐름(위에서 아래로, 왼쪽에서 오른쪽으로)에서 벗어나, 우리가 원하는 특정한 위치에
+	배치하고 싶을 때 사용하는 강력한 css 속성입니다.
+2. 박스들의 특별 임무
+	평소에 박스들은 position:static (정적) 상태로, 그냥 순서대로 차곡차곡 쌓입니다.
+	하지만 position 값을 바꾸면, 박스에게 너는 이제부터 유령이 되어라!!(absolute),
+	너는 화면에 딱 붙어 있어라!(fixed)같은 특별한 임무를 줄 수 있습니다.
+3. 핵심 키워드 속성
+	position은 크게 4가지(+1)상태로 나뉩니다. 이 상태를 지정해야만 top, left, right, bottom 같은
+	좌표 속성이 작동합니다.
+	1) position:static (정적)
+		- 기본값(default). 모든 요소는 처음 이 상태입니다.
+		- 순서대로 줄 서기 . html에 코딩된 순서대로 차곡차곡 쌓입니다.
+		- top, left 등 좌표 속성을 줘도 무시됩니다.
+	2) position:relative(상대적)
+		- 내 자리 맡아놓고 잠깐 외출
+		- 기준 : 원래 자신이 있던 위치(static 상태의 위치)
+		- 특징 
+			top, left로 이동해도 원래 있던 공간을 그대로 차지합니다.(다른 요소들이 그 빈자리로 끼들지 못해요)	
+			absolute 자식들의 기준점(집)이 되어 주는 가장 중요한 역할을 합니다.
+	3) position:absolute (절대적)
+		- 흐름 탈출! 유령되기
+		- 기준: 가장 가까운 position 조상(부모) (단, static은 제외 보통 relative 부모를 기준으로 함)
+		- 특징
+			문서 호출에서 완전히 빠져나옵니다. (원래 있던 공간이 사라지고, 뒤 요소들이 그 자리를 채웁니다.)
+			기준이 되는 부모가 없으면, 화면 전체(body)를 기준으로 날아 다닙니다.
+	
+	
+	
+	
+				
+			
+			
+						
+	 
+*/
+	div{
+		display:inline-block;
+		width:50px;height:50px;
+		border:1px solid lightgray;
+		background:red;
+		text-align:center;
+		color:white;
+	}
+	.down:hover{
+		position:relative;
+		left:20px;
+		top:20px;
+		background:green;
+	}
+	/* top, bottom, left, right 각 방향에서부터.. 설정 가능*/
+	.up:hover{
+		position:relative;
+		right:20px;
+		bottom:20px;
+		background:orange;
+	}
+	#gogo:active{
+		position:absolute; /*왼쪽 상단 꼭지점을 기준으로 설정*/
+		left:50%;top:50%;   /*중앙에 위치시킴..*/
+		background:pink;color:purple;
+	}
+	/*각 화면에서 꼭지점 방향으로 절대 위치로 이동 처리..*/
+	#pos1:active{
+		position:absolute;
+		left:0px;top:0px;
+		background:blue;color:yellow;
+	}
+	#pos2:active{
+		position:absolute;
+		right:0px;top:0px;
+		background:blue;color:yellow;
+	}
+	#pos3:active{
+		position:absolute;
+		left:0px;bottom:0px;
+		background:blue;color:yellow;
+	}
+	#pos4:active{
+		position:absolute;
+		right:0px;bottom:0px;
+		background:blue;color:yellow;
+	}			
+</style>
+</head>
+<body>
+
+	<h2>상대 배치 relative</h2>
+	<hr>
+	<div class="up">T</div>
+	<div class="down">h</div>
+	<div class="up">a</div>
+	<div class="down">n</div>
+	<div class="up">k</div>
+	<div class="down">s</div>
+	
+	<h2>절대 배치 absolute</h2>
+	<div id="gogo">안녕하세요</div>
+	<hr>
+	<h2>절대 위치로 이동 처리.</h2>
+	<hr>
+	<div id="pos1"></div>
+	<div id="pos2"></div>
+	<div id="pos3"></div>
+	<div id="pos4"></div>
+	<hr>
+	
+</body>
+</html>
+<!--
+
+
+-->

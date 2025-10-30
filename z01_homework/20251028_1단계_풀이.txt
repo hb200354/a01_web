@@ -1,0 +1,653 @@
+요청하신 Java 및 HTML/CSS 개념과 실습 문제에 대한 풀이입니다.
+
+## Java
+
+-----
+
+**1. [개념] 자바의 기본 출력을 기술하고, 해당 출력 내용의 의미를 설명하세요.**
+
+자바의 기본 콘솔 출력은 `System.out.println()` 또는 `System.out.print()`를 사용합니다.
+
+`System.out.println("출력할 내용");`
+
+  * **`System`**: 자바의 시스템 관련 기능들을 제공하는 클래스입니다.
+  * **`out`**: `System` 클래스 내부의 **'표준 출력 스트림'** 필드(변수)입니다. 콘솔(명령 프롬프트 또는 터미널)을 가리킵니다.
+  * **`println()`**: `out`이 가지고 있는 \*\*메서드(기능)\*\*입니다. 괄호 안의 내용을 콘솔에 출력하고 마지막에 \*\*줄바꿈(new line)\*\*을 자동으로 추가합니다. (`ln` = line)
+
+-----
+
+**2. [실습] `System.out.println()`과 `System.out.print()`를 조합하여, 콘솔 창에 여러분만의 재미있는 이모티콘 (예: `(^O^)/`)이나 3줄짜리 간단한 ASCII 아트(예: 토끼 모양)를 출력해보세요.**
+
+`print()`는 줄바꿈을 하지 않고, `println()`은 줄바꿈을 하는 특징을 이용한 토끼 ASCII 아트입니다.
+
+```java
+public class AsciiArt {
+    public static void main(String[] args) {
+        System.out.println("  /\\_/\\  "); // 출력 후 줄바꿈
+        System.out.print(" ( ' . ' ) "); // 출력 (줄바꿈 없음)
+        System.out.println(" <-- 안녕!");  // 이어서 출력 후 줄바꿈
+        System.out.println(" C(\")(\")");   // 출력 후 줄바꿈
+    }
+}
+```
+
+-----
+
+**3. [개념] 자바의 기본 출력형식 3개를 기본예제와 함께 설명하세요.**
+
+1.  **`System.out.println(data)`**
+
+      * **설명**: 괄호 안의 데이터(data)를 출력한 뒤, **줄바꿈**을 실행합니다.
+      * **예제**:
+        ```java
+        System.out.println("첫 번째 줄입니다.");
+        System.out.println("두 번째 줄입니다.");
+        // 출력 결과:
+        // 첫 번째 줄입니다.
+        // 두 번째 줄입니다.
+        ```
+
+2.  **`System.out.print(data)`**
+
+      * **설명**: 괄호 안의 데이터를 출력만 하고, **줄바꿈을 하지 않습니다.**
+      * **예제**:
+        ```java
+        System.out.print("이름: ");
+        System.out.print("홍길동");
+        // 출력 결과:
+        // 이름: 홍길동
+        ```
+
+3.  **`System.out.printf(format, args...)`**
+
+      * **설명**: \*\*형식(format)\*\*을 지정하여 데이터를 출력합니다. `f`는 'formatted'를 의미합니다. 변수 데이터를 정해진 서식에 맞춰 출력할 때 유용합니다.
+      * **예제**:
+        ```java
+        String name = "자바";
+        int score = 100;
+        System.out.printf("학생 이름: %s, 성적: %d점", name, score);
+        // 출력 결과:
+        // 학생 이름: 자바, 성적: 100점
+        ```
+
+-----
+
+**4. [실습] 3가지 출력 방식을 모두 사용하여, 다음과 같이 자기소개 프로필을 3줄로 출력해보세요.**
+
+```java
+public class MyProfile {
+    public static void main(String[] args) {
+        System.out.println("* 나의 프로필 *"); // println 사용
+        
+        System.out.print("이름: 홍길동 (print 사용) / "); // print 사용 (줄바꿈 없음)
+        
+        // printf 사용 (나이 20을 %d에, 줄바꿈 문자 \n을 마지막에)
+        System.out.printf("나이: %d세 (printf 사용, %%d 활용)\n", 20); 
+        
+        System.out.println("MBTI: ENFP (println 사용)"); // println 사용
+    }
+}
+```
+
+-----
+
+**5. [개념] System.out.printf()에서 사용하는 format 형식을 예제와 함께 기술하세요.**
+
+`printf()`는 C언어에서 유래한 형식 지정자를 사용합니다. `%` 기호와 특정 문자를 조합하여 해당 위치에 변수 값을 끼워 넣습니다.
+
+  * **`%s`** (String): **문자열**
+  * **`%d`** (Decimal): **10진수 정수**
+  * **`%f`** (Float): **실수** (소수점)
+      * `%.1f` : 소수점 첫째 자리까지만 표시
+      * `%.2f` : 소수점 둘째 자리까지만 표시
+  * **`%c`** (Character): **단일 문자**
+  * **`%b`** (Boolean): **불리언** (true / false)
+  * **`%%`**: **'%' 문자 자체**를 출력
+
+**예제 코드:**
+
+```java
+String item = "커피";
+int price = 3000;
+double taxRate = 0.1;
+
+System.out.printf("상품: %s, 가격: %d원, 세율: %.2f%%", item, price, taxRate * 100);
+// 출력 결과:
+// 상품: 커피, 가격: 3000원, 세율: 10.00%
+```
+
+-----
+
+**6. [실습] `printf()`의 `%s` (문자열), `%d` (정수), `%f` (실수) 형식 지정자를 사용하여 다음과 같은 형식의 '미니 카페 영수증'을 출력해보세요. (단, 커피 총액은 소수점 1자리까지만 표시)**
+
+```java
+public class CafeReceipt {
+    public static void main(String[] args) {
+        // 데이터 준비
+        String item = "아메리카노 (S)"; // %s
+        int quantity = 2;              // %d
+        int unitPrice = 3000;          // %d
+        double totalPrice = (double) quantity * unitPrice; // %f
+
+        // 영수증 출력
+        System.out.println("[영수증]");
+        System.out.printf("항목: %s\n", item);
+        System.out.printf("수량: %d\n", quantity);
+        System.out.printf("단가: %d\n", unitPrice);
+        System.out.printf("총액: %.1f\n", totalPrice); // %.1f : 소수점 1자리
+    }
+}
+```
+
+-----
+
+**7. [개념] 변수의 선언, 할당, 재할당, 출력을 단계별로 기본 예제를 통해 설명하세요.**
+
+  * **1. 선언 (Declaration)**: 데이터를 저장할 공간을 \*\*'예약'\*\*하는 단계. `[데이터타입] [변수이름];` 형식으로 선언합니다.
+
+      * `int score;` (score라는 이름으로 정수(int)를 담을 공간을 선언)
+
+  * **2. 할당 (Assignment)**: 선언된 변수에 \*\*'값'\*\*을 처음 저장하는 단계 (초기화라고도 함).
+
+      * `score = 90;` (score 변수에 90이라는 값을 할당)
+      * *선언과 동시 할당:* `int score = 90;`
+
+  * **3. 재할당 (Re-assignment)**: 이미 값이 있는 변수에 \*\*'새로운 값'\*\*을 덮어쓰는 단계.
+
+      * `score = 100;` (기존 값 90은 사라지고 100이 새로 저장됨)
+
+  * **4. 출력 (Output)**: 변수에 저장된 값을 콘솔에 출력.
+
+      * `System.out.println(score);` (현재 score에 저장된 값 100이 출력됨)
+
+-----
+
+**8. [실습] 'myAge'라는 이름의 정수 변수를 선언하고 20을 할당하세요. 1년이 지났다고 가정하고 'myAge'에 1을 더한 값으로 재할당하세요. 마지막으로 "내년 나의 나이는? [나이]살" 형식으로 콘솔에 출력하세요.**
+
+```java
+public class AgeCalculator {
+    public static void main(String[] args) {
+        // 1. 'myAge' 변수 선언 및 20 할당 (초기화)
+        int myAge = 20;
+        
+        // 2. 1년 후, 1을 더한 값으로 재할당
+        // myAge = myAge + 1; // 기본 방식
+        myAge += 1; // 단축 방식
+        // myAge++;    // 증감 연산자 (1 증가)
+
+        // 3. 콘솔에 출력
+        System.out.println("내년 나의 나이는? " + myAge + "살");
+        
+        // printf() 사용 시
+        // System.out.printf("내년 나의 나이는? %d살\n", myAge);
+    }
+}
+```
+
+-----
+
+**9. [개념] 변수의 선언/할당을 통해서 연산처리되는 예제를 설명하세요.**
+
+변수는 값을 저장하는 공간이므로, 변수 이름을 사용하여 사칙연산(+, -, \*, /)을 수행할 수 있습니다. 연산의 결과는 새로운 변수에 다시 할당할 수 있습니다.
+
+**예제:** 학생의 국어, 영어 점수를 변수에 저장하고 총점과 평균을 계산하는 예제
+
+```java
+public class ScoreExample {
+    public static void main(String[] args) {
+        // 1. 변수 선언 및 할당 (초기화)
+        int koreanScore = 90;
+        int englishScore = 85;
+
+        // 2. 변수를 사용한 연산 처리 및 결과 할당
+        // 두 변수의 값을 더해 'totalScore' 변수에 할당
+        int totalScore = koreanScore + englishScore;
+        
+        // totalScore를 2.0으로 나누어(정확한 실수 계산) 'average' 변수에 할당
+        double average = (double) totalScore / 2.0; 
+
+        // 3. 결과 출력
+        System.out.println("국어 점수: " + koreanScore);
+        System.out.println("영어 점수: " + englishScore);
+        System.out.println("총점: " + totalScore);
+        System.out.println("평균: " + average);
+    }
+}
+```
+
+-----
+
+**10. [실습] 3명의 친구가 카페에 갔습니다. `americano` 변수에 4500, `latte` 변수에 5000, `juice` 변수에 5500을 각각 할당하세요. 세 변수의 합을 `total` 변수에 할당하고, `total`을 3으로 나눈 값을 `dutchPay` 변수에 할당하세요. 마지막으로 "총 결제 금액: [total]원", "각자 낼 돈: [dutchPay]원"을 출력하세요.**
+
+```java
+public class DutchPay {
+    public static void main(String[] args) {
+        // 1. 각 메뉴 가격 변수 할당
+        int americano = 4500;
+        int latte = 5000;
+        int juice = 5500;
+
+        // 2. 세 변수의 합을 'total' 변수에 할당
+        int total = americano + latte + juice;
+
+        // 3. 'total'을 3으로 나눈 값을 'dutchPay' 변수에 할당
+        int dutchPay = total / 3; 
+        
+        // 참고: 만약 10000원 / 3명처럼 나누어 떨어지지 않는 경우 
+        // double dutchPay = (double) total / 3.0;
+        // 로 선언해야 소수점까지 정확히 계산됩니다. (이 문제는 15000/3=5000 이라 int로 가능)
+
+        // 4. 결과 출력
+        System.out.println("총 결제 금액: " + total + "원");
+        System.out.println("각자 낼 돈: " + dutchPay + "원");
+    }
+}
+```
+
+## html/css
+
+-----
+
+**11. [개념] position의 relative의 기본 예제를 통해서 속성을 설명하세요.**
+
+`position: relative;`는 요소를 \*\*'원래 자신이 있어야 할 위치(static)'\*\*를 기준으로 상대적으로 이동시킵니다.
+
+  * `top`, `left`, `bottom`, `right` 속성을 사용하여 원래 위치로부터 얼마나 떨어질지(offset) 지정합니다.
+  * **중요한 특징**: `relative`로 요소가 시각적으로 이동하더라도, **원래 있던 공간(자리)은 그대로 차지**합니다. 따라서 다른 요소의 레이아웃에 영향을 주지 않습니다 (자신이 이동하며 다른 요소를 밀어내지 않고, 원래 자리가 빈 공간으로 남음).
+
+**기본 예제:**
+
+```html
+<style>
+  div { width: 100px; height: 100px; border: 1px solid; }
+  .box-1 { background-color: tomato; }
+  .box-2 { 
+    background-color: deepskyblue;
+    position: relative;
+    top: 30px;  /* 원래 위치(box-1 아래)보다 30px 아래로 */
+    left: 30px; /* 원래 위치보다 30px 오른쪽으로 */
+  }
+  .box-3 { background-color: gold; }
+</style>
+
+<div class="box-1">1</div>
+<div class="box-2">2 (Relative)</div>
+<div class="box-3">3</div>
+
+```
+
+-----
+
+**12. [실습] 빨간색, 파란색, 노란색 3개의 사각형(`div`)을 가로로 나란히 배치하세요. 두 번째(파란색) 사각형에만 `position: relative; top: 20px; left: 10px;`를 적용해보세요. 다른 사각형들의 위치는 변하지 않고 파란색 사각형만 원래 '있어야 할 자리'에서 아래로 20px, 오른쪽으로 10px 겹쳐서 이동하는지 확인해보세요.**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+    display: inline-block; /* 가로로 나란히 배치 */
+    border: 2px solid #333;
+  }
+  .red { background-color: red; }
+  .blue {
+    background-color: blue;
+    /* 실습 적용 */
+    position: relative;
+    top: 20px;  /* 원래 자리(빨강 옆) 기준 아래로 20px */
+    left: 10px; /* 원래 자리 기준 오른쪽으로 10px */
+  }
+  .yellow { background-color: yellow; }
+</style>
+</head>
+<body>
+  <div class="box red">RED</div>
+  <div class="box blue">BLUE</div>
+  <div class="box yellow">YELLOW</div>
+  </body>
+</html>
+```
+
+-----
+
+**13. [개념] position의 absolute의 기본 예제를 통해서 속성을 설정하세요.**
+
+`position: absolute;`는 요소를 **'문서의 일반적인 흐름(normal flow)'에서 완전히 제외**시키고, \*\*가장 가까운 '위치 기준이 되는 조상'\*\*에 상대적으로 배치합니다.
+
+  * \*\*'위치 기준 조상'\*\*이란 `position` 속성이 `static`(기본값)이 아닌 `relative`, `absolute`, `fixed` 중 하나로 설정된 부모 또는 조상 요소를 말합니다.
+  * 만약 그런 조상이 없으면, `<body>` 태그(즉, 뷰포트)를 기준으로 삼습니다.
+  * `absolute` 요소는 `relative`와 달리 **원래 있던 공간을 차지하지 않습니다.** (다른 요소들이 그 빈자리를 채웁니다)
+
+**기본 예제:** (부모에게 `relative`를 주어 기준으로 삼기)
+
+```html
+<style>
+  .parent {
+    width: 300px;
+    height: 200px;
+    background-color: lightgray;
+    position: relative; /* !!! 자식(absolute)의 기준점 설정 !!! */
+  }
+  .child {
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    position: absolute;
+    bottom: 10px; /* 부모 기준 아래에서 10px */
+    right: 10px;  /* 부모 기준 오른쪽에서 10px */
+  }
+</style>
+
+<div class="parent">
+  부모 요소 (기준점)
+  <div class="child">X</div>
+</div>
+```
+
+-----
+
+**14. [실습] 넉넉한 크기의 회색 `div` (부모)를 만들고 그 안에 작은 빨간색 `div` (자식)를 만드세요. 부모에 `position: relative;`를, 자식에 `position: absolute; right: 0; top: 0;`을 적용하여 '닫기(X)' 버튼처럼 회색 상자 기준 오른쪽 상단 모서리에 정확히 배치해보세요.**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .modal-container { /* 부모 (회색) */
+    width: 400px;
+    height: 300px;
+    background-color: #f0f0f0; /* 넉넉한 회색 div */
+    border: 1px solid #ccc;
+    padding: 20px;
+    
+    /* 1. 부모를 자식의 위치 기준점으로 설정 */
+    position: relative; 
+  }
+  
+  .close-btn { /* 자식 (빨강) */
+    width: 30px;
+    height: 30px;
+    background-color: red;
+    color: white;
+    text-align: center;
+    line-height: 30px; /* 'X' 글자 세로 중앙 정렬 */
+    font-family: sans-serif;
+    
+    /* 2. 부모(.modal-container) 기준으로 배치 */
+    position: absolute;
+    top: 0;   /* 부모 기준 위쪽 0 */
+    right: 0; /* 부모 기준 오른쪽 0 */
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+  <div class="modal-container">
+    <h3>팝업 제목</h3>
+    <p>이곳은 팝업 컨텐츠입니다...</p>
+    
+    <div class="close-btn">X</div>
+  </div>
+</body>
+</html>
+```
+
+-----
+
+**15. [개념] position의 fixed의 기본 예제를 통해서 속성을 설정하세요.**
+
+`position: fixed;`는 요소를 `absolute`처럼 **'문서 흐름(normal flow)'에서 제외**시키지만, 기준점이 조상 요소가 아닌 \*\*'뷰포트(Viewport, 브라우저 화면 창)'\*\*가 됩니다.
+
+  * `top`, `left` 등으로 위치를 지정하면, **스크롤을 해도 항상 그 자리에 고정**되어 보입니다.
+  * 주로 페이지 전체를 덮는 팝업창, 상단 고정 헤더, 'Top' 버튼 등에 사용됩니다.
+
+**기본 예제:** (하단 고정 알림 배너)
+
+```html
+<style>
+  body { height: 2000px; } /* 스크롤 생성용 */
+  
+  .notice-banner {
+    position: fixed; /* 뷰포트(화면) 기준 고정 */
+    bottom: 0;   /* 화면 하단 0 */
+    left: 0;     /* 화면 왼쪽 0 */
+    width: 100%; /* 화면 가로폭 100% */
+    background-color: navy;
+    color: white;
+    padding: 10px;
+    text-align: center;
+  }
+</style>
+
+<div class="notice-banner">
+  이 배너는 스크롤을 해도 항상 하단에 고정됩니다.
+</div>
+<p>페이지 내용... (스크롤을 내려보세요)</p>
+```
+
+-----
+
+**16. [실습] 화면 스크롤이 생길 만큼 긴 내용(예: `<p>lorem ipsum...</p>` 100개)을 만드세요. 그리고 'Top'이라고 적힌 버튼을 `position: fixed; bottom: 20px; right: 20px;`로 설정하여, 스크롤을 아무리 내려도 항상 화면 오른쪽 하단에 고정되어 따라오도록 만드세요.**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body {
+    /* 1. 스크롤을 만들기 위해 body 높이를 강제로 늘림 */
+    height: 3000px; 
+    font-family: sans-serif;
+  }
+  
+  .go-top-btn {
+    /* 2. 'Top' 버튼 스타일 */
+    display: block;
+    width: 50px;
+    height: 50px;
+    background-color: crimson;
+    color: white;
+    text-align: center;
+    line-height: 50px;
+    border-radius: 50%; /* 원 모양 */
+    text-decoration: none;
+    font-weight: bold;
+    
+    /* 3. 화면(뷰포트) 기준 고정 */
+    position: fixed;
+    bottom: 20px; /* 화면 하단에서 20px */
+    right: 20px;  /* 화면 오른쪽에서 20px */
+  }
+</style>
+</head>
+<body>
+  <h1>스크롤 테스트 페이지</h1>
+  <p>스크롤을 아래로 길게 내려보세요.</p>
+  <p>(lorem ipsum... x 100)</p>
+  <p style="margin-top: 500px;">중간 지점...</p>
+  <p style="margin-top: 1000px;">하단 지점...</p>
+  <p style="margin-top: 1000px;">페이지 끝</p>
+
+  <a href="#" class="go-top-btn">Top</a>
+  
+  </body>
+</html>
+```
+
+-----
+
+**17. [개념] z-index를 사용할 때, 같이 처리해야할 속성들을 기본 예제와 함께 설명하세요.**
+
+`z-index`는 요소가 겹칠 때 \*\*쌓임 순서(stacking order, Z축)\*\*를 제어하는 속성입니다. 숫자가 클수록 사용자(화면) 쪽에 가깝게, 즉 '위'에 표시됩니다.
+
+`z-index`가 작동하기 위해서는 반드시 **`position` 속성**이 `static` (기본값)이 아니어야 합니다.
+
+  * **함께 처리해야 할 속성**: **`position: relative;`** 또는 **`position: absolute;`** 또는 **`position: fixed;`**
+  * `position` 속성이 `static`인 요소에 `z-index: 9999;`를 적용해도 아무런 효과가 없습니다.
+
+**기본 예제:**
+
+```html
+<style>
+  .box { 
+    width: 150px; 
+    height: 150px; 
+    position: absolute; /* z-index를 적용하기 위해 position 설정 */
+  }
+  .red {
+    background-color: red;
+    top: 10px; left: 10px;
+    z-index: 5; /* 5번 레이어 */
+  }
+  .blue {
+    background-color: blue;
+    top: 30px; left: 30px;
+    z-index: 10; /* 10번 레이어 (red보다 위) */
+  }
+  .green {
+    background-color: green;
+    top: 50px; left: 50px;
+    /* position이 static(기본값)이므로 z-index가 작동 안 함 */
+    z-index: 999; 
+  }
+</style>
+
+<div class="red">RED (z: 5)</div>
+<div class="blue">BLUE (z: 10)</div>
+<div class="green">GREEN (z: 999, but static)</div>
+```
+
+-----
+
+**18. [실습] 3개의 `div` (빨강, 파랑, 노랑)를 만드세요. 세 요소가 겹치도록 `position: absolute;`를 설정하고, `top`, `left` 값을 조금씩 다르게 주세요.**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  div {
+    width: 200px;
+    height: 200px;
+    color: white;
+    font-weight: bold;
+    padding: 10px;
+    position: absolute; /* 겹치도록 모두 absolute 설정 */
+  }
+  
+  .red {
+    background-color: red;
+    top: 20px;
+    left: 20px;
+    z-index: 5; /* 1. 파랑(10)보다 낮으므로 뒤에 배치 */
+  }
+  
+  .blue {
+    background-color: blue;
+    top: 40px;
+    left: 40px;
+    z-index: 10; /* 1. 빨강(5)보다 높으므로 위에 배치 */
+  }
+  
+  .yellow {
+    background-color: goldenrod;
+    top: 60px; /* (position이 없으면 무시됨) */
+    left: 60px; /* (position이 없으면 무시됨) */
+    
+    /* 2. position 속성 제거 (기본값 static) */
+    position: static; 
+    z-index: 999; /* (position: static이므로 무시됨) */
+  }
+</style>
+</head>
+<body>
+  <div class="red">RED (z-index: 5)</div>
+  <div class="blue">BLUE (z-index: 10)</div>
+  <div class="yellow">YELLOW (position: static, z-index: 999 무시)</div>
+  
+  </body>
+</html>
+```
+
+-----
+
+**19. [개념] visibility:hidden;과 display:none의 차이점을 예제와 함께 설명하세요.**
+
+두 속성 모두 요소를 화면에서 보이지 않게 만들지만, **'공간(자리)'** 처리에 결정적인 차이가 있습니다.
+
+  * **`visibility: hidden;`**
+
+      * **의미**: \*\*'투명'\*\*하게 만듭니다.
+      * **특징**: 요소가 화면에 보이지 않지만, **원래 차지하던 공간(레이아웃)은 그대로 유지**합니다. 즉, 빈자리가 남습니다.
+      * **예제**:
+        ```html
+        <div style="background:red;">BOX 1</div>
+        <div style="background:blue; visibility:hidden;">BOX 2</div>
+        <div style="background:green;">BOX 3</div>
+        ```
+
+  * **`display: none;`**
+
+      * **의미**: **'존재'** 자체를 없앱니다.
+      * **특징**: 요소를 렌더링 트리에서 완전히 제거합니다. **차지하던 공간(레이아웃)도 함께 사라져** 다음 요소가 그 자리를 채웁니다. (마치 HTML에 아예 없던 것처럼)
+      * **예제**:
+        ```html
+        <div style="background:red;">BOX 1</div>
+        <div style="background:blue; display:none;">BOX 2</div>
+        <div style="background:green;">BOX 3</div>
+        ```
+
+-----
+
+**20. [실습] "빨강", "파랑", "노랑" 3개의 `div` 상자를 `display: inline-block;`으로 가로로 나란히 배치하세요.**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  .box {
+    width: 100px;
+    height: 100px;
+    display: inline-block; /* 가로로 나란히 배치 */
+    color: white;
+    text-align: center;
+    line-height: 100px;
+  }
+  .red { background-color: red; }
+  .blue { background-color: blue; }
+  .yellow { background-color: yellow; color: black; }
+  
+  /* 1. visibility: hidden 테스트 */
+  #test-1 .blue {
+    visibility: hidden;
+  }
+  
+  /* 2. display: none 테스트 */
+  #test-2 .blue {
+    display: none;
+  }
+</style>
+</head>
+<body>
+
+  <h3>1. visibility: hidden (파란 상자 '자리'가 남음)</h3>
+  <div id="test-1">
+    <div class="box red">빨강</div>
+    <div class="box blue">파랑(숨김)</div>
+    <div class="box yellow">노랑</div>
+  </div>
+  <hr style="margin: 30px 0;">
+
+  <h3>2. display: none (파란 상자 '존재'가 사라짐)</h3>
+  <div id="test-2">
+    <div class="box red">빨강</div>
+    <div class="box blue">파랑(제거)</div>
+    <div class="box yellow">노랑</div>
+  </div>
+  </body>
+</html>
+```
+

@@ -1,0 +1,154 @@
+Good morning QUIZ!! 좋은 하루!! 유익한 하루되시길. ^^
+
+**[HTML/CSS: overflow]**
+
+1.  CSS의 `overflow` 속성에 대한 설명으로 옳지 않은 것은?
+    (a) `visible` : 기본값으로, 내용물이 상자 밖으로 삐져나와도 그냥 보여줍니다.
+    (b) `hidden` : 삐져나온 부분은 잘려서 보이지 않게 숨깁니다.
+    (c) `scroll` : 내용물이 넘칠 때만 스크롤바가 생기고, 넘치지 않으면 생기지 않습니다.
+    (d) `auto` : 내용물이 넘치면 스크롤바를 만들고, 넘치지 않으면 만들지 않습니다.
+
+2.  `overflow` 속성 중, 내용물이 넘치든 말든 **무조건** 가로/세로 스크롤바를 표시하는 값은 무엇인가?
+    (a) auto
+    (b) visible
+    (c) hidden
+    (d) scroll
+
+3.  `overflow` 속성값이 `hidden`일 때, "마법 가방 비유"에서 설명한 내용으로 가장 적절한 것은?
+    (a) 삐져나온 옷들이 밖으로 그냥 다 보인다.
+    (b) 가방 뚜껑을 억지로 닫아 삐져나온 부분이 잘려 보이지 않는다.
+    (c) 내용물이 넘치든 말든 가방에 스크롤바 손잡이를 만든다.
+    (d) 가방이 똑똑해져서 넘칠 때만 스크롤바를 만든다.
+
+4.  웹사이트의 긴급 공지사항 상자(`height: 50px`)의 내용이 너무 길어져 밖으로 삐져나올 때, 
+     삐져나오는 부분을 잘라서 보이지 않게 처리하는 CSS 속성값은?
+    (a) `overflow: visible;`
+    (b) `overflow: auto;`
+    (c) `overflow: hidden;`
+    (d) `overflow: scroll;`
+
+5.  내용물의 세로(Y축) 스크롤만 제어하고 싶을 때 사용하는 CSS 속성은?
+    (a) `overflow: y-scroll;`
+    (b) `overflow-y: auto;`
+    (c) `overflow: vertical;`
+    (d) `overflow-x: hidden;`
+
+**[HTML/CSS: list-style]**
+
+6.  `<ul>` (순서 없는 목록)의 기본 마커(bullet)를 `disc` (●)가 아닌 `square` (■)로 변경하는 CSS 속성은?
+    (a) `list-style-position: square;`
+    (b) `list-style-type: square;`
+    (c) `list-style-image: square;`
+    (d) `list-style: square;`
+
+7.  `<ol>` (순서 있는 목록)의 마커를 `1, 2, 3`이 아닌 로마 숫자 대문자(`I, II, III`)로 변경하는
+     `list-style-type` 값은?
+    (a) `lower-roman`
+    (b) `upper-alpha`
+    (c) `upper-roman`
+    (d) `decimal`
+
+8.  학습 자료에서 `list-style: none;` 속성이 **가장 많이 사용**되는 예시로 언급된 것은?
+    (a) 맛집 랭킹 목록 만들기
+    (b) 시험 범위 공지하기
+    (c) 웹사이트 내비게이션 메뉴 만들기
+    (d) 저녁 장보기 목록 만들기
+
+9.  `list-style-position` 속성의 값 중, 마커가 텍스트 안쪽으로 들어와 텍스트의 첫 글자처럼 취급되게 하는 것은?
+    (a) `outside`
+    (b) `none`
+    (c) `default`
+    (d) `inside`
+
+10. 리스트의 기본 마커 대신 'star.png'라는 이미지 파일을 마커로 사용하려 할 때 올바른 CSS 코드는?
+    (a) `list-style-type: url('star.png');`
+    (b) `list-style-image: 'star.png';`
+    (c) `list-style-image: url('star.png');`
+    (d) `list-style: image('star.png');`
+
+**[Java: 명명 규칙 (Naming Conventions)]**
+
+11. Java에서 **클래스(Class)** 이름을 지을 때 따라야 하는 명명 규칙(파스칼 케이스)으로 올바른 것은?
+    (a) `ourCar`
+    (b) `OurCar`
+    (c) `OUR_CAR`
+    (d) `our-car`
+
+12. Java에서 \*\*변수(Variable)\*\*와 **메서드(Method)** 이름을 지을 때 공통으로 적용되는 
+    명명 규칙(카멜 케이스)으로 올바른 것은?
+    (a) `currentSpeed`
+    (b) `CurrentSpeed`
+    (c) `CURRENT_SPEED`
+    (d) `Current_Speed`
+
+13. Java에서 **상수(Constant)** (예: `final int MAX_SPEED`)를 선언할 때 권장되는 
+    명명 규칙(스네이크 케이스)은?
+    (a) `maxSpeed`
+    (b) `MaxSpeed`
+    (c) `MAX_SPEED`
+    (d) `max_speed`
+
+14. 다음 중 Java의 **필수 기본 규칙**에 따라 **유효하지 않은** 변수 선언은?
+    (a) `int _no1;`
+    (b) `int $no;`
+    (c) `int num01;`
+    (d) `int 1num;`
+
+15. `int public = 10;` 코드가 컴파일 에러를 일으키는 이유는 무엇인가?
+    (a) `public`은 숫자로 시작할 수 없기 때문에
+    (b) `public`은 특수문자를 포함하고 있기 때문에
+    (c) `public`은 대문자로 시작해야 하기 때문에
+    (d) `public`은 Java가 이미 사용 중인 예약어이기 때문에
+
+**[Java: 기본 데이터 유형 (Primitive Types)]**
+
+16. `true` 또는 `false` 값만을 저장하며, 스위치(on/off)와 같이 논리적인 값을 다루는 데 사용되는 
+    기본 데이터 유형은?
+    (a) `char`
+    (b) `boolean`
+    (c) `int`
+    (d) `byte`
+
+17. 'A', '가'처럼 단 하나의 글자(문자)를 저장하며, 작은따옴표(`' '`)로 값을 감싸는 데이터 유형은?
+    (a) `String`
+    (b) `boolean`
+    (c) `char`
+    (d) `int`
+
+18. `byte b01 = 30;`과 `byte b02 = 40;`이 있을 때, `b01 + b02`의 연산 결과는 어떤 데이터 유형으로 처리되어야 하는가?
+    (a) `byte`
+    (b) `int`
+    (c) `char`
+    (d) `boolean`
+
+19. Java에서 실수(소수점 있는 숫자)의 **기본(default)** 데이터 유형이며, `float`보다 2배 더 정밀한 데이터 유형은?
+    (a) `long`
+    (b) `int`
+    (c) `float`
+    (d) `double`
+
+20. `int` 범위를 넘어서는 매우 큰 정수(예: 150억)를 저장하려 할 때, 숫자 뒤에 `L`을 붙여야 하는 데이터 유형은?
+    (a) `long`
+    (b) `double`
+    (c) `float`
+    (d) `int`
+
+-----
+
+## 🖊️ 주관식 기술형 문제 (총 5문항)
+
+**문제 1.** CSS `overflow` 속성의 값 `scroll`과 `auto`의 차이점을 설명하고, 어떤 경우에 `auto`를 
+   사용하는 것이 더 적절한지 서술하시오.
+
+**문제 2.** Java의 명명 규칙 3가지(파스칼 케이스, 카멜 케이스, 스네이크 케이스)를 쓰고, 각각 어떤 
+   프로그래밍 요소(클래스, 변수, 메서드, 상수)에 적용되는지 연결하여 서술하시오.
+
+**문제 3.** Java에서 `int amount1 = 2000000000;`와 `int amount2 = 1800000000;` 두 변수의 합을 
+   정확하게 구하려고 할 때 발생하는 문제점과, 이를 해결하기 위한 올바른 코드(데이터 타입 포함)를 서술하시오.
+
+**문제 4.** CSS의 `list-style` 속성을 사용하여 `<ul>` 태그의 기본 마커(점)를 완전히 제거하는 코드 한 줄을 
+    작성하고, 이 속성이 주로 어떤 HTML 구조(예: 메뉴)를 만들 때 사용되는지 서술하시오.
+
+**문제 5.** Java의 실수형 데이터 타입인 `float`와 `double`의 차이점(메모리 크기, 정밀도)을 설명하고, 
+`float` 타입을 사용하기 위해 숫자 뒤에 어떤 접미사를 붙여야 하는지 서술하시오.
+

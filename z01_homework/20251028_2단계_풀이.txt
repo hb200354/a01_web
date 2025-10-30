@@ -1,0 +1,855 @@
+## ☕ Java 풀이
+
+각 문제에 대한 Java 솔루션입니다. 클래스 이름은 문제의 주제에 맞게 명명하였습니다.
+
+### 1\. RPG 게임 캐릭터 생성
+
+```java
+public class RpgCharacter {
+    public static void main(String[] args) {
+        // 1. String 타입 변수 nickname에 "전사"를 할당
+        String nickname = "전사";
+        
+        // 2. int 타입 변수 level에 1을, hp에 100을 할당
+        int level = 1;
+        int hp = 100;
+
+        // 3. System.out.printf()를 한 번만 사용하여 출력
+        // \n은 줄바꿈을 의미합니다. %%는 '%' 문자 자체를 출력합니다.
+        System.out.printf("*** 캐릭터 생성 완료 ***\n닉네임: %s (Lv. %d)\n생명력: %d HP\n", nickname, level, hp);
+    }
+}
+```
+
+-----
+
+### 2\. 용돈 기입장 관리
+
+```java
+public class AllowanceTracker {
+    public static void main(String[] args) {
+        // 1. int 변수 balance (잔액)를 50000원으로 초기화
+        int balance = 50000;
+        
+        // 2. int 변수 snack (과자) 3500원, bus (버스비) 1450원을 선언하고 할당
+        int snack = 3500;
+        int bus = 1450;
+
+        // 3. 지출 총액 및 최종 잔액 계산
+        int totalSpent = snack + bus;
+        int finalBalance = balance - totalSpent;
+
+        // 4. System.out.printf()를 사용하여 출력
+        System.out.printf("초기 용돈: %d원\n", balance);
+        System.out.printf("지출 총액: %d원\n", totalSpent);
+        System.out.printf("최종 잔액: %d원\n", finalBalance);
+    }
+}
+```
+
+-----
+
+### 3\. "이어 말하기" 릴레이
+
+```java
+public class PrintRelay {
+    public static void main(String[] args) {
+        // 1. System.out.print()를 사용해 "자바는 "를 출력 (줄바꿈 없음)
+        System.out.print("자바는 ");
+        
+        // 2. System.out.print()를 사용해 "정말 "을 출력 (줄바꿈 없음)
+        System.out.print("정말 ");
+        
+        // 3. System.out.println()를 사용해 "재미있습니다!"를 출력 (출력 후 줄바꿈)
+        System.out.println("재미있습니다!");
+
+        // 4. System.out.print()를 사용해 "다음 줄에 "를 출력 (줄바꿈 없음)
+        System.out.print("다음 줄에 ");
+        
+        // 5. System.out.println()를 사용해 "출력됩니다."를 출력 (출력 후 줄바꿈)
+        System.out.println("출력됩니다.");
+    }
+}
+```
+
+-----
+
+### 4\. 빵집 재고 관리
+
+```java
+public class BakeryStock {
+    public static void main(String[] args) {
+        // 1. int 변수 bread (빵) 재고 50, cake (케이크) 재고 10 초기화
+        int bread = 50;
+        int cake = 10;
+
+        // 2. 오전 판매 후 재고 갱신
+        bread = bread - 15; // 또는 bread -= 15;
+        cake = cake - 3;  // 또는 cake -= 3;
+
+        // 3. System.out.printf()를 사용하여 탭(\t)과 줄바꿈(\n) 포함 출력
+        System.out.printf("[오후 재고 현황]\n\t빵: %d개\n\t케이크: %d개\n", bread, cake);
+    }
+}
+```
+
+-----
+
+### 5\. 농구팀 선수 소개
+
+```java
+public class BasketballPlayer {
+    public static void main(String[] args) {
+        // 1. 선수 1 정보 (키는 double 타입 사용)
+        String name1 = "서태웅";
+        int backNo1 = 11;
+        double height1 = 187.5;
+
+        // 2. 선수 2 정보
+        String name2 = "강백호";
+        int backNo2 = 10;
+        double height2 = 189.2;
+
+        // 3. printf를 사용하여 소수점 첫째 자리(%.1f)까지 표시
+        System.out.printf("등번호 %d번, %s 선수의 키는 %.1fcm 입니다.\n", backNo1, name1, height1);
+        System.out.printf("등번호 %d번, %s 선수의 키는 %.1fcm 입니다.\n", backNo2, name2, height2);
+    }
+}
+```
+
+-----
+
+### 6\. 마트 영수증 출력 (정렬)
+
+```java
+public class MartReceipt {
+    public static void main(String[] args) {
+        // 1. int 변수 applePrice (3000), milkPrice (2500), eggPrice (6500)
+        int applePrice = 3000;
+        int milkPrice = 2500;
+        int eggPrice = 6500;
+
+        // 2. System.out.printf()를 사용하여 오른쪽 정렬
+        // %10d : 총 10칸의 공간을 확보하고, 오른쪽 정렬하여 10진수(d)를 출력
+        System.out.println("[영수증]");
+        System.out.printf("사과: %10d원\n", applePrice);
+        System.out.printf("우유: %10d원\n", milkPrice);
+        System.out.printf("달걀: %10d원\n", eggPrice);
+    }
+}
+```
+
+-----
+
+### 7\. D-Day 카운터
+
+```java
+public class DDayCounter {
+    public static void main(String[] args) {
+        // 1. int 변수 totalDays (총 준비 기간)를 100
+        int totalDays = 100;
+        
+        // 2. int 변수 passedDays (지나간 날)를 25
+        int passedDays = 25;
+        
+        // 3. remainingDays (남은 날)를 계산
+        int remainingDays = totalDays - passedDays;
+
+        // 4. System.out.println()을 사용
+        System.out.println("총 준비 기간: " + totalDays + "일");
+        
+        // 5. System.out.printf()를 사용
+        System.out.printf("오늘까지 %d일 지났습니다. 시험까지 %d일 남았습니다!\n", passedDays, remainingDays);
+    }
+}
+```
+
+-----
+
+### 8\. 온도 변환기 (화씨 -\> 섭씨)
+
+```java
+public class TempConverter {
+    public static void main(String[] args) {
+        // 1. int 변수 fahrenheit (화씨)를 90
+        int fahrenheit = 90;
+
+        // 2. 섭씨 변환 공식 (정수 연산)
+        // (90 - 32) * 5 / 9 = 58 * 5 / 9 = 290 / 9 = 32 (소수점 버림)
+        int celsius = (fahrenheit - 32) * 5 / 9;
+
+        // 3. System.out.printf()를 사용
+        System.out.printf("화씨 %d도는 섭씨 약 %d도입니다.\n", fahrenheit, celsius);
+    }
+}
+```
+
+-----
+
+### 9\. 3인 점수 합계 및 평균
+
+```java
+public class ScoreAverage {
+    public static void main(String[] args) {
+        // 1. int 변수 score1 (95), score2 (88), score3 (76)
+        int score1 = 95;
+        int score2 = 88;
+        int score3 = 76;
+
+        // 2. int 변수 total (합계)
+        int total = score1 + score2 + score3;
+        
+        // 3. int 변수 average (정수 평균)
+        int average = total / 3;
+
+        // 4. print()와 println()을 혼합 사용하여 출력
+        // 첫 번째 줄 (print 2번, println 1번)
+        System.out.print("1번: " + score1 + "점, ");
+        System.out.print("2번: " + score2 + "점, ");
+        System.out.println("3번: " + score3 + "점"); // 마지막은 println
+
+        // 두 번째 줄
+        System.out.println("총점: " + total + "점, 평균: " + average + "점");
+    }
+}
+```
+
+-----
+
+### 10\. 기차 좌석 정보 출력
+
+```java
+public class TrainSeat {
+    public static void main(String[] args) {
+        // 1. 변수 선언 (seatRow는 String으로 대체)
+        String trainNum = "KTX-103";
+        String seatRow = "A"; // char seatRow = 'A'; 도 가능
+        int seatNum = 5;
+
+        // 2. System.out.printf()를 사용하여 \n (줄바꿈) 포함 출력
+        System.out.printf("열차 번호: %s\n좌석: %s-%d\n", trainNum, seatRow, seatNum);
+    }
+}
+```
+
+-----
+
+### 11\. 아이템 교환 (변수 값 스와핑)
+
+```java
+public class ItemSwap {
+    public static void main(String[] args) {
+        // 1. int 변수 player1Item (101), player2Item (202)
+        int player1Item = 101;
+        int player2Item = 202;
+
+        // 교환 전 출력
+        System.out.printf("교환 전: Player1 (%d), Player2 (%d)\n", player1Item, player2Item);
+
+        // 2. int 변수 temp (임시 저장소)를 사용해 두 변수의 값을 서로 교환
+        int temp = player1Item;       // 1. temp에 player1의 값(101)을 백업
+        player1Item = player2Item; // 2. player1에 player2의 값(202)을 덮어씀
+        player2Item = temp;        // 3. player2에 백업해둔 temp의 값(101)을 덮어씀
+
+        // 3. 교환 후의 아이템 ID 출력
+        System.out.printf("교환 후: Player1 (%d), Player2 (%d)\n", player1Item, player2Item);
+    }
+}
+```
+
+-----
+
+### 12\. 아스키 아트 (ASII Art) 흉내 내기
+
+```java
+public class AsciiRabbit {
+    public static void main(String[] args) {
+        // 1. System.out.println()과 System.out.print()만을 조합
+        // (println만 사용해도 가능합니다)
+        System.out.println(" /\\_/\\ ");
+        System.out.println("( o.o )");
+        System.out.println(" > ^ < ");
+    }
+}
+```
+
+-----
+
+### 13\. 재고 금액 계산
+
+```java
+public class ConvenienceStore {
+    public static void main(String[] args) {
+        // 1. int 변수 colaPrice (1800), colaStock (20)
+        int colaPrice = 1800;
+        int colaStock = 20;
+
+        // 2. int 변수 snackPrice (1500), snackStock (30)
+        int snackPrice = 1500;
+        int snackStock = 30;
+
+        // 각 항목의 재고 총액 계산
+        int colaTotalAmount = colaPrice * colaStock;
+        int snackTotalAmount = snackPrice * snackStock;
+
+        // 3. int 변수 totalAmount (총 재고 금액) 계산
+        int totalAmount = colaTotalAmount + snackTotalAmount;
+
+        // 4. printf를 사용하여 출력
+        System.out.printf("콜라 재고 총액: %d원\n", colaTotalAmount);
+        System.out.printf("과자 재고 총액: %d원\n", snackTotalAmount);
+        System.out.printf("총 재고 금액: %d원\n", totalAmount);
+    }
+}
+```
+
+-----
+
+### 14\. 몬스터 사냥 로그
+
+```java
+public class MonsterHunt {
+    public static void main(String[] args) {
+        // 1. int 변수 currentExp (550), currentGold (1200)
+        int currentExp = 550;
+        int currentGold = 1200;
+
+        // 2. gainExp (50), gainGold (10)
+        int gainExp = 50;
+        int gainGold = 10;
+
+        // 3. currentExp와 currentGold 값을 덧셈 연산으로 갱신
+        currentExp = currentExp + gainExp; // 또는 currentExp += gainExp;
+        currentGold = currentGold + gainGold; // 또는 currentGold += gainGold;
+
+        // 4. printf를 사용하여 사냥 로그 출력
+        System.out.printf("슬라임을 처치했습니다! (+%d EXP, +%d Gold)\n", gainExp, gainGold);
+        
+        // 5. printf를 사용하여 현재 상태 출력
+        System.out.printf("현재 상태: %d EXP / %d Gold\n", currentExp, currentGold);
+    }
+}
+```
+
+-----
+
+### 15\. 달리기 기록 비교 (실수 포맷팅)
+
+```java
+public class RunningRecord {
+    public static void main(String[] args) {
+        // 1. double 변수 playerA_Time (10.12345), playerB_Time (10.23456)
+        double playerA_Time = 10.12345;
+        double playerB_Time = 10.23456;
+
+        // 2. double 변수 timeDiff (시간 차이) 계산
+        double timeDiff = playerB_Time - playerA_Time;
+        // (항상 양수로: double timeDiff = Math.abs(playerA_Time - playerB_Time);)
+
+        // 3. printf를 사용하여 소수점 둘째 자리(%.2f)까지 출력
+        System.out.printf("선수 A: %.2f초\n", playerA_Time);
+        System.out.printf("선수 B: %.2f초\n", playerB_Time);
+        System.out.printf("시간 차이: %.2f초\n", timeDiff);
+    }
+}
+```
+
+<br>
+
+## 🎨 HTML/CSS 풀이
+
+15개의 HTML/CSS 실습 문제 풀이입니다.
+아래 코드를 `index.html`과 같은 파일로 저장하고 브라우저에서 열면 모든 실습 결과를 한 번에 확인할 수 있습니다.
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML/CSS Position 연습 문제 풀이</title>
+    <style>
+        /* 공통 스타일 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+                Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h2 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 50px;
+        }
+        hr {
+            border: 0;
+            border-top: 2px dashed #ccc;
+            margin: 50px 0;
+        }
+        /* 각 문제별 스타일을 구분하기 위해 부모 ID/Class 사용 */
+
+        /* --- 1. 유령의 속삭임 --- */
+        .p1-box {
+            width: 100px;
+            height: 100px;
+            border: 2px solid #333;
+            display: inline-block;
+            background-color: #f0f0f0;
+            text-align: center;
+            line-height: 100px;
+        }
+        .p1-box-2:hover {
+            position: relative; /* 기준: 원래 있던 자리 */
+            top: 10px;
+            left: 10px;
+            background-color: skyblue;
+        }
+
+        /* --- 2. 비밀의 열쇠 --- */
+        #p2-container {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc;
+            position: relative; /* 자식(btn)의 기준점 */
+        }
+        #p2-secret-btn {
+            width: 50px;
+            height: 50px;
+            background-color: red;
+            color: white;
+            text-align: center;
+            line-height: 50px;
+            
+            position: absolute; /* 부모(container) 기준 배치 */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); /* 정중앙 배치 공식 */
+            
+            visibility: hidden; /* 평소에 숨김 */
+        }
+        #p2-container:hover #p2-secret-btn {
+            visibility: visible; /* container에 마우스 올리면 보임 */
+        }
+
+        /* --- 3. 맨 위로 가기 버튼 --- */
+        #p3-body-height {
+            height: 2000px; /* 스크롤 생성용 */
+            background-image: linear-gradient(to bottom, white, #e0f7fa);
+        }
+        #p3-go-top {
+            width: 60px;
+            height: 60px;
+            background-color: crimson;
+            color: white;
+            text-align: center;
+            line-height: 60px;
+            border-radius: 50%;
+            text-decoration: none;
+            
+            position: fixed; /* 기준: 브라우저 화면 */
+            bottom: 20px;
+            right: 20px;
+        }
+
+        /* --- 4. 포토 카드 겹치기 --- */
+        #p4-card-stack {
+            width: 200px;
+            height: 250px;
+            border: 1px solid #ccc;
+            position: relative; /* 카드들의 기준점 */
+        }
+        .p4-card {
+            width: 150px;
+            height: 200px;
+            position: absolute; /* 겹치기 허용 */
+            border: 3px solid white;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            font-size: 1.5rem;
+            color: white;
+            text-align: center;
+            line-height: 200px;
+        }
+        #p4-card-1 {
+            background-color: #e53935; /* 빨강 */
+            top: 10px; left: 10px;
+            z-index: 1; /* 가장 아래 */
+        }
+        #p4-card-2 {
+            background-color: #1e88e5; /* 파랑 */
+            top: 30px; left: 30px;
+            z-index: 2; /* 중간 */
+        }
+        #p4-card-3 {
+            background-color: #43a047; /* 초록 */
+            top: 50px; left: 50px;
+            z-index: 3; /* 가장 위 */
+        }
+
+        /* --- 5. "NEW" 배지 달기 --- */
+        .p5-product-item {
+            width: 200px;
+            height: 200px;
+            border: 2px solid #ddd;
+            background-color: #f9f9f9;
+            display: inline-block;
+            position: relative; /* 배지의 기준점 */
+        }
+        .p5-badge {
+            background-color: red;
+            color: white;
+            padding: 5px 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            
+            position: absolute; /* 부모(item) 기준 배치 */
+            top: 0;
+            left: 0;
+            /* 모서리에 걸치게 하려면 음수값 사용 */
+            /* top: -10px; left: -10px; */
+        }
+
+        /* --- 6. "투명 망토" 효과 --- */
+        .p6-soldier {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            border: 2px dashed;
+        }
+        #p6-soldier1 { border-color: red; }
+        #p6-soldier2 {
+            border-color: blue;
+            visibility: hidden; /* 자리는 차지하되, 보이지만 않음 */
+        }
+        #p6-soldier3 { border-color: green; }
+
+        /* --- 7. "절대 유령" 만들기 --- */
+        .p7-ghost {
+            width: 100px;
+            height: 100px;
+            display: inline-block;
+            border: 2px solid;
+        }
+        #p7-ghost1 { background-color: #ffcdd2; }
+        #p7-ghost2 {
+            background-color: #bbdefb;
+            /* position: absolute; */ /* 1안: 문서 흐름에서 제외됨 */
+            display: none;      /* 2안: 렌더링에서 아예 제외됨 (더 확실) */
+        }
+        #p7-ghost3 { background-color: #c8e6c9; }
+        
+        /* --- 8. 팝업 창과 오버레이 --- */
+        /* (테스트를 위해 주석 처리. 주석을 풀면 화면을 덮습니다) */
+        /*
+        #p8-overlay {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5); 
+            z-index: 10; 
+        }
+        #p8-popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%); 
+            width: 300px;
+            padding: 20px;
+            background: white;
+            border-radius: 5px;
+            z-index: 11; 
+        }
+        */
+
+        /* --- 9. 마법사 카드 배틀 --- */
+        #p9-battlefield {
+            position: relative;
+            width: 200px;
+            height: 150px;
+        }
+        .p9-card {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border: 2px solid #333;
+            text-align: center;
+            line-height: 100px;
+            color: white;
+            font-weight: bold;
+        }
+        #p9-ice {
+            background-color: deepskyblue;
+            z-index: 1; /* 가장 아래 */
+        }
+        #p9-fire {
+            background-color: crimson;
+            top: 30px; left: 30px; /* 구분을 위해 살짝 이동 */
+            z-index: 2; /* 중간 */
+        }
+        #p9-bolt {
+            background-color: gold;
+            color: black;
+            top: 40px; left: 40px; /* 구분을 위해 살짝 이동 */
+            z-index: 3; /* 가장 위 */
+        }
+
+        /* --- 10. "움찔"하는 경고 버튼 --- */
+        .p10-btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #ffc107;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.1s ease-out;
+        }
+        .p10-btn:hover {
+            position: relative; /* 원래 자리 기준 */
+            bottom: 5px; /* 원래 자리보다 5px 위로 (top: -5px와 동일) */
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /* --- 11. 숨겨진 서랍장 --- */
+        #p11-drawer {
+            position: fixed; /* 화면 기준 */
+            top: 30%;
+            width: 200px;
+            height: 300px;
+            background-color: #333;
+            color: white;
+            padding: 20px;
+            box-sizing: border-box; /* 패딩이 너비에 포함되도록 */
+            
+            left: -180px; /* 20px만 보이게 숨김 (200px - 20px) */
+            transition: left 0.3s ease-in-out; /* 부드러운 효과 */
+        }
+        #p11-drawer:hover {
+            left: 0; /* 마우스를 올리면 0 위치로 이동 */
+        }
+
+        /* --- 12. "지붕 뚫고 하이킥" --- */
+        #p12-floor1 {
+            width: 200px;
+            height: 200px;
+            background-color: #ccc; /* 회색 */
+            position: relative;
+            z-index: 1; /* 1층 */
+        }
+        #p12-floor2 {
+            width: 200px;
+            height: 200px;
+            background-color: #1e88e5; /* 파랑 */
+            position: relative;
+            z-index: 2; /* 2층 */
+            top: -150px; /* 1층과 겹치게 */
+            left: 50px;
+            opacity: 0.8;
+        }
+        #p12-child {
+            width: 50px;
+            height: 50px;
+            background-color: red; /* 빨강 */
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 9999; /* z-index가 아무리 높아도 */
+        }
+        /* 부모(#p12-floor1)의 z-index(1)가 #p12-floor2(2)보다 낮으므로, */
+        /* 자식(#p12-child)은 #p12-floor2(파랑) 뒤에 가려집니다. */
+
+
+        /* --- 13. 긴급 공지사항 배너 --- */
+        #p13-notice {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%; /* 또는 right: 0; */
+            background-color: red;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            z-index: 100;
+        }
+
+        /* --- 14. "보물찾기" 맵 마커 --- */
+        #p14-map-container {
+            width: 500px;
+            height: 400px;
+            border: 2px solid #8B4513; /* 갈색 */
+            background-color: #F5DEB3; /* 밀색 */
+            position: relative; /* 마커의 기준점 */
+        }
+        #p14-marker {
+            position: absolute;
+            top: 80%; /* 부모 높이의 80% 지점 */
+            left: 30%; /* 부모 너비의 30% 지점 */
+            
+            color: red;
+            font-size: 2rem;
+            font-weight: bold;
+            transform: translate(-50%, -50%); /* X표시의 정중앙을 위치에 맞춤 */
+        }
+
+        /* --- 15. "유령이 된 카드" --- */
+        #p15-stage {
+            position: relative;
+            height: 150px;
+        }
+        .p15-card {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            border: 2px solid #333;
+            text-align: center;
+            line-height: 100px;
+        }
+        #p15-card1 {
+            background-color: red;
+            z-index: 2; /* 위에 있음 */
+        }
+        #p15-card2 {
+            background-color: blue;
+            color: white;
+            top: 40px;
+            left: 40px;
+            z-index: 1; /* 아래에 있음 */
+        }
+        #p15-card1:hover {
+            visibility: hidden; /* 자리는 유지한 채 투명해짐 */
+            /* -> 그 결과, 뒤에 있던 card2가 보이게 됨 */
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>HTML/CSS Position 연습 문제 풀이</h1>
+
+    <h2>1. "유령의 속삭임" 효과</h2>
+    <div class="p1-box">1</div>
+    <div class="p1-box p1-box-2">2 (Hover)</div>
+    <div class="p1-box">3</div>
+
+    <hr>
+
+    <h2>2. "비밀의 열쇠" 버튼</h2>
+    <div id="p2-container">
+        (여기에 마우스 올리기)
+        <div id="p2-secret-btn">BTN</div>
+    </div>
+    
+    <hr>
+
+    <h2>4. 포토 카드 겹치기</h2>
+    <div id="p4-card-stack">
+        <div class="p4-card" id="p4-card-1">1</div>
+        <div class="p4-card" id="p4-card-2">2</div>
+        <div class="p4-card" id="p4-card-3">3</div>
+    </div>
+    
+    <hr>
+
+    <h2>5. 상품 이미지에 "NEW" 배지 달기</h2>
+    <div class="p5-product-item">
+        <div class="p5-badge">NEW</div>
+        (상품 이미지 영역)
+    </div>
+
+    <hr>
+
+    <h2>6. "투명 망토" 효과 (visibility: hidden)</h2>
+    <div class="p6-soldier" id="p6-soldier1">병사1</div>
+    <div class="p6-soldier" id="p6-soldier2">병사2(숨음)</div>
+    <div class="p6-soldier" id="p6-soldier3">병사3</div>
+    <p>(병사2가 보이지 않지만, 자리는 차지하고 있습니다)</p>
+
+    <hr>
+
+    <h2>7. "절대 유령" 만들기 (display: none)</h2>
+    <div class="p7-ghost" id="p7-ghost1">유령1</div>
+    <div class="p7-ghost" id="p7-ghost2">유령2(사라짐)</div>
+    <div class="p7-ghost" id="p7-ghost3">유령3</div>
+    <p>(유령2가 아예 사라져서, 1과 3이 붙어있습니다)</p>
+
+    <hr>
+
+    <h2>8. 팝업 창과 반투명 오버레이</h2>
+    <p>(솔루션 코드의 CSS 주석을 해제하면 팝업이 화면을 덮습니다)</p>
+    <hr>
+
+    <h2>9. 마법사 카드 배틀</h2>
+    <div id="p9-battlefield">
+        <div class="p9-card" id="p9-ice">얼음(Z:1)</div>
+        <div class="p9-card" id="p9-fire">불꽃(Z:2)</div>
+        <div class="p9-card" id="p9-bolt">번개(Z:3)</div>
+    </div>
+    
+    <hr>
+
+    <h2>10. "움찔"하는 경고 버튼</h2>
+    <div class="p10-btn">(여기에 마우스 올리기)</div>
+    
+    <hr>
+
+    <h2>11. 숨겨진 서랍장 (Slide-in Menu)</h2>
+    <div id="p11-drawer">
+        <p>메뉴 1</p>
+        <p>메뉴 2</p>
+        (왼쪽 경계선에 마우스 올리기)
+    </div>
+    <p>(11번 문제는 fixed이므로 화면 왼쪽에 고정됩니다)</p>
+
+    <hr>
+
+    <h2>12. "지붕 뚫고 하이킥" (z-index와 부모)</h2>
+    <div id="p12-floor1">
+        Floor 1 (Z: 1)
+        <div id="p12-child">Child (Z: 9999)</div>
+    </div>
+    <div id="p12-floor2">Floor 2 (Z: 2)</div>
+    <p>(파란색(2)이 빨간색(9999)을 덮습니다)</p>
+
+    <hr>
+
+    <h2>13. 긴급 공지사항 배너</h2>
+    <div id="p13-notice">
+        [긴급 공지] 03:00 ~ 04:00 서버 점검 중입니다.
+    </div>
+    <p>(13번 문제는 fixed이므로 화면 상단에 고정됩니다)</p>
+
+    <hr>
+
+    <h2>14. "보물찾기" 맵 마커</h2>
+    <div id="p14-map-container">
+        (지도 영역)
+        <div id="p14-marker">X</div>
+    </div>
+
+    <hr>
+
+    <h2>15. "유령이 된 카드"</h2>
+    <div id="p15-stage">
+        <div class="p15-card" id="p15-card1">Card 1 (Z:2) (Hover)</div>
+        <div class="p15-card" id="p15-card2">Card 2 (Z:1)</div>
+    </div>
+    <p>(빨간 카드에 마우스를 올리면 사라지고 파란 카드가 보입니다)</p>
+
+
+    <hr>
+
+    <h2>3. 스크롤을 따라다니는 "맨 위로 가기" 버튼</h2>
+    <p>(3번 문제는 fixed이므로 화면 우측 하단에 고정됩니다)</p>
+    <a href="#" id="p3-go-top">Top</a>
+    <div id="p3-body-height">
+        <p>스크롤을 내려서 3번, 11번, 13번 문제가 고정되는지 확인하세요.</p>
+        <p style="margin-top: 1800px;">페이지 끝</p>
+    </div>
+
+</body>
+</html>
+```

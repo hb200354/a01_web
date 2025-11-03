@@ -1,0 +1,216 @@
+Goodmorning QUIZ! 
+TGIF(Thanks God! It's Friday) 입니다.
+한주간 마지막 열심을 다해 좋은 마무리하시길.. ^^
+
+**[A04_ChangeType.java 관련]**
+
+**1. `A04_ChangeType.java`의 '컵 크기 비유'에 따르면, `int`에서 `double`로의 형변환을 가장 올바르게 비유한 것은?**
+    ① 큰 컵에서 작은 컵으로 물을 옮기는 것
+    #② 작은 컵에서 큰 컵으로 물을 옮기는 것
+    ③ 둥근 컵에서 네모난 컵으로 물을 옮기는 것
+    ④ 물을 얼음으로 바꾸는 것
+
+**2. `int` 타입의 변수를 `double` 타입의 변수에 할당할 때 발생하는 형변환을 무엇이라고 부르는가?**
+    ① 다운캐스팅 (Downcasting)
+    ② 강제 형변환 (Casting)
+    #③ 업캐스팅 (Upcasting / Promotion) 
+    	int no = 10;  double no2 = no;     10.0
+    ④ 데이터 손실 (Data Loss)
+
+**3. `int speedKmh = 80;`과 `double drivingHours = 1.5;`가 있을 때, `speedKmh * drivingHours`
+ 연산의 결과는 어떤 데이터 타입이 되는가?**
+    ① int
+    #② double
+    ③ long
+    ④ float
+
+**4. `A04_ChangeType.java`에 명시된 기본 데이터 타입의 크기 순서로 올바른 것은?**
+    ① byte > short > int > long
+    ② int > long > float > double
+    #③ byte < short < int < double
+    ④ float < int < long < double
+
+**5. `int playerLevel = 50;`을 `double totalScore = playerLevel;`로 자동 형변환했을 때,
+ `totalScore`에 저장되는 값은?**
+    ① 50
+    #② 50.0
+    ③ 0.50
+    ④ 컴파일 에러가 발생한다.
+
+**[A05_ChangeType.java 관련]**
+
+**6. `A05_ChangeType.java`의 설명에 따라 `double`에서 `int`로의 형변환(다운캐스팅) 시 발생하는 가장 큰 특징은?**
+    ① 데이터의 정밀도가 항상 증가한다.
+    #② 데이터의 손실(data loss)이 발생할 수 있다.
+    ③ 자바가 자동으로 안전하게 처리해 준다.
+    ④ 별도의 코드 없이 할당이 가능하다.
+
+**7. `double pi = 3.14159;` 코드가 있을 때, `int pi_int = (int)pi;`를 실행하면 `pi_int`에 저장되는 값은?**
+    ① 3.14
+    ② 3.0
+    ③ 4
+    #④ 3
+
+**8. `Type mismatch : cannot convert from double to int` 에러가 발생했을 때, 이를 해결하기 위한 강제 형변환 구문으로 올바른 것은?**
+    (변수명: `doubleVar`, 변환할 타입: `int`)
+    double doubleVar = 4.47;
+    int intVar = (int)doubleVar;
+    #① (int)doubleVar
+    ② int(doubleVar)
+    ③ doubleVar.toInt()
+    ④ Integer.parseInt(doubleVar)
+
+**9. `int pizzaPrice = 25000;`과 `int eatPerson = 3;`이 있을 때, 
+     `int result = pizzaPrice / eatPerson;` 코드의 `result` 값은?**
+    (힌트: 자바에서는 정수형/정수형 ==> 정수형)
+    ① 8333.333	  double result = (double)pizzaPrice / (double)eatPerson;
+    #② 8333
+    ③ 8334
+    ④ 8333.0
+
+**10. 9번 문제에서 1인당 금액을 소수점까지 정확하게 계산(8333.333...)하기 위한 코드로 올바른 것은?**
+    ① double amt = pizzaPrice / eatPerson;
+    #② double amt = (double)pizzaPrice / eatPerson;
+    ③ double amt = (double)(pizzaPrice / eatPerson);
+    		       (double(8333) ==> 8333.0 
+    ④ double amt = (int)pizzaPrice / (int)eatPerson;
+
+**[A06_StringChangeType.java 관련]**
+
+**11. `A06_StringChangeType.java`의 설명 중 `String` 타입의 특징으로 올바르지 않은 것은?**
+    #① `int`, `double`과 같은 기본 자료형(Primitive)이다. String : 대문자로 시작하면 객체(내장)
+    ② 여러 글자를 꿰어 놓은 진주 목걸이에 비유된다.
+    ③ 큰따옴표(" ")를 사용해야 하며, 작은따옴표(' ')는 사용할 수 없다.
+    ④ 여러 가지 특별한 능력(기능)을 가진 객체이다.
+
+**12. `String` 타입의 변수 `str1`과 `str2`의 "내용"이 실제로 같은지 비교하기 위해 권장되는 방법은?**
+    ① str1 == str2       == : stack영역의 데이터를 비교    기본데이터유형(데이터비교), 객체(String-heap영역주소)
+    #② str1.equals(str2)
+    ③ str1 === str2
+    ④ str1 != str2
+
+**13. `String label = "이름 : ";`과 `String name = "홍길동";`이 있을 때, 
+   `String introduction = label + name;` 코드의 `introduction` 값은?**
+    #① 이름 : 홍길동
+    ② 이름 :홍길동
+    ③ 이름 :+홍길동
+    ④ 컴파일 에러가 발생한다.
+
+**14. 문자열 "25"를 숫자(int) 25로 변환하는 코드로 올바른 것은?**
+    ① int num = (int)"25";
+    ② int num = String.toInt("25");
+    #③ int num = Integer.parseInt("25");
+    	double num2 = Double.parseDouble("3.14");
+    	
+    
+    
+    ④ int num = "25".toInteger();
+
+**15. 숫자(int) 123을 문자열(String) "123"으로 변환하는 코드로 올바르지 않은 것은?**
+    ① String str = "" + 123; 
+    ② String str = String.valueOf(123);
+    #③ String str = (String)123;   (x)
+    ④ (두 가지 방법 모두 `A06_StringChangeType.java`에 언급됨)
+
+**16. `String favor1 = "사과 ";`와 `String favor2 = "바나나";`가 있을 때, 
+		`System.out.println(favor1 + favor2);`의 결과는?**
+    #① 사과 바나나
+    ② 사과바나나
+    ③ 사과 , 바나나
+    ④ "사과 " + "바나나"
+
+**17. `String savedPass = "myJava123";`과 `String inputPass = new String("myJava123");`이 
+있을 때, `(savedPass == inputPass)`의 결과는?**
+    ① true
+    #② false  주소값을 비교하기에 false, 글자내용을 비교할 때는 반드시 기능메서드 "문자열1".equals("문자열2")
+    ③ 컴파일 에러
+    ④ 실행 시점에 따라 다름
+
+**[에러 힌트 관련]**
+
+**18. `duplicate local variables totalScore` 라는 에러 메시지의 의미로 가장 적절한 것은?**
+    ① totalScore 변수를 찾을 수 없다.
+    ② totalScore 변수의 타입이 잘못되었다.
+    #③ totalScore라는 이름의 변수가 이미 선언되어 중복되었다.
+    ④ totalScore 변수에 값이 할당되지 않았다.
+
+**19. `Syntax error, insert "}" to complete ClassBody` 에러가 발생한 주된 원인은?**
+	class Person{
+		void main(){
+		==> methodBody
+	}
+	class Person{
+		void main(){
+		
+		}
+	==> classBody
+
+    ① 클래스 이름이 잘못되었다.
+    #② 클래스의 가장 마지막을 닫는 `}` 기호가 빠졌다.
+    ③ 메서드(함수)의 마지막을 닫는 `}` 기호가 빠졌다.
+    ④ 세미콜론(;)이 빠졌다.
+
+**20. `Type mismatch : cannot convert from double to int` 에러 메시지를 `A05_ChangeType.java`의 예시(`pi_int = pi;`)에서 해결하는 방법은?**
+	double pi = 3.14;
+	int pi_int = pi;
+	==> cannot convert from double to int
+	해결책1
+	double pi = 3.14;
+	int pi_int = (int)pi;	
+	해결책2
+	double pi = 3.14;
+	double pi_int = pi;	
+    ① `pi`를 `String`으로 바꾼다.
+    ② `pi_int`의 타입을 `double`로 바꾼다.
+    ③ `pi` 앞에 `(int)`를 붙여 강제 형변환한다.
+    #④ 2번과 3번 모두 해결 방법이 될 수 있다.
+    
+
+---
+
+### 🖋️ 주관식 기술형 문제 (총 5문)
+
+**문제 1. (형변환 / 데이터 손실)**
+
+`A05_ChangeType.java` 파일에는 `double pi = 3.14159;` 코드를 `int pi_int = (int)pi;`로 
+ 강제 형변환하는 예시가 있습니다. 이 코드가 실행된 후 `pi_int` 변수에 **저장되는 값**과, 
+ 이 과정에서 **사라진(손실된) 값**을 정확히 쓰시오.
+
+* `pi_int`에 저장되는 값: 3
+* 손실된 값: 0.14159
+
+**문제 2. (형변환 / 정수 나눗셈)**
+
+`A05_ChangeType.java` 파일의 `int pizzaPrice = 25000;`와 `int eatPerson = 3;`을 사용하여 1인당 금액을 계산할 때, 정수 나눗셈의 결과(8333)가 아닌 소수점을 포함한 정확한 실수 값(8333.333...)을 얻고자 합니다.
+`pizzaPrice` 또는 `eatPerson` 변수 중 하나에 **강제 형변환**을 적용하여 올바른 
+`double` 결과값을 얻는 연산식을 쓰시오.
+
+* 연산식: double result = pizzaPrice/(double)eatPerson;
+
+**문제 3. (문자열 변환)**
+
+`A06_StringChangeType.java`에 따르면, "3.14"라는 **문자열(String)** 데이터를 실제 계산이 
+가능한 **실수(double)** 데이터로 변환해야 합니다. 이때 사용해야 하는 `Double` 클래스의 **메서드(함수)** 
+이름과 사용 예시를 쓰시오.
+
+* 메서드 이름: Double.parseDouble("3.14")
+* 사용 예시: double dblNum =  Double.parseDouble("3.14");
+
+**문제 4. (문자열 비교)**
+
+`A06_StringChangeType.java`에서는 `String` 변수 두 개를 `==` 연산자로 비교하면 `false`가 나올 수 있어 
+주의하라고 설명합니다.
+`String savedPass = "a";`와 `String inputPass = "a";`가 있을 때, 두 변수의 **메모리 주소**가 
+아닌 **순수한 내용**("a"와 "a")이 같은지 비교하기 위해 사용해야 하는 **메서드(함수)**를 사용한 비교 구문을 쓰시오.
+
+* 비교 구문: savedPass.equals(inputPass) ==> 문자열 자체만 비교시 사용..
+
+**문제 5. (에러 해결)**
+
+`A04_ChangeType.java` 파일에서, `totalScore`라는 변수명을 두 번 사용하여 
+`duplicate local variables totalScore` (지역 변수 중복) 에러가 발생했습니다.
+ 이 에러를 해결하기 위해 해당 파일에서 사용한 **해결 방법**을 구체적으로 쓰시오.
+
+* 해결 방법: 변수 중복이 문제이므로 하단에 코드에는 totalScore1로 변경하여 선언하면 된다.
+
+

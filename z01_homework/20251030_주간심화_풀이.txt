@@ -1,0 +1,1426 @@
+제공해주신 25개의 CSS 복합 실습 문제에 대한 전체 풀이입니다.
+
+각 문제의 요구사항(Rubric)을 충족하는 HTML 및 CSS 코드를 제공합니다.
+
+-----
+
+### 문제 1: 마법 카드 덱(Deck) 만들기
+
+3장의 카드를 `position: absolute`로 배치하고, `left`, `top` 값에 차이를 주어 겹치게 합니다. `z-index`로 쌓이는 순서를 제어합니다.
+
+```html
+<div class="deck-container">
+  <div class="card card1">Card 1 (Back)</div>
+  <div class="card card2">Card 2 (Middle)</div>
+  <div class="card card3">Card 3 (Front)</div>
+</div>
+```
+
+```css
+.deck-container {
+  position: relative; /* 자식 요소(card)의 기준점 */
+  height: 250px;
+  width: 200px;
+}
+.card {
+  width: 120px;
+  height: 180px;
+  border: 1px solid #333;
+  border-radius: 8px;
+  background-color: #f0f0f0;
+  padding: 10px;
+  position: absolute; /* (a01) */
+}
+.card1 {
+  top: 0;
+  left: 0;
+  z-index: 1; /* (a03) */
+}
+.card2 {
+  top: 20px; /* (a01) */
+  left: 20px; /* (a01) */
+  z-index: 2; /* (a03) */
+}
+.card3 {
+  top: 40px; /* (a01) */
+  left: 40px; /* (a01) */
+  z-index: 3; /* (a03) */
+}
+```
+
+-----
+
+### 문제 2: 우주선 비상 경고 배너
+
+`position: fixed`를 사용하여 뷰포트 상단에 고정합니다. `z-index`를 높게 설정하여 다른 요소 위에 표시되도록 합니다.
+
+```html
+<div class="emergency-banner">
+  긴급 상황: 산소 누출!
+</div>
+<div class="page-content" style="height: 2000px; padding-top: 50px;">
+  (페이지 본문... 스크롤을 내려보세요)
+</div>
+```
+
+```css
+.emergency-banner {
+  position: fixed; /* (a02) */
+  top: 0; /* (Rubric) */
+  left: 0; /* (Rubric) */
+  width: 100%; /* (Rubric) */
+  background-color: red; /* (a19) */
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  z-index: 1000; /* (a03) */
+}
+```
+
+-----
+
+### 문제 3: 고대 두루마리 뷰어
+
+고정 크기의 부모 `div`에 `overflow-x: auto`를 적용합니다. 내부에 부모보다 더 넓은 자식 `div`를 배치하여 가로 스크롤을 생성합니다.
+
+```html
+<div class="scroll-box">
+  <div class="scroll-content">
+    </div>
+</div>
+```
+
+```css
+.scroll-box {
+  width: 300px; /* (Rubric) */
+  height: 200px; /* (Rubric) */
+  border: 5px solid brown; /* 나무 상자 느낌 */
+  overflow-x: auto; /* (a04, a05) */
+  overflow-y: hidden; /* 세로 스크롤은 숨김 */
+}
+.scroll-content {
+  width: 800px; /* (Rubric) */
+  height: 150px; /* (Rubric) */
+  /* (a19) 실제로는 background-image: url('scroll.jpg'); */
+  background: linear-gradient(to right, #f5deb3, #d2b48c, #8b4513); 
+  background-repeat: no-repeat; /* (a19) */
+  background-position: top left; /* (a20) */
+}
+```
+
+-----
+
+### 문제 4: 미래형 내비게이션 메뉴
+
+`ul`의 `list-style`을 제거하고, `li` 항목들에 `display: inline-block`을 적용하여 가로로 배치합니다.
+
+```html
+<ul class="nav-menu">
+  <li>Home</li>
+  <li>Missions</li>
+  <li>Crew</li>
+  <li>Gallery</li>
+</ul>
+```
+
+```css
+.nav-menu {
+  list-style: none; /* (a06) */
+  padding: 0;
+  margin: 0;
+  background-color: #1a1a2e; /* 미래형 테마 */
+}
+.nav-menu li {
+  display: inline-block; /* (a18) */
+  padding: 15px 20px; /* (Rubric) 간격 */
+  color: #00e5ff;
+}
+.nav-menu li:hover {
+  background-color: #00e5ff;
+  color: #1a1a2e;
+}
+```
+
+-----
+
+### 문제 5: 비밀 요원의 숨겨진 메시지
+
+메시지를 `visibility: hidden`으로 숨기고, 형제 선택자(\~)와 `:hover`를 조합하여 `visibility: visible`로 변경합니다.
+
+```html
+<h2 class="report-title">임무 보고서 (여기에 마우스를 올리세요)</h2>
+<div class="secret-message">일급 기밀: 임무 완료.</div>
+```
+
+```css
+/* (a01) 메시지 위치를 잡기 위해 body나 컨테이너에 relative가 필요할 수 있습니다 */
+body { position: relative; } 
+
+.report-title {
+  cursor: pointer;
+}
+.secret-message {
+  visibility: hidden; /* (a03) */
+  border: 1px dashed red;
+  padding: 10px;
+  background: #ffffdd;
+  position: absolute; /* (a01) */
+  top: 50px; /* 제목 근처에 배치 */
+  left: 20px;
+}
+/* h2에 마우스를 올리면(hover) 그 "뒤에 오는" .secret-message를 선택 */
+.report-title:hover ~ .secret-message {
+  visibility: visible; /* (a03) */
+}
+```
+
+-----
+
+### 문제 6: 상품 진열대 정렬하기
+
+`display: inline-block`으로 가로 배치된 요소들에 `vertical-align: bottom`을 적용하여 바닥 기준으로 정렬합니다.
+
+```html
+<div class="product-shelf">
+  <div class="product-card" style="height: 150px;">
+    <h3>상품 A</h3><p>텍스트가 깁니다...</p>
+  </div>
+  <div class="product-card" style="height: 100px;">
+    <h3>상품 B</h3>
+  </div>
+  <div class="product-card" style="height: 120px;">
+    <h3>상품 C</h3><p>중간 길이</p>
+  </div>
+</div>
+```
+
+```css
+.product-shelf {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: #f8f8f8;
+}
+.product-card {
+  display: inline-block; /* (a18) */
+  width: 150px;
+  border: 1px solid #aaa; /* (Rubric) */
+  background: white;
+  vertical-align: bottom; /* (a18) */
+  margin: 5px;
+}
+```
+
+-----
+
+### 문제 7: 인터랙티브한 꽃밭
+
+꽃 아이콘에 `:hover` 가상 클래스를 적용하고, `position: relative`와 `top`/`left` (또는 `bottom`/`right`)를 사용해 원래 위치(static)를 기준으로 이동시킵니다.
+
+```html
+<div class="flowerbed">
+  <span class="flower">🌸</span>
+  <span class="flower">🌷</span>
+  <span class="flower">🌻</span>
+  <span class="flower">🌹</span>
+  <span class="flower">🌼</span>
+</div>
+```
+
+```css
+.flower {
+  font-size: 3rem;
+  margin: 10px;
+  display: inline-block; /* position: relative를 적용하기 위해 */
+  transition: all 0.2s ease; /* 부드러운 효과 */
+}
+.flower:hover {
+  position: relative; /* (a01) */
+  top: -10px;    /* (a01) 위로 10px (bottom: 10px와 동일) */
+  left: -10px;   /* (a01) 왼쪽으로 10px (right: 10px와 동일) */
+  transform: scale(1.1);
+}
+```
+
+-----
+
+### 문제 8: 팝업 창과 어두운 오버레이
+
+`:active` (실제로는 JS 클릭 이벤트) 상태일 때 `position: fixed`로 오버레이와 팝업을 띄웁니다. 팝업의 `z-index`를 오버레이보다 높게 설정합니다.
+
+```html
+<div class="trigger-button">
+  (버튼 클릭 홀드)
+  <div class="overlay"></div>
+  <div class="popup-window">
+    <h3>팝업 창</h3>
+    <p>이것은 팝업 메시지입니다.</p>
+  </div>
+</div>
+```
+
+```css
+.overlay, .popup-window {
+  display: none; /* 평소엔 숨김 */
+}
+.overlay {
+  position: fixed; /* (a02) */
+  top: 0;
+  left: 0;
+  width: 100%; /* (Rubric) */
+  height: 100%; /* (Rubric) */
+  background-color: rgba(0, 0, 0, 0.5); /* (Rubric) */
+  z-index: 100; /* (a03) */
+}
+.popup-window {
+  position: fixed; /* (a02) */
+  top: 50%; /* (Rubric) 중앙 배치 */
+  left: 50%; /* (Rubric) 중앙 배치 */
+  transform: translate(-50%, -50%); /* 정확한 중앙 정렬 */
+  background: white;
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 101; /* (a03) 오버레이보다 높게 */
+}
+/* :active 상태일 때 자식 요소 보이기 (시나리오 대체) */
+.trigger-button:active .overlay,
+.trigger-button:active .popup-window {
+  display: block;
+}
+```
+
+-----
+
+### 문제 9: 만화경 프레임
+
+고정 크기의 `div`에 `overflow: hidden`을 적용하여 내부의 더 큰 요소(배경 이미지를 가진 자식 `div` 또는 `img`)의 삐져나온 부분을 잘라냅니다.
+
+```html
+<div class="kaleidoscope-frame">
+  <div class="inner-content"></div>
+</div>
+```
+
+```css
+.kaleidoscope-frame {
+  width: 300px; /* (Rubric) */
+  height: 300px; /* (Rubric) */
+  border: 10px solid gold;
+  overflow: hidden; /* (a04) */
+}
+.inner-content {
+  width: 600px; /* (Rubric) 프레임보다 큼 */
+  height: 600px; /* (Rubric) 프레임보다 큼 */
+  /* (a20) Placeholder */
+  background: conic-gradient(red, yellow, lime, aqua, blue, magenta, red); 
+  /* (a20) background-image: url('large-image.jpg'); */
+  /* (a20) background-size: cover; */
+}
+```
+
+-----
+
+### 문제 10: 나만의 레시피 북
+
+`ul` 태그에 `list-style-image` 속성을 사용하여 기본 마커를 이미지로 교체합니다.
+
+```html
+<ul class="recipe-book">
+  <li>재료 1: 당근</li>
+  <li>재료 2: 양파</li>
+  <li>재료 3: 마늘</li>
+</ul>
+```
+
+```css
+.recipe-book {
+  /* (a06) data URI로 작은 아이콘을 대체합니다. */
+  list-style-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="orange" viewBox="0 0 16 16"><path d="M12.78 5.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06-1.06L11.72 5.22a.75.75 0 0 1 1.06 0z"/><path d="M11.28 6.72a.75.75 0 0 1 1.06 0L14 8.38l-1.06 1.06a.75.75 0 0 1-1.06-1.06L12.94 7.32l-1.06-1.06a.75.75 0 0 1 0-1.06z"/><path fill-rule="evenodd" d="M1 11.28a.75.75 0 0 1 0-1.06L8.19 3.09a2.25 2.25 0 0 1 3.18 0l1.06 1.06a2.25 2.25 0 0 1 0 3.18L5.34 14.5a.75.75 0 0 1-1.06 0L1 11.28zm2.09-1.06l-1-1a.25.25 0 0 0-.35 0L.65 10.3c-.1.1-.1.25 0 .35l1 1a.25.25 0 0 0 .35 0l1.09-1.09a.25.25 0 0 0 0-.35z"/></svg>');
+  padding-left: 40px; /* (Rubric) 이미지가 잘 보이도록 조정 */
+}
+```
+
+-----
+
+### 문제 11: 달리는 자동차 창밖 풍경
+
+`position: fixed`로 상단에 고정하고, `background-image`에 `background-repeat: repeat-x`와 `background-position: top`을 적용합니다.
+
+```html
+<div class="landscape-banner"></div>
+<div class="page-content" style="height: 2000px; padding-top: 80px;">
+  (페이지 본문... 스크롤을 내려보세요)
+</div>
+```
+
+```css
+.landscape-banner {
+  position: fixed; /* (a02) */
+  top: 0; /* (Rubric) */
+  left: 0;
+  width: 100%;
+  height: 60px; /* 배너 높이 */
+  /* (a19) Placeholder: 산맥 이미지 */
+  background-image: linear-gradient(to bottom, transparent 40%, #556B2F 40%, #556B2F 60%, transparent 60%),
+                    linear-gradient(to bottom, #87CEEB 80%, #ADD8E6 80%);
+  /* background-image: url('mountains.png'); */
+  background-repeat: repeat-x; /* (a19) */
+  background-position: top center; /* (a20) */
+  z-index: 10;
+}
+```
+
+-----
+
+### 문제 12: 겹쳐진 폴라로이드 사진첩
+
+`position: absolute`와 동일한 `top`/`left` 값으로 사진들을 겹치고, `z-index`로 순서를 정합니다. `:hover`를 이용해 특정 사진의 `z-index`를 가장 높게 변경합니다.
+
+```html
+<div class="photo-album">
+  <div class="photo photo1">Photo 1</div>
+  <div class="photo photo2">Photo 2</div>
+  <div class="photo photo3">Photo 3 (Hover Me)</div>
+</div>
+```
+
+```css
+.photo-album {
+  position: relative;
+  height: 300px;
+}
+.photo {
+  width: 150px;
+  height: 180px;
+  background: #eee;
+  border: 10px solid white;
+  box-shadow: 3px 3px 8px rgba(0,0,0,0.3);
+  position: absolute; /* (a01) */
+  top: 100px; /* (a01) */
+  left: 100px; /* (a01) */
+  transition: z-index 0s 0.1s; /* 호버 아웃 시 딜레이 (선택적) */
+}
+.photo1 {
+  transform: rotate(-5deg);
+  z-index: 1; /* (a03) */
+}
+.photo2 {
+  transform: rotate(3deg);
+  z-index: 2; /* (a03) */
+}
+.photo3 {
+  transform: rotate(8deg);
+  z-index: 3; /* (a03) */
+}
+.photo3:hover {
+  z-index: 4; /* (a03) */
+  transition-delay: 0s;
+}
+```
+
+-----
+
+### 문제 13: 클릭하면 사라지는 유령
+
+`:active` 가상 클래스를 사용하여 `visibility: hidden`을 적용합니다. `display: none`과 달리 원래의 공간을 계속 차지합니다.
+
+```html
+<div class="ghost-btn">
+  👻 (클릭하는 동안 사라짐)
+</div>
+<div class="other-content">
+  다른 콘텐츠
+</div>
+```
+
+```css
+.ghost-btn {
+  width: 200px;
+  height: 100px;
+  background: #f0f0f0;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  text-align: center;
+  line-height: 100px;
+  font-size: 1.5rem;
+}
+.ghost-btn:active {
+  visibility: hidden; /* (a03) */
+}
+/* .other-content는 .ghost-btn이 사라져도 밀려나지 않음 (a03) */
+```
+
+-----
+
+### 문제 14: 긴급 공지사항 롤링 배너
+
+고정 `height`를 가진 부모 `div`에 `overflow-y: scroll`을 적용하여 내용이 넘칠 때 세로 스크롤바가 생기게 합니다. `ul`의 `list-style`을 제거합니다.
+
+```html
+<div class="notice-container">
+  <ul class="notice-list">
+    <li>공지 1: 시스템 점검 안내</li>
+    <li>공지 2: 업데이트 사항</li>
+    <li>공지 3: 이벤트 공지</li>
+    <li>공지 4: 서버 안정화 작업</li>
+    <li>공지 5: ...</li>
+    <li>공지 6: ...</li>
+  </ul>
+</div>
+```
+
+```css
+.notice-container {
+  height: 50px; /* (Rubric) */
+  border: 1px solid #aaa;
+  overflow-y: scroll; /* (a04, a05) */
+  background: #fff;
+}
+.notice-list {
+  list-style: none; /* (a06) */
+  margin: 0;
+  padding: 0;
+}
+.notice-list li {
+  padding: 5px 10px;
+  border-bottom: 1px dotted #ccc;
+}
+```
+
+-----
+
+### 문제 15: 3색 신호등 만들기
+
+`display: inline-block`을 사용하여 3개의 원형 `div`를 가로로 배치합니다.
+
+```html
+<div class="traffic-light">
+  <div class="light red"></div>
+  <div class="light yellow"></div>
+  <div class="light green"></div>
+</div>
+```
+
+```css
+.traffic-light {
+  background: #333;
+  padding: 15px;
+  border-radius: 10px;
+  display: inline-block; /* div들을 감싸기 위함 */
+}
+.light {
+  display: inline-block; /* (a18) */
+  width: 50px; /* (Rubric) */
+  height: 50px; /* (Rubric) */
+  border-radius: 50%; /* (Rubric) */
+  margin: 0 5px;
+  background-color: #555; /* 꺼진 상태 */
+}
+.red { background-color: red; /* (a19) */ }
+.yellow { background-color: yellow; /* (a19) */ }
+.green { background-color: green; /* (a19) */ }
+```
+
+-----
+
+### 문제 16: 보물찾기 지도
+
+`:hover` 시 `background-position` 값을 변경하여 배경 이미지의 다른 부분이 보이도록 합니다.
+
+```html
+<div class="treasure-map">
+  (마우스를 올려 보물을 찾으세요)
+</div>
+```
+
+```css
+.treasure-map {
+  width: 400px;
+  height: 300px;
+  border: 3px solid #8b4513;
+  color: #fff;
+  text-shadow: 1px 1px #000;
+  /* (a19) Placeholder: 2x1 크기. 왼쪽은 지도, 오른쪽은 X */
+  background-image: linear-gradient(to right, #f5deb3 50%, red 50%);
+  background-size: 200% 100%; /* 2배 넓게 */
+  background-repeat: no-repeat; /* (a19) */
+  background-position: 0 0; /* (a20) 기본 위치 (지도) */
+  transition: background-position 0.4s ease-in-out;
+}
+.treasure-map:hover {
+  background-position: 100% 0; /* (a20) X 표시 위치로 이동 */
+}
+```
+
+-----
+
+### 문제 17: 포토 갤러리 캡션 달기
+
+부모 `div`에 `position: relative`, 캡션 `p`에 `position: absolute`를 설정하고 `bottom: 0`, `left: 0`으로 이미지 하단에 겹치게 배치합니다.
+
+```html
+<div class="photo-frame">
+  <img src="https://via.placeholder.com/400x300.png?text=Photo" alt="사진">
+  <p class="caption-overlay">멋진 풍경 사진 (2025)</p>
+</div>
+```
+
+```css
+.photo-frame {
+  position: relative; /* (a01) */
+  width: 400px;
+  display: inline-block; /* 이미지 크기에 맞춤 */
+}
+.photo-frame img {
+  width: 100%;
+  display: block; /* img 태그 하단의 미세한 공백 제거 */
+}
+.caption-overlay {
+  position: absolute; /* (a01) */
+  bottom: 0; /* (a01) */
+  left: 0; /* (a01) */
+  width: 100%;
+  box-sizing: border-box; /* 패딩 포함 100% */
+  margin: 0;
+  padding: 12px;
+  background-color: rgba(0, 0, 0, 0.7); /* (Rubric) */
+  color: white; /* (Rubric) */
+}
+```
+
+-----
+
+### 문제 18: 테마가 있는 랭킹 보드
+
+`ol`에 `position: relative`와 `list-style: none`을 설정합니다. 각 `li` 내부에 `position: absolute`로 배치될 아이콘 `span`을 추가합니다.
+
+```html
+<ol class="medal-ranking">
+  <li><span class="medal gold">🥇</span> 1위 게임</li>
+  <li><span class="medal silver">🥈</span> 2위 게임</li>
+  <li><span class="medal bronze">🥉</span> 3위 게임</li>
+  <li> 4위 게임</li>
+</ol>
+```
+
+```css
+.medal-ranking {
+  list-style: none; /* (a06) */
+  position: relative; /* (a01) */
+  padding-left: 40px;
+  font-size: 1.2rem;
+}
+.medal-ranking li {
+  padding: 5px 0;
+  /* (a01) span을 li 기준으로 배치하기 위해 relative 추가 */
+  position: relative; 
+}
+.medal {
+  position: absolute; /* (a01) */
+  left: -35px; /* (a01) 텍스트 왼쪽으로 35px 이동 */
+  top: 0; /* (a01) 텍스트 상단에 맞춤 */
+  /* (Rubric) 실제로는 img 태그나 배경 이미지를 사용합니다 */
+}
+```
+
+-----
+
+### 문제 19: '맨 위로 가기(Top)' 버튼
+
+`position: fixed`를 사용하여 뷰포트 오른쪽 하단에 고정하고, `z-index`를 높게 설정합니다.
+
+```html
+<div class="page-content" style="height: 3000px;">
+  (페이지 본문... 스크롤을 끝까지 내려보세요)
+</div>
+<a href="#" class="top-button">▲ Top</a>
+```
+
+```css
+.top-button {
+  position: fixed; /* (a02) */
+  bottom: 20px; /* (Rubric) */
+  right: 20px; /* (Rubric) */
+  background-color: #555;
+  color: white;
+  padding: 10px 15px;
+  text-decoration: none;
+  border-radius: 5px;
+  z-index: 999; /* (a03) */
+}
+.top-button:hover {
+  background-color: #000;
+}
+```
+
+-----
+
+### 문제 20: 히어로 랜딩 페이지
+
+`height: 100vh`로 뷰포트 전체 높이를 차지하게 하고, `background-size: cover`로 이미지가 꽉 차게 설정합니다.
+
+```html
+<div class="hero-section">
+  <h1>HERO LANDING PAGE</h1>
+</div>
+```
+
+```css
+/* body 마진을 제거해야 100vh가 정확히 맞습니다 */
+body {
+  margin: 0;
+}
+.hero-section {
+  height: 100vh; /* (Rubric) */
+  /* (a19) Placeholder */
+  background-image: url('https://via.placeholder.com/1920x1080.png?text=City+Background'); 
+  background-size: cover; /* (a20) */
+  background-position: center center; /* (a20) */
+  background-repeat: no-repeat;
+  
+  /* 텍스트 정렬 (선택 사항) */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-shadow: 2px 2px 4px #000;
+}
+```
+
+-----
+
+### 문제 21: 실시간 채팅창 만들기
+
+고정 `height`를 가진 `div`에 `overflow-y: auto`를 적용하여 내용이 넘칠 때만 세로 스크롤바가 생기게 합니다.
+
+```html
+<div class="chat-window">
+  <p><span>User A:</span> 안녕하세요.</p>
+  <p><span>User B:</span> 네, 반갑습니다.</p>
+  <p><span>User A:</span> 이 채팅창은 스크롤이 됩니다.</p>
+  <p><span>User B:</span> 내용이 많아지면 자동으로요.</p>
+  <p><span>User A:</span> ...</p>
+  <p><span>User B:</span> ...</p>
+  <p><span>User A:</span> ...</p>
+  <p><span>User B:</span> ...</p>
+  <p><span>User A:</span> 마지막 메시지</p>
+</div>
+```
+
+```css
+.chat-window {
+  width: 350px;
+  height: 400px; /* (Rubric) */
+  border: 1px solid #ccc;
+  padding: 10px;
+  overflow-y: auto; /* (a04, a05) */
+  background: #fafafa;
+}
+.chat-window p {
+  margin: 5px 0;
+}
+.chat-window p span {
+  font-weight: bold;
+  color: #007bff;
+}
+```
+
+-----
+
+### 문제 22: 가짜 드롭다운 메뉴
+
+메인 메뉴 `li`에 `position: relative`, 하위 메뉴 `ul`에 `position: absolute`를 설정합니다. 하위 메뉴는 평소 `display: none`으로 숨기고, `li:hover > ul` 선택자로 보이게 합니다.
+
+```html
+<nav>
+  <ul class="main-nav">
+    <li><a href="#">Home</a></li>
+    <li class="dropdown-item">
+      <a href="#">Products</a>
+      <ul class="sub-menu">
+        <li><a href="#">Product 1</a></li>
+        <li><a href="#">Product 2</a></li>
+        <li><a href="#">Product 3</a></li>
+      </ul>
+    </li>
+    <li><a href="#">About</a></li>
+  </ul>
+</nav>
+```
+
+```css
+/* 기본 메뉴 스타일 */
+.main-nav, .sub-menu { list-style: none; padding: 0; margin: 0; }
+.main-nav > li {
+  display: inline-block;
+  background-color: #eee;
+  position: relative; /* (a01) */
+}
+.main-nav a { text-decoration: none; color: #333; padding: 10px 15px; display: block; }
+
+/* 드롭다운 메뉴 스타일 */
+.sub-menu {
+  display: none; /* (a03) */
+  position: absolute; /* (a01) */
+  top: 100%; /* (a01) 부모 li 바로 아래 */
+  left: 0; /* (a01) */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  width: 150px; /* 드롭다운 너비 */
+}
+/* 호버 시 드롭다운 보이기 */
+.dropdown-item:hover .sub-menu {
+  display: block; /* (a03) */
+}
+```
+
+-----
+
+### 문제 23: 패럴랙스(Parallax) 스크롤 흉내 내기
+
+배경 이미지를 넣을 섹션에 `background-attachment: fixed`를 적용하여 뷰포트에 고정시킵니다.
+
+```html
+<div class="content-section">
+  <h2>일반 콘텐츠 1</h2>
+  <p>스크롤을 내려보세요.</p>
+</div>
+<div class="parallax-bg">
+  </div>
+<div class="content-section">
+  <h2>일반 콘텐츠 2</h2>
+  <p>배경 이미지가 고정된 것처럼 보입니다.</p>
+</div>
+```
+
+```css
+.content-section {
+  height: 400px;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+.parallax-bg {
+  height: 500px; /* 섹션의 높이 */
+  /* (a19) Placeholder */
+  background-image: url('https://via.placeholder.com/1920x1080.png?text=Parallax+Fixed'); 
+  background-attachment: fixed; /* (a20) 핵심 속성 */
+  background-size: cover; /* (a20) */
+  background-position: center; /* (a20) */
+  background-repeat: no-repeat;
+}
+```
+
+-----
+
+### 문제 24: 게임 맵에 아이콘 배치하기
+
+부모 맵 `div`에 `position: relative`와 배경 이미지를 설정하고, 자식 아이콘들에 `position: absolute`와 `top`/`left` 값을 %로 지정하여 배치합니다.
+
+```html
+<div class="game-map">
+  <div class="icon town">Town</div>
+  <div class="icon shop">Shop</div>
+  <div class="icon dungeon">Dungeon</div>
+</div>
+```
+
+```css
+.game-map {
+  width: 800px;
+  height: 600px;
+  /* (a19) Placeholder */
+  background-image: linear-gradient(#a2d2a2, #2e8b57); 
+  /* background-image: url('map.jpg'); */
+  border: 2px solid #555;
+  position: relative; /* (a01) */
+}
+.icon {
+  position: absolute; /* (a01) */
+  padding: 5px 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid #000;
+  border-radius: 4px;
+}
+.town {
+  top: 20%; /* (a01) */
+  left: 10%; /* (a01) */
+}
+.shop {
+  top: 60%; /* (a01) */
+  left: 50%; /* (a01) */
+}
+.dungeon {
+  top: 15%;
+  left: 75%;
+}
+```
+
+-----
+
+### 문제 25: 종합 문제: 나만의 명함 디자인하기
+
+`position: relative`인 명함 `div` 내부에 로고, 이름/직함, 연락처를 `position: absolute` (또는 `inline-block`)와 `z-index`를 활용하여 배치합니다.
+
+```html
+<div class="business-card">
+  <span class="logo">MyLogo</span>
+  
+  <h3 class="name">김자바</h3>
+  <p class="title">수석 개발자 (Senior Developer)</p>
+  
+  <ul class="contact-info">
+    <li>010-1234-5678</li>
+    <li>java.kim@example.com</li>
+    <li>www.example.com</li>
+  </ul>
+</div>
+```
+
+```css
+.business-card {
+  width: 400px; /* (Rubric) */
+  height: 200px; /* (Rubric) */
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box; /* 패딩 포함 크기 계산 */
+  position: relative; /* (a01) */
+  overflow: hidden; /* 모서리 정리 */
+  /* (a19, a20) Placeholder texture */
+  background-color: #ffffff;
+  background-image: linear-gradient(45deg, #fafafa 25%, transparent 25%, transparent 75%, #fafafa 75%, #fafafa),
+                    linear-gradient(45deg, #fafafa 25%, transparent 25%, transparent 75%, #fafafa 75%, #fafafa);
+  background-size: 8px 8px;
+  background-position: 0 0, 4px 4px;
+}
+.logo {
+  /* (a18, a01) 1. 로고 배치 (absolute 사용) */
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #007bff;
+  /* (a19) background-image: url('logo.png'); */
+}
+.name {
+  /* (a01) 2. 이름/직함 배치 */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  z-index: 10; /* (a03) */
+}
+.title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin-top: 25px; /* 이름 아래로 */
+  z-index: 9; /* (a03) 이름보다 아래 */
+  color: #666;
+}
+.contact-info {
+  /* (a01) 3. 연락처 배치 */
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  list-style: none; /* (a06) */
+  padding: 0;
+  margin: 0;
+  text-align: right;
+  font-size: 0.85rem;
+}
+.contact-info li {
+  margin-top: 5px;
+}
+```
+
+
+네, 요청하신 '자바 기초 실습 25제'의 전체 풀이입니다.
+
+각 문제의 요구사항과 평가 기준(Rubric)을 충족하는 코드입니다.
+
+-----
+
+## 문제 1: 신입사원 온보딩
+
+```java
+// Rubric 1: camelCase 변수명 사용 (employeeName, age, gender, isRegularEmployee)
+// Rubric 2: 알맞은 데이터 타입 사용
+String employeeName = "김자바";
+int age = 27;
+char gender = 'M'; // 또는 'F'
+boolean isRegularEmployee = true;
+
+// Rubric 3: 문법적으로 올바른 선언 및 할당
+System.out.println("이름: " + employeeName);
+System.out.println("나이: " + age);
+System.out.println("성별: " + gender);
+System.out.println("정규직 여부: " + isRegularEmployee);
+```
+
+-----
+
+## 문제 2: 용돈 기입장 시뮬레이션
+
+```java
+// Rubric 2: int 타입 선언
+int currentMoney = 10000;
+int snackCost = 1500;
+int allowance = 5000;
+
+// Rubric 1: 뺄셈과 덧셈 연산을 통한 갱신
+currentMoney = currentMoney - snackCost; // 10000 - 1500 = 8500
+currentMoney = currentMoney + allowance; // 8500 + 5000 = 13500
+
+// Rubric 3: 최종 잔액 출력
+System.out.println("최종 잔액: " + currentMoney);
+```
+
+-----
+
+## 문제 3: 게임 캐릭터 상태창
+
+```java
+// Rubric 1: 데이터 범위에 맞는 타입 선택
+byte level = 50;
+short currentHp = 25000;
+long totalExperience = 3000000000L; // 30억 (int 범위 초과)
+boolean isAlive = true;
+
+// Rubric 2: long 타입 데이터에 'L' 접미사 사용
+System.out.println("레벨: " + level);
+System.out.println("현재 체력: " + currentHp);
+System.out.println("누적 경험치: " + totalExperience);
+System.out.println("생존 여부: " + isAlive);
+```
+
+-----
+
+## 문제 4: N빵 계산기 (형변환)
+
+```java
+int pizzaPrice = 25000;
+int eatPerson = 3;
+
+// Rubric 1 & 2: 정수 나눗셈의 함정을 피하기 위해 (double) 강제 형변환
+// (double)pizzaPrice / eatPerson   (O)
+// pizzaPrice / (double)eatPerson   (O)
+// (double)(pizzaPrice / eatPerson) (X - 8333.0이 됨)
+double perPerson = (double)pizzaPrice / eatPerson;
+
+// Rubric 3: double 타입 변수에 결과 저장 및 출력
+System.out.println("1인당 내야 할 금액: " + perPerson);
+```
+
+-----
+
+## 문제 5: 비밀번호 확인 시스템
+
+```java
+String savedPass = "java123";
+String inputPass = new String("java123");
+
+// Rubric 1 & 2:
+// 1. == 연산자 (주소값 비교)
+// new String()으로 생성하면 힙(Heap) 메모리에 새로운 객체가 생성되므로
+// savedPass와 inputPass는 서로 다른 주소를 가리킴. (결과: false)
+boolean compareResult1 = (savedPass == inputPass);
+
+// 2. .equals() 메서드 (내용 비교)
+// "java123"이라는 문자열 내용 자체를 비교함. (결과: true)
+boolean compareResult2 = savedPass.equals(inputPass);
+
+System.out.println("== 비교 결과: " + compareResult1);
+System.out.println(".equals() 비교 결과: " + compareResult2);
+```
+
+-----
+
+## 문제 6: 쇼핑몰 상수 정의
+
+```java
+// Rubric 1: final 키워드 사용
+// Rubric 2: SCREAMING_SNAKE_CASE 명명 규칙 사용
+final int MAX_PURCHASE_COUNT = 10;
+final int DEFAULT_SHIPPING_FEE = 2500;
+
+System.out.println("최대 구매 수량: " + MAX_PURCHASE_COUNT);
+System.out.println("기본 배송비: " + DEFAULT_SHIPPING_FEE);
+
+// Rubric 3: 불변성 확인 (아래 코드의 주석을 풀면 컴파일 에러 발생)
+// MAX_PURCHASE_COUNT = 11; // 에러: final 변수는 재할당할 수 없습니다.
+```
+
+-----
+
+## 문제 7: 아르바이트 급여 자동 계산
+
+```java
+int hourlyWage = 9860;
+double workingHours = 15.5;
+
+// Rubric 1: int(9860)와 double(15.5)의 연산
+// int가 double로 자동 형변환(Promotion)되어 9860.0 * 15.5로 계산됨
+double totalSalary = hourlyWage * workingHours;
+
+// Rubric 2: double 타입 변수에 저장 및 출력
+System.out.println("총 급여: " + totalSalary);
+```
+
+-----
+
+## 문제 8: 잘못된 변수명 찾기 (디버깅)
+
+```java
+// int 1stPlace; // 에러 (Rubric 1): 변수명은 숫자로 시작할 수 없습니다.
+// String my@email; // 에러 (Rubric 2): 특수문자는 '$'와 '_'만 허용됩니다.
+int $money; // 허용됨 (Rubric 4)
+int _score; // 허용됨 (Rubric 4)
+// String class; // 에러 (Rubric 3): 'class'는 자바 예약어(키워드)이므로 변수명으로 사용할 수 없습니다.
+
+System.out.println("$money와 _score는 유효한 변수명입니다.");
+```
+
+-----
+
+## 문제 9: 평균 점수 계산기 (데이터 손실)
+
+```java
+int kor = 87;
+int eng = 94;
+int math = 75;
+
+int total = kor + eng + math;
+
+// Rubric 1: 3.0 (실수)으로 나누어 정확한 평균 계산
+double avg = total / 3.0; 
+
+// Rubric 2: (int)로 강제 형변환하여 소수점 절삭
+int avgInt = (int)avg;
+
+// Rubric 3: 두 가지 타입 결과 출력
+System.out.println("총점: " + total);
+System.out.println("실수 평균: " + avg);
+System.out.println("정수 평균 (소수점 절삭): " + avgInt);
+```
+
+-----
+
+## 문제 10: 주문 접수 시스템 (문자열 변환)
+
+```java
+int orderNum = 102;
+String totalPriceStr = "3500";
+
+// Rubric 1: Integer.parseInt()로 문자열을 정수로 변환
+int totalPriceInt = Integer.parseInt(totalPriceStr);
+
+// Rubric 2: 숫자(int) + 숫자(int)의 산술 연산 수행
+int result = orderNum + totalPriceInt; // 102 + 3500
+
+System.out.println("의도된 연산 결과: " + result); // 3602 출력
+```
+
+-----
+
+## 문제 11: 물리 엔진 속 불변의 법칙
+
+```java
+// Rubric 1 & 2: final double, SCREAMING_SNAKE_CASE
+final double GRAVITY_ACCEL = 9.8;
+final double PI = 3.1415926535;
+
+// Rubric 1, 2, 3: final float, 'f' 접미사
+final float PI_FLOAT = 3.14159f;
+
+System.out.println("중력 가속도: " + GRAVITY_ACCEL);
+System.out.println("원주율 (double): " + PI);
+System.out.println("원주율 (float): " + PI_FLOAT);
+```
+
+-----
+
+## 문제 12: 도서관 도서 상태 코드
+
+```java
+// Rubric 1: char 타입에 작은따옴표로 값 할당
+char bookStatus = 'B';
+
+// Rubric 2: 비교 연산(bookStatus == 'A')의 결과(false)를 boolean 변수에 할당
+boolean isAvailable = (bookStatus == 'A'); // ('B' == 'A') -> false
+
+System.out.println("도서 상태: " + bookStatus);
+System.out.println("대출 가능 여부: " + isAvailable);
+```
+
+-----
+
+## 문제 13: 바이트 연산의 함정
+
+```java
+byte stockYesterday = 100;
+byte stockToday = 50;
+
+// Rubric 1:
+// byte totalStock = stockYesterday + stockToday; 
+// 위 코드는 컴파일 에러가 발생합니다.
+// 이유: 자바는 byte, short 타입의 연산을 수행할 때
+//      자동으로 int 타입으로 승격(promotion)시켜 계산합니다.
+//      따라서 (int)100 + (int)50 의 결과는 int 타입 150이 됩니다.
+//      int 타입의 결과를 byte 타입 변수에 그냥 담을 수 없습니다.
+
+// Rubric 2: 결과를 int 타입 변수에 저장하여 해결
+int totalStockInt = stockYesterday + stockToday;
+
+System.out.println("총 재고 (int): " + totalStockInt);
+```
+
+-----
+
+## 문제 14: 고객 환영 메시지 (printf)
+
+```java
+String name = "홍길동";
+int point = 1250;
+double visitRate = 35.75;
+
+// Rubric 1: System.out.printf 사용
+// Rubric 2: %s (문자열), %,d (콤마 포함 정수), %.1f (소수점 첫째 자리), %% (% 기호)
+// Rubric 3: 형식 지정자 순서와 변수 순서 일치
+System.out.printf("%s님의 현재 포인트는 %,d점이며, 평균 방문율은 %.1f%%입니다.\n", name, point, visitRate);
+```
+
+-----
+
+## 문제 15: 영수증 자동 생성기 (숫자 -\> 문자열)
+
+```java
+int receiptNum = 7302;
+String payMethod = "CARD";
+
+// Rubric 1: String.valueOf() 사용
+String uniqueId1 = payMethod + String.valueOf(receiptNum);
+
+// Rubric 2: "" + (빈 문자열 더하기) 트릭 사용
+String uniqueId2 = payMethod + "" + receiptNum;
+
+// Rubric 3: 두 결과 모두 "CARD7302" 출력
+System.out.println("고유 ID (방법 1): " + uniqueId1);
+System.out.println("고유 ID (방법 2): " + uniqueId2);
+```
+
+-----
+
+## 문제 16: 클래스 명명 규칙 위반
+
+```java
+// 수정 전 코드
+// class ourCar { ... }
+
+// Rubric 1 & 2: 수정 후 코드
+// 이유: 자바의 클래스 명명 규칙(관례)은
+//      PascalCase (UpperCamelCase)를 따르므로,
+//      각 단어의 첫 글자를 대문자로 해야 합니다.
+class OurCar {
+    String modelName;
+    int currentSpeed;
+    
+    void speedUp() {
+        // ...
+    }
+}
+```
+
+-----
+
+## 문제 17: 해외 직구 배송비 계산 (복합)
+
+```java
+double weight = 3.5;
+int shippingFeePerKg = 5000;
+
+// Rubric 1: double * int 연산 -> double로 자동 형변환 (Upcasting)
+double totalFee = weight * shippingFeePerKg; // 3.5 * 5000 = 17500.0
+
+// Rubric 2: double(17500.0) -> int(17500) 강제 형변환 (Downcasting)
+int totalFeeInt = (int)totalFee;
+
+// Rubric 3: 두 가지 형변환 모두 사용됨
+System.out.println("총 배송비 (실수): " + totalFee);
+System.out.println("총 배송비 (정수 절삭): " + totalFeeInt);
+```
+
+-----
+
+## 문제 18: 영화관 좌석 등급
+
+```java
+char seatGrade = 'A';
+
+// Rubric 1 & 2: char 타입 변수('A')가 int 타입 변수에 할당되면서
+// 'A'의 아스키(유니코드) 값인 65가 자동 형변환되어 저장됨
+int seatCode = seatGrade;
+
+System.out.println("좌석 등급: " + seatGrade);
+System.out.println("좌석 코드 (정수): " + seatCode);
+```
+
+-----
+
+## 문제 19: 성적표 출력 (print, println, printf)
+
+```java
+// Rubric 1: println으로 제목 출력 (줄바꿈 포함)
+System.out.println("=== 성적표 ===");
+
+// Rubric 2: printf로 형식 지정 출력 (%s: 문자열, %d: 정수, \n: 줄바꿈)
+System.out.printf("이름: %s, 점수: %d\n", "김자바", 90);
+System.out.printf("이름: %s, 점수: %d\n", "이클립", 85);
+
+// Rubric 3 (심화): print (줄바꿈 없음)와 수동 \n (줄바꿈) 조합
+System.out.print("이름: 박코딩, 점수: 92\n");
+```
+
+-----
+
+## 문제 20: 웹사이트 회원가입 (복합)
+
+```java
+String inputId = "javaUser";
+String inputAge = "25";
+
+// Rubric 1: Integer.parseInt()로 문자열 "25"를 숫자 25로 변환
+int age = Integer.parseInt(inputAge);
+
+// Rubric 2: 변환된 int 값에 10을 더함
+int ageAfter10Years = age + 10;
+
+// Rubric 3: 문자열 연결(+)을 사용하여 최종 메시지 완성
+String resultMsg = inputId + "님의 10년 후 나이는 " + ageAfter10Years + "세입니다.";
+
+System.out.println(resultMsg);
+```
+
+-----
+
+## 문제 21: 은행 이자 계산 (long과 형변환)
+
+```java
+int principal = 2000000000; // 20억
+
+// Rubric 1 & 3: int의 최대 범위(약 21억)를 넘는 계산 (20억 + 2억 = 22억)
+// int totalWrong = principal + (principal / 10); // 오버플로우 발생 (음수 등)
+// System.out.println("잘못된 계산 (int): " + totalWrong);
+
+// Rubric 2: 연산(principal + ...)을 시작하기 전에
+// (long)principal로 형변환하여 전체 연산이 long으로 수행되도록 함
+long totalAmount = (long)principal + (principal / 10);
+
+System.out.println("20억 예금의 10% 이자 포함 총액 (long): " + totalAmount);
+```
+
+-----
+
+## 문제 22: 공장 일일 생산량 모니터링
+
+```java
+byte amCount = 120;
+byte pmCount = 100;
+
+// Rubric 1: byte + byte 연산의 결과는 int 타입
+int totalCount = amCount + pmCount; // 220
+
+// Rubric 2: 상수(SNAKE_CASE) 선언
+final int DAILY_GOAL = 200;
+
+// Rubric 3: 비교 연산자(>=)로 boolean 결과 도출
+boolean isGoalAchieved = (totalCount >= DAILY_GOAL); // true
+
+// Rubric 4: printf 형식 지정자 (%d: 정수, %b: boolean)
+System.out.printf("총 생산량: %d개 (목표 달성: %b)\n", totalCount, isGoalAchieved);
+```
+
+-----
+
+## 문제 23: 영문 이니셜 추출하기
+
+```java
+// Rubric 1: char 타입 변수 선언
+char initial1 = 'J';
+char initial2 = 'K';
+
+// Rubric 2:
+// (참고) if (initial1 + initial2) -> 'J'(74) + 'K'(75) = 149 (숫자 연산됨)
+
+// 빈 문자열("")을 앞에 더해, 전체 연산이 문자열 연결(String concatenation)이 되도록 함
+String initials = "" + initial1 + initial2;
+
+System.out.println("이니셜: " + initials);
+```
+
+-----
+
+## 문제 24: 온도 변환기 (섭씨 to 화씨)
+
+```java
+double celsius = 25.5;
+
+// Rubric 1: double 타입의 실수 연산 (화씨 = 섭씨 * 1.8 + 32)
+double fahrenheit = (celsius * 1.8) + 32;
+
+// Rubric 2: fahrenheit 변수에 77.9가 저장됨
+System.out.println("화씨 온도 (실수): " + fahrenheit);
+
+// Rubric 3: (int)로 강제 형변환 (소수점 0.9 절삭)
+int fahrenheitInt = (int)fahrenheit;
+
+System.out.println("화씨 온도 (정수): " + fahrenheitInt); // 77 출력
+```
+
+-----
+
+## 문제 25: 최종 보스: 명명 규칙과 데이터 타입의 혼돈
+
+```java
+// 수정 전 코드
+/*
+public class itemmanager {
+    final int MAXPRICE = 100000;
+    String ITEM_NAME = "MyItem";
+    
+    void PrintItem() {
+        int price = 90000;
+        String tax = "9000";
+        int total = price + tax; // 에러 발생
+        
+        System.out.println("Item: " + ITEM_NAME + " Price: " + total);
+    }
+}
+*/
+
+// 수정 후 코드
+// (Rubric 1) 클래스명: itemmanager -> ItemManager (PascalCase)
+public class ItemManager {
+    
+    // (Rubric 2) 상수명: MAXPRICE -> MAX_PRICE (SCREAMING_SNAKE_CASE)
+    final int MAX_PRICE = 100000;
+    
+    // (Rubric 3) 변수명: ITEM_NAME -> itemName (camelCase)
+    String itemName = "MyItem";
+    
+    // (Rubric 4) 메서드명: PrintItem -> printItem (camelCase)
+    void printItem() {
+        int price = 90000;
+        String tax = "9000";
+        
+        // (Rubric 5) 형변환: int + String (에러) -> int + int (정상)
+        // 문자열 "9000"을 숫자 9000으로 변환 (Integer.parseInt)
+        int taxInt = Integer.parseInt(tax);
+        int total = price + taxInt; // 90000 + 9000
+        
+        System.out.println("Item: " + itemName + " Price: " + total);
+    }
+}
+```

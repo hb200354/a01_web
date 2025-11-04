@@ -1,0 +1,815 @@
+```java
+public class DungeonEscape {
+
+    public static void main(String[] args) {
+        System.out.println("🛡️ 전설의 용사, 코드의 미궁 탈출을 시작합니다! 🛡️");
+
+        // --- 1. 🧊 얼음 동굴 구역 ---
+        System.out.println("\n--- 1. 🧊 얼음 동굴 구역 ---");
+
+        // 문제 1: 흔들리는 다리
+        int myWeight = 70;
+        int jewelWeight = 10;
+        int bridgeLimit = 100;
+        // [A] + 연산자 사용, [B] < 연산자 사용
+        boolean canCross = (myWeight + jewelWeight) < bridgeLimit; 
+        System.out.println("1. 다리를 건널 수 있는가: " + canCross); // [C] (80 < 100) -> true
+
+        // 문제 2: 쌍둥이 골렘
+        int golem1 = 50;
+        int golem2 = 50;
+        // [A] == 연산자 사용
+        boolean isOpen = (golem1 == golem2);
+        System.out.println("2. 골렘의 문이 열리는가: " + isOpen); // [B] (50 == 50) -> true
+
+        // 문제 3: 가짜 보물 상자
+        int realChest = 1;
+        int fakeChest = 2;
+        // [A] != 연산자 사용
+        boolean isTrapActivated = (realChest != fakeChest);
+        System.out.println("3. 함정이 발동하는가: " + isTrapActivated); // [B] (1 != 2) -> true
+
+        // 문제 4: 드래곤의 불꽃
+        int iceMagic = 100;
+        int fireResist = 99;
+        // [A] >= 연산자 사용
+        boolean canWin = (iceMagic >= fireResist);
+        System.out.println("4. 드래곤을 이길 수 있는가: " + canWin); // [B] (100 >= 99) -> true
+
+        // 문제 5: 독 안개 복도
+        int antidote = 5;
+        int requiredPotion = 5;
+        // [A] <= 연산자 사용
+        boolean isSafe = (antidote <= requiredPotion);
+        System.out.println("5. 안전하게 통과할 수 있는가: " + isSafe); // [B] (5 <= 5) -> true
+
+
+        // --- 2. 🔥 불의 미궁 구역 ---
+        System.out.println("\n--- 2. 🔥 불의 미궁 구역 ---");
+
+        // 문제 6: 두 개의 압력 발판
+        boolean plate1 = true;
+        boolean plate2 = false;
+        // [A] && 연산자 사용
+        boolean isDoorOpen = plate1 && plate2;
+        System.out.println("6. 문이 열리는가: " + isDoorOpen); // [B] (true && false) -> false
+
+        // 문제 7: 마법사 또는 전사
+        boolean isWizard = false;
+        boolean isWarrior = true;
+        // [A] || 연산자 사용
+        boolean getCoin = isWizard || isWarrior; // (문제에서 getCoin 변수명을 사용)
+        System.out.println("7. 보너스 버프를 받는가: " + getCoin); // [B] (false || true) -> true
+
+        // 문제 8: 투명화 물약
+        boolean isInvisible = true;
+        // [A] ! 연산자 사용
+        boolean canSee = !isInvisible;
+        System.out.println("8. 경비병이 나를 볼 수 있는가: " + canSee); // [B] (!true) -> false
+
+        // 문제 9: 청개구리 경비병
+        boolean isGuard = false;
+        // [A] ! 연산자 사용
+        boolean finalCheck = !isGuard;
+        System.out.println("9. 경비병 체크 (반전): " + finalCheck); // [B] (!false) -> true
+
+
+        // --- 3. 💎 최종 보스 구역 ---
+        System.out.println("\n--- 3. 💎 최종 보스 구역 ---");
+
+        // 문제 10: 보스 방의 첫 번째 문
+        int myLevel = 30;
+        boolean hasGoldKey = true;
+        // [A] > 와 && 사용, [B] 논리 구조 완성
+        boolean passFirstGate = (myLevel > 25) && (hasGoldKey == true);
+        System.out.println("10. 첫 번째 문 통과: " + passFirstGate); // [C] (true && true) -> true
+
+        // 문제 11: 보스 방의 두 번째 문
+        int partySize = 4;
+        boolean isGuildMaster = false;
+        // [A] == 와 || 사용, [B] 논리 구조 완성
+        boolean passSecondGate = (partySize == 4) || (isGuildMaster == true);
+        System.out.println("11. 두 번째 문 통과: " + passSecondGate); // [C] (true || false) -> true
+
+        // 문제 12: 함정 발동 조건
+        int weight = 80;
+        int timeLimit = 50;
+        boolean isAlert = true;
+        // [A] 복합 연산, [B] 괄호 사용 논리 구조 완성
+        boolean isTrap = ( (weight > 100) || (timeLimit < 60) ) && (isAlert == true);
+        System.out.println("12. 함정 발동: " + isTrap); // [C] ((false || true) && true) -> true
+
+        // 문제 13: 보물의 봉인
+        boolean isMoonlight = false;
+        boolean isDawn = true;
+        // [A] ! 와 && 사용, [B] 논리 구조 완성
+        boolean isSealReleased = (!isMoonlight) && (isDawn == true);
+        System.out.println("13. 봉인 해제: " + isSealReleased); // [C] ((!false) && true) -> (true && true) -> true
+
+        // 문제 14: 탈출 포탈
+        boolean isBossDead = true;
+        boolean isEmergency = false;
+        // [A] ! 와 ||, 괄호 사용, [B] 논리 구조 완성
+        boolean isPortalOpen = !(isBossDead || isEmergency);
+        System.out.println("14. 포탈 개방: " + isPortalOpen); // [C] (!(true || false)) -> !(true) -> false
+
+        // 문제 15: 최종 미션
+        int bossLevel = 30;
+        boolean hasSecretDoorKey = false;
+        boolean hasMap = true;
+        // isGuard, myLevel, isBossDead 변수는 위에서 사용한 값 (false, 30, true)
+        // [A] 모든 연산자 활용, [B] 최종 논리 구조 완성
+        boolean isEscaped = ( (myLevel >= bossLevel) && isBossDead ) || 
+                            ( (hasSecretDoorKey || hasMap) && !isGuard );
+        // [C] ( (true && true) || ( (false || true) && !false ) )
+        //     (      true      || (       true       &&   true   ) )
+        //     (      true      ||           true               ) -> true
+        System.out.println("15. 🏆 미궁 탈출 성공!: " + isEscaped); 
+    }
+}
+```
+
+**Java 코드 실행 결과:**
+
+```
+🛡️ 전설의 용사, 코드의 미궁 탈출을 시작합니다! 🛡️
+
+--- 1. 🧊 얼음 동굴 구역 ---
+1. 다리를 건널 수 있는가: true
+2. 골렘의 문이 열리는가: true
+3. 함정이 발동하는가: true
+4. 드래곤을 이길 수 있는가: true
+5. 안전하게 통과할 수 있는가: true
+
+--- 2. 🔥 불의 미궁 구역 ---
+6. 문이 열리는가: false
+7. 보너스 버프를 받는가: true
+8. 경비병이 나를 볼 수 있는가: false
+9. 경비병 체크 (반전): true
+
+--- 3. 💎 최종 보스 구역 ---
+10. 첫 번째 문 통과: true
+11. 두 번째 문 통과: true
+12. 함정 발동: true
+13. 봉인 해제: true
+14. 포탈 개방: false
+15. 🏆 미궁 탈출 성공!: true
+```
+
+-----
+
+## 🚀 HTML/CSS 2단계: 우주 탐사선 대시보드
+
+각 미션은 개별 HTML 파일로 저장하여 브라우저에서 바로 확인할 수 있습니다.
+
+**문제 1: 통신 기록표 (Collapse & Padding)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    table {
+        /* [A] '이중 테두리 감옥'을 합체 */
+        border-collapse: collapse;
+        width: 50%;
+    }
+    th, td {
+        border: 1px solid black;
+        /* [B] '숨 쉴 공간' 부여 */
+        padding: 10px;
+    }
+</style>
+</head>
+<body>
+    <h3>문제 1: 통신 기록표</h3>
+    <table>
+        <tr> <th>시간</th> <th>발신</th> <th>내용</th> </tr>
+        <tr> <td>09:00</td> <td>Alpha</td> <td>수신 양호</td> </tr>
+        <tr> <td>09:01</td> <td>Bravo</td> <td>궤도 진입</td> </tr>
+    </table>
+</body>
+</html>
+```
+
+**문제 2: 행성 데이터 (Width & Thead)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    table {
+        /* [A] 대시보드에 꽉 차게 */
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+</style>
+</head>
+<body>
+    <h3>문제 2: 행성 데이터</h3>
+    <table>
+        <thead>
+            <tr> <th>행성</th> <th>유형</th> <th>위성 수</th> </tr>
+        </thead>
+        <tbody>
+            <tr> <td>X-101</td> <td>가스형</td> <td>12</td> </tr>
+            <tr> <td>Y-203</td> <td>암석형</td> <td>1</td> </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+```
+
+**문제 3: 대원 명단 (Zebra Striping)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        color: white; /* 어두운 배경에 흰 글씨 */
+        background-color: #1d2a38; /* 기본 배경 */
+    }
+    th, td { border: 1px solid #444; padding: 8px; }
+    th { background-color: #000; }
+
+    /* [A, B] tbody 안의 짝수 번째 tr 선택 */
+    tbody tr:nth-child(even) {
+        /* [C] 어두운 남색 배경 적용 */
+        background-color: #2c3e50;
+    }
+</style>
+</head>
+<body>
+    <h3>문제 3: 탐사 대원 명단</h3>
+    <table>
+        <thead> <tr> <th>ID</th> <th>이름</th> <th>임무</th> </tr> </thead>
+        <tbody>
+            <tr> <td>001</td> <td>Alex</td> <td>선장</td> </tr>
+            <tr> <td>002</td> <td>Ben</td> <td>항해사</td> </tr>
+            <tr> <td>003</td> <td>Chloe</td> <td>엔지니어</td> </tr>
+            <tr> <td>004</td> <td>David</td> <td>의료</td> </tr>
+            <tr> <td>005</td> <td>Eva</td> <td>과학</td> </tr>
+            <tr> <td>006</td> <td>Frank</td> <td>보안</td> </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+```
+
+**문제 4: 긴급 경보 (Hover & Specific Border)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    table { width: 100%; border-collapse: collapse; }
+    th, td { border: 1px solid #ccc; padding: 8px; }
+    
+    /* [B] thead의 th에만 아래쪽 테두리 적용 */
+    thead th {
+        border-bottom: 3px solid #3498db;
+    }
+
+    /* [A] tbody의 tr에 마우스 오버 시 */
+    tbody tr:hover {
+        /* [C] 배경색 변경 */
+        background-color: #e74c3c;
+        color: white;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+    <h3>문제 4: 긴급 경보</h3>
+    <table>
+        <thead> <tr> <th>코드</th> <th>상태</th> <th>위치</th> </tr> </thead>
+        <tbody>
+            <tr> <td>101</td> <td>산소 누출</td> <td>3구역</td> </tr>
+            <tr> <td>202</td> <td>전력 저하</td> <td>엔진실</td> </tr>
+            <tr> <td>303</td> <td>미확인 신호</td> <td>외부</td> </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+```
+
+**문제 5: 자원 현황판 (Complex Table)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    table {
+        /* [1] */
+        border-collapse: collapse;
+        width: 100%;
+        font-family: sans-serif;
+    }
+    th, td { border: 1px solid #ddd; } /* 기본 테두리 */
+
+    /* [2] thead th 스타일 */
+    thead th {
+        text-align: center;
+        background-color: #3498db;
+        color: white;
+        padding: 12px; /* th에도 패딩 추가 */
+    }
+
+    /* [3] tbody td 스타일 */
+    tbody td {
+        text-align: left;
+        padding: 12px;
+    }
+
+    /* [4] 홀수 번째 tr 스타일 (Zebra) */
+    tbody tr:nth-child(odd) {
+        background-color: #ecf0f1;
+    }
+</style>
+</head>
+<body>
+    <h3>문제 5: 자원 현황판</h3>
+    <table>
+        <thead>
+            <tr> <th>자원</th> <th>현재량</th> <th>상태</th> </tr>
+        </thead>
+        <tbody>
+            <tr> <td>연료</td> <td>85%</td> <td>양호</td> </tr>
+            <tr> <td>식량</td> <td>40%</td> <td>주의</td> </tr>
+            <tr> <td>산소</td> <td>98%</td> <td>양호</td> </tr>
+            <tr> <td>물</td> <td>70%</td> <td>양호</td> </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+```
+
+**문제 6: 폭주하는 보고서 양식 (Box-sizing)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    /* [A, B] 모든 요소의 너비 계산 방식을 변경 */
+    * {
+        box-sizing: border-box;
+    }
+    
+    .form-container {
+        width: 300px;
+        border: 2px solid blue;
+        padding: 10px;
+    }
+    
+    input {
+        width: 100%;
+        padding: 10px; /* 이 패딩이 너비에 포함됨 */
+        border: 2px solid red;
+    }
+</style>
+</head>
+<body>
+    <h3>문제 6: 폭주하는 보고서 양식 (해결됨)</h3>
+    <div class="form-container">
+        <p>Input이 100% 너비를 넘지 않습니다.</p>
+        <input type="text" placeholder="width: 100% + padding: 10px">
+    </div>
+</body>
+</html>
+```
+
+**문제 7: 관공서 서류 (Width & Margin)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    * { box-sizing: border-box; } /* 6번 문제 적용 가정 */
+    body { background-color: #f4f4f4; padding: 20px; }
+    .form-wrap { max-width: 400px; }
+
+    input {
+        /* [A] 꽉 채우기 */
+        width: 100%;
+        /* [B] 요소 간 바깥 여백 */
+        margin-bottom: 15px;
+        
+        /* (가독성을 위한 추가 스타일) */
+        padding: 10px;
+        border: 1px solid #ccc;
+    }
+</style>
+</head>
+<body>
+    <h3>문제 7: 관공서 서류</h3>
+    <div class="form-wrap">
+        <input type="text" placeholder="대원 ID">
+        <input type="password" placeholder="비밀 암호">
+    </div>
+</body>
+</html>
+```
+
+**문제 8: 친절한 보고서 (Label & Padding)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    * { box-sizing: border-box; }
+    .form-wrap { max-width: 400px; }
+    
+    /* [A] label을 블록 요소로 변경 (줄바꿈) */
+    label {
+        display: block;
+        margin-bottom: 5px; /* 레이블과 인풋 사이 간격 */
+        font-weight: bold;
+    }
+    
+    input {
+        width: 100%;
+        /* [B] 안쪽 숨쉬기 공간 (12px) */
+        padding: 12px;
+        margin-bottom: 15px; /* 7번 문제 */
+    }
+</style>
+</head>
+<body>
+    <h3>문제 8: 친절한 보고서</h3>
+    <div class="form-wrap">
+        <label for="agent-id">대원 ID</label>
+        <input type="text" id="agent-id">
+        
+        <label for="report">보고 내용</label>
+        <input type="text" id="report">
+    </div>
+</body>
+</html>
+```
+
+**문제 9: 집중\! 보고서 작성 (:focus)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    * { box-sizing: border-box; }
+    input {
+        width: 100%;
+        padding: 12px;
+        /* 기본 테두리 */
+        border: 2px solid #ccc; 
+        border-radius: 4px;
+        /* 포커스 시 기본 아웃라인이 겹치지 않게 transition 추가 */
+        transition: border-color 0.3s; 
+    }
+    
+    /* [A] input이 포커스(집중) 상태일 때 */
+    input:focus {
+        /* [B-1] 브라우저 기본 아웃라인 제거 */
+        outline: none;
+        /* [B-2] 테두리 색 변경 */
+        border-color: #3498db;
+    }
+</style>
+</head>
+<body>
+    <h3>문제 9: 집중! 보고서 작성</h3>
+    <p>아래 입력창을 클릭해 보세요.</p>
+    <input type="text" placeholder="클릭하면 테두리 색이 변합니다.">
+</body>
+</html>
+```
+
+**문제 10: 긴급 전송 버튼 (Button Styling)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    * { box-sizing: border-box; }
+    
+    button {
+        /* [1] */
+        width: 100%;
+        padding: 15px;
+        
+        /* [2] */
+        background: #e74c3c;
+        color: white;
+        
+        /* [3] */
+        border: none;
+        border-radius: 5px;
+        
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s; /* 부드러운 전환 효과 */
+    }
+    
+    /* [4] 마우스 오버 시 */
+    button:hover {
+        background: #c0392b;
+        cursor: pointer; /* 마우스 커서 변경 */
+    }
+</style>
+</head>
+<body>
+    <h3>문제 10: 긴급 전송 버튼</h3>
+    <button type="button">긴급 전송 (HOVER ME)</button>
+</body>
+</html>
+```
+
+**문제 11: `div`로 지은 집 (Semantic Conversion)**
+
+```html
+<header>
+    ...로고...
+</header>
+
+<nav>
+    ...메뉴...
+</nav>
+
+<main>
+    ...본문...
+</main>
+
+<footer>
+    ...카피라이트...
+</footer>
+```
+
+**문제 12: 본문과 사이드바 (Article & Aside)**
+
+```html
+<main>
+    <article>
+        <h2>주요 뉴스: X-101 행성 탐사 성공</h2>
+        <p>코드-X 에이전시가 드디어...</p>
+    </article>
+    
+    <aside>
+        <h3>관련 링크</h3>
+        <ul>
+            <li>탐사 대원 목록</li>
+            <li>X-101 행성 데이터</li>
+        </ul>
+    </aside>
+</main>
+```
+
+**문제 13: 이름표(태그)로 스타일링하기 (Tag Selectors)**
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    body { margin: 0; padding: 0; color: white; }
+    
+    /* [A] header 태그 선택자 직접 사용 */
+    header {
+        background-color: #1a2533;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    main {
+        padding: 20px;
+        min-height: 200px; /* 영역 구분을 위한 최소 높이 */
+        color: black; /* 임시 */
+    }
+
+    /* [A] footer 태그 선택자 직접 사용 */
+    footer {
+        /* [B] */
+        background-color: #333;
+        text-align: center;
+        padding: 15px;
+    }
+</style>
+</head>
+<body>
+    <header><h1>헤더 영역 (우주 검정)</h1></header>
+    <main>본문 영역</main>
+    <footer><p>푸터 영역 (가운데 정렬)</p></footer>
+</body>
+</html>
+```
+
+**문제 14: 레이아웃에 테이블 넣기 (Semantic + Table)**
+(문제 3의 얼룩말 무늬 테이블 + 문제 13의 시맨틱 레이아웃)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    /* 13번 문제 스타일 */
+    body { margin: 0; padding: 0; }
+    header { background-color: #1a2533; padding: 20px; text-align: center; color: white; }
+    main { padding: 20px; }
+    footer { background-color: #333; text-align: center; padding: 15px; color: white; }
+
+    /* 3번 문제 스타일 */
+    table { 
+        width: 100%; 
+        border-collapse: collapse; 
+        color: white; 
+        background-color: #1d2a38;
+        margin-top: 20px; /* 구분선 */
+    }
+    th, td { border: 1px solid #444; padding: 8px; }
+    th { background-color: #000; }
+    tbody tr:nth-child(even) {
+        background-color: #2c3e50;
+    }
+</style>
+</head>
+<body>
+    <header><h1>우주 기지 설계도</h1></header>
+
+    <main>
+        <h2>대원 명단</h2>
+        <p>메인 콘텐츠 영역입니다.</p>
+        
+        <table>
+            <thead> <tr> <th>ID</th> <th>이름</th> <th>임무</th> </tr> </thead>
+            <tbody>
+                <tr> <td>001</td> <td>Alex</td> <td>선장</td> </tr>
+                <tr> <td>002</td> <td>Ben</td> <td>항해사</td> </tr>
+                <tr> <td>003</td> <td>Chloe</td> <td>엔지니어</td> </tr>
+                <tr> <td>004</td> <td>David</td> <td>의료</td> </tr>
+            </tbody>
+        </table>
+    </main>
+    
+    <footer><p>© CODE-X Agency</p></footer>
+</body>
+</html>
+```
+
+**문제 15: 최종 대시보드 (Final Boss: All Concepts)**
+(문제 5, 6, 8, 9, 10, 13의 모든 개념을 조합한 최종 페이지)
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>최종 대시보드</title>
+<style>
+    /* [C] 문제 6: Box-sizing 초기화 */
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        margin: 0;
+        font-family: sans-serif;
+        background-color: #f4f4f4;
+    }
+
+    /* [1] 문제 13: 시맨틱 태그 스타일 */
+    header {
+        background-color: #1a2533;
+        padding: 20px;
+        text-align: center;
+        color: white;
+    }
+    main {
+        width: 90%;
+        max-width: 1000px;
+        margin: 20px auto; /* 가운데 정렬 */
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    footer {
+        background-color: #333;
+        text-align: center;
+        padding: 15px;
+        color: white;
+        margin-top: 20px;
+    }
+    
+    h2 { border-bottom: 2px solid #3498db; padding-bottom: 10px; }
+
+    /* [2] 문제 8, 9, 10: 폼 스타일 */
+    .report-form { margin-bottom: 40px; }
+    .report-form label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+    .report-form input[type="text"] {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 15px;
+        border: 2px solid #ccc; 
+        border-radius: 4px;
+        transition: border-color 0.3s; 
+    }
+    .report-form input[type="text"]:focus {
+        outline: none;
+        border-color: #3498db;
+    }
+    .report-form button {
+        width: 100%;
+        padding: 15px;
+        background: #e74c3c;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+    }
+    .report-form button:hover {
+        background: #c0392b;
+        cursor: pointer;
+    }
+
+    /* [3] 문제 5: 테이블 스타일 */
+    .resource-table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    .resource-table th, 
+    .resource-table td { border: 1px solid #ddd; }
+    
+    .resource-table thead th {
+        text-align: center;
+        background-color: #3498db;
+        color: white;
+        padding: 12px;
+    }
+    .resource-table tbody td {
+        text-align: left;
+        padding: 12px;
+    }
+    .resource-table tbody tr:nth-child(odd) {
+        background-color: #ecf0f1;
+    }
+
+</style>
+</head>
+<body>
+
+    <header>
+        <h1>대원 관리 대시보드</h1>
+    </header>
+
+    <main>
+        <section class="report-form">
+            <h2>관제 센터 보고서</h2>
+            <form>
+                <label for="agent-id">대원 ID</label>
+                <input type="text" id="agent-id" placeholder="ID를 입력하세요 (포커스 테스트)">
+                
+                <label for="report">긴급 보고</label>
+                <input type="text" id="report" placeholder="보고 내용을 입력하세요">
+                
+                <button type="button">긴급 전송</button>
+            </form>
+        </section>
+
+        <section class="resource-status">
+            <h2>자원 현황판</h2>
+            <table class="resource-table">
+                <thead>
+                    <tr> <th>자원</th> <th>현재량</th> <th>상태</th> </tr>
+                </thead>
+                <tbody>
+                    <tr> <td>연료</td> <td>85%</td> <td>양호</td> </tr>
+                    <tr> <td>식량</td> <td>40%</td> <td>주의</td> </tr>
+                    <tr> <td>산소</td> <td>98%</td> <td>양호</td> </tr>
+                    <tr> <td>물</td> <td>70%</td> <td>양호</td> </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2025 CODE-X Agency. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+```

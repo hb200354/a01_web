@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+/*
+# table 표 꾸미기
+1. html table은 뼈대만 있어서는 투박합니다. css로 어떻게 인테리어를 하는지, 핵심 속성을 확인해봅시다.
+2. 통나무집에서 세련된 아파트로!!
+	1) html 태그의 구조를 잡습니다.
+		table : 표 전체 영역(아파트 단지)
+		thead, tbody, tfoot : 제목, 본문, 바닥글 영역 (동)
+		tr : 가로 한 줄 (층)
+		th : 제목 칸(넓은 거실) - 기본값이 굵고 가운데 정렬
+		td : 내용 칸(일반 방) - 기본값이 왼쪽 정렬
+	2) css가 없다면, 이 표는 마치 이중 테두리로 딘 옛날 감옥처럼 보입니다.
+		각 칸(td, th)이 자신만의 테두리를 가져서 답답해 보이죠.
+	3) 우리의 목표는 이 감옥의 벽을 합치고, 칸 안에 숨 쉴 공간(여백)을 주어 세련되게 만드는 것입니다.
+3. 표 꾸미기에서 딱 3가지만 기억하면 됩니다
+	- 무너뜨리고(Collapse), 숨쉬고(Padding), 얼룩말(Zelra) 칠하기!!
+	1) 무너뜨리기 (border-collapse:collapse;)
+		- 핵심 속성 : border-collapse:collapse;
+		- 표의 이중 테두리는 끔찍합니다. 이 속성은 각 칸의 테두리를 단일선으로 깔끔하게 붕괴(collapse)
+			시켜 합쳐줍니다. 
+		- 표를 만들 땐 콜라(collapse)부터 터뜨려 이중선을 무너뜨려
+	2) 숨쉬기(padding)
+		- 핵심 속성 : padding:10px;
+		- 글자의 테두리에 딱 붙어있으면 답답합니다. padding은 칸(cell) 안쪽에 여백을 주어
+			숨 쉴 공간을 줍니다.
+		- 옷 속에 입는 padding처럼, 안쪽으로 공간을 채워!!
+	3) 얼룩말 칠하기(:nth-child)
+		- 핵심 속성 : tr:nth-child(even)
+		- 데이터가 많은 표는 가로줄을 읽기 어렵습니다. 얼룩말 무늬(Zebra Striping)처럼
+			 짝수(even)행이나 홀수(odd)행에 배경색을 주면 가독성이 폭발적으로 증가합니다.
+		- n번째 아이(nth-child)야, 넌 짝수(even)니까 이 색 옷 입어!!
+		
+					
+			
+	
+	
+	
+	
+		
+	
+*/
+	/*1. 테이블 전체 스타일*/
+	table{
+		width:100%; /*너비를 꽉 채움*/
+		border : 1px solid blue;/*바깥 테두리 색상 종류*/
+		/*이중 테두리 하나로 합침!!*/
+		border-collapse:collapse;
+	}
+	/* table ==> tab01로 id 속성으로 설정하여 2x2 테이블을 만들어 주세요
+		넓이와 폭은 300x300, 테두리 색상을 빨강색..
+	*/
+	#tab01{
+		width:300px;height:300px;
+		border : 10px dotted red;
+		border-collapse:collapse;
+	}
+	
+	/* th, td의 공통 스타일*/
+	#tab01 th, #tab01 td{
+		border : 10px dotted green;
+		/*칸 안쪽의 여백(숨 쉴 공간) 추가*/
+		padding:30px;
+		background:yellow;
+		text-align:center;
+	}
+	/* ex)
+	tab02 아이디로 테이블을 3x3으로 만들고, 넓이와 폭은 200x400으로 설정 테두리 색상을 orange로
+	설정하여, 안쪽 여백은 20px, 오른쪽 정렬로 처리해보세요..
+	*/
+	#tab02{
+		width:200px;height:400px;
+		border-collapse: collapse;
+	}
+	#tab02 th,#tab02 td{
+		border : 1px solid orange;
+		padding:20px;
+		text-align:right;
+	} 
+	#tab02 th{
+		/* th의 하단부분만 이중선으로 색상으로 green으로 설정 처리.*/
+		border-bottom : 5px double green;
+		
+	} 	
+</style>
+</head>
+<body>
+	<table id="tab02" >
+		<tr><th>타이틀1</th><th>타이틀2</th><th>타이틀3</th></tr>
+		<tr><td>1</td><td>2</td><td>3</td></tr>
+		<tr><td>4</td><td>5</td><td>6</td></tr>
+		<tr><td>7</td><td>8</td><td>9</td></tr>
+	</table>
+	<table id="tab01" border>
+		<tr><td>1</td><td>2</td></tr>
+		<tr><td>3</td><td>4</td></tr>
+	</table>
+	<h2>테이블 border붕괴(border-collapse)</h2>
+	<table border>
+		<tr><th>이름</th><th>나이</th><th>직업</th></tr>
+		<tr><td>홍길동</td><td>30</td><td>개발자</td></tr>
+		<tr><td>이순신</td><td>45</td><td>장군</td></tr>
+	</table>
+
+
+</body>
+</html>
+<!--
+
+
+-->

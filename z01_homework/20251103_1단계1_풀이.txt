@@ -1,0 +1,645 @@
+요청하신 JAVA 및 CSS 문제에 대한 풀이입니다.
+
+## ☕ JAVA
+
+-----
+
+### 1\. [개념] 동등/차등 비교연산자 (==, \!=)
+
+`==` (동등 비교) 연산자는 두 개의 값이 **서로 같은지** 비교합니다. 같으면 `true`, 다르면 `false`를 반환합니다.
+`!=` (차등 비교) 연산자는 두 개의 값이 **서로 다른지** 비교합니다. 다르면 `true`, 같으면 `false`를 반환합니다.
+
+주로 **기본형(primitive) 데이터 타입**(int, double, boolean 등)의 값을 비교하거나, 두 참조 변수가 메모리상에서 **완전히 동일한 객체를 참조하는지** 확인할 때 사용합니다.
+
+**예제 코드:**
+
+```java
+public class OperatorExample1 {
+    public static void main(String[] args) {
+        int num1 = 100;
+        int num2 = 100;
+        int num3 = 50;
+
+        // == (동등 비교)
+        System.out.println("num1 == num2 : " + (num1 == num2)); // 100과 100은 같으므로 true
+        System.out.println("num1 == num3 : " + (num1 == num3)); // 100과 50은 다르므로 false
+
+        // != (차등 비교)
+        System.out.println("num1 != num2 : " + (num1 != num2)); // 100과 100은 같으므로 false
+        System.out.println("num1 != num3 : " + (num1 != num3)); // 100과 50은 다르므로 true
+    }
+}
+```
+
+**출력 결과:**
+
+```
+num1 == num2 : true
+num1 == num3 : false
+num1 != num2 : false
+num1 != num3 : true
+```
+
+-----
+
+### 2\. [실습] 로그인 시스템
+
+```java
+public class LoginSystem {
+    public static void main(String[] args) {
+        int myPin = 1234;       // 저장된 비밀번호
+        int inputPin = 9999;  // 사용자 입력 비밀번호
+
+        // == 연산자를 사용해 일치 여부 확인
+        boolean isMatch = (myPin == inputPin);
+        System.out.println("PIN 일치 여부 (9999 입력 시): " + isMatch);
+
+        // != 연산자를 사용해 불일치 여부 확인
+        boolean isNotMatch = (myPin != inputPin);
+        System.out.println("PIN 불일치 여부 (9999 입력 시): " + isNotMatch);
+
+        System.out.println("---");
+
+        // 만약 사용자가 올바르게 입력했다면
+        inputPin = 1234; 
+        isMatch = (myPin == inputPin);
+        isNotMatch = (myPin != inputPin);
+        System.out.println("PIN 일치 여부 (1234 입력 시): " + isMatch);
+        System.out.println("PIN 불일치 여부 (1234 입력 시): " + isNotMatch);
+    }
+}
+```
+
+**출력 결과:**
+
+```
+PIN 일치 여부 (9999 입력 시): false
+PIN 불일치 여부 (9999 입력 시): true
+---
+PIN 일치 여부 (1234 입력 시): true
+PIN 불일치 여부 (1234 입력 시): false
+```
+
+-----
+
+### 3\. [개념] 비교연산자 (\>, \>=)
+
+`>` (초과) 연산자는 왼쪽의 값이 오른쪽의 값보다 **'큰지'** 비교합니다. (같은 경우는 `false`)
+`>=` (이상) 연산자는 왼쪽의 값이 오른쪽의 값보다 **'크거나 같은지'** 비교합니다. (같은 경우도 `true`)
+
+**예제 코드:**
+
+```java
+public class OperatorExample2 {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 10;
+        int c = 9;
+
+        // > (초과)
+        System.out.println("a > b (10 > 10): " + (a > b)); // 10은 10보다 크지 않으므로 false
+        System.out.println("a > c (10 > 9) : " + (a > c)); // 10은 9보다 크므로 true
+
+        // >= (이상)
+        System.out.println("a >= b (10 >= 10): " + (a >= b)); // 10은 10과 같으므로 true
+        System.out.println("a >= c (10 >= 9) : " + (a >= c)); // 10은 9보다 크므로 true
+    }
+}
+```
+
+**출력 결과:**
+
+```
+a > b (10 > 10): false
+a > c (10 > 9) : true
+a >= b (10 >= 10): true
+a >= c (10 >= 9) : true
+```
+
+-----
+
+### 4\. [실습] 롤러코스터 탑승 조건
+
+```java
+public class RollerCoaster {
+    public static void main(String[] args) {
+        // 1. myHeight = 139
+        int myHeight = 139;
+        boolean canRide = (myHeight >= 140);
+        System.out.println("키 139cm 탑승 가능: " + canRide);
+
+        // 2. myHeight = 140
+        myHeight = 140;
+        canRide = (myHeight >= 140);
+        System.out.println("키 140cm 탑승 가능: " + canRide);
+
+        // 3. myHeight = 141
+        myHeight = 141;
+        canRide = (myHeight >= 140);
+        System.out.println("키 141cm 탑승 가능: " + canRide);
+    }
+}
+```
+
+**출력 결과:**
+
+```
+키 139cm 탑승 가능: false
+키 140cm 탑승 가능: true
+키 141cm 탑승 가능: true
+```
+
+-----
+
+### 5\. [개념] 비교연산자 (\<, \<=)
+
+`<` (미만) 연산자는 왼쪽의 값이 오른쪽의 값보다 **'작은지'** 비교합니다. (같은 경우는 `false`)
+`<=` (이하) 연산자는 왼쪽의 값이 오른쪽의 값보다 **'작거나 같은지'** 비교합니다. (같은 경우도 `true`)
+
+**예제 코드:**
+
+```java
+public class OperatorExample3 {
+    public static void main(String[] args) {
+        int a = 5;
+        int b = 5;
+        int c = 6;
+
+        // < (미만)
+        System.out.println("a < b (5 < 5): " + (a < b)); // 5는 5보다 작지 않으므로 false
+        System.out.println("a < c (5 < 6) : " + (a < c)); // 5는 6보다 작으므로 true
+
+        // <= (이하)
+        System.out.println("a <= b (5 <= 5): " + (a <= b)); // 5는 5와 같으므로 true
+        System.out.println("a <= c (5 <= 6) : " + (a <= c)); // 5는 6보다 작으므로 true
+    }
+}
+```
+
+**출력 결과:**
+
+```
+a < b (5 < 5): false
+a < c (5 < 6) : true
+a <= b (5 <= 5): true
+a <= c (5 <= 6) : true
+```
+
+-----
+
+### 6\. [실습] 영화관 요금 할인
+
+```java
+public class MovieDiscount {
+    public static void main(String[] args) {
+        // 1. myAge = 19
+        int myAge = 19;
+        boolean isDiscountTarget = (myAge <= 18);
+        System.out.println("나이 19세 할인 대상: " + isDiscountTarget);
+
+        // 2. myAge = 18
+        myAge = 18;
+        isDiscountTarget = (myAge <= 18);
+        System.out.println("나이 18세 할인 대상: " + isDiscountTarget);
+
+        // 3. myAge = 17
+        myAge = 17;
+        isDiscountTarget = (myAge <= 18);
+        System.out.println("나이 17세 할인 대상: " + isDiscountTarget);
+    }
+}
+```
+
+**출력 결과:**
+
+```
+나이 19세 할인 대상: false
+나이 18세 할인 대상: true
+나이 17세 할인 대상: true
+```
+
+-----
+
+### 7\. [개념] 논리 연산자의 종류 3가지
+
+1.  **`&&` (AND / 논리곱)**:
+
+      * 두 조건이 **모두** `true`일 때만 `true`를 반환합니다.
+      * `(5 > 3) && (10 == 10)` -\> `true && true` -\> `true`
+
+2.  **`||` (OR / 논리합)**:
+
+      * 두 조건 중 **하나라도** `true`이면 `true`를 반환합니다.
+      * `(5 < 3) || (10 == 10)` -\> `false || true` -\> `true`
+
+3.  **`!` (NOT / 논리부정)**:
+
+      * 조건의 결과를 반대로 뒤집습니다. `true`는 `false`로, `false`는 `true`로 바꿉니다.
+      * `!(5 > 3)` -\> `!(true)` -\> `false`
+
+-----
+
+### 8\. [실습] 놀이공원 특별 할인
+
+할인 조건: `(주말이면서 VIP)` 이거나 `(평일)`
+힌트: `(isWeekend && isVip) || (!isWeekend)`
+
+```java
+public class AmusementParkDiscount {
+    public static void main(String[] args) {
+        // Case 1: 주말(true), VIP 아님(false)
+        boolean isWeekend = true;
+        boolean isVip = false;
+        boolean isSpecialDiscount = (isWeekend && isVip) || (!isWeekend);
+        // (true && false) || (!true) -> false || false -> false
+        System.out.println("주말: " + isWeekend + ", VIP: " + isVip + " -> 할인: " + isSpecialDiscount);
+
+        // Case 2: 주말(true), VIP 맞음(true)
+        isWeekend = true;
+        isVip = true;
+        isSpecialDiscount = (isWeekend && isVip) || (!isWeekend);
+        // (true && true) || (!true) -> true || false -> true
+        System.out.println("주말: " + isWeekend + ", VIP: " + isVip + " -> 할인: " + isSpecialDiscount);
+
+        // Case 3: 평일(false), VIP 아님(false)
+        isWeekend = false;
+        isVip = false;
+        isSpecialDiscount = (isWeekend && isVip) || (!isWeekend);
+        // (false && false) || (!false) -> false || true -> true
+        System.out.println("주말: " + isWeekend + ", VIP: " + isVip + " -> 할인: " + isSpecialDiscount);
+        
+        // Case 4: 평일(false), VIP 맞음(true)
+        isWeekend = false;
+        isVip = true;
+        isSpecialDiscount = (isWeekend && isVip) || (!isWeekend);
+        // (false && true) || (!false) -> false || true -> true
+        System.out.println("주말: " + isWeekend + ", VIP: " + isVip + " -> 할인: " + isSpecialDiscount);
+    }
+}
+```
+
+**출력 결과:**
+
+```
+주말: true, VIP: false -> 할인: false
+주말: true, VIP: true -> 할인: true
+주말: false, VIP: false -> 할인: true
+주말: false, VIP: true -> 할인: true
+```
+
+## 🎨 CSS
+
+-----
+
+### 1\. [개념] `border-collapse` 속성
+
+`border-collapse` 속성은 `<table>` 태그에서 사용되며, 셀( `<th>`, `<td>` )들의 테두리를 어떻게 처리할지 결정합니다.
+
+  * **`border-collapse: separate;` (기본값)**
+
+      * 모든 셀이 자신만의 독립적인 테두리를 가집니다.
+      * 셀과 셀 사이에 간격이 생기며( `border-spacing` 속성으로 조절 가능), 테두리가 이중선처럼 겹쳐 보입니다.
+
+  * **`border-collapse: collapse;`**
+
+      * 인접한 셀들의 테두리를 하나로 \*\*병합(collapse)\*\*하여 단일 선으로 만듭니다.
+      * `border-spacing` 속성이 무시되며, 훨씬 깔끔한 형태의 표를 만들 수 있습니다.
+
+-----
+
+### 2\. [실습] 깔끔한 시간표 만들기
+
+아래 코드를 `timetable.html` 파일로 저장하고 브라우저에서 열어보세요. '적용 전' 테이블은 테두리가 겹쳐 보이고, '적용 후' 테이블은 깔끔한 단일 선으로 보입니다.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    /* [실습 2] 
+      table, th, td에 모두 테두리를 적용하면
+      기본값(separate) 때문에 이중선처럼 보입니다.
+    */
+    .timetable-before {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .timetable-before table,
+    .timetable-before th,
+    .timetable-before td {
+        border: 1px solid gray;
+    }
+
+    /* table에 border-collapse: collapse; 를 적용하면
+      테두리가 하나로 합쳐져 깔끔해집니다.
+    */
+    .timetable-after {
+        text-align: center;
+        border-collapse: collapse; /* <-- 핵심 속성 */
+    }
+    .timetable-after table,
+    .timetable-after th,
+    .timetable-after td {
+        border: 1px solid gray;
+    }
+</style>
+</head>
+<body>
+
+    <h3>적용 전 (border-collapse: separate;)</h3>
+    <table class="timetable-before">
+        <tr>
+            <th> </th> <th>월</th> <th>화</th> <th>수</th>
+        </tr>
+        <tr>
+            <th>1교시</th> <td>국어</td> <td>수학</td> <td>영어</td>
+        </tr>
+        <tr>
+            <th>2교시</th> <td>사회</td> <td>과학</td> <td>체육</td>
+        </tr>
+    </table>
+
+    <h3>적용 후 (border-collapse: collapse;)</h3>
+    <table class="timetable-after">
+        <tr>
+            <th> </th> <th>월</th> <th>화</th> <th>수</th>
+        </tr>
+        <tr>
+            <th>1교시</th> <td>국어</td> <td>수학</td> <td>영어</td>
+        </tr>
+        <tr>
+            <th>2교시</th> <td>사회</td> <td>과학</td> <td>체육</td>
+        </tr>
+    </table>
+
+</body>
+</html>
+```
+
+-----
+
+### 3\. [개념] `padding` 속성
+
+`padding` 속성은 요소(element)의 **내부 여백**을 설정합니다. 즉, 요소의 **테두리(border)와 실제 내용(content) 사이의 공간**을 의미합니다.
+
+  * `padding: 10px;` (값 1개): 상, 하, 좌, 우 모두 10px
+  * `padding: 10px 20px;` (값 2개): 상하 10px, 좌우 20px
+  * `padding: 5px 10px 15px 20px;` (값 4개): 상(5), 우(10), 하(15), 좌(20) (시계방향)
+
+`<table>`의 `<th>`나 `<td>`에 `padding`을 적용하면, 텍스트가 테두리에 바싹 붙지 않고 안쪽으로 여백이 생겨 가독성이 크게 향상됩니다.
+
+-----
+
+### 4\. [실습] 레스토랑 메뉴판 꾸미기
+
+`padding`이 적용된 아래쪽 메뉴판이 훨씬 보기 좋은 것을 확인할 수 있습니다.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    /* 공통 스타일 */
+    .menu-table {
+        border-collapse: collapse;
+        width: 300px;
+        margin-bottom: 20px;
+    }
+    .menu-table th,
+    .menu-table td {
+        border: 1px solid #ccc;
+    }
+
+    /* [실습 4] 
+      th와 td에 padding을 적용하여 
+      내용과 테두리 사이의 여백을 줍니다.
+    */
+    .menu-padded th,
+    .menu-padded td {
+        padding: 12px;
+    }
+    
+    /* (꾸미기) 헤더 정렬 */
+    .menu-padded th {
+        text-align: left;
+        background-color: #f4f4f4;
+    }
+</style>
+</head>
+<body>
+
+    <h3>적용 전 (Padding 없음)</h3>
+    <table class="menu-table">
+        <tr>
+            <th>메뉴</th> <th>가격</th>
+        </tr>
+        <tr>
+            <td>파스타</td> <td>15000원</td>
+        </tr>
+        <tr>
+            <td>스테이크</td> <td>25000원</td>
+        </tr>
+    </table>
+
+    <h3>적용 후 (padding: 12px;)</h3>
+    <table class="menu-table menu-padded">
+        <tr>
+            <th>메뉴</th> <th>가격</th>
+        </tr>
+        <tr>
+            <td>파스타</td> <td>15000원</td>
+        </tr>
+        <tr>
+            <td>스테이크</td> <td>25000원</td>
+        </tr>
+    </table>
+
+</body>
+</html>
+```
+
+-----
+
+### 5\. [개념] `:nth-child` 선택자
+
+`:nth-child()`는 \*\*가상 클래스 선택자(pseudo-class selector)\*\*입니다. 부모 요소의 자식 요소들 중에서 **특정 순서에** 해당하는 요소를 선택합니다.
+
+  * `tr:nth-child(3)`: 3번째 자식인 `<tr>`을 선택.
+  * `tr:nth-child(odd)`: **홀수 번째** 자식인 `<tr>`을 선택 (1, 3, 5, ...).
+  * `tr:nth-child(even)`: **짝수 번째** 자식인 `<tr>`을 선택 (2, 4, 6, ...).
+  * `tr:nth-child(3n)`: 3의 배수 번째 자식인 `<tr>`을 선택 (3, 6, 9, ...).
+  * `tr:nth-child(2n+1)`: 2n+1 (즉, 홀수) 번째 자식을 선택 (`odd`와 동일).
+
+테이블에서 짝수 행이나 홀수 행에만 다른 배경색을 주어(Zebra Striping) 가독성을 높일 때 매우 유용하게 사용됩니다.
+
+-----
+
+### 6\. [실습] 눈에 띄는 순위표 만들기
+
+`tbody tr:nth-child(odd)` 선택자를 사용하여 1, 3, 5, 7, 9번째 행에만 연한 노란색 배경이 적용된 것을 볼 수 있습니다. (`thead`의 `tr`은 `tbody`의 자식이 아니므로 카운트에서 제외됩니다.)
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    .ranking-table {
+        width: 400px;
+        border-collapse: collapse;
+        text-align: center;
+        font-family: sans-serif;
+    }
+    .ranking-table th, 
+    .ranking-table td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    .ranking-table th {
+        background-color: #f2f2f2;
+    }
+
+    /* [실습 6] 
+      tbody 안의 tr(행) 중에서
+      :nth-child(odd) (홀수 번째) 요소만 선택하여
+      배경색을 적용합니다.
+    */
+    .ranking-table tbody tr:nth-child(odd) {
+        background-color: #fffbe6; /* 연한 노란색 */
+    }
+</style>
+</head>
+<body>
+
+    <h3>게임 랭킹 (홀수 행 배경 적용)</h3>
+    <table class="ranking-table">
+        <thead>
+            <tr>
+                <th>순위</th>
+                <th>아이디</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>1</td><td>DragonSlayer</td></tr>
+            <tr><td>2</td><td>CodeMaster</td></tr>
+            <tr><td>3</td><td>JS_Warrior</td></tr>
+            <tr><td>4</td><td>CSS_Wizard</td></tr>
+            <tr><td>5</td><td>SQL_Expert</td></tr>
+            <tr><td>6</td><td>JavaLover</td></tr>
+            <tr><td>7</td><td>PythonKing</td></tr>
+            <tr><td>8</td><td>ReactGod</td></tr>
+            <tr><td>9</td><td>VueMaster</td></tr>
+            <tr><td>10</td><td>Gamer123</td></tr>
+        </tbody>
+    </table>
+
+</body>
+</html>
+```
+
+-----
+
+### 7\. [개념] `form` 요소의 핵심 속성 설정 4단계
+
+`<form>` 태그는 사용자로부터 입력받은 데이터를 서버로 전송하는 역할을 합니다.
+
+**[예제]**
+
+```html
+<form action="/join-process.php" method="post">
+
+    <label for="id-input">아이디:</label>
+    <input type="text" id="id-input" name="user_id">
+
+    <label for="pw-input">비밀번호:</label>
+    <input type="password" id="pw-input" name="user_password">
+
+    <input type="submit" value="회원가입">
+</form>
+```
+
+-----
+
+### 8\. [실습] '폭주하는' 회원가입 폼 수정하기
+
+**문제 원인:**
+기본적으로 CSS의 너비(`width`) 계산 방식(`box-sizing: content-box;`)은 '순수 내용(content)의 너비'만을 의미합니다.
+따라서 `width: 100%`에 `padding: 20px`(좌우 총 40px)가 더해지면, 요소의 **실제 총 너비**는 \*\*`100% + 40px`\*\*가 되어 부모 컨테이너(100%) 밖으로 튀어나가게 됩니다.
+
+**해결 방법:**
+`box-sizing: border-box;` 속성을 적용합니다.
+이 속성은 `width` 값을 **`padding`과 `border`를 모두 포함한 최종 너비**로 계산하도록 기준을 바꿉니다.
+따라서 `width: 100%`와 `padding: 20px`를 주더라도, 브라우저가 알아서 실제 내용(content) 영역을 줄여 **전체 너비가 100%를 넘지 않도록** 유지합니다.
+
+**적용 코드:**
+`*` (전체 선택자)에 적용하여 모든 요소가 이 방식을 따르도록 하는 것이 일반적입니다.
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+    /* [실습 8] 해결책 
+      * (전체 선택자)에 box-sizing: border-box; 를 적용합니다.
+      이제 모든 요소는 padding이나 border가 추가되어도
+      설정한 width 값을 넘지 않습니다.
+    */
+    * {
+        box-sizing: border-box;
+    }
+
+    body { font-family: sans-serif; }
+
+    .form-container {
+        width: 300px;
+        border: 2px solid blue;
+        padding: 10px;
+        background-color: #f0f8ff;
+    }
+    
+    /* 문제 상황 재현 (가로 스크롤 발생) */
+    .form-container-problem {
+        width: 300px;
+        border: 2px solid red;
+        padding: 10px;
+        background-color: #fff0f0;
+        overflow-x: scroll; /* 튀어나간 것을 보여주기 위함 */
+    }
+
+    /* 공통 input 스타일 */
+    input[type="text"], input[type="email"] {
+        width: 100%;    /* 부모 너비(100%) */
+        padding: 20px;  /* 내부 여백 (좌우 20px씩) */
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+    }
+
+    /* 문제 재현을 위해 이 input만 기본값(content-box)으로 강제 */
+    .problem-input {
+        box-sizing: content-box; 
+    }
+
+</style>
+</head>
+<body>
+
+    <h3>문제 상황 (box-sizing: content-box)</h3>
+    <div class="form-container-problem">
+        <p>Input이 300px + padding(40px) = 340px가 되어 튀어나감:</p>
+        <form>
+            <input type="text" class="problem-input" placeholder="이름">
+            <input type="email" class="problem-input" placeholder="이메일">
+        </form>
+    </div>
+
+    <h3 style="margin-top: 30px;">해결 ( * { box-sizing: border-box; } 적용 )</h3>
+    <div class="form-container">
+         <p>Input의 총 너비가 300px를 넘지 않음:</p>
+        <form>
+            <input type="text" placeholder="이름">
+            <input type="email" placeholder="이메일">
+        </form>
+    </div>
+
+</body>
+</html>
+```

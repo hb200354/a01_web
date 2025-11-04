@@ -1,0 +1,293 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KDT 솔루션 - 기업 비즈니스 혁신</title>
+    <style>
+/* =========================================
+    1. 전역 스타일 (Global Styles)
+    - 모든 페이지에 공통으로 적용되는 기본 스타일
+    ========================================= */
+
+* {
+    /* 모든 요소의 margin, padding을 0으로 초기화 */
+    margin: 0;
+    padding: 0;
+    /* box-sizing을 border-box로 설정하여 padding과 border가 너비에 포함되도록 함 */
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+    line-height: 1.6; /* 줄 간격 */
+    background-color: #f4f4f4; /* 페이지 전체 배경색 */
+    color: #333; /* 기본 글자색 */
+}
+
+a {
+    color: #007bff; /* 링크 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+}
+
+a:hover {
+    text-decoration: underline; /* 마우스 올리면 밑줄 표시 */
+}
+
+h1, h2, h3 {
+    margin-bottom: 0.75em; /* 제목 아래 여백 */
+}
+
+p {
+    margin-bottom: 1em; /* 문단 아래 여백 */
+}
+
+/* =========================================
+    2. 풀이 1: 블로그 아티클 스타일 (참고용 - 현재 페이지 미적용)
+    ========================================= */
+
+/* <article> 태그 전체를 감싸는 스타일 */
+article {
+    max-width: 800px; /* 가독성을 위한 최대 너비 */
+    margin: 2em auto; /* 페이지 중앙 정렬 (상하 2em, 좌우 auto) */
+    padding: 2em; /* 내부 여백 */
+    background-color: #ffffff; /* 흰색 배경 */
+    border: 1px solid #ddd; /* 옅은 회색 테두리 */
+    border-radius: 8px; /* 모서리 둥글게 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* 부드러운 그림자 효과 */
+}
+
+/* <article> 내부의 <header> */
+article header {
+    border-bottom: 2px solid #eee; /* 제목과 본문 구분선 */
+    margin-bottom: 1.5em; /* 헤더 아래 여백 */
+    padding-bottom: 1em; /* 구분선과 헤더 내용 사이 여백 */
+}
+
+article header h1 {
+    font-size: 2.2em; /* 메인 제목 */
+    color: #222;
+}
+
+article header p {
+    font-size: 0.9em; /* 작성자 정보 */
+    color: #777;
+    font-style: italic; /* 이탤릭체 */
+    margin-bottom: 0; /* p 태그 기본 여백 제거 */
+}
+
+/* <article> 내부의 <div> (메인 컨텐츠) */
+article div p {
+    font-size: 1.05em; /* 본문 글자 크기 살짝 키움 */
+    color: #444;
+}
+
+/* <section class="comments"> (댓글) */
+article .comments {
+    margin-top: 2em; /* 본문과 댓글 영역 구분 */
+    padding-top: 1.5em;
+    border-top: 1px solid #eee; /* 옅은 구분선 */
+}
+
+article .comments h3 {
+    font-size: 1.3em;
+    color: #333;
+}
+
+/* <article> 내부의 <footer> (태그) */
+article footer {
+    margin-top: 2em;
+    padding-top: 1em;
+    border-top: 1px solid #eee;
+    font-size: 0.9em;
+    color: #555;
+}
+
+article footer p {
+    margin-bottom: 0; /* p 태그 기본 여백 제거 */
+}
+
+
+/* =========================================
+    3. 풀이 2: 회사 홈페이지 스타일 (현재 페이지 적용)
+    ========================================= */
+
+/* 3.1: 헤더 (Header) - 로고 및 내비게이션 */
+header {
+    width: 100%; /* 전체 너비 */
+    background-color: #ffffff;
+    padding: 1em 2em; /* 상하 1em, 좌우 2em 여백 */
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    
+    /* Flexbox를 사용하여 로고와 nav를 양쪽으로 정렬 */
+    display: flex;
+    justify-content: space-between; /* 양쪽 끝으로 정렬 */
+    align-items: center; /* 세로축 중앙 정렬 */
+}
+
+header h1 { /* 회사 로고 */
+    font-size: 1.8em;
+    color: #004a99; /* 기업 아이덴티티 색상 (예: 파란색) */
+    margin: 0; /* h1 기본 마진 제거 */
+}
+
+header nav ul {
+    list-style: none; /* 리스트 점 제거 */
+    display: flex; /* 메뉴 항목 가로 정렬 */
+    gap: 1.5em; /* 메뉴 사이 간격 */
+}
+
+header nav a {
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1em;
+    padding: 0.5em 0; /* 클릭 영역 확보 */
+}
+
+header nav a:hover {
+    color: #007bff;
+    text-decoration: none; /* 호버 시 밑줄 제거 유지 */
+}
+
+/* 3.2: 컨텐츠 래퍼 (.wrapper) - main과 aside를 감쌈 */
+.wrapper {
+    max-width: 1200px; /* 홈페이지 최대 너비 */
+    margin: 2em auto; /* 페이지 중앙 정렬 */
+    display: flex; /* Flexbox 레이아웃 */
+    gap: 2em; /* main과 aside 사이 간격 */
+}
+
+/* 3.3: 메인 컨텐츠 (main) */
+main {
+    flex: 3; /* main과 aside의 너비 비율 3:1 */
+    background-color: #fff;
+    padding: 2em;
+    border-radius: 8px;
+}
+
+main section {
+    margin-bottom: 2.5em; /* 섹션 간 구분 */
+}
+
+main section:last-child {
+    margin-bottom: 0; /* 마지막 섹션은 하단 여백 제거 */
+}
+
+main section h2 {
+    font-size: 1.8em;
+    border-bottom: 3px solid #007bff; /* 제목 강조선 */
+    padding-bottom: 0.3em;
+    margin-bottom: 1em;
+}
+
+/* 최신 소식 (<article>) */
+main section article {
+    border: 1px solid #eee;
+    padding: 1.5em;
+    margin-bottom: 1em;
+    border-radius: 5px;
+    background-color: #fcfcfc;
+}
+
+main section article h3 {
+    font-size: 1.2em;
+    margin: 0;
+    color: #005a9c;
+}
+
+/* 3.4: 사이드바 (aside) */
+aside {
+    flex: 1; /* main과 aside의 너비 비율 1:3 */
+    background-color: #f9f9f9;
+    padding: 1.5em;
+    border-radius: 8px;
+    border: 1px solid #eee;
+    height: fit-content; /* 내용물 높이에 맞춤 */
+}
+
+aside h3 {
+    font-size: 1.3em;
+    color: #333;
+    border-bottom: 2px solid #ccc;
+    padding-bottom: 0.5em;
+}
+
+/* 3.5: 푸터 (Footer) - 회사 정보 */
+footer {
+    width: 100%;
+    background-color: #333; /* 어두운 배경 */
+    color: #fff; /* 흰색 글씨 */
+    text-align: center; /* 텍스트 중앙 정렬 */
+    padding: 2em;
+    margin-top: 2em; /* wrapper와의 간격 */
+}
+
+footer p {
+    margin: 0.5em 0;
+    font-size: 0.9em;
+    color: #ccc; /* 저작권 표시는 더 옅은 색으로 */
+}
+
+footer p:first-child {
+    color: #fff; /* 주소는 좀 더 밝게 */
+}
+
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>KDT Solutions</h1>
+    <nav>
+        <ul>
+            <li><a href="#">회사 소개</a></li>
+            <li><a href="#">솔루션</a></li>
+            <li><a href="#">뉴스 &amp; 자료실</a></li>
+            <li><a href="#">문의하기</a></li>
+        </ul>
+    </nav>
+</header>
+
+<div class="wrapper">
+
+    <main>
+        <section>
+            <h2>회사 소개</h2>
+            <p>KDT 솔루션은 기업의 디지털 트랜스포메이션을 선도하는 IT 파트너입니다. 다년간 축적된 기술력과 전문성을 바탕으로 고객 맞춤형 웹 솔루션, 클라우드 컴퓨팅, 데이터 분석 서비스를 제공하여 비즈니스 효율성을 극대화합니다.</p>
+            <p>우리는 혁신적인 기술과 고객 중심의 사고방식으로 지속 가능한 성장을 지원하며, 복잡한 비즈니스 문제를 해결하기 위한 최적의 방안을 제시합니다.</p>
+        </section>
+        
+        <section>
+            <h2>최신 소식</h2>
+            <article>
+                <h3>KDT 솔루션, 2025년 대한민국 디지털 혁신상 수상</h3>
+            </article>
+            <article>
+                <h3>신규 클라우드 기반 ERP 시스템 'K-ERP' 출시</h3>
+            </article>
+            <article>
+                <h3>[웨비나] AI를 활용한 데이터 분석 전략 세미나 개최 안내</h3>
+            </article>
+        </section>
+    </main>
+    
+    <aside>
+        <h3>특별 프로모션</h3>
+        <p>신규 고객 대상 웹 솔루션 구축 10% 할인 이벤트가 진행 중입니다. 지금 바로 전문가와 상담하세요!</p>
+    </aside>
+
+</div>
+
+<footer>
+    <p>주소: 경기도 수원시 팔달구 KDT로 123 KDT타워 10층 | 전화: 031-123-4567 | 이메일: contact@kdt.co.kr</p>
+    <p>&copy; 2025 KDT Solutions. All rights reserved.</p>
+</footer> 
+  
+</body>
+</html>
+
+
+

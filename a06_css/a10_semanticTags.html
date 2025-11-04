@@ -25,20 +25,31 @@
 		header, footer 로 만든 코드는 아, 여기가 머리글리고 여기가 바닥글이네 하고 유지보수가
 		쉬워집니다.
 3. 웹 페이지를 집이라고 생각하고, 각 태그가 어떤 공간인지 역할로 기업해봅시다.
-	header
-	nav
-	main
-	section
-	article
-	aside
-	footer		
+	header : 지붕/현관 - 로고, 검색차, 메뉴(nav)가 들어가는 머리말
+	nav : 내비게이션/복도 - 다른 페이지로 이동한 길안내(메뉴 링크)
+	main : 거실 - 페이지의 딱 하나뿐인 핵심 내용(가장 중요)
+	section : 방 - 뉴스/쇼핑 처럼 관련된 주제로 묶은 구역
+	article : 액자 - 책 그 자체로 독립된 내용(블로그 글, 신문 기사)
+	aside : 창고/베란다 - 본문과 떨어진 부가 정보(광고, 사이드바)
+	footer : 바닥/지하실 - 저장권, 주소, 연락처가 들어가는 꼬리말
+# 의미 없는 div 대신 역할에 맞는 이름표를 붙여 준다.			
 		
 */
-
+*{border:1px solid green;text-align:center;font-size:30px;box-sizing: border-box;}
+html, body{margin:0;padding:0;height:100%;}
+header{ width:100%; height:15%;background:yellow; }
+nav{width:15%;height:70%;float:left;background:orange;}
+section{ width:70%;height:70%;float:left;background:olivedrab;}
+aside{ width:15%;height:70%;float:left;background:orange;}
+footer{ width:100%;height:15%;clear:both;background:plum;}
 </style>
 </head>
 <body>
-
+	<header>header</header>
+	<nav>nav</nav>
+	<section>section</section>
+	<aside>aside</aside>
+	<footer>footer</footer>
 
 
 </body>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+<style type="text/css">
+/*
+
+*/
+
+</style>
+<script src="https://code.jquery.com/jquery-3.7.1.js" type="text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  
+<script type="text/javascript">
+/*
+# 자바스크립트의 데이터 유형(data type)
+1. 데이터 유형은 프로그래밍의 가장 기본이 되는 벽돌과 같습니다.
+2. javascript를 장난감을 정리하는 방이라고 상상해 보세요.
+	변수(let toy)는 장남감을 담을 빈 상자입니다.
+	이 때, 데이터 유형은 이 상자에 어떤 종류의 장난감을 넣을지 알려주는 분류 스티커입니다.
+	- 이 상자엔 글자(String)가 들어가 있음
+	- 이 상자엔 숫자(Number)가 들어가 있음
+	- 이 상자엔 O/X 스위치(Boolean)가 들어가 있음
+	- 이 상자엔 함수(function)가 들어가 있음
+	- 이 상자엔 객체(object)가 들어가 있음
+	자바스크립트느 이 스티커(유형)을 보고 상자 안의 내용물이 무엇을 할 수 있을지 판단합니다.
+	(숫자 상자끼리는 더하고, 글자 상자끼리는 붙이죠!!)
+3. 이 상자가 무슨 유형인지 궁금할 때 쓰는 바코드 스캐너가 typeof()를 변수 앞에 붙이면 스티커(유형)
+	이름을 알려줍니다.
+	
+*/
+	// 화면이 전체가 로딩되었을 때, 마지막으로 현재 함수를 처리해준다
+	$(document).ready(  function(){
+		// css의 선택자와 동일..
+		// 해당 선택자 h1에서 출력으로 자바스크립/jquery 시작!! 처리되게..
+		$("h1").text("자바스크립트의 데이터 유형")
+		// <p id="show">
+		// 1. 문자열 : 글자들의 기차 ""/''로 감싸진 모든 텍스트입니다. 기차처럼 글자들이 순서대로
+		//     연결되어 있습니다.
+		//    "문자열1" + '문자열2'  : 두 문자열을 이어주는 역할
+		//    .length : 기차의 총 칸 수(글자 수)를 알려줍니다.
+		let myName = "제미니"
+		let greeting = "안녕하세요! "
+		$("#show").text(greeting+ myName+"입니다.")
+		let strCom = greeting+ myName
+		let strLen = strCom.length  // 문자열의 길이 확인 
+		$("#show").append("문자열의 길이:"+strLen+", ")
+		$("#show").append("데이터 유형:"+typeof(myName)) // 데이터 유형 확인..
+	    //  <p id="show2">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+		//  문자열 변수 product1, product2를 선언하고  사과 바나나
+		//  할당 후, product1의 문자열의 길이와 product2의 문자열 typeof()를 출력하세요.
+		let product1 = "사과"
+		let product2 = "바나나"
+		$("#show2").text(product1+"의 문자열 길이:"+product1.length+", ")
+		$("#show2").append(product2+"의 타입:"+typeof(product1))
+		
+	})
+</script>
+
+</head>
+<body>
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p id="show">Resize this responsive page to see the effect!</p> 
+</div>
+  
+<div class="container">
+  <div class="row">
+    <div class="col-sm-3">
+      <h3>예제1</h3>
+      <p id="show2">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+    </div>
+    <div class="col-sm-3">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-3">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-3">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>    
+  </div>
+  <div class="row">
+    <div class="col-sm-4">
+      <h3>예제1</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 2</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+    <div class="col-sm-4">
+      <h3>Column 3</h3>        
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+      <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris...</p>
+    </div>
+  </div>  
+</div>
+
+
+</body>
+</html>
+<!--
+
+
+-->

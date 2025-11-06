@@ -1,0 +1,537 @@
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS 챌린지 - 1단계 종합 풀이</title>
+    <style>
+        /* 가독성을 위한 간단한 스타일 */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+                Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #f4f7f6;
+            color: #333;
+        }
+        h1, h2, h3 {
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+            color: #005a9c;
+        }
+        h2 {
+            margin-top: 40px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px dashed #ccc;
+            margin: 20px 0;
+        }
+        /* body에 직접 추가되는 태그들에 스타일 적용 */
+        body > h3 {
+            color: #d9534f; /* 문제 제목 */
+        }
+        body > p, body > div, body > ul {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            border-left: 5px solid #5bc0de;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript 2단계 챌린지 (Part 1, 2)</h1>
+    <p>
+        페이지가 로드되면 1번 문제부터 30번 문제까지 순서대로 `prompt`, `confirm`, `alert`가 실행됩니다.
+        <br>
+        `console.log`를 사용하는 문제(4, 9번)는 <b>개발자 도구(F12)의 콘솔 창</b>에서 결과를 확인하세요.
+    </p>
+
+    <script>
+        // 결과 출력을 위한 래퍼(wrapper) 함수
+        // document.body.innerHTML += ... 를 직접 사용하면
+        // <script> 태그 자신이 덮어쓰여 문제가 생길 수 있으므로,
+        // 별도의 <div id="results">를 만들어 그 안에 추가하는 것이 안정적입니다.
+        // 하지만 문제의 요구사항(document.body.innerHTML)을 따르기 위해
+        // 이 파일에서는 body에 직접 추가합니다.
+        
+        // 가독성을 위해 각 문제 사이에 <hr>을 추가하는 헬퍼 함수
+        function addSeparator() {
+            document.body.innerHTML += "<hr>";
+        }
+
+        /*
+        =========================================================
+        Part 1. 종합 기초 (1 ~ 15)
+        =========================================================
+        */
+        document.body.innerHTML += "<h2>💻 2단계 챌린지 - Part 1 (종합 기초)</h2>";
+
+        // --- 1. 베이커리 포인트 계산기 ---
+        try {
+            document.body.innerHTML += "<h3>1. 🍞 베이커리 포인트 계산기</h3>";
+            let saltBread = parseInt(prompt("1. 소금빵(2800원) 몇 개 구매하시겠습니까?"));
+            let croissant = parseInt(prompt("1. 크루아상(3500원) 몇 개 구매하시겠습니까?"));
+            let totalAmount = (saltBread * 2800) + (croissant * 3500);
+            let points = totalAmount * 0.05;
+            document.body.innerHTML += `<p>총 구매액: ${totalAmount}원, 적립 포인트: ${points}점</p>`;
+        } catch (e) { document.body.innerHTML += "<p>1번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+
+        // --- 2. 영화관 성인/청소년 티켓 계산 ---
+        try {
+            document.body.innerHTML += "<h3>2. 🎬 영화관 성인/청소년 티켓 계산</h3>";
+            let age = parseInt(prompt("2. 나이를 입력하세요:"));
+            let ticketPrice = 0;
+            if (age >= 19) {
+                ticketPrice = 12000;
+            } else {
+                ticketPrice = 8000;
+            }
+            document.body.innerHTML += `<p>당신의 티켓 가격은 ${ticketPrice}원입니다.</p>`;
+        } catch (e) { document.body.innerHTML += "<p>2번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 3. 간단 로그인 (삼항 연산자) ---
+        try {
+            alert("3. 간단 로그인 (삼항 연산자) - 팝업");
+            let inputId = prompt("3. 아이디를 입력하세요:");
+            let inputPwd = prompt("3. 비밀번호를 입력하세요:");
+            let loginResult = (inputId === "admin" && inputPwd === "1234") 
+                              ? "로그인 성공" 
+                              : "로그인 실패";
+            alert(loginResult);
+            document.body.innerHTML += "<h3>3. 🔐 간단 로그인 (삼항 연산자)</h3><p>alert로 결과를 출력했습니다.</p>";
+        } catch (e) { document.body.innerHTML += "<p>3번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 4. 섭씨/화씨 변환기 ---
+        try {
+            alert("4. 섭씨/화씨 변환기 - 팝업 (결과는 F12 콘솔 확인)");
+            let celsius = parseFloat(prompt("4. 섭씨(Celsius) 온도를 입력하세요:"));
+            let fahrenheit = celsius * 1.8 + 32;
+            // console.log로 출력
+            console.log(`4. 섭씨 ${celsius}도는 화씨 ${fahrenheit.toFixed(1)}도입니다.`);
+            document.body.innerHTML += "<h3>4. 🌡️ 섭씨/화씨 변환기</h3><p>결과를 <b>console.log</b>로 출력했습니다. (F12 개발자 도구)</p>";
+        } catch (e) { document.body.innerHTML += "<p>4번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 5. 주차 요금 계산기 ---
+        try {
+            document.body.innerHTML += "<h3>5. 🚗 주차 요금 계산기</h3>";
+            let parkingMins = parseInt(prompt("5. 총 주차 시간(분)을 입력하세요:"));
+            // (시간 / 10)의 정수 부분 * 500 (루브릭 공식)
+            let parkingFee = parseInt(parkingMins / 10) * 500;
+            document.body.innerHTML += `<p>총 주차 요금: ${parkingFee}원</p>`;
+        } catch (e) { document.body.innerHTML += "<p>5번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 6. N빵 계산기 ---
+        try {
+            document.body.innerHTML += "<h3>6. 🧑‍🤝‍🧑 N빵 계산기</h3>";
+            let totalBill = parseInt(prompt("6. 총 결제 금액:"));
+            let peopleCount = parseInt(prompt("6. 모임 인원수:"));
+            // 소수점 버림
+            let perPerson = Math.floor(totalBill / peopleCount);
+            // 나머지 금액
+            let remainder = totalBill % peopleCount;
+            // += 를 이용해 누적 출력
+            document.body.innerHTML += `<div><h3>1인당: ${perPerson}원</h3><h3>남은 돈: ${remainder}원</h3></div>`;
+        } catch (e) { document.body.innerHTML += "<p>6번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 7. 회원/비회원 배송비 ---
+        try {
+            document.body.innerHTML += "<h3>7. 🎁 회원/비회원 배송비</h3>";
+            let isMember = confirm("7. 유료 회원이십니까? ('확인'=회원, '취소'=비회원)");
+            let shippingFee = isMember ? 0 : 2500;
+            document.body.innerHTML += `<p>결제하실 배송비는 ${shippingFee}원입니다.</p>`;
+        } catch (e) { document.body.innerHTML += "<p>7번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 8. 닉네임 생성기 ---
+        try {
+            document.body.innerHTML += "<h3>8. 💻 닉네임 생성기</h3>";
+            let favoriteColor = prompt("8. 좋아하는 색깔:");
+            let favoriteAnimal = prompt("8. 좋아하는 동물:");
+            // 템플릿 리터럴(백틱)을 사용하면 따옴표 처리가 쉬움
+            document.body.innerHTML += `<p>당신의 닉네임은 '${favoriteColor} ${favoriteAnimal}'입니다!</p>`;
+        } catch (e) { document.body.innerHTML += "<p>8번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 9. 덧셈 문제 (형 변환의 함정) ---
+        try {
+            alert("9. 덧셈 문제 - 팝업 (결과는 F12 콘솔 확인)");
+            let num1Str = prompt("9. 첫 번째 숫자 (예: 10):");
+            let num2Str = prompt("9. 두 번째 숫자 (예: 5):");
+            console.log("--- 9. 덧셈 문제 (형 변환의 함정) ---");
+            // 1. 형 변환 없는 결과 (문자열 연결)
+            console.log("문자열 연결: " + (num1Str + num2Str));
+            // 2. parseInt()를 사용한 결과 (숫자 덧셈)
+            console.log("숫자 덧셈: " + (parseInt(num1Str) + parseInt(num2Str)));
+            document.body.innerHTML += "<h3>9. 🧮 덧셈 문제 (형 변환의 함정)</h3><p>결과를 <b>console.log</b>로 출력했습니다. (F12 개발자 도구)</p>";
+        } catch (e) { document.body.innerHTML += "<p>9번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 10. HTML 리스트 동적 생성 ---
+        try {
+            document.body.innerHTML += "<h3>10. 🖼️ HTML 리스트 동적 생성</h3>";
+            let listTag = "<ul>";
+            listTag += "<li>HTML</li>";
+            listTag += "<li>CSS</li>";
+            listTag += "<li>JavaScript</li>";
+            listTag += "</ul>";
+            // body에 최종 결과물(listTag)을 한 번에 출력
+            document.body.innerHTML += listTag;
+        } catch (e) { document.body.innerHTML += "<p>10번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 11. 입장 가능 (NOT 연산자) ---
+        try {
+            alert("11. 입장 가능 (NOT 연산자) - 팝업");
+            let isMinor = confirm("11. 당신은 미성년자입니까?"); // 미성년자면 true
+            if (!isMinor) { // '미성년자가 아니면' (!true -> false, !false -> true)
+                alert("입장 가능");
+            } else {
+                alert("입장 불가");
+            }
+            document.body.innerHTML += "<h3>11. ✋ 입장 가능 (NOT 연산자)</h3><p>alert로 결과를 출력했습니다.</p>";
+        } catch (e) { document.body.innerHTML += "<p>11번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 12. 합격/불합격 판독기 ---
+        try {
+            document.body.innerHTML += "<h3>12. 💯 합격/불합격 판독기</h3>";
+            let score1 = parseInt(prompt("12. 필기 점수:"));
+            let score2 = parseInt(prompt("12. 실기 점수:"));
+            if (score1 >= 70 && score2 >= 70) {
+                document.body.innerHTML += "<p>합격</p>";
+            } else {
+                document.body.innerHTML += "<p>불합격</p>";
+            }
+        } catch (e) { document.body.innerHTML += "<p>12번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 13. 영수증 문자열 만들기 ---
+        try {
+            alert("13. 영수증 문자열 만들기 - 팝업");
+            let receipt = "===[영수증]===\n"; // \n (줄바꿈)
+            receipt += "\t- 커피: 4,000원\n"; // \t (탭)
+            receipt += "\t- 케이크: 6,500원\n";
+            receipt += "----------------\n";
+            receipt += "총계: 10,500원";
+            alert(receipt);
+            document.body.innerHTML += "<h3>13. 📜 영수증 문자열 만들기</h3><p>alert로 결과를 출력했습니다.</p>";
+        } catch (e) { document.body.innerHTML += "<p>13번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 14. 할인 자격 (OR 연산자) ---
+        try {
+            document.body.innerHTML += "<h3>14. 💰 할인 자격 (OR 연산자)</h3>";
+            let discountAge = parseInt(prompt("14. 나이를 입력하세요:"));
+            if (discountAge < 8 || discountAge >= 65) {
+                document.body.innerHTML += "<p>무료 입장</p>";
+            } else {
+                document.body.innerHTML += "<p>유료 입장</p>";
+            }
+        } catch (e) { document.body.innerHTML += "<p>14번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 15. 짝수/홀수 판별기 (Mod 연산) ---
+        try {
+            document.body.innerHTML += "<h3>15. 🔢 짝수/홀수 판별기 (Mod 연산)</h3>";
+            let num = parseInt(prompt("15. 숫자를 입력하세요:"));
+            if (num % 2 === 0) {
+                document.body.innerHTML += `<p>입력한 숫자 ${num}은(는) 짝수입니다.</p>`;
+            } else {
+                document.body.innerHTML += `<p>입력한 숫자 ${num}은(는) 홀수입니다.</p>`;
+            }
+        } catch (e) { document.body.innerHTML += "<p>15번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        /*
+        =========================================================
+        Part 2. 조건문 심화 (16 ~ 30)
+        =========================================================
+        */
+        document.body.innerHTML += "<h2>💻 2단계 챌린지 - Part 2 (조건문 심화)</h2>";
+
+        // --- 16. 학점 계산기 ---
+        try {
+            document.body.innerHTML += "<h3>16. 🏫 학점 계산기</h3>";
+            let score = parseInt(prompt("16. 점수(0~100)를 입력하세요:"));
+            let grade = "";
+            if (score >= 90) {
+                grade = "A학점";
+            } else if (score >= 80) {
+                grade = "B학점";
+            } else if (score >= 70) {
+                grade = "C학점";
+            } else if (score >= 60) {
+                grade = "D학점";
+            } else {
+                grade = "F학점";
+            }
+            document.body.innerHTML += `<p>${grade}</p>`;
+        } catch (e) { document.body.innerHTML += "<p>16번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 17. 놀이공원 입장료 ---
+        try {
+            alert("17. 놀이공원 입장료 - 팝업");
+            let parkAge = parseInt(prompt("17. 나이를 입력하세요:"));
+            let parkFeeMsg = "";
+            if (parkAge < 8 || parkAge >= 65) {
+                parkFeeMsg = "무료";
+            } else if (parkAge >= 8 && parkAge < 19) {
+                parkFeeMsg = "청소년 요금 (5,000원)";
+            } else { // 19세 이상 65세 미만
+                parkFeeMsg = "성인 요금 (10,000원)";
+            }
+            alert(parkFeeMsg);
+            document.body.innerHTML += "<h3>17. 🎢 놀이공원 입장료</h3><p>alert로 결과를 출력했습니다.</p>";
+        } catch (e) { document.body.innerHTML += "<p>17번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 18. 메뉴 선택기 ---
+        try {
+            document.body.innerHTML += "<h3>18. 🍕 메뉴 선택기</h3>";
+            let menu = prompt("18. 메뉴 번호 (1. 피자, 2. 치킨, 3. 파스타):");
+            if (menu === "1") {
+                document.body.innerHTML += "<p>피자 (18,000원) 선택</p>";
+            } else if (menu === "2") {
+                document.body.innerHTML += "<p>치킨 (22,000원) 선택</p>";
+            } else if (menu === "3") {
+                document.body.innerHTML += "<p>파스타 (13,000원) 선택</p>";
+            } else {
+                document.body.innerHTML += "<p>잘못된 메뉴 번호입니다.</p>";
+            }
+        } catch (e) { document.body.innerHTML += "<p>18번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 19. 사계절 판독기 ---
+        try {
+            document.body.innerHTML += "<h3>19. ☀️ 사계절 판독기</h3>";
+            let month = parseInt(prompt("19. 월(1~12)을 입력하세요:"));
+            let season = "";
+            if (month === 12 || month === 1 || month === 2) {
+                season = "겨울";
+            } else if (month === 3 || month === 4 || month === 5) { // 또는 month >= 3 && month <= 5
+                season = "봄";
+            } else if (month >= 6 && month <= 8) {
+                season = "여름";
+            } else if (month >= 9 && month <= 11) {
+                season = "가을";
+            } else {
+                season = "잘못된 월입니다.";
+            }
+            document.body.innerHTML += `<p>${season}</p>`;
+        } catch (e) { document.body.innerHTML += "<p>19번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 20. 로그인 (중첩 조건문) ---
+        try {
+            alert("20. 로그인 (중첩 조건문) - 팝업");
+            let loginId = prompt("20. 아이디를 입력하세요:");
+            let loginPwd = prompt("20. 비밀번호를 입력하세요:");
+
+            if (loginId === "user") {
+                // 1. 아이디가 일치할 때
+                if (loginPwd === "good") {
+                    // 1-1. 비밀번호도 일치
+                    alert("로그인 성공!");
+                } else {
+                    // 1-2. 비밀번호 불일치
+                    alert("비밀번호가 틀렸습니다.");
+                }
+            } else {
+                // 2. 아이디가 일치하지 않을 때
+                alert("존재하지 않는 아이디입니다.");
+            }
+            document.body.innerHTML += "<h3>20. 🔐 로그인 (중첩 조건문)</h3><p>alert로 결과를 출력했습니다.</p>";
+        } catch (e) { document.body.innerHTML += "<p>20번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 21. BMI 계산 및 비만도 판정 ---
+        try {
+            document.body.innerHTML += "<h3>21. 🏋️‍♂️ BMI 계산 및 비만도 판정</h3>";
+            let heightCm = parseFloat(prompt("21. 키(cm)를 입력하세요: (예: 170)"));
+            let weightKg = parseFloat(prompt("21. 몸무게(kg)를 입력하세요: (예: 65.5)"));
+            
+            // 1. 키(m) 변환
+            let heightM = heightCm / 100;
+            // 2. BMI 계산
+            let bmi = weightKg / (heightM * heightM);
+            
+            let bmiResult = "";
+            if (bmi < 18.5) {
+                bmiResult = "저체중";
+            } else if (bmi < 23) { // 18.5 이상 23 미만
+                bmiResult = "정상";
+            } else if (bmi < 25) { // 23 이상 25 미만
+                bmiResult = "과체중";
+            } else { // 25 이상
+                bmiResult = "비만";
+            }
+            document.body.innerHTML += `<p>BMI: ${bmi.toFixed(2)} (${bmiResult})</p>`;
+        } catch (e) { document.body.innerHTML += "<p>21번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 22. 윤년 계산기 ---
+        try {
+            document.body.innerHTML += "<h3>22. 📅 윤년 계산기</h3>";
+            let year = parseInt(prompt("22. 연도를 입력하세요: (예: 2024)"));
+            
+            // 논리식: (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)
+            if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+                document.body.innerHTML += `<p>${year}년은 윤년입니다.</p>`;
+            } else {
+                document.body.innerHTML += `<p>${year}년은 평년입니다.</p>`;
+            }
+        } catch (e) { document.body.innerHTML += "<p>22번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 23. 장학금 대상자 판별 ---
+        try {
+            alert("23. 장학금 대상자 판별 - 팝업");
+            let gpa = parseFloat(prompt("23. 학점(0.0 ~ 4.5)을 입력하세요:"));
+            let income = parseInt(prompt("23. 소득분위(1 ~ 10)를 입력하세요:"));
+
+            // 순서가 중요! (전액 조건을 먼저 확인)
+            if (gpa >= 4.0 && income <= 3) {
+                alert("전액 장학금");
+            } else if (gpa >= 3.5 || income <= 5) {
+                alert("반액 장학금");
+            } else {
+                alert("대상 아님");
+            }
+            document.body.innerHTML += "<h3>23. 🎖️ 장학금 대상자 판별</h3><p>alert로 결과를 출력했습니다.</p>";
+        } catch (e) { document.body.innerHTML += "<p>23번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 24. 시간대별 인사 ---
+        try {
+            document.body.innerHTML += "<h3>24. ⏰ 시간대별 인사</h3>";
+            let hour = parseInt(prompt("24. 현재 시간(0~23)을 입력하세요:"));
+            
+            if (hour >= 6 && hour < 12) {
+                document.body.innerHTML += "<p>Good Morning!</p>";
+            } else if (hour >= 12 && hour < 18) {
+                document.body.innerHTML += "<p>Good Afternoon!</p>";
+            } else if (hour >= 18 && hour < 22) {
+                document.body.innerHTML += "<p>Good Evening!</p>";
+            } else {
+                // 22, 23, 0, 1, 2, 3, 4, 5시
+                document.body.innerHTML += "<p>Good Night!</p>";
+            }
+        } catch (e) { document.body.innerHTML += "<p>24번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 25. ATM 출금 (논리 심화) ---
+        try {
+            alert("25. ATM 출금 (논리 심화) - 팝업");
+            let balance = 100000; // 초기 잔액
+            let amount = parseInt(prompt(`25. 출금할 금액을 입력하세요. (잔액: ${balance}원)`));
+            
+            // 순서가 중요! (성공 -> 잔액부족 -> 단위오류)
+            if (amount <= balance && amount % 10000 === 0) {
+                // 1. 출금 성공
+                balance -= amount; // 잔액 차감
+                alert(`출금 성공! (잔액: ${balance}원)`);
+            } else if (amount > balance) {
+                // 2. 잔액 부족
+                alert("잔액이 부족합니다.");
+            } else {
+                // 3. 단위 오류 (잔액은 충분하지만 10000원 단위가 아님)
+                alert("10,000원 단위로만 출금 가능합니다.");
+            }
+            document.body.innerHTML += "<h3>25. 🏦 ATM 출금 (논리 심화)</h3><p>alert로 결과를 출력했습니다.</p>";
+        } catch (e) { document.body.innerHTML += "<p>25번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 26. 첫 글자 모음/자음 판별 ---
+        try {
+            document.body.innerHTML += "<h3>26. 🔠 첫 글자 모음/자음 판별</h3>";
+            let char = prompt("26. 알파벳 소문자 한 글자(a-z)를 입력하세요:");
+            
+            if (char === 'a' || char === 'e' || char === 'i' || char === 'o' || char === 'u') {
+                document.body.innerHTML += "<p>모음(Vowel)입니다.</p>";
+            } else {
+                document.body.innerHTML += "<p>자음(Consonant)입니다.</p>";
+            }
+        } catch (e) { document.body.innerHTML += "<p>26번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 27. 배송비 계산기 (복합) ---
+        try {
+            document.body.innerHTML += "<h3>27. 🛒 배송비 계산기 (복합)</h3>";
+            let purchasePrice = parseInt(prompt("27. 구매 금액을 입력하세요:"));
+            let isVip = confirm("27. VIP 회원이십니까?"); // VIP면 true
+
+            if (purchasePrice >= 30000 || isVip === true) { // isVip만 써도 됨
+                document.body.innerHTML += "<p>배송비: 무료</p>";
+            } else {
+                document.body.innerHTML += "<p>배송비: 2,500원</p>";
+            }
+        } catch (e) { document.body.innerHTML += "<p>27번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 28. 접근 권한 (NOT, AND) ---
+        try {
+            alert("28. 접근 권한 (NOT, AND) - 팝업");
+            let userLevel = parseInt(prompt("28. 사용자 레벨(숫자)을 입력하세요: (예: 0, 5, 10)"));
+            let isAdmin = confirm("28. 관리자(Admin)입니까?"); // 관리자면 true
+
+            // 조건: 관리자(true)이거나 (레벨 10 이상이면서 레벨 0이 아닐 때)
+            if (isAdmin || (userLevel >= 10 && userLevel !== 0)) {
+                alert("특별 접근 허용");
+            } else {
+                alert("일반 접근");
+            }
+            document.body.innerHTML += "<h3>28. 🔑 접근 권한 (NOT, AND)</h3><p>alert로 결과를 출력했습니다.</p>";
+        } catch (e) { document.body.innerHTML += "<p>28번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 29. 삼각형 판별 ---
+        try {
+            document.body.innerHTML += "<h3>29. 🔺 삼각형 판별</h3>";
+            let a = parseInt(prompt("29. 첫 번째 변(a)의 길이:"));
+            let b = parseInt(prompt("29. 두 번째 변(b)의 길이:"));
+            let c = parseInt(prompt("29. 세 번째 변(c)의 길이:"));
+
+            // (가장 긴 변 < 나머지 두 변의 합)과 동일한 조건
+            if (a + b > c && a + c > b && b + c > a) {
+                document.body.innerHTML += "<p>삼각형을 만들 수 있습니다.</p>";
+            } else {
+                document.body.innerHTML += "<p>삼각형을 만들 수 없습니다.</p>";
+            }
+        } catch (e) { document.body.innerHTML += "<p>29번 문제 실행 중 오류 발생</p>"; }
+        addSeparator();
+
+        // --- 30. 만 나이 계산기 ---
+        try {
+            document.body.innerHTML += "<h3>30. 🎂 만 나이 계산기</h3>";
+            const CURRENT_YEAR = 2025; // 기준 연도
+            let isBirthdayPassed = confirm("30. 올해(2025년) 생일이 지났습니까?"); // 지났으면 true
+            let birthYear = parseInt(prompt("30. 태어난 연도를 입력하세요:"));
+            
+            let realAge = 0;
+            if (isBirthdayPassed) {
+                // 생일 지남
+                realAge = CURRENT_YEAR - birthYear;
+            } else {
+                // 생일 안 지남
+                realAge = CURRENT_YEAR - birthYear - 1;
+            }
+            document.body.innerHTML += `<p>당신의 만 나이는 ${realAge}세입니다.</p>`;
+        } catch (e) { document.body.innerHTML += "<p>30번 문제 실행 중 오류 발생</p>"; }
+        
+        document.body.innerHTML += "<h2>✅ 챌린지 완료!</h2>";
+
+    </script>
+</body>
+</html>
+```
+

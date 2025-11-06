@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+<body>
+
+</body>
+<script type="text/javascript">
+/*
+# 대입, 대입증감  숫자/문자열
+*/
+let val = 10;
+val += 10
+val += 10
+val += 10
+console.log("누적된 결과1:"+val)
+// 현재 body에 html로 삽입을 처리 하겠다라는 말..
+document.body.innerHTML = "누적된 결과1:"+val
+var list = "<h1>사과</h1>"
+list+="<h1>바나나</h1>"
+list+="<h1>딸기</h1>"
+list+="<h1>오렌지</h1>"
+console.log("누적된 결과2:"+list)
+// +=  기존내용에서 다시 문자열을 추가하겠다는 말로 innerHTML html태그가 있으면 해석해서 출력.
+document.body.innerHTML += list
+
+</script>
+</html>

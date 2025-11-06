@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+//let isFemale = confirm("여성입니까?")
+//document.body.innerHTML = "결과:"+isFemale;
+// 성인입니까? 성인여부 true/false 출력되게..
+//let isAdult = confirm("성인입니까?")
+//document.body.innerHTML = "성인 여부:"+(isAdult?"성인입니다":"미성년자입니다.")
+/*
+# 자바스크립트에서 입력
+1. confirm("레이블") true/false을 가져옵니다.
+2. prompt("레이블","초기값") null, 입력된값을 가져옵니다.
+
+*/
+//let name = prompt("이름을 입력하세요!","홍길동")
+//document.body.innerHTML = "<h2>입력한 이름:"+name+"</h2>";
+//let price = prompt("물건 가격 입력","1000")
+//let cnt = prompt("물건 갯수 입력","1")
+// 입력값이 "1000" 문자열이지만  +을 제외한 나머지연산자는 자동형변환하여, 연산처리가 가능하다.
+//document.body.innerHTML = "<h3>총 구매비용:"+(price*cnt)+"</h3>";
+//let price1 = parseInt( prompt("물건1 가격 입력","1000") )
+//let price2 = parseInt( prompt("물건2 가격 입력","1000") )
+// + 경우는 연결하는 기능도 있기에 형변환하여 데이터를 처리하여야 한다.
+// parseInt() : 정수형으로 변환 "1000" ==> 1000
+// parseFloat() : 실수형으로 변환
+//document.body.innerHTML = "<h3>총 구매비용:"+(price1+price2)+"</h3>";
+// ex) 사과의 갯수 입력, 바나나의 갯수 입력   총 과일의 갯수 출력..
+let appleCnt = parseInt(prompt("사과의 갯수 입력","1") )
+let bananaCnt = parseInt(prompt("바나나의 갯수 입력","1") )
+let totFruit = appleCnt + bananaCnt
+document.body.innerHTML = "<h3>총 과일 갯수:"+totFruit+"</h3>";
+
+</script>
+</html>

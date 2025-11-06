@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+
+
+</head>
+<body>
+
+</body>
+
+<script type="text/javascript">
+/*
+# 자바스크립트.
+*/
+document.body.innerHTML = "<h2>DOM로 출력</h2>"
+// += 누적해서 처리.
+document.body.innerHTML += "<h3>안녕하세요..!!</h3>"
+//ex1) h4로  반가워요 추가 출력 하세요
+document.body.innerHTML += "<h4>반가워요</h4>"
+//ex2) 아래  addTag를 활용하여 누적된 문자열을 body에 출력되게 하세요..
+let addTag = "<ol>"
+addTag +="<li>사과</li>"
+addTag +="<li>바나나</li>"
+addTag +="<li>딸기</li>"
+addTag +="<li>오렌지</li>"
+addTag +="</ol>"
+console.log(addTag)
+document.body.innerHTML += addTag
+/*
+# 자바스크립트에서 출력하는 형식
+1. alert() : 경고창
+2. console.log() : console창 출력
+3. document.body.innerHTML  : 화면(html태그를 해석)
+   document.body.innerText  : 화면(html태그를 해석x)
+   
+ 
+*/
+
+
+
+</script>
+
+</html>

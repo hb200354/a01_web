@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="${encoding}">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>좋은 하루</h2>"
+/*
+# 자바스크립트.
+*/
+prtStr += "<h3>재미있는 프로그래밍</h3>"
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

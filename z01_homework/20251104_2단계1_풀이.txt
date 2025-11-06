@@ -1,0 +1,469 @@
+제시해주신 30개 문제에 대한 전체 풀이입니다.
+
+## ☕ 1부: Java - 논리와 결정의 마법사 (15문제) 풀이
+
+-----
+
+**문제 1: 드래곤의 둥지 입장 게이트**
+
+  * **정답 코드:**
+    ```java
+    int level = 45;
+    boolean hasDragonKey = true;
+    String job = "마법사";
+
+    boolean canEnter = (level >= 50 && hasDragonKey) || job.equals("GM");
+    ```
+  * **해설:**
+    "레벨 50 이상 **이면서** 열쇠 소유" `(level >= 50 && hasDragonKey)`라는 조건을 하나의 괄호로 묶어 먼저 평가하고, "직업이 GM" `job.equals("GM")`인 조건과 `||` (또는) 연산으로 연결합니다.
+
+-----
+
+**문제 2: 마법 상점의 할인 마법**
+
+  * **정답 코드:**
+    ```java
+    int price = 12000;
+    boolean isVip = true;
+
+    double finalPrice = (isVip && price >= 10000) ? (price * 0.8) : (price * 0.95);
+    ```
+  * **해설:**
+    삼항 연산자의 조건부에 `isVip && price >= 10000` (VIP이면서 10000원 이상)을 넣습니다. 이 조건이 `true`이면 20% 할인된 가격(`price * 0.8`), `false`이면 5% 할인된 가격(`price * 0.95`)이 `finalPrice`에 할당됩니다.
+
+-----
+
+**문제 3: 저주받은 숲의 함정 해제**
+
+  * **정답 코드:**
+    ```java
+    boolean isNight = true;
+    boolean hasMoonPotion = false;
+
+    boolean trapDeactivated = !isNight || hasMoonPotion;
+    ```
+  * **해설:**
+    함정 해제 조건은 "밤이 **아니거나**" `!isNight` 또는 "물약을 가지고 있을 때" `hasMoonPotion` 입니다. 이를 `||` (또는) 연산자로 결합합니다.
+
+-----
+
+**문제 4: 길드 가입 심사**
+
+  * **정답 코드:**
+    ```java
+    String recommender = "초보자";
+    int power = 3500;
+    boolean hasCriminalRecord = false;
+
+    boolean canJoinGuild = recommender.equals("대현자") || (power >= 3000 && !hasCriminalRecord);
+    ```
+  * **해설:**
+    "전투력 3000 이상**이고** 범죄 기록이 **없어야**" `(power >= 3000 && !hasCriminalRecord)` 조건을 괄호로 묶어 먼저 처리합니다. 이 결과와 "추천인이 대현자" `recommender.equals("대현자")` 조건을 `||` (또는) 연산으로 연결합니다.
+
+-----
+
+**문제 5: 엘리트 던전의 등급 판별기**
+
+  * **정답 코드:**
+    ```java
+    int score = 75;
+
+    String grade = (score >= 90) ? "S등급" : ((score >= 70) ? "A등급" : "F등급");
+    ```
+  * **해설:**
+    첫 번째 삼항 연산자가 `(score >= 90)`을 검사합니다. `false`일 경우, 두 번째 삼항 연산자 `((score >= 70) ? "A등급" : "F등급")`가 실행되어 70점 이상 여부를 다시 검사합니다.
+
+-----
+
+**문제 6: 현상금 사냥꾼의 보상**
+
+  * **정답 코드:**
+    ```java
+    String targetName = "고블린 킹";
+    int level = 70;
+
+    int reward = (targetName.equals("고블린 킹") && level >= 80) ? 50000 : 10000;
+    ```
+  * **해설:**
+    "고블린 킹"**이면서** "레벨 80 이상" `(targetName.equals("고블린 킹") && level >= 80)`을 조건으로 사용합니다. `level`이 70이라 조건이 `false`가 되므로 10000이 할당됩니다.
+
+-----
+
+**문제 7: 고대 유적의 비밀번호**
+
+  * **정답 코드:**
+    ```java
+    int passCode = 8848;
+
+    boolean isValidPasscode = (passCode >= 1000 && passCode <= 9999) && (passCode % 2 == 0);
+    ```
+  * **해설:**
+    `passCode % 2 == 0`은 2로 나눈 나머지가 0인지, 즉 '짝수'인지를 판별합니다. 이 짝수 조건과 4자리 수 `(passCode >= 1000 && passCode <= 9999)` 조건을 `&&`로 연결합니다.
+
+-----
+
+**문제 8: 마법사의 스킬 시전**
+
+  * **정답 코드:**
+    ```java
+    int mana = 50;
+    boolean isSilence = true;
+
+    boolean canCastSkill = (mana >= 30) && !isSilence;
+    ```
+  * **해설:**
+    스킬 시전은 마나가 30 이상(`mana >= 30`)**이어야 하고**, "침묵" 상태가 **아니어야**(`!isSilence`) 합니다.
+
+-----
+
+**문제 9: '최종 보스' 방 열쇠 조합**
+
+  * **정답 코드:**
+    ```java
+    boolean hasFireKey = false;
+    boolean hasWaterKey = true;
+    boolean hasMasterKey = true;
+
+    boolean canOpenFinalDoor = (hasFireKey && hasWaterKey) || hasMasterKey;
+    ```
+  * **해설:**
+    "'불'과 '물' 열쇠가 **둘 다**" `(hasFireKey && hasWaterKey)` 조건을 괄호로 묶고, "만능 열쇠" `hasMasterKey` 조건과 `||` (또는) 연산으로 연결합니다.
+
+-----
+
+**문제 10: 상점의 영업시간 판별기**
+
+  * **정답 코드:**
+    ```java
+    int hour = 19;
+
+    String status = (hour >= 9 && hour < 18) ? "영업 중" : "영업 종료";
+    ```
+  * **해설:**
+    오후 6시(18시)까지 영업은 18시 정각은 포함하지 않는 "18시 미만"을 의미합니다. 따라서 `hour >= 9 && hour < 18`이 '영업 중' 조건이 됩니다.
+
+-----
+
+**문제 11: 특수 물약 제조**
+
+  * **정답 코드:**
+    ```java
+    boolean hasHerb = true;
+    boolean hasRedPotion = false;
+    boolean hasBluePotion = false;
+
+    boolean canCraftSpecial = hasHerb && (hasRedPotion || hasBluePotion);
+    ```
+  * **해설:**
+    '약초'(`hasHerb`)는 **필수**이며, **동시에** '붉은 포션 또는 푸른 포션' `(hasRedPotion || hasBluePotion)` 중 하나가 필요합니다. 괄호를 사용하여 `||` 연산이 먼저 수행되도록 합니다.
+
+-----
+
+**문제 12: 장비 강화 성공 여부**
+
+  * **정답 코드:**
+    ```java
+    int level = 12;
+    int luck = 60;
+
+    String result = (level < 10 || luck > 50) ? "강화 성공!" : "강화 실패...";
+    ```
+  * **해설:**
+    "레벨이 10 미만" `(level < 10)` **이거나** "행운이 50 초과" `(luck > 50)` 조건을 `||` (또는)으로 연결합니다. `luck`이 60이라 `luck > 50`이 `true`가 되므로 "강화 성공\!"이 할당됩니다.
+
+-----
+
+**문제 13: 청소년 관람 불가 판정**
+
+  * **정답 코드:**
+    ```java
+    int age = 17;
+    boolean withParent = true;
+
+    String entry = (age < 19 && !withParent) ? "입장 불가" : "입장 가능";
+    ```
+  * **해설:**
+    "입장 불가" 조건은 "19세 미만" `(age < 19)` **이면서** "부모 동반 안 함" `(!withParent)` 입니다. 주어진 값은 `withParent`가 `true`이므로 `!withParent`는 `false`가 되어, 최종 조건은 `false`가 됩니다. 따라서 "입장 가능"이 할당됩니다.
+
+-----
+
+**문제 14: 서버 접속 채널 추천**
+
+  * **정답 코드:**
+    ```java
+    int currentUsers = 120;
+    String serverType = "이벤트";
+
+    String channel = (currentUsers < 100 || serverType.equals("이벤트")) ? "추천 채널" : "일반 채널";
+    ```
+  * **해설:**
+    "접속자 100명 미만" `(currentUsers < 100)` **이거나** "서버 타입이 이벤트" `(serverType.equals("이벤트"))` 조건을 `||` (또는)로 연결합니다. `serverType`이 "이벤트"이므로 조건은 `true`가 됩니다.
+
+-----
+
+**문제 15: 스탯 재분배 자격**
+
+  * **정답 코드:**
+    ```java
+    boolean isJobChanged = false;
+    boolean isNewbie = false;
+    boolean isGM = true;
+
+    boolean canResetStat = isGM || (isJobChanged || isNewbie);
+    ```
+  * **해설:**
+    'GM'(`isGM`)은 다른 조건과 **상관없이** 가능하므로, `isGM`을 `||` (또는) 연산으로 최우선에 둡니다. `isGM`이 `true`이므로, 뒤의 조건 `(isJobChanged || isNewbie)`은 평가할 필요도 없이 `true`가 확정됩니다.
+
+-----
+
+## 💻 2부: HTML/CSS/JS - 살아있는 웹사이트 만들기 (15문제) 풀이
+
+-----
+
+**문제 1: [HTML] 블로그 포스트 구조화**
+
+  * **정답 코드 (HTML):**
+    ```html
+    <main>
+      <article>
+        <header>
+          <h2>최고의 맛집, '코딩 식당' 방문 후기</h2>
+          <p>작성일: 2025-11-04</p>
+        </header>
+        <section>
+          <p>이 식당의 '자바 파스타'는 정말 일품이었습니다.</p>
+          <p>... (리뷰 본문 내용) ...</p>
+        </section>
+      </article>
+    </main>
+    ```
+  * **해설:**
+    `<main>`은 페이지의 유일한 핵심 콘텐츠를, `<article>`은 그 안의 독립적인 글(포스트)을 의미합니다. `<header>`는 글의 제목/메타 데이터를, `<section>`은 본문 내용을 그룹화합니다.
+
+-----
+
+**문제 2: [CSS] 2단 레이아웃 배치**
+
+  * **정답 코드 (CSS):**
+    ```css
+    #main-content {
+      float: left;
+      width: 70%;
+    }
+    #sidebar {
+      float: left;
+      width: 30%;
+    }
+    footer {
+      clear: both; /* float의 영향을 받지 않도록 설정 */
+    }
+    ```
+  * **해설:**
+    두 요소를 `float: left`로 설정하여 왼쪽부터 차례로 나란히 배치합니다. `footer`가 이 `float` 요소들을 따라 올라오지 않고 제자리를 찾도록 `clear: both;` 속성을 적용합니다.
+
+-----
+
+**문제 3: [JS/jQuery] 야간 모드 토글 버튼**
+
+  * **정답 코드 (JavaScript/jQuery):**
+    ```javascript
+    $(document).ready(function(){
+      $("#mode-toggle").click(function(){
+        $("body").css({
+          "background-color": "#333",
+          "color": "#EEE"
+        });
+      });
+    });
+    ```
+  * **해설:**
+    `$("#mode-toggle")`로 버튼을 선택하고, `.click()` 이벤트 핸들러를 등록합니다. 버튼이 클릭되면 `$("body")`를 선택하여 `.css()` 메서드로 여러 스타일 속성을 객체(`{}`) 형태로 동시에 변경합니다.
+
+-----
+
+**문제 4: [JS] 동적 환영 메시지**
+
+  * **정답 코드 (JavaScript/jQuery):**
+    ```javascript
+    $(document).ready(function(){
+      let userName = "방문자";
+      // userName = "개발자"; // 이 값으로 바꿔도 동작합니다.
+      
+      $("#welcome-msg").text("안녕하세요! " + userName + "님.");
+    });
+    ```
+  * **해설:**
+    페이지 로딩이 완료되면(`ready`), `userName` 변수와 문자열을 `+` 연산자로 조합하여, `$("#welcome-msg")`로 선택한 `<h1>` 태그의 텍스트 내용으로 `.text()`를 이용해 삽입합니다.
+
+-----
+
+**문제 5: [JS - Logic] 장바구니 수량 표시**
+
+  * **정답 코드 (JavaScript/jQuery):**
+    ```javascript
+    // $(document).ready(function(){ // ready 핸들러 내부라고 가정
+      let cartItemCount = 0;
+      
+      if (cartItemCount === 0) {
+        $("#cart-status").text("장바구니가 비었습니다.");
+      } else {
+        $("#cart-status").text("총 " + cartItemCount + "개의 상품이 있습니다.");
+      }
+    // });
+    ```
+  * **해설:**
+    `if` 문으로 `cartItemCount`가 0인지 확인합니다. `true`이면 "비었습니다" 메시지를, `false` (0이 아닌 경우)이면 `else` 블록이 실행되어 수량을 포함한 메시지를 출력합니다.
+
+-----
+
+**문제 6: [JS - Event] 이미지 호버 효과**
+
+  * **정답 코드 (JavaScript/jQuery):**
+    ```javascript
+    // $(document).ready(function(){
+      $("#product-image").hover(
+        function() {
+          // 1. 마우스를 올렸을 때 (mouseenter)
+          $(this).css("border", "2px solid blue");
+        },
+        function() {
+          // 2. 마우스가 벗어났을 때 (mouseleave)
+          $(this).css("border", "none");
+        }
+      );
+    // });
+    ```
+  * **해설:**
+    `.hover()` 메서드는 두 개의 함수를 인자로 받습니다. 첫 번째는 마우스가 요소에 들어왔을 때, 두 번째는 나갔을 때 실행됩니다. `$(this)`는 이벤트가 발생한 요소(이미지)를 가리킵니다.
+
+-----
+
+**문제 7: [JS - Type/Length] 댓글 글자 수 검사**
+
+  * **정답 코드 (JavaScript/jQuery):**
+    ```javascript
+    // $(document).ready(function(){
+      let comment = "이 맛집 정말 최고예요!"; // 글자 수: 15
+      
+      let typeInfo = typeof(comment);
+      let lengthInfo = comment.length;
+      
+      $("#debug-info").text("유형: " + typeInfo + ", 길이: " + lengthInfo);
+    // });
+    ```
+  * **해설:**
+    `typeof()` 연산자는 변수의 데이터 유형("string")을 반환하고, `.length` 속성은 문자열의 길이(15)를 반환합니다.
+
+-----
+
+**문제 8: [HTML/CSS] 시맨틱 구조 문제점 찾기**
+
+  * **정답 코드 (HTML 수정):**
+    ```html
+    <footer class="footer-area">
+      (주)맛있는 코드 | 주소: 서울시 코딩구 | Copyright 2025.
+    </footer>
+    ```
+  * **수정 이유 2가지:**
+    1.  **검색 엔진 최적화 (SEO):** `<div>`는 아무 의미가 없지만, `<footer>` 태그는 검색 엔진 로봇에게 "이 영역은 웹사이트의 바닥글이며 저작권, 주소 등의 정보를 담고 있다"고 명확하게 알려줍니다.
+    2.  **웹 접근성 (Accessibility):** 스크린 리더(화면 낭독기) 사용자가 `<footer>` 태그를 만나면 '바닥글 영역'임을 인지하고 내용을 건너뛰거나 바로 찾아갈 수 있어 웹 탐색이 용이해집니다.
+
+-----
+
+**문제 9: [JS - Dynamic Type] 변수의 변신**
+
+  * **정답 코드 (JavaScript/jQuery):**
+    ```javascript
+    // $(document).ready(function(){
+      let point = 1000;
+      
+      // 1. 현재 포인트 출력
+      $("#point-display").text("현재 포인트: " + point);
+      
+      // 2. 변수 재할당 (Number -> String)
+      point = "VIP 등급";
+      
+      // 3. 등급 추가 출력
+      $("#point-display").append(" / 등급: " + point);
+    // });
+    ```
+  * **해설:**
+    JavaScript는 **동적 타입 언어**라 처음에 숫자를 담았던 `point` 변수에 나중에 문자열을 재할당할 수 있습니다. `.text()`는 내용을 덮어쓰고, `.append()`는 기존 내용 뒤에 추가합니다.
+
+-----
+
+**문제 10: [JS/jQuery] 버튼 활성화/비활성화 로직**
+
+  * **정답 코드 (JavaScript/jQuery):**
+    ```javascript
+    // $(document).ready(function(){
+      let agree = false;
+      
+      if (!agree) { // agree 변수가 true가 아니라면
+        $("#join-btn").prop("disabled", true);
+      }
+    // });
+    ```
+  * **해설:**
+    `if (!agree)`는 `agree`가 `false`일 때 `true`가 됩니다. `prop("disabled", true)`는 `<button>` 태그에 `disabled` 속성을 추가하여 버튼을 비활성화시킵니다.
+
+-----
+
+**문제 11: [CSS] float 레이아웃 깨짐 현상 해결**
+
+  * **정답:**
+    `clear: both;`
+  * **해설:**
+    `clear: both;` 속성은 해당 요소(footer)의 앞선 요소들에 적용된 `float: left;`와 `float: right;`의 영향을 모두 받지 않고, 이들의 아래로 내려가 정상적인 흐름에 배치되도록 합니다.
+
+-----
+
+**문제 12: [JS - Event] 간단한 경고창 띄우기**
+
+  * **정답 코드 (HTML):**
+    ```html
+    <button type="button" onclick="alert('주문이 완료되었습니다!')">주문하기</button>
+    ```
+  * **해설:**
+    HTML 태그에 `onclick` 속성을 직접 추가하고, 값으로 실행할 JavaScript 코드 `alert('...')`를 따옴표로 감싸 지정합니다.
+
+-----
+
+**문제 13: [HTML] 웹사이트의 '내비게이션'**
+
+  * **정답:**
+    `<nav>`
+  * **해설:**
+    `<nav>` (Navigation) 태그는 웹사이트의 주요 메뉴(주요 탐색 링크) 영역을 감싸는 용도로 사용되는 시맨틱 태그입니다.
+
+-----
+
+**문제 14: [JS - DOM] 태그 내용 변경하기**
+
+  * **정답 코드 (JavaScript/jQuery):**
+    ```javascript
+    // $(document).ready(function(){
+      $("#notice").text("서버 점검 안내 (02:00 ~ 04:00)");
+    // });
+    ```
+  * **해설:**
+    `$("#notice")`로 ID가 'notice'인 요소를 선택하고, `.text()` 메서드를 사용하여 내부 텍스트를 새 내용으로 완전히 교체합니다.
+
+-----
+
+**문제 15: [JS/HTML - Logic] 로그인 버튼 텍스트 변경**
+
+  * **정답 코드 (JavaScript/jQuery):**
+    ```javascript
+    // $(document).ready(function(){
+      let isLogin = false;
+      
+      // 삼항 연산자를 사용하여 텍스트 결정
+      let buttonText = (isLogin === true) ? "로그아웃" : "로그인";
+      
+      // 버튼에 텍스트 적용
+      $("#login-btn").text(buttonText);
+    // });
+    ```
+  * **해설:**
+    `isLogin`이 `false`이므로 삼항 연산자 `(isLogin === true)`는 `false`가 됩니다. 따라서 콜론(`:`) 뒤의 값인 "로그인"이 `buttonText` 변수에 할당되고, 이 값이 버튼의 텍스트가 됩니다.

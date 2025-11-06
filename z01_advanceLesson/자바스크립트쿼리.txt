@@ -1,0 +1,145 @@
+  
+## 📚 자바스크립트 학습 커리큘럼 (Java 경험자용)
+
+### 1단계: 기본 문법의 '차이점' 익히기
+
+자바에서 배운 `if`, `for`, `while` 등은 거의 동일합니다. 빠르게 훑어보되, 자바와 '다른' 점에 집중하세요.
+
+  * **변수 선언:** `int`, `String` 대신 `let`, `const`를 씁니다.
+      * `let name = "홍길동";` (값 변경 가능)
+      * `const PI = 3.14;` (값 변경 불가능, 상수)
+      * **핵심 차이:** 자바스크립트는 **동적 타입(Dynamic Typing)** 언어입니다. 변수 선언 시 타입을 지정하지 않으며, 실행 중에 타입이 바뀔 수 있습니다. (자바는 정적 타입)
+  * **데이터 타입:** `Number`, `String`, `Boolean`은 비슷합니다. 하지만 `null`과 `undefined`라는 특별한 값이 있습니다.
+  * **비교 연산자:** `==` 보다는 `===`를 사용하세요. `===`는 타입까지 엄격하게 비교합니다. (자바의 `equals()`와 유사한 역할)
+
+### 2단계: 자바스크립트의 '핵심 유닛' - 함수 (Function)
+
+자바스크립트에서는 함수가 **매우** 중요합니다. (자바의 '메서드'보다 훨씬 유연합니다.)
+
+  * **함수 선언 방식:**
+    1.  **함수 선언문:** `function greet(name) { return "Hello " + name; }`
+    2.  **함수 표현식:** `const greet = function(name) { return "Hello " + name; };`
+  * **화살표 함수 (Arrow Function):** (필수) 현대 자바스크립트의 핵심입니다.
+      * `const add = (a, b) => { return a + b; };`
+      * `const addSimple = (a, b) => a + b;` (코드가 한 줄이면 중괄호와 `return` 생략)
+
+### 3단계: 자바의 '객체'와 다른 '객체' - 객체 리터럴 (Object Literal)
+
+자바에서는 `class`라는 설계도를 먼저 만들고 객체(`new Person()`)를 생성했습니다.
+
+자바스크립트에서는 **설계도 없이 객체부터 바로** 만들 수 있습니다. 이것이 자바스크립트 객체의 핵심입니다.
+
+```javascript
+// 이것이 '객체 리터럴'입니다. (Java의 Map과 비슷해 보임)
+const person = {
+  name: "김철수",  // 속성 (Property)
+  age: 30,
+  
+  // 객체 안의 함수 = 메서드 (Method)
+  greet: function() {
+    console.log("안녕하세요, " + this.name + "입니다.");
+  },
+  
+  // 화살표 함수로도 메서드 정의 가능
+  sayAge: () => {
+    // 주의: 화살표 함수는 'this'의 동작 방식이 다릅니다. (일단은 function 키워드 사용 권장)
+  }
+};
+
+// 사용법
+console.log(person.name); // "김철수"
+person.greet(); // "안녕하세요, 김철수입니다."
+
+// 객체에 속성/메서드 동적 추가
+person.job = "개발자";
+console.log(person.job); // "개발자"
+```
+
+### 4단계: 배열(Array)과 강력한 메서드
+
+자바스크립트의 배열은 자바의 `ArrayList`와 더 비슷하며, 훨씬 강력한 내장 함수(메서드)를 제공합니다.
+
+  * `const fruits = ["사과", "바나나", "딸기"];`
+  * **핵심 메서드 (필수):** `forEach`, `map`, `filter`, `reduce`
+      * 이 메서드들은 '함수'를 인자로 받습니다. (2단계에서 함수를 배운 이유)
+
+<!-- end list -->
+
+```javascript
+const numbers = [1, 2, 3, 4, 5];
+
+// map: 각 요소를 변환하여 새 배열 생성
+const doubled = numbers.map(num => num * 2); 
+// doubled는 [2, 4, 6, 8, 10]
+
+// filter: 조건에 맞는 요소만 걸러서 새 배열 생성
+const evens = numbers.filter(num => num % 2 === 0);
+// evens는 [2, 4]
+```
+
+### 5단계: 자바스크립트의 존재 이유 - DOM 조작 (웹페이지 제어)
+
+자바스크립트가 웹 브라우저에서 하는 주된 일입니다. (자바의 Swing/JavaFX와 유사한 UI 제어)
+
+  * **DOM (Document Object Model):** HTML 문서를 자바스크립트 객체로 표현한 것.
+  * **요소 선택:**
+      * `const title = document.getElementById("myTitle");`
+      * `const button = document.querySelector("#myButton");`
+  * **이벤트 처리 (사용자 반응):**
+      * `button.addEventListener("click", () => { ... });`
+
+<!-- end list -->
+
+```javascript
+// 예: HTML에 <h1 id="title">안녕하세요</h1> <button id="btn">클릭</button> 가 있을 때
+
+const titleElement = document.querySelector("#title");
+const buttonElement = document.querySelector("#btn");
+
+// 버튼을 클릭하면(이벤트) h1 태그의 내용을 변경(DOM 조작)
+buttonElement.addEventListener("click", () => {
+  titleElement.textContent = "반갑습니다!";
+  titleElement.style.color = "blue";
+});
+```
+
+### 6단계: 현대 자바스크립트의 핵심 - 비동기(Async) 처리
+
+자바에서는 코드가 위에서 아래로 순서대로 실행됩니다 (동기). 자바스크립트는 순서를 기다리지 않는 **비동기(Asynchronous)** 처리가 기본입니다. (예: 서버에서 데이터 가져오기, 시간 지연)
+
+  * **`Promise`:** 비동기 작업의 성공/실패를 다루는 객체.
+  * **`async` / `await`:** (필수) Promise를 자바의 동기 코드처럼 쉽게 읽을 수 있게 해주는 마법 같은 문법입니다.
+
+<!-- end list -->
+
+```javascript
+// 1. Promise (데이터를 가져오는 데 1초 걸린다고 가정)
+fetch('https://api.example.com/data') // 'fetch'가 Promise를 반환
+  .then(response => response.json()) // 성공하면(.then) 응답을 json으로 바꾸고
+  .then(data => console.log(data))   // 성공하면(.then) 데이터를 출력
+  .catch(error => console.error(error)); // 실패하면(.catch) 에러 출력
+
+// 2. async / await (위 코드를 동기처럼 보이게 만듦)
+async function fetchData() {
+  try {
+    const response = await fetch('https://api.example.com/data');
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+fetchData();
+```
+
+-----
+
+**요약:**
+
+1.  **기본 문법 (변수, 연산자)**: 자바와 차이점 (`let/const`, `===`) 위주로 빠르게 복습.
+2.  **함수**: 화살표 함수 (`=>`)를 중심으로 깊게 학습.
+3.  **객체**: `class`가 아닌 \*\*객체 리터럴 (`{}`)\*\*부터 시작.
+4.  **배열**: `map`, `filter` 등 고차 함수 위주로 학습.
+5.  **DOM**: `querySelector`와 `addEventListener`로 HTML 제어.
+6.  **비동기**: `async/await`를 사용한 서버 통신 학습.

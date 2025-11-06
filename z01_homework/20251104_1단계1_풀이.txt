@@ -1,0 +1,787 @@
+## 💻 CSS/javascript
+
+### 1\. [개념] 시맨틱 태그(Semantic Tag) 사용 이유, 종류, 예제
+
+시맨틱 태그는 브라우저, 검색 엔진, 개발자 모두에게 **태그의 의미를 명확하게 전달**하기 위해 사용합니다. `<div>`나 `<span>`처럼 의미가 없는 태그와 달리, 각 태그가 콘텐츠의 구조와 역할을 설명합니다.
+
+  * **사용 이유:**
+
+    1.  **SEO (검색 엔진 최적화):** 검색 엔진이 `<nav>`는 메뉴, `<article>`은 본문임을 명확히 인지하고 웹페이지의 구조를 더 잘 파악하여 검색 순위 결정에 도움을 받습니다.
+    2.  **웹 접근성:** 시각 장애인이 사용하는 스크린 리더가 `<main>` 태그를 만나면 "여기가 메인 콘텐츠입니다"라고 알려주는 등, 콘텐츠를 더 쉽게 탐색할 수 있도록 도와줍니다.
+    3.  **코드 가독성 (유지보수):** 개발자가 코드를 봤을 때, `<div>`로만 이루어진 구조(일명 'div soup')보다 `<header>`, `<footer>` 등으로 구분된 코드가 훨씬 이해하기 쉽고 유지보수가 용이합니다.
+
+  * **주요 종류:**
+
+      * `<header>`: 페이지나 섹션의 머리말. (로고, 사이트 제목, 상단 메뉴 등)
+      * `<footer>`: 페이지나 섹션의 꼬리말. (저작권, 연락처, 관련 링크 등)
+      * `<nav>`: 내비게이션 (메뉴) 링크 영역.
+      * `<main>`: 페이지의 핵심적인 주요 콘텐츠. (페이지 당 1회 사용 권장)
+      * `<article>`: 독립적으로 배포하거나 재사용할 수 있는 콘텐츠. (블로그 글, 뉴스 기사)
+      * `<section>`: 연관성 있는 콘텐츠를 그룹화하는 영역. (챕터, 탭 등)
+      * `<aside>`: 본문 내용과 직접적인 관련성이 낮은 보조 콘텐츠. (사이드바, 광고, 관련 링크)
+
+  * **시맨틱 태그 레이아웃 예제 (상하좌우 구조):**
+    아래는 시맨틱 태그로 구조를 잡고, CSS Flexbox를 이용해 상단(`header`), 하단(`footer`), 그리고 내부에 좌( `nav`), 중앙(`main`), 우(`aside`)로 배치한 예제입니다.
+
+    ```html
+    <!DOCTYPE html>
+    <html lang="ko">
+    <head>
+        <title>시맨틱 레이아웃 예제</title>
+        <style>
+            /* 기본 스타일 초기화 */
+            body { margin: 0; font-family: sans-serif; }
+            header, footer, nav, main, aside { padding: 20px; box-sizing: border-box; }
+            
+            /* --- 레이아웃 --- */
+            
+            /* 상단 (Header) / 하단 (Footer) */
+            header { background-color: #f0f0f0; text-align: center; }
+            footer { background-color: #333; color: white; text-align: center; }
+
+            /* 콘텐츠 영역(nav, main, aside)을 감싸는 컨테이너 */
+            .content-wrapper {
+                display: flex; /* 자식 요소들을 가로로 배치 */
+                min-height: 60vh; /* 최소 높이 지정 */
+            }
+
+            /* 좌측 (Nav) */
+            nav {
+                width: 150px; /* 고정 너비 */
+                background-color: #e0e0e0;
+            }
+
+            /* 중앙 (Main) */
+            main {
+                flex-grow: 1; /* 남은 공간을 모두 차지 */
+                background-color: #ffffff;
+            }
+
+            /* 우측 (Aside) */
+            aside {
+                width: 200px; /* 고정 너비 */
+                background-color: #e0e0e0;
+            }
+        </style>
+    </head>
+    <body>
+
+        <header>
+            <h1>우리 웹사이트 로고</h1>
+        </header>
+
+        <div class="content-wrapper">
+            <nav>
+                <h3>메뉴</h3>
+                <ul>
+                    <li>메뉴1</li>
+                    <li>메뉴2</li>
+                </ul>
+            </nav>
+
+            <main>
+                <h2>메인 콘텐츠 영역</h2>
+                <p>이곳이 페이지의 주요 내용입니다.</p>
+            </main>
+
+            <aside>
+                <h4>광고</h4>
+                <p>보조 콘텐츠 영역</p>
+            </aside>
+        </div>
+
+        <footer>
+            <p>Copyright 2025. All rights reserved.</p>
+        </footer>
+
+    </body>
+    </html>
+    ```
+
+-----
+
+### 2\. [실습] 📜 "나만의 레시피" 페이지 구조화하기
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>오늘의 요리 - 나만의 레시피</title>
+</head>
+<body>
+
+    <header>
+        <h1>오늘의 요리</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#">한식</a></li>
+            <li><a href="#">중식</a></li>
+            <li><a href="#">양식</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        
+        <article>
+            <h2>김치찌개</h2>
+            <p>한국인이 가장 사랑하는 얼큰한 김치찌개 레시피입니다.</p>
+        </article>
+        
+        <section>
+            <h3>재료</h3>
+            <ul>
+                <li>김치</li>
+                <li>돼지고기</li>
+                <li>두부</li>
+                <li>파</li>
+            </ul>
+        </section>
+
+    </main>
+
+    <aside>
+        <h3>요리사 소개</h3>
+        <p>저는 20년 경력의 요리사 Chef Kim입니다.</p>
+    </aside>
+
+    <footer>
+        <p>Copyright 2025. Chef Kim.</p>
+    </footer>
+
+</body>
+</html>
+```
+
+-----
+
+### 3\. [개념] jQuery, 부트스트랩 설정 과정 (CDN 방식)
+
+프론트엔드 라이브러리/프레임워크를 설정하는 가장 쉬운 방법은 **CDN (Content Delivery Network)** 을 이용하는 것입니다. CDN은 전 세계 서버에 파일이 미리 배포되어 있어 빠르고 안정적으로 파일을 불러올 수 있습니다.
+
+**Bootstrap 5+ 버전 (jQuery 불필요)** 을 기준으로 설명합니다.
+
+1.  **HTML 파일 준비:** 기본 `index.html` 파일을 준비합니다.
+2.  **Bootstrap CSS 링크:** `<head>` 태그가 닫히기 직전에 Bootstrap CSS 링크를 추가합니다. CSS는 렌더링 초기에 필요하므로 상단에 배치합니다.
+3.  **Bootstrap JS 링크:** `</body>` 태그가 닫히기 직전에 Bootstrap JavaScript 번들(Bundle) 파일을 추가합니다. (Bundle 파일에는 Popper.js가 포함되어 있어 드롭다운, 툴팁 등 동적 기능에 필요합니다.)
+4.  **(선택) jQuery 추가:** Bootstrap 5는 jQuery가 필요 없지만, 만약 `$` 선택자 등 jQuery의 고유 기능을 사용하고 싶다면, Bootstrap JS보다 *먼저* jQuery 스크립트 파일을 추가해야 합니다.
+
+<!-- end list -->
+
+```html
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery와 Bootstrap 설정</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+
+    <h1>안녕하세요, 부트스트랩!</h1>
+    <button class="btn btn-primary">부트스트랩 버튼</button>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // 4. jQuery가 잘 로드되었는지 테스트
+        $(document).ready(function() {
+            console.log("jQuery 준비 완료!");
+        });
+    </script>
+</body>
+</html>
+```
+
+-----
+
+### 4\. [개념] 자바스크립트와 자바의 변수 선언 차이점
+
+가장 큰 차이점은 **타입(Type) 지정 방식**입니다.
+
+  * **Java (자바): 정적 타입 (Static Typing)**
+
+      * 변수를 선언할 때 **반드시** 어떤 타입( `int`, `String`, `boolean` 등)의 데이터가 들어갈지 명시해야 합니다.
+      * 한번 타입이 정해진 변수에는 **다른 타입의 값을 절대 넣을 수 없습니다.** (컴파일 에러 발생)
+
+  * **JavaScript (자바스크립트): 동적 타입 (Dynamic Typing)**
+
+      * 변수를 선언할 때 `let`, `const` (또는 `var`) 키워드만 사용하고 타입을 지정하지 않습니다.
+      * 타입은 변수에 **값이 할당될 때** 자동으로 결정됩니다.
+      * 이미 선언된 변수에 **다른 타입의 값을 자유롭게 재할당**할 수 있습니다.
+
+| 비교 항목 | Java (정적 타입) | JavaScript (동적 타입) |
+| --- | --- | --- |
+| **선언 예시** | `int age = 30;` <br> `String name = "홍길동";` | `let age = 30;` <br> `let name = "홍길동";` |
+| **타입 명시** | **필수** | **불필요** |
+| **타입 변경** | **불가능** (컴파일 에러) | **가능** |
+| **예시 (오류)** | `int a = 10;` <br> `a = "안녕하세요"; // 에러!` | `let a = 10;` <br> `a = "안녕하세요"; // 가능!` |
+
+-----
+
+### 5\. [실습] ⚗️ "마법의 물약 (JS) vs 견고한 상자 (Java)"
+
+  * **문제 (JS) - 마법의 물약**
+
+    ```javascript
+    // '마법의 물약' 변수를 let으로 선언하고 숫자 100을 할당
+    let magicPotion = 100;
+
+    // 1. 변수와 typeof 변수 출력
+    console.log(magicPotion, typeof magicPotion); // 출력: 100 "number"
+
+    // 2. 같은 변수에 문자열 "파란색 물약" 재할당
+    magicPotion = "파란색 물약";
+
+    // 3. 변수와 typeof 변수 다시 출력
+    console.log(magicPotion, typeof magicPotion); // 출력: "파란색 물약" "string"
+    ```
+
+    **결과:** JavaScript는 동적 타입 언어이므로, `number` 타입이었던 변수에 `string` 타입을 재할당해도 아무 문제 없이 타입이 변경됩니다.
+
+  * **문제 (Java - 개념) - 견고한 상자**
+
+    > 만약 Java에서 `int potion = 100;`을 선언한 뒤, 다음 줄에 `potion = "파란색 물약";`을 시도하면 어떻게 될까요?
+
+    **답변:** \*\*컴파일 에러(Compile Error)\*\*가 발생합니다.
+
+      * **에러 메시지 (예상):** `Type mismatch: cannot convert from String to int` (타입 불일치: String을 int로 변환할 수 없습니다.)
+      * **이유:** Java는 정적 타입 언어입니다. `potion` 변수는 `int` (정수) 타입으로 선언되었기 때문에 오직 정수 값만 담을 수 있습니다. 이 '견고한 상자'에 문자열(`String`)인 "파란색 물약"을 넣으려고 시도하면, 컴파일러가 타입이 맞지 않다고 즉시 오류를 발생시킵니다.
+
+-----
+
+### 6\. [개념] 자바스크립트와 자바에서 ;(세미콜론)의 사용 차이
+
+  * **Java (자바):** 세미콜론은 \*\*필수 (Mandatory)\*\*입니다.
+
+      * Java에서 세미콜론은 하나의 명령(Statement)이 끝났음을 컴파일러에게 명확히 알려주는 **문법적 약속**입니다.
+      * 세미콜론을 생략하면 코드를 아예 실행조차 할 수 없는 **컴파일 에러**가 발생합니다.
+
+  * **JavaScript (자바스크립트):** 세미콜론은 **선택 (Optional) ...이지만 권장**됩니다.
+
+      * JavaScript 엔진에는 **ASI (Automatic Semicolon Insertion, 자동 세미콜론 삽입)** 기능이 있습니다.
+      * 엔진이 코드를 해석하다가 줄바꿈(Enter) 등을 만나면 "여기가 문장의 끝이겠구나"라고 판단하여 자동으로 세미콜론을 삽입해 줍니다.
+      * **주의:** ASI 기능이 개발자의 의도와 다르게 동작하여 예상치 못한 버그를 만들 수 있습니다. (예: `return` 키워드 바로 뒤에서 줄바꿈하는 경우)
+      * **결론:** 버그를 예방하고 코드의 명확성을 위해 항상 문장 끝에 세미콜론을 붙이는 것이 **베스트 프랙티스**입니다.
+
+-----
+
+### 7\. [실습] 👨‍🎤 "반항아 JS vs FM 자바"
+
+  * **문제 (JS) - 반항아 JS**
+
+    ```javascript
+    alert("첫 번째 알림")
+    alert("두 번째 알림")
+    ```
+
+      * **실행 결과:** **정상적으로 실행됩니다.**
+      * **이유:** JavaScript 엔진의 ASI 기능이 각 줄의 끝에 자동으로 세미콜론을 삽입하여 `alert("첫 번째 알림");`과 `alert("두 번째 알림");`으로 해석합니다. 따라서 "첫 번째 알림" 팝업이 뜨고, 확인을 누르면 "두 번째 알림" 팝업이 이어서 뜹니다.
+
+  * **문제 (Java - 개념) - FM 자바**
+
+    ```java
+    System.out.println("첫 번째 출력") // <--- 여기서 에러
+    System.out.println("두 번째 출력")
+    ```
+
+      * **실행 결과:** **컴파일 에러**가 발생합니다.
+      * **에러 메시지 (예상):** `Syntax error, insert ";" to complete Statement` (구문 오류: 문장을 완성하려면 세미콜론을 삽입하세요.)
+      * **이유:** Java는 세미콜론이 필수입니다. 첫 번째 `System.out.println("첫 번째 출력")` 뒤에 세미콜론이 없으므로, Java 컴파일러는 문법 오류로 판단하여 프로그램을 컴파일조차 하지 못합니다.
+
+-----
+
+### 8\. [개념] 자바스크립트의 변수 종류 (선언 키워드)
+
+JavaScript에서 변수를 선언하는 키워드는 크게 3가지가 있습니다.
+
+1.  **`let` (권장)**
+
+      * **특징:** 재할당(값 변경)이 가능한 변수를 선언합니다.
+      * **스코프(Scope):** **블록 스코프(Block Scope)**. `{ }` (중괄호) 안에서 선언되면 그 안에서만 유효합니다.
+      * **예시:** `let count = 10; count = 20;` (가능)
+
+2.  **`const` (권장)**
+
+      * **특징:** 재할당이 불가능한 \*\*상수(Constant)\*\*를 선언합니다. 선언과 동시에 값을 할당해야 합니다.
+      * **스코프:** **블록 스코프(Block Scope)**.
+      * **예시:** `const PI = 3.14; PI = 3.15;` (불가능, 에러 발생)
+      * **주의:** `const`는 재할당이 불가능한 것이지, '불변(Immutable)'을 의미하진 않습니다. `const`로 선언된 객체나 배열의 \*내용(요소)\*은 변경할 수 있습니다. (예: `const arr = [1, 2]; arr.push(3);` // 가능)
+
+3.  **`var` (구식, 사용 비권장)**
+
+      * **특징:** ES6 이전에 사용되던 변수 선언 방식입니다.
+      * **스코프:** **함수 스코프(Function Scope)**. 블록 스코프를 무시하여 예측하기 어려운 문제를 일으킬 수 있습니다.
+      * **문제점:** 호이스팅(hoisting) 문제, 중복 선언 가능 등 여러 단점이 있어 현재는 `let`과 `const` 사용이 강력히 권장됩니다.
+
+-----
+
+### 9\. [실습] `typeof` 연산자로 미스터리 변수 타입 밝히기
+
+`typeof`는 피연산자의 데이터 타입을 문자열로 반환하는 연산자입니다.
+
+```javascript
+let mystery1 = "범인은 이 안에 있어";
+let mystery2 = 101;
+let mystery3 = (1 < 0); // (1 < 0)은 false 값을 가집니다.
+let mystery4; // 선언만 하고 값을 할당하지 않음
+let mystery5 = null; // 의도적으로 비워둠
+
+// typeof 연산자
+console.log("mystery1의 타입:", typeof mystery1); // 결과: "string"
+console.log("mystery2의 타입:", typeof mystery2); // 결과: "number"
+console.log("mystery3의 타입:", typeof mystery3); // 결과: "boolean"
+console.log("mystery4의 타입:", typeof mystery4); // 결과: "undefined"
+console.log("mystery5의 타입:", typeof mystery5); // 결과: "object" 
+```
+
+> **[\!] `typeof null`이 "object"인 이유:**
+> 이는 JavaScript 초창기부터 내려온 유명한 **버그(Bug)이자 언어적 특징**입니다. `null`은 '값이 없음'을 나타내는 원시 타입(Primitive Type)이지만, `typeof` 연산자는 `null`을 `object`로 반환합니다. 이 동작은 하위 호환성을 위해 수정되지 않고 있습니다.
+
+-----
+
+### 10\. [개념] 부트스트랩(Bootstrap)의 그리드 시스템
+
+부트스트랩 그리드 시스템은 웹 페이지의 레이아웃을 **반응형**으로 쉽고 일관성 있게 만들기 위한 강력한 **12단 컬럼(Column) 시스템**입니다. 화면을 가로 12개의 동일한 칸으로 나눈다고 상상하면 됩니다.
+
+  * **핵심 클래스:**
+
+      * `.container` 또는 `.container-fluid`: 그리드 시스템을 감싸는 최상위 래퍼입니다.
+      * `.row`: 컬럼(열)들을 수평으로 묶어주는 한 줄입니다.
+      * `.col-` (예: `.col-6`, `.col-md-4`): 실제 콘텐츠가 들어가는 칸(컬럼)입니다. 숫자는 12칸 중 몇 칸을 차지할지 의미합니다.
+
+  * **동작 방식:**
+
+      * `col-6`은 12칸 중 6칸(50%)을 의미합니다.
+      * `col-4`는 12칸 중 4칸(33.3%)을 의미합니다.
+      * `row` 안에 있는 컬럼 숫자들의 합이 12가 되도록 맞추는 것이 일반적입니다.
+
+  * **반응형 예제 코드:**
+    "모바일(가장 작은 화면)에서는 100%로 보이고, 태블릿(md, 768px) 이상부터는 50%씩 2단으로 보이게"
+
+    ```html
+    <div class="container">
+      <div class="row">
+        
+        <div class="col-12 col-md-6">
+          <div class="bg-primary text-white p-3">박스 1 (모바일 100%, 태블릿 50%)</div>
+        </div>
+        
+        <div class="col-12 col-md-6">
+          <div class="bg-secondary text-white p-3">박스 2 (모바일 100%, 태블릿 50%)</div>
+        </div>
+        
+      </div>
+
+      <div class="row mt-3"> 
+        <div class="col-12 col-md-4">
+            <div class="bg-success text-white p-3">박스 3 (33.3%)</div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="bg-danger text-white p-3">박스 4 (33.3%)</div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="bg-warning text-dark p-3">박스 5 (33.3%)</div>
+        </div>
+      </div>
+    </div>
+
+    ```
+
+-----
+
+-----
+
+## ☕ JAVA
+
+### 1\. [개념] 상황별 적절한 변수 사용 예제
+
+  * **`String` (문자열):** 글자들의 나열.
+
+      * `String userName = "홍길동";` (회원 이름)
+      * `String productName = "노트북";` (상품명)
+      * `String address = "서울시 강남구 테헤란로";` (주소)
+
+  * **`int` (정수):** 소수점이 없는 숫자.
+
+      * `int age = 25;` (나이)
+      * `int quantity = 3;` (수량)
+      * `int price = 10000;` (가격)
+
+  * **`double` (실수):** 소수점이 있는 정확한 숫자 ( `float`보다 정밀함).
+
+      * `double averageScore = 92.5;` (평균 점수)
+      * `double height = 175.7;` (키)
+      * `double interestRate = 0.035;` (이자율)
+
+  * **`boolean` (논리):** 참(true) 또는 거짓(false)
+
+      * `boolean isLoggedIn = true;` (로그인 여부)
+      * `boolean hasStock = false;` (재고 있음 여부)
+      * `boolean isAdult = (age > 19);` (성인 여부)
+
+-----
+
+### 2\. [실습] 🎮 "RPG 캐릭터 정보창 만들기"
+
+```java
+public class RPGCharacter {
+    public static void main(String[] args) {
+        
+        // 1. 캐릭터의 이름 (String)
+        String characterName = "전사";
+        
+        // 2. 캐릭터의 레벨 (int)
+        int level = 10;
+        
+        // 3. 캐릭터의 체력(HP) (double)
+        double hp = 150.5;
+        
+        // 4. "활력 포션" 소지 여부 (boolean)
+        boolean hasVitalPotion = true;
+        
+        // 출력
+        System.out.println("--- 캐릭터 정보 ---");
+        System.out.println("이름: " + characterName);
+        System.out.println("레벨: " + level);
+        System.out.println("체력: " + hp);
+        System.out.println("활력 포션 소지: " + hasVitalPotion);
+    }
+}
+```
+
+**출력 결과:**
+
+```
+--- 캐릭터 정보 ---
+이름: 전사
+레벨: 10
+체력: 150.5
+활력 포션 소지: true
+```
+
+-----
+
+### 3\. [개념] 논리 연산자 (&& - AND)
+
+`&&` (AND) 연산자는 "그리고"라는 의미로, **양쪽의 조건이 모두 `true`일 때만** 최종 결과가 `true`가 됩니다. 둘 중 하나라도 `false`이면 결과는 `false`입니다.
+
+  * **예제: "로그인 성공 조건"**
+
+      * 로그인에 성공하려면 (1) 아이디가 맞아야 하고 **(그리고)** (2) 비밀번호도 맞아야 합니다.
+
+    <!-- end list -->
+
+    ```java
+    boolean isIdCorrect = true;    // 1. 아이디가 일치함
+    boolean isPasswordCorrect = false; // 2. 비밀번호가 틀림
+
+    // (아이디가 맞다) && (비밀번호가 맞다)
+    boolean loginSuccess = isIdCorrect && isPasswordCorrect; 
+
+    // (true) && (false) -> 결과는 false
+    System.out.println("로그인 성공: " + loginSuccess); // false 출력
+    ```
+
+    만약 `isPasswordCorrect`도 `true`였다면 `loginSuccess`는 `true`가 됩니다.
+
+-----
+
+### 4\. [실습] 🔐 "비밀 클럽 입장 심사" (&&)
+
+```java
+public class ClubEntry {
+    public static void main(String[] args) {
+        
+        // 1. 조건 변수 선언
+        int age = 22;
+        boolean hasInvitation = true;
+        
+        // 2. && 연산자로 두 조건을 모두 만족하는지 검사
+        // (나이가 20세 이상) AND (초대장을 가짐)
+        boolean canEnter = (age >= 20) && (hasInvitation == true);
+        // (hasInvitation == true)는 (hasInvitation)이라고만 써도 됩니다.
+        
+        // 3. 결과 출력
+        System.out.println("입장 가능 여부: " + canEnter); // true
+
+        System.out.println("--- 다른 경우 테스트 ---");
+        
+        // 테스트 1: 나이가 19세일 때
+        age = 19;
+        canEnter = (age >= 20) && hasInvitation;
+        System.out.println("나이 19, 초대장 O: " + canEnter); // false
+        
+        // 테스트 2: 나이는 22세, 초대장이 없을 때
+        age = 22;
+        hasInvitation = false;
+        canEnter = (age >= 20) && hasInvitation;
+        System.out.println("나이 22, 초대장 X: " + canEnter); // false
+    }
+}
+```
+
+-----
+
+### 5\. [개념] 논리 연산자 (|| - OR)
+
+`||` (OR) 연산자는 "또는"이라는 의미로, **양쪽의 조건 중 하나라도 `true`이면** 최종 결과가 `true`가 됩니다. 둘 다 `false`일 때만 결과가 `false`입니다.
+
+  * **예제: "할인 적용 조건"**
+
+      * 할인을 받으려면 (1) VIP 회원이거나 **(또는)** (2) 할인 쿠폰이 있으면 됩니다.
+
+    <!-- end list -->
+
+    ```java
+    boolean isVIP = false;      // 1. VIP 회원이 아님
+    boolean hasCoupon = true; // 2. 쿠폰을 가지고 있음
+
+    // (VIP이다) || (쿠폰이 있다)
+    boolean applyDiscount = isVIP || hasCoupon;
+
+    // (false) || (true) -> 결과는 true
+    System.out.println("할인 적용: " + applyDiscount); // true 출력
+    ```
+
+    둘 중 하나(쿠폰)를 만족했기 때문에 할인이 적용됩니다.
+
+-----
+
+### 6\. [실습] 🛒 "무료 배송 이벤트" (||)
+
+```java
+public class FreeShipping {
+    public static void main(String[] args) {
+        
+        // 1. 조건 변수 선언
+        int purchaseAmount = 30000;
+        boolean isPremiumMember = true;
+        
+        // 2. || 연산자로 두 조건 중 하나라도 만족하는지 검사
+        // (구매 금액이 50000 이상) OR (프리미엄 회원이다)
+        boolean isFreeShipping = (purchaseAmount >= 50000) || (isPremiumMember == true);
+        
+        // 3. 결과 출력
+        System.out.println("무료 배송 여부: " + isFreeShipping); // true (회원이라서)
+
+        System.out.println("--- 다른 경우 테스트 ---");
+
+        // 테스트 1: 금액은 60000, 일반 회원
+        purchaseAmount = 60000;
+        isPremiumMember = false;
+        isFreeShipping = (purchaseAmount >= 50000) || isPremiumMember;
+        System.out.println("금액 6만, 일반 회원: " + isFreeShipping); // true (금액 때문에)
+
+        // 테스트 2: 금액 30000, 일반 회원 (둘 다 불만족)
+        purchaseAmount = 30000;
+        isPremiumMember = false;
+        isFreeShipping = (purchaseAmount >= 50000) || isPremiumMember;
+        System.out.println("금액 3만, 일반 회원: " + isFreeShipping); // false 
+    }
+}
+```
+
+-----
+
+### 7\. [개념] 논리 연산자 (\! - NOT)
+
+`!` (NOT) 연산자는 "부정" 또는 "반대"를 의미합니다.
+`boolean` 값( `true` 또는 `false` ) 앞에 붙어서 **결과를 뒤집어** 버립니다.
+
+  * `!true` -\> `false`
+  * `!false` -\> `true`
+
+**사용 경우:**
+가장 흔하게는 " \~가 아닐 때" 라는 조건을 검사할 때 사용됩니다.
+
+  * **예제 1: "로그인 되어 있지 *않다면*"**
+
+    ```java
+    boolean isLoggedIn = false;
+    if (!isLoggedIn) { // isLoggedIn이 true가 아니라면 (즉, false라면)
+        System.out.println("로그인이 필요합니다."); 
+    }
+    // 출력: 로그인이 필요합니다.
+    ```
+
+  * **예제 2: "무한 루프 탈출 (파일이 닫혀있지 *않는* 동안)"**
+
+    ```java
+    // file.isClosed() 가 true (파일이 닫힘)를 반환한다고 가정
+    // while( !file.isClosed() ) { ... }
+    // -> while( !true ) { ... }
+    // -> while( false ) { ... } -> 루프 종료
+    ```
+
+-----
+
+### 8\. [실습] 🚪 "게임 오버 조건 체크" (\!)
+
+```java
+public class GameOverCheck {
+    public static void main(String[] args) {
+        
+        // --- 테스트 1: 살아있을 때 ---
+        boolean isAlive = true;
+        
+        // !isAlive 는 !(true) 이므로 false가 됨
+        // if (false) 이므로 중괄호 안의 코드는 실행되지 않음.
+        if (!isAlive) { 
+            System.out.println("GAME OVER");
+        }
+        System.out.println("테스트 1 종료 (아무것도 출력 안됨이 정상)");
+
+
+        // --- 테스트 2: 죽었을 때 ---
+        isAlive = false;
+        
+        // !isAlive 는 !(false) 이므로 true가 됨
+        // if (true) 이므로 중괄호 안의 코드가 실행됨.
+        if (!isAlive) {
+            System.out.println("GAME OVER"); 
+        }
+        System.out.println("테스트 2 종료");
+    }
+}
+```
+
+**출력 결과:**
+
+```
+테스트 1 종료 (아무것도 출력 안됨이 정상)
+GAME OVER
+테스트 2 종료
+```
+
+-----
+
+### 9\. [개념] 자바의 문자열(String) 비교와 숫자(int) 비교의 차이점
+
+Java에서 변수 타입은 크게 \*\*기본형(Primitive Type)\*\*과 \*\*참조형(Reference Type)\*\*으로 나뉩니다. 이 차이 때문에 비교 방식이 달라집니다.
+
+1.  **숫자 (`int`, `double` 등) - 기본형(Primitive Type)**
+
+      * **특징:** 변수 자체가 \*\*실제 값(Value)\*\*을 저장합니다.
+      * **`==` 비교:** 변수가 가진 **'값' 자체**가 같은지 비교합니다.
+      * **예시:** `int a = 10;`, `int b = 10;` 에서 `a`와 `b`는 둘 다 '10'이라는 값을 가지고 있으므로 `a == b`는 `true`입니다.
+
+2.  **문자열 (`String`) - 참조형(Reference Type)**
+
+      * **특징:** 변수는 실제 "데이터"가 있는 곳의 \*\*메모리 주소(Reference)\*\*를 저장합니다. (데이터 자체는 힙(Heap) 메모리라는 다른 공간에 저장됨)
+      * **`==` 비교:** 변수가 가진 \*\*'주소 값'\*\*이 같은지 비교합니다. (즉, "같은 대상을 가리키고 있는가?")
+      * **.equals() 비교:** 변수가 가리키는 주소로 찾아가서, 그곳에 있는 \*\*'실제 내용(Content)'\*\*이 같은지 비교합니다.
+
+> `new String("Kim")`은 "Kim"이라는 내용으로 **새로운 메모리 주소**에 객체를 강제로 만들라는 명령입니다.
+
+**결론:**
+
+  * `int`와 같은 기본형은 `==`로 **값**을 비교합니다.
+  * `String`과 같은 참조형은 `==`로 **주소**를 비교하고, `.equals()`로 **내용**을 비교합니다.
+  * **따라서 Java에서 문자열의 내용이 같은지 비교할 때는 *반드시* `.equals()`를 사용해야 합니다.**
+
+-----
+
+### 10\. [실습] 🕵️ "쌍둥이 용의자 찾기"
+
+```java
+public class StringComparison {
+    public static void main(String[] args) {
+        
+        // 1번 용의자 (int - 기본형)
+        int idCard1 = 12345;
+        int idCard2 = 12345;
+        // '값' 자체를 비교
+        System.out.println("숫자 비교 (==): " + (idCard1 == idCard2)); 
+        // 결과: true (12345와 12345는 값이 같음)
+
+        System.out.println("---");
+
+        // 2번 용의자 (String - 참조형)
+        // new String()은 "새로운 집을 지어라" (새 주소 할당)
+        String name1 = new String("Kim"); // (예: 101번지)
+        String name2 = new String("Kim"); // (예: 202번지)
+
+        // 2-1. 주소(==)로 비교 (같은 사람인가?)
+        System.out.println("문자열 비교 (==): " + (name1 == name2));
+        // 결과: false (101번지와 202번지는 주소가 다름)
+
+        // 2-2. 내용(.equals())으로 비교 (똑같이 생겼는가?)
+        System.out.println("문자열 비교 (.equals): " + name1.equals(name2));
+        // 결과: true (101번지의 내용 "Kim"과 202번지의 내용 "Kim"은 같음)
+    }
+}
+```
+
+-----
+
+### 11\. [개념] 3항 연산자 (Ternary Operator)
+
+3항 연산자는 간단한 `if-else` 문을 **한 줄로 축약**해서 쓸 수 있게 해주는 연산자입니다. (항이 3개: 조건, 참일 때, 거짓일 때)
+
+  * **기본 형식:**
+
+    ```java
+    (조건식) ? (참일 때 반환할 값) : (거짓일 때 반환할 값);
+    ```
+
+  * **예제:** "점수가 60점 이상이면 '합격', 아니면 '불합격'을 반환"
+
+      * **if-else 문:**
+
+        ```java
+        int score = 80;
+        String result;
+        if (score >= 60) {
+            result = "합격";
+        } else {
+            result = "불합격";
+        }
+        // result는 "합격"
+        ```
+
+      * **3항 연산자:**
+
+        ```java
+        int score = 80;
+        String result = (score >= 60) ? "합격" : "불합격";
+        // result는 "합격"
+        ```
+
+-----
+
+### 12\. [실습] 🌡️ "날씨 알림이"
+
+```java
+public class WeatherAdvisor {
+    public static void main(String[] args) {
+        
+        // 현재 온도
+        int temperature = 25;
+        
+        // 3항 연산자 사용
+        // (온도가 20 이상인가?) ? (맞으면 "반팔 추천!") : (틀리면 "긴팔 추천!")
+        String advice = (temperature >= 20) ? "반팔 추천!" : "긴팔 추천!";
+        
+        System.out.println("현재 온도 " + temperature + "도 입니다.");
+        System.out.println("오늘의 조언: " + advice); // "반팔 추천!" 출력
+
+        System.out.println("---");
+
+        // 온도를 15도로 변경해서 테스트
+        temperature = 15;
+        advice = (temperature >= 20) ? "반팔 추천!" : "긴팔 추천!";
+        System.out.println("현재 온도 " + temperature + "도 입니다.");
+        System.out.println("오늘의 조언: " + advice); // "긴팔 추천!" 출력
+    }
+}
+```
+

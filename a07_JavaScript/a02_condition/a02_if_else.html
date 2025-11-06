@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr="<h2>if else</h2>"
+
+
+/*
+# if...else 문 (양자택일 : 이거 아니면 저거)
+1. 만약(이 조건이 맞다면){ A를 해라!}, 그러지 않으면{ B를 해라} 입니다. 
+	둘 중 하나는 반드시 실행됩니다.
+	1) if else
+	2) 밖에 비가 오는지 확인해. 만약 (비가 온다면){우산을 챙긴다}그게 아니라면(비가 안 온다면)
+		{선글라스를 챙긴다}
+	3) 비가 오면 우산을, 안 오면 썬글라스를 챙깁니다. 둘 중 하나는 무조건 챙겨 나가는 상황이죠.
+	
+*/
+// 로그인 확인
+/*
+let isLoggedIn = false
+if( isLoggedIn ){
+	prtStr+="<h2>환영합니다! 사용자님!</h2>"	
+}else{
+	prtStr+="<h2>로그인이 필요합니다!</h2>"
+}
+*/
+//ex) 임의의 수(5) 변수에 할당. 변수%2==0   짝수 /홀수
+let num = prompt("숫자를 입력","0")
+// num%2 2나누었을 때.. 나머지값. 0/1
+if( num%2 == 0  ){  
+	prtStr+="<h3>짝수</h3>"
+}else{
+	prtStr+="<h3>홀수</h3>"
+}
+
+document.body.innerHTML=prtStr
+</script>
+</html>

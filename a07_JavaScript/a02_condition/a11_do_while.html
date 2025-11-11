@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>do while</h2>"
+/*
+# do while(일단 입장하는 유령의 집)
+1. do while은 일단 먼저 실행하고, 나중에 조건을 확인합니다.
+	1) 유령의 집은 일단 들어가게 해줍니다. do{ 입장!!}
+	2) 나오고 나서 물어봅니다. while(또 탈래요?) 그래서 최소 1번은 무조건 실행됩니다.
+2. 기본 형식
+	do{
+		일단 한번은 무조건 실행
+		두번째부터는 조건식이 true일 때만 실행
+	}while(조건식); // 여기 세미콜론 필수
+	1) do : 일단 해!!! 
+	2) while : ~하는 동안에..
+	
+*/
+let knock = 0
+let hasPerson = false; //방에 사람이 없다고 가정..
+do{
+	knock++
+	prtStr += `<h3>${knock}번째 똑똑! 계세요?</h3>`
+}while(hasPerson);  // 사람이 없으므로 false 두 번째부터 실행 안함
+prtStr += `<h3>아무도 없네!!</h3>`
+
+let order = null
+let orderList = ""
+do{
+	order = prompt("주문 메뉴를 입력하세요!! 주문내용이 없으면 취소클릭!","")
+	if(order!=null){
+		orderList += order+" "
+	}
+}while(order!=null);
+prtStr += `<h3>주문 메뉴 리스트</h3>`
+prtStr += `<h4>${orderList}</h4>`
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

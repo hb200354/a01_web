@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr ="<h2>좋은 하루</h2>"
+/*
+# 함수
+1. 개요
+	코드의 모든 과정을 하나로 해결해주는 함수에 대해 알아보자
+2. 함수란?
+	1) 함수는 아주 간단하다. 특정 작업을 수행하는 코드 덩어리를 묶어 이름을 붙여놓은 것이다.
+	2) 쓰는 이유
+		 - 재사용 가능
+		 - 정리 정돈 : 코드의 이름표를 붙여, 코드 읽고 관리하기가 훨씬 쉬워진다.
+3. 구성
+	1) function 이름 : 함수의 이름을 짓는다
+	2) () Parameters : 요소를 넣는다.
+	3) {} body : 실제 동작이 일어나는 곳
+	4) return : 완성된 결과물이 밖으로 나오는 곳
+4. 핵심 키워드
+	return vs console.log
+	return은 실제 결과물을 추출구로 뱉어내는 반면, console.log는 화면에 출력만 한다.
+	* return이 없으면, 함수는 결과물이 undefined가 된다.
+ */
+ 
+ // 1. 함수 정의
+function sayHello(){
+	alert("안녕하세요!! 반갑습니다.")
+}
+// 2. 함수 호출
+// 그냥 코드로 불러주기
+sayHello()
+// 이벤트로 불러주기
+prtStr += "<h3 onclick='sayHello()'> 이벤트로 함수 호출!!</h3>"
+
+document.body.innerHTML=prtStr
+	
+</script>
+</html>

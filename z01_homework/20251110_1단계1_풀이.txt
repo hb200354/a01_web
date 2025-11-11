@@ -1,0 +1,468 @@
+다음은 요청하신 12개 항목에 대한 풀이입니다.
+
+-----
+
+## 1\. [개념] while문의 기본형식과 특징
+
+`while` 문은 **특정 조건이 참(true)인 동안** 코드 블록을 계속해서 반복 실행합니다.
+
+  * **기본 형식:**
+
+    ```javascript
+    while (조건식) {
+        // 조건식이 참일 때 반복 실행될 코드
+    }
+    ```
+
+  * **특징:**
+
+    1.  **선(先) 조건 검사:** 코드 블록을 실행하기 **전에** 조건식을 먼저 검사합니다.
+    2.  만약 조건식이 처음부터 거짓(false)이면, `while` 문 안의 코드는 **단 한 번도 실행되지 않을 수 있습니다.**
+    3.  반복문 내에서 조건식을 변경하는 코드가 (예: `i++`) 없으면 **무한 루프**에 빠질 수 있으므로 주의해야 합니다.
+
+  * **기본 예제:** 1부터 3까지 출력하기
+
+    ```javascript
+    let i = 1; // 1. 초기값 설정
+    while (i <= 3) { // 2. 조건식 검사 (i가 3보다 작거나 같은 동안)
+        console.log(i);
+        i++; // 3. 증감식 (이 코드가 없으면 무한 루프)
+    }
+    // 출력:
+    // 1
+    // 2
+    // 3
+    ```
+
+-----
+
+## 2\. [실습] 🎯 레벨업\! while문으로 게임 캐릭터 키우기
+
+```javascript
+let level = 1; // 초기 레벨
+
+console.log("캐릭터 생성! 레벨업을 시작합니다...");
+
+while (level <= 10) { // level이 10이 될 때까지 반복
+    console.log("레벨 " + level + " 달성!");
+    level++; // 레벨을 1 증가시킵니다.
+}
+
+console.log("만렙 달성! 축하합니다!");
+```
+
+**실행 결과:**
+
+```
+캐릭터 생성! 레벨업을 시작합니다...
+레벨 1 달성!
+레벨 2 달성!
+레벨 3 달성!
+레벨 4 달성!
+레벨 5 달성!
+레벨 6 달성!
+레벨 7 달성!
+레벨 8 달성!
+레벨 9 달성!
+레벨 10 달성!
+만렙 달성! 축하합니다!
+```
+
+-----
+
+## 3\. [개념] do while문의 기본형식과 while문과 차이
+
+`do-while` 문은 `while` 문과 유사하게 조건이 참인 동안 코드를 반복하지만, **조건을 나중에 검사**합니다.
+
+  * **기본 형식:**
+
+    ```javascript
+    do {
+        // 일단 먼저 실행될 코드
+    } while (조건식); // 세미콜론(;)을 붙여야 합니다.
+    ```
+
+  * **특징 (while문과의 핵심 차이):**
+
+      * `do-while` 문은 코드 블록을 **먼저 실행**한 후, 마지막에 조건식을 검사합니다.
+      * 이 때문에 조건식이 처음부터 거짓(false)이더라도, `do` 블록 안의 코드는 **최소 1번은 무조건 실행**됩니다.
+
+  * **예제 비교:**
+
+    ```javascript
+    // 1. while문: 조건이 처음부터 false
+    let i = 5;
+    while (i < 3) {
+        console.log("while문 실행됨"); // (실행되지 않음)
+        i++;
+    }
+
+    // 2. do-while문: 조건이 처음부터 false
+    let j = 5;
+    do {
+        console.log("do-while문 실행됨"); // (일단 1번 실행됨)
+        j++;
+    } while (j < 3);
+
+    // 출력:
+    // do-while문 실행됨
+    ```
+
+-----
+
+## 4\. [실습] 🔑 일단 입장\! do-while로 식당 키오스크 주문하기
+
+```javascript
+let totalOrderCount = 0;
+let keepOrdering = false; // 추가 주문 여부 (false로 초기 설정)
+
+do {
+    // 일단 첫 번째 주문은 받습니다.
+    totalOrderCount++;
+    console.log("메뉴 " + totalOrderCount + "개 주문 완료!");
+
+    // (실제라면 여기서 "추가 주문하시겠습니까?" 묻고
+    //  keepOrdering 변수 값을 true나 false로 바꿀 것입니다)
+    //  이 실습에서는 false로 가정하여 1번만 실행됩니다.
+
+} while (keepOrdering); // 추가 주문(keepOrdering)이 true일 때만 반복
+
+console.log("총 " + totalOrderCount + "개의 메뉴를 주문했습니다.");
+```
+
+**실행 결과:**
+
+```
+메뉴 1개 주문 완료!
+총 1개의 메뉴를 주문했습니다.
+```
+
+-----
+
+## 5\. [개념] 배열의 기본 구성요소 (index, [], length)
+
+배열(Array)은 **여러 개의 데이터(값)를 순서대로 묶어서** 하나의 변수에 저장하는 자료구조입니다.
+
+  * **`[]` (대괄호):** 배열을 만들거나(리터럴) 특정 요소에 접근할 때 사용합니다.
+
+  * **`Index` (인덱스):** 배열 안의 각 데이터가 저장된 **위치 번호**입니다. **0부터 시작**합니다.
+
+  * **`length` (속성):** 배열에 저장된 **데이터의 총 개수**를 알려줍니다.
+
+  * **기본 예제:**
+
+    ```javascript
+    // 1. 배열 생성 (대괄호 [] 사용)
+    let fruits = ["사과", "바나나", "딸기"];
+
+    // 2. length (길이/개수)
+    // 3개의 항목이 있으므로 3을 반환
+    console.log(fruits.length); // 출력: 3
+
+    // 3. index (위치 번호)
+    // "사과" (첫 번째 항목): index 0
+    // "바나나" (두 번째 항목): index 1
+    // "딸기" (세 번째 항목): index 2
+
+    // 4. 배열 요소 접근 (대괄호 []와 index 사용)
+    console.log(fruits[0]); // 출력: "사과"
+    console.log(fruits[2]); // 출력: "딸기"
+
+    // 5. 마지막 요소 접근 (length 응용)
+    // 배열의 마지막 인덱스 = 배열길이 - 1
+    console.log(fruits[fruits.length - 1]); // 출력: "딸기"
+    ```
+
+-----
+
+## 6\. [실습] 📚 나만의 미니 도서관 만들기
+
+```javascript
+// 1. 4개의 책 제목을 담은 배열 생성
+let myBooks = ["해리포터", "어린왕자", "자바스크립트 정복", "코딩 테스트"];
+
+// 2. 순서대로 출력하기
+
+// 1) 내가 가진 총 책의 권수 (length)
+console.log("총 책의 권수: " + myBooks.length + "권");
+
+// 2) 내가 가장 처음 등록한 책 (0번 index)
+console.log("가장 처음 등록한 책: " + myBooks[0]);
+
+// 3) 내가 가장 마지막에 등록한 책 (length와 index 응용)
+// 마지막 인덱스는 항상 (배열길이 - 1) 입니다.
+console.log("가장 마지막에 등록한 책: " + myBooks[myBooks.length - 1]);
+```
+
+**실행 결과:**
+
+```
+총 책의 권수: 4권
+가장 처음 등록한 책: 해리포터
+가장 마지막에 등록한 책: 코딩 테스트
+```
+
+-----
+
+## 7\. [개념] 배열과 for문 연동하기
+
+`for` 문은 배열의 모든 요소를 처음부터 끝까지 순서대로 접근(순회)할 때 가장 많이 사용됩니다.
+
+  * **핵심 원리:**
+
+    1.  `for` 문의 초기값 `i`를 배열의 시작 `index`인 **0**으로 설정합니다.
+    2.  `for` 문의 조건식을 `i < 배열.length` 로 설정합니다. (배열의 끝까지만 순회)
+    3.  반복문 안에서 `배열[i]` 를 사용하여 현재 순번(i)의 요소에 접근합니다.
+
+  * **기본 예제:** 배열의 모든 요소를 출력하기
+
+    ```javascript
+    let snacks = ["초코파이", "새우깡", "포카칩"];
+
+    // i는 0부터 시작해서, snacks.length (3)보다 작은 동안 (0, 1, 2)
+    // i를 1씩 증가시킵니다.
+    for (let i = 0; i < snacks.length; i++) {
+        // i가 0일 때 -> snacks[0] -> "초코파이"
+        // i가 1일 때 -> snacks[1] -> "새우깡"
+        // i가 2일 때 -> snacks[2] -> "포카칩"
+        console.log(i + "번 인덱스 과자: " + snacks[i]);
+    }
+
+    // 실행 결과:
+    // 0번 인덱스 과자: 초코파이
+    // 1번 인덱스 과자: 새우깡
+    // 2번 인덱스 과자: 포카칩
+    ```
+
+-----
+
+## 8\. [실습] 🛒 장바구니 점수 합산하기
+
+```javascript
+let scores = [90, 85, 70, 100, 95];
+
+// 총점을 저장할 변수를 for문 바깥에 0으로 초기화
+let sum = 0;
+
+// for문을 사용하여 배열의 모든 요소를 순회
+// i는 0, 1, 2, 3, 4 까지 돕니다.
+for (let i = 0; i < scores.length; i++) {
+    // sum = sum + scores[i] 와 같은 의미
+    sum += scores[i];
+    
+    // (과정 확인용)
+    // console.log(i + "번째 순회: " + scores[i] + "점 추가 / 현재 총점: " + sum);
+}
+
+// for문이 끝난 후 (모든 점수가 sum에 누적된 후)
+console.log("총점: " + sum);
+
+// 평균 계산
+let average = sum / scores.length;
+console.log("평균: " + average);
+```
+
+**실행 결과:**
+
+```
+총점: 440
+평균: 88
+```
+
+-----
+
+## 9\. [개념] 함수 구성요소 4가지
+
+함수(Function)는 **특정 작업을 수행하는 코드 블록**을 하나로 묶고, 필요할 때마다 재사용할 수 있게 이름을 붙여놓은 것입니다.
+
+1.  **함수 이름 (Function Name)**:
+      * 함수를 식별하고 호출(실행)할 때 사용하는 고유한 이름입니다. (예: `add`)
+2.  **매개변수 (Parameters)**:
+      * 함수가 작업을 수행할 때 필요한 **입력 값**을 받는 '입구' 역할을 하는 변수입니다. 괄호 `()` 안에 선언합니다. (예: `(a, b)`)
+3.  **함수 본체 (Function Body)**:
+      * 함수가 호출되었을 때 **실제로 실행되는 코드**의 묶음입니다. 중괄호 `{}` 안에 작성합니다.
+4.  **반환 값 (Return Value)**:
+      * 함수가 작업을 완료한 후, 그 **결과**를 함수를 호출한 곳으로 돌려주는 '출구'입니다. `return` 키워드를 사용합니다. `return`을 만나면 함수는 즉시 종료됩니다.
+
+<!-- end list -->
+
+  * **기본 예제:** 두 숫자를 더하는 함수
+    ```javascript
+    // 1. 함수 이름: add
+    // 2. 매개변수: n1, n2
+    function add(n1, n2) {
+        // 3. 함수 본체: { ... }
+        let result = n1 + n2;
+        
+        // 4. 반환 값: result
+        return result; 
+    }
+
+    // 함수 호출 및 반환 값 사용
+    let sum = add(5, 3); // add 함수가 실행되고, 8이라는 값을 반환(return)
+    console.log(sum); // 출력: 8
+    ```
+
+-----
+
+## 10\. [실습] 🤖 나만의 인사 로봇 만들기
+
+```javascript
+/**
+ * 4가지 구성요소를 모두 사용한 인사 로봇 함수
+ * @param {string} name - 인사받을 사람의 이름
+ * @param {number} time - 현재 시간 (0~24)
+ * @returns {string} - 시간에 맞는 인사 문자열
+ */
+function greetBot(name, time) {
+    // 1. 함수 이름: greetBot
+    // 2. 매개변수: name, time
+
+    // 3. 함수 본체 (실행 코드)
+    let greetingMessage = ""; // 인사말을 담을 변수
+
+    if (time < 12) {
+        greetingMessage = "좋은 아침입니다, " + name + "님!";
+    } else if (time < 18) {
+        greetingMessage = "좋은 오후입니다, " + name + "님!";
+    } else {
+        greetingMessage = "좋은 저녁입니다, " + name + "님!";
+    }
+
+    // 4. 반환 값 (return)
+    return greetingMessage;
+}
+
+// --- 함수 테스트 ---
+let msg1 = greetBot("김철수", 9); // 아침
+let msg2 = greetBot("이영희", 14); // 오후
+let msg3 = greetBot("박지성", 20); // 저녁
+
+console.log(msg1);
+console.log(msg2);
+console.log(msg3);
+```
+
+**실행 결과:**
+
+```
+좋은 아침입니다, 김철수님!
+좋은 오후입니다, 이영희님!
+좋은 저녁입니다, 박지성님!
+```
+
+-----
+
+## 11\. [개념] console.log()와 return 값의 차이점
+
+`console.log()`와 `return`은 완전히 다른 역할을 수행합니다.
+
+  * **`console.log()` (단순 출력)**
+
+      * **역할:** 개발자 도구의 '콘솔' 창에 **값을 단순히 찍어보는(보여주는)** 기능입니다.
+      * **목적:** 주로 코드가 잘 실행되는지 확인하거나 변수 값을 **디버깅**할 때 사용합니다.
+      * **결과:** `console.log()` 자체는 함수 실행 흐름에 아무런 영향을 주지 않으며, 값을 반환하지 않습니다. (함수가 이것만 실행하고 끝나면 `undefined`를 반환합니다.)
+      * **비유:** 계산 결과를 **"확성기로 외치는 것"**. (누구나 들을 수 있지만, 그 외침을 받아서 다른 계산에 쓸 수는 없습니다.)
+
+  * **`return` (값 반환)**
+
+      * **역할:** 함수가 작업을 마친 **결과값**을 함수를 호출한 곳으로 **돌려주는**(반환하는) 키워드입니다.
+      * **목적:** 함수의 실행 결과를 **변수에 저장**하거나 **다른 함수의 입력값으로 사용**하는 등, 프로그램의 흐름을 이어가기 위해 사용합니다.
+      * **결과:** `return`을 만나는 즉시 함수 실행이 **종료**되고, `return` 뒤의 값이 반환됩니다.
+      * **비유:** 계산 결과를 **"쪽지에 적어 전달하는 것"**. (전달받은 쪽지(값)를 보고 다른 계산을 하거나 변수에 보관할 수 있습니다.)
+
+  * **예제:**
+
+    ```javascript
+    // 1. console.log()만 있는 함수
+    function logAdd(a, b) {
+        console.log(a + b); // 5를 콘솔에 "외친다"
+    }
+
+    // 2. return이 있는 함수
+    function returnAdd(a, b) {
+        return a + b; // 5를 쪽지에 "적어 전달한다"
+    }
+
+    // --- 실행 비교 ---
+
+    let logResult = logAdd(2, 3);
+    // 콘솔에 5가 찍힘
+    console.log("logResult 변수: ", logResult); // 출력: undefined
+    // logAdd(2, 3) * 10; // (에러 발생! undefined * 10 이기 때문)
+
+    let returnResult = returnAdd(2, 3);
+    // 콘솔에 아무것도 안 찍힘
+    console.log("returnResult 변수: ", returnResult); // 출력: 5
+    console.log(returnResult * 10); // 출력: 50 (정상 연산 가능)
+    ```
+
+-----
+
+## 12\. [실습] 📢 단순 외치기(log) vs 🎁 값 전달하기(return)
+
+### 1\. "외치는" 계산기 만들기 (`shoutMultiply`)
+
+```javascript
+function shoutMultiply(a, b) {
+    // 1. 결과를 콘솔에 "외치기만" 합니다.
+    console.log("계산 결과(shout): " + (a * b));
+    // return 키워드가 없으므로, 이 함수는 undefined를 반환합니다.
+}
+```
+
+### 2\. "값을 주는" 계산기 만들기 (`getMultiply`)
+
+```javascript
+function getMultiply(a, b) {
+    // 2. 결과를 호출한 곳으로 "전달(반환)" 합니다.
+    // (콘솔에는 아무것도 찍지 않습니다.)
+    return a * b;
+}
+```
+
+### 3\. 두 함수 호출 및 결과 비교 (실행 코드)
+
+```javascript
+console.log("--- 외치는 계산기 테스트 ---");
+let shoutResult = shoutMultiply(10, 5);
+console.log("shoutResult 변수: ", shoutResult);
+
+console.log("\n--- 값을 주는 계산기 테스트 ---");
+let getResult = getMultiply(10, 5);
+console.log("getResult 변수: ", getResult);
+console.log("getResult로 연산하기: ", getResult * 2);
+
+// (비교) 만약 shoutResult로 연산 시도
+// console.log("shoutResult로 연산하기: ", shoutResult * 2); // NaN (undefined * 2)
+```
+
+**실행 결과:**
+
+```
+--- 외치는 계산기 테스트 ---
+계산 결과(shout): 50
+shoutResult 변수:  undefined
+
+--- 값을 주는 계산기 테스트 ---
+getResult 변수:  50
+getResult로 연산하기:  100
+```
+
+### 4\. 결과 분석 설명
+
+1.  **`shoutResult`에 `undefined`가 담긴 이유:**
+
+      * `shoutMultiply(10, 5)` 함수가 호출되면, 함수 내부의 `console.log("계산 결과(shout): 50")`이 실행되어 콘솔에 "50"이 **출력**됩니다.
+      * 하지만 함수가 **반환(return)하는 값이 명시적으로 없기 때문에**, 자바스크립트는 기본값인 `undefined`를 반환합니다.
+      * 따라서 `shoutResult` 변수에는 함수의 반환 값인 `undefined`가 저장됩니다.
+
+2.  **`getResult`에 `50`이 담긴 이유:**
+
+      * `getMultiply(10, 5)` 함수가 호출되면, 함수는 `10 * 5`의 **결과인 `50`을 `return` 키워드를 통해 반환**합니다.
+      * 이 반환된 값 `50`이 `getResult` 변수에 **저장**됩니다. (이 과정에서 콘솔에는 아무것도 출력되지 않습니다.)
+
+3.  **`getResult`로만 추가 연산이 가능한 이유:**
+
+      * `getResult` 변수에는 실제 숫자 값 `50`이 들어있기 때문에, `getResult * 2` (즉, `50 * 2`)와 같은 **후속 수학 연산이 가능**합니다.
+      * 반면 `shoutResult` 변수에는 `undefined`가 들어있으므로, `shoutResult * 2` (즉, `undefined * 2`)를 시도하면 `NaN` (Not a Number)이라는 오류성 값을 얻게 되어 연산이 불가능합니다.

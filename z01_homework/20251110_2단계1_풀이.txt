@@ -1,0 +1,575 @@
+제공해주신 30개의 JavaScript 연습 문제에 대한 전체 풀이입니다. 각 문제의 요구사항과 Rubric을 기준으로 코드를 작성하고, 핵심 로직에 주석을 추가했습니다.
+
+-----
+
+## 1\. while문 (까다로운 놀이기구)
+
+### 📜 1. T-Express 탑승 대기
+
+```javascript
+let waiting = 12;
+
+// 1. 조건식: 5명 이상(>=)인지 검사
+while (waiting >= 5) {
+  console.log("현재 대기 인원: " + waiting + "명");
+  // 2. 증감식: 대기 인원 1명 감소
+  waiting--;
+}
+
+// 3. 반복문 종료 후: 5명 미만이 되면 실행
+console.log("탑승 안내 시작!");
+```
+
+### 📜 2. 용의자의 비밀번호
+
+```javascript
+let passwordInput = prompt("비밀번호를 입력하세요:"); // 최초 1회 입력
+
+// 1. 조건식: 입력값이 "1337"이 아닐(!==) 동안 반복
+while (passwordInput !== "1337") {
+  // 2. 갱신: 조건이 false가 될 때까지 계속 입력받음
+  passwordInput = prompt("비밀번호가 틀렸습니다. 다시 입력:");
+}
+
+// 3. 반복문 종료 후: "1337"을 입력하면 실행
+alert("로그인 성공!");
+```
+
+### 📜 3. 마법사의 마나 물약
+
+```javascript
+let userMP = 30;
+
+// 1. 조건식: 마나가 100 미만(<)인 동안 반복
+while (userMP < 100) {
+  console.log("마나 물약 사용! +15 MP");
+  // 2. 누적 할당: 마나를 15씩 증가
+  userMP += 15;
+  console.log("현재 MP: " + userMP);
+}
+
+// 3. 반복문 종료 후: 마나가 100 이상이 되면 실행 (105)
+console.log("마법 시전 가능!");
+```
+
+### 📜 4. 좀비 막기
+
+```javascript
+let castleHP = 100;
+
+// 1. 조건식: 체력이 0보다 큰(>) 동안 반복
+while (castleHP > 0) {
+  // 2. 현재 체력 출력 및 7씩 감소
+  console.log("현재 성문 체력: " + castleHP);
+  castleHP -= 7;
+}
+
+// 3. 반복문 종료 후: 체력이 0 이하가 되면 실행
+console.log("성문이 파괴되었습니다.");
+```
+
+### 📜 5. 경매장 호가
+
+```javascript
+let currentPrice = 10000;
+let bid = ""; // 사용자의 입력을 저장할 변수
+
+// 1. 조건식: "구매"라고 입력하지 않은 동안 반복
+while (bid !== "구매") {
+  // 2. prompt로 입력받기
+  bid = prompt("현재 호가: " + currentPrice + "원. 구매하시겠습니까? (구매/패스)");
+
+  // 2. "패스"일 때만 가격 인상
+  if (bid === "패스") {
+    currentPrice += 1500;
+  }
+}
+
+// 3. 반복문 종료 후: "구매"를 입력하면 아무것도 뜨지 않음
+console.log(currentPrice + "원에 낙찰!");
+```
+
+### 📜 6. 로켓 발사 카운트다운 (응용)
+
+```javascript
+let input = prompt("카운트다운 시작 숫자를 입력하세요:");
+let count = Number(input);
+
+// 1. 유효성 검사: 숫자가 아니거나(isNaN) 0 이하일 때
+if (isNaN(count) || count <= 0) {
+  console.log("유효한 숫자를 입력하세요.");
+} else {
+  // 2. 조건식: 숫자가 0보다 클 때
+  while (count > 0) {
+    console.log("카운트: " + count);
+    // 3. 1씩 감소
+    count--;
+  }
+  console.log("발사!");
+}
+```
+
+-----
+
+## 2\. do-while문 (일단 입장하는 유령의 집)
+
+### 📜 7. 유령의 집 "다시 타시겠습니까?"
+
+```javascript
+let keepRiding; // confirm의 결과(true/false)를 저장할 변수
+
+do {
+  // 1. do 블록: 최소 1회 실행
+  alert("유령의 집에 오신 것을 환영합니다! (비명)");
+
+  // 2. 조건식: confirm 창의 결과를 변수에 할당하고,
+  //    그 변수가 true인 동안(확인) 반복
+  keepRiding = confirm("다시 탑승하시겠습니까?");
+
+} while (keepRiding); // keepRiding이 true인 동안 반복
+
+// 3. "취소"(false)를 누르면 반복문 종료
+console.log("이용해 주셔서 감사합니다.");
+```
+
+### 📜 8. 비밀 동아리 암호
+
+```javascript
+let password; // 입력값을 저장할 변수
+
+do {
+  // 1. do 블록: 최소 1회 prompt 실행
+  password = prompt("암호를 대시오:");
+
+  // 2. 조건식: 입력값이 "파이썬"이 아닌 동안
+} while (password !== "파이썬");
+
+// 3. "파이썬" 입력 시 반복문 종료
+console.log("통과.");
+```
+
+### 📜 9. 뷔페 음식 담기
+
+```javascript
+let foodList = "";
+let currentFood;
+
+// 1. do-while로 최소 1회 실행 보장
+do {
+  currentFood = prompt("접시에 담을 음식을 입력하세요: (종료는 '그만')");
+
+  // 2. "그만"이 아닐 때만 foodList에 누적
+  if (currentFood !== "그만") {
+    foodList += currentFood + " "; // (공백으로 구분)
+  }
+
+  // 3. "그만"을 입력할 때까지 반복
+} while (currentFood !== "그만");
+
+console.log("내가 담은 음식: " + foodList);
+```
+
+### 📜 10. 주사위 6이 나올 때까지
+
+```javascript
+let diceNumber;
+
+do {
+  // 1. 1~6 사이 랜덤 숫자 생성 (최소 1회 실행)
+  diceNumber = Math.floor(Math.random() * 6) + 1;
+
+  if (diceNumber === 6) {
+    // 3. 6이 나오면 성공 메시지 후 종료
+    console.log("주사위: 6! 드디어 탈출!");
+  } else {
+    console.log("주사위: " + diceNumber + "... 다시 굴립니다.");
+  }
+
+  // 2. 조건식: 6이 아닌 동안(!==) 반복
+} while (diceNumber !== 6);
+```
+
+### 📜 11. 유효한 나이 입력받기
+
+```javascript
+let age;
+
+do {
+  // 1. do 블록: 최소 1회 입력 및 숫자 변환
+  let input = prompt("나이를 입력하세요:");
+  age = Number(input);
+
+  // 2. 조건식: 19세 미만이거나, 숫자가 아니면 (isNaN)
+  if (age < 19 || isNaN(age)) {
+    alert("19세 이상만 가입 가능합니다. 다시 입력하세요.");
+  }
+
+} while (age < 19 || isNaN(age));
+
+// 3. 유효한 나이 입력 시 반복문 종료
+console.log("가입이 완료되었습니다. (나이: " + age + "세)");
+```
+
+### 📜 12. 100이 넘을 때까지 더하기
+
+```javascript
+let sum = 0;
+let numInput;
+
+do {
+  // 1. do 블록: 최소 1회 입력 및 sum에 누적 (숫자 변환 필수)
+  numInput = Number(prompt("더할 숫자를 입력하세요: (현재 총합: " + sum + ")"));
+  
+  if (!isNaN(numInput)) { // 숫자인 경우에만 더함
+      sum += numInput;
+  }
+
+  // 2. 조건식: 총합이 100 이하(<=)인 동안 반복
+} while (sum <= 100);
+
+// 3. 100을 초과하면 반복문 종료
+console.log("총합 " + sum + "! 100을 넘었습니다.");
+```
+
+-----
+
+## 3\. 배열 (몬스터볼 벨트)
+
+### 📜 13. 포켓몬 파티 교체
+
+```javascript
+let myParty = ['피카츄', '파이리', '꼬부기', '이상해씨'];
+
+// 1. 0번 인덱스 값 변경
+myParty[0] = '라이츄';
+
+// 2. 3번 인덱스 값 변경
+myParty[3] = '버터플';
+
+// 3. 0번 인덱스 및 length 접근
+console.log("현재 파티 리더: " + myParty[0]); // 라이츄
+console.log("총 파티 멤버 수: " + myParty.length); // 4
+```
+
+### 📜 14. 뮤직 차트 TOP 3
+
+```javascript
+let topSongs = ['밤양갱', '첫 만남', 'To. X', 'Love wins all', 'EASY'];
+
+// 1. 0번, 1번 인덱스 할당
+let gold = topSongs[0];
+let silver = topSongs[1];
+
+// 2. length를 이용해 마지막 인덱스 접근 (topSongs.length는 5, 마지막 인덱스는 4)
+let lastPlace = topSongs[topSongs.length - 1];
+
+// 3. 출력
+console.log("1위: " + gold + ", 꼴찌: " + lastPlace);
+```
+
+### 📜 15. 인벤토리 관리
+
+```javascript
+let inventory = ['낡은 검', '체력 물약', '지도'];
+
+// 1. 0번 인덱스 값 수정
+inventory[0] = '맨손';
+
+// 2. 3번 인덱스에 새 값 할당 (길이가 3일 때 [3]은 새 아이템 추가)
+inventory[3] = '방패';
+
+// 3. 전체 배열 및 length 출력
+console.log("현재 인벤토리: " + inventory); // ['맨손', '체력 물약', '지도', '방패']
+console.log("가방 용량: " + inventory.length); // 4
+```
+
+### 📜 16. 비밀 요원 리스트
+
+```javascript
+let agents = ['알파', '브라보', '찰리'];
+
+// 1. '브라보' (1번 인덱스) 값 변경
+agents[1] = '고스트';
+
+// 2. length 확인 (true 출력)
+console.log(agents.length === 3);
+
+// 3. 1번 인덱스 값 출력
+console.log("새로운 2번 요원: " + agents[1]); // 고스트
+```
+
+### 📜 17. 해야 할 일 목록 (To-Do List)
+
+```javascript
+let todoList = ['코딩 공부', '운동하기', '장보기'];
+
+// 1. 2번 인덱스 값 수정
+todoList[2] = '장보기 완료(V)';
+
+// 2. 0번 인덱스 값 출력
+console.log("가장 첫 번째 할 일: " + todoList[0]);
+
+// 3. length 출력
+console.log("총 남은 할 일 개수: " + todoList.length);
+```
+
+### 📜 18. 점심 메뉴 후보
+
+```javascript
+let lunchOptions = ['돈까스', '제육볶음', '순대국'];
+
+// 1. length로 개수 출력
+console.log("오늘의 후보는 총 " + lunchOptions.length + "개입니다.");
+
+// 2. 0, 1, 2 중 랜덤 인덱스 생성
+// lunchOptions.length 는 3
+// Math.random() * 3 (0 ~ 2.999...)
+// Math.floor(...) (0, 1, 2)
+let randomIndex = Math.floor(Math.random() * lunchOptions.length);
+
+// 3. 랜덤 인덱스로 메뉴 선택
+console.log("오늘의 점심 메뉴는 " + lunchOptions[randomIndex] + "입니다!");
+```
+
+-----
+
+## 4\. 배열 + for문 (자동 검사 로봇팔)
+
+### 📜 19. 파티원 전체 출동\!
+
+```javascript
+let partyMembers = ['아이언맨', '캡틴 아메리카', '토르', '헐크'];
+
+// 1. for문 기본 구조 (i=0; i < length; i++)
+for (let i = 0; i < partyMembers.length; i++) {
+  // 2. partyMembers[i]로 각 요소에 접근
+  console.log("출동! " + partyMembers[i]);
+}
+// 3. 4명 모두 순서대로 출력됨
+```
+
+### 📜 20. 장바구니 총액 계산
+
+```javascript
+let cart = [12000, 3000, 5500, 8000];
+// 2. sum 변수를 for문 바깥에 선언 및 초기화
+let sum = 0;
+
+// 1. cart.length (4) 만큼 반복
+for (let i = 0; i < cart.length; i++) {
+  // 3. sum 변수에 cart[i] 값을 누적
+  sum += cart[i];
+}
+
+console.log("총 결제 금액: " + sum + "원"); // 28500원
+```
+
+### 📜 21. 스터디 그룹 출석부
+
+```javascript
+let studyGroup = ['영희', '철수', '민수', '지아'];
+
+// 1. studyGroup.length (4) 만큼 반복
+for (let i = 0; i < studyGroup.length; i++) {
+  // 2. studyGroup[i]로 이름 접근
+  // 3. 'O번 학생'은 1번부터 시작해야 하므로 i + 1 사용
+  console.log((i + 1) + "번 학생: " + studyGroup[i] + "님 출석 완료");
+}
+```
+
+### 📜 22. '몬스터볼' 찾기
+
+```javascript
+let inventory = ['상처약', '몬스터볼', '낡은 지도', '해독제'];
+
+// 1. for문으로 순회
+for (let i = 0; i < inventory.length; i++) {
+  // 2. if문으로 '몬스터볼'인지 확인
+  if (inventory[i] === '몬스터볼') {
+    console.log("몬스터볼을 찾았습니다! (인덱스: " + i + ")");
+    // 3. break: '몬스터볼'을 찾으면 반복 즉시 중단
+    break;
+  }
+  // '몬스터볼' 이후의 '낡은 지도', '해독제'는 검사하지 않음
+}
+```
+
+### 📜 23. 짝수 레벨만 2배 데미지\!
+
+```javascript
+let levels = [5, 8, 10, 11, 14];
+
+// 1. for문으로 순회
+for (let i = 0; i < levels.length; i++) {
+  // 2. 짝수 판별: 2로 나눈 나머지가 0인지 확인
+  if (levels[i] % 2 === 0) {
+    // 3. 짝수일 때만(8, 10, 14) 출력
+    console.log("레벨 " + levels[i] + "! 2배 데미지!");
+  }
+}
+```
+
+### 📜 24. 시험 점수 평균 구하기
+
+```javascript
+let scores = [90, 88, 76, 92, 81];
+let sum = 0;
+
+// 1. for문을 이용해 총점 계산
+for (let i = 0; i < scores.length; i++) {
+  sum += scores[i];
+}
+
+// 2. for문 바깥에서 평균 계산 (총점 / 과목수)
+let average = sum / scores.length;
+
+// 3. 총점(427)과 평균(85.4) 출력
+console.log("총점: " + sum + ", 평균: " + average);
+```
+
+-----
+
+## 5\. 함수 (나만의 커피 머신)
+
+### 📜 25. 나만의 인사 기계
+
+```javascript
+// 1. 'name'을 매개변수(parameter)로 받는 함수 선언
+function greet(name) {
+  // 2. console.log가 아닌 return 키워드 사용
+  // 3. 매개변수 name을 포함한 문자열 반환
+  return "안녕하세요, " + name + "님! 환영합니다.";
+}
+
+// 호출 예시
+let msg = greet('홍길동');
+console.log(msg); // "안녕하세요, 홍길동님! 환영합니다."
+```
+
+### 📜 26. 사칙연산 커피 머신
+
+```javascript
+// 1. 두 개의 매개변수(a, b)를 받는 함수 선언
+function add(a, b) {
+  // 2. 두 수의 합을 return
+  return a + b;
+}
+
+// 호출 예시
+// 3. add(10, 20)이 30이라는 *값*으로 변하여 result에 저장됨
+let result = add(10, 20);
+console.log(result); // 30
+```
+
+### 📜 27. 성인 인증 기계 (return vs console)
+
+```javascript
+// 1. 'age'를 매개변수로 받는 함수 선언
+function checkAge(age) {
+  // 2. if...else 문으로 19세 기준 분기
+  if (age >= 19) {
+    // 3. return이 아닌 console.log로 *출력*
+    console.log("성인입니다.");
+  } else {
+    console.log("미성년자입니다.");
+  }
+  // return 키워드가 없으므로 이 함수는 undefined를 반환합니다.
+}
+
+// 호출 예시
+checkAge(25); // "성인입니다."
+checkAge(15); // "미성년자입니다."
+```
+
+### 📜 28. 파티원 평균 레벨 계산기 (복합)
+
+```javascript
+// 1. 배열을 매개변수(levelArray)로 받는 함수 선언
+function getPartyAverage(levelArray) {
+  // 2. 총합을 구하기 위한 sum 변수와 for문
+  let sum = 0;
+  for (let i = 0; i < levelArray.length; i++) {
+    sum += levelArray[i];
+  }
+
+  // 3. 평균값을 계산하여 return
+  return sum / levelArray.length;
+}
+
+// 호출 예시
+let levels = [20, 30, 40];
+let avg = getPartyAverage(levels);
+console.log(avg); // 30
+
+let levels2 = [10, 11, 13, 10];
+let avg2 = getPartyAverage(levels2);
+console.log(avg2); // 11
+```
+
+### 📜 29. T-Express 탑승 가능 여부 (복합)
+
+```javascript
+// 1. 'height'를 매개변수로 받는 함수 선언
+function canRide(height) {
+  // 2. if문 대신 비교 연산자(>=)를 바로 return
+  // (height >= 120) 이 표현식 자체가 true 또는 false가 됩니다.
+  return height >= 120;
+}
+/*
+  // 위와 동일한 코드 (if문 사용)
+  function canRide(height) {
+    if (height >= 120) {
+      return true; // 3. true 반환
+    } else {
+      return false; // 3. false 반환
+    }
+  }
+*/
+
+// 호출 예시
+let result1 = canRide(130);
+console.log(result1); // true
+
+let result2 = canRide(110);
+console.log(result2); // false
+```
+
+### 📜 30. 최고의 몬스터볼 찾기 (복합)
+
+```javascript
+// 1. 배열을 매개변수(ballArray)로 받는 함수 선언
+function findBestBall(ballArray) {
+  // 우선순위가 높은 '하이퍼볼'부터 찾습니다.
+  let hasSuperBall = false; // '수퍼볼'을 찾았는지 기록
+
+  // 2. for문으로 배열 순회
+  for (let i = 0; i < ballArray.length; i++) {
+    if (ballArray[i] === '하이퍼볼') {
+      // 3. '하이퍼볼'을 찾으면 즉시 return (최고 우선순위)
+      return '하이퍼볼';
+    }
+    if (ballArray[i] === '수퍼볼') {
+      hasSuperBall = true; // '수퍼볼'이 있음을 표시
+    }
+  }
+
+  // for문이 끝났다는 것은 '하이퍼볼'이 없다는 의미
+  if (hasSuperBall) {
+    // 3. '하이퍼볼'은 없었지만 '수퍼볼'은 있었다면 '수퍼볼' 반환
+    return '수퍼볼';
+  } else {
+    // 3. '하이퍼볼', '수퍼볼' 둘 다 없었으면 기본값 '몬스터볼' 반환
+    return '몬스터볼';
+  }
+}
+
+// 호출 예시
+let balls1 = ['몬스터볼', '수퍼볼', '하이퍼볼', '상처약'];
+console.log(findBestBall(balls1)); // "하이퍼볼"
+
+let balls2 = ['몬스터볼', '수퍼볼', '상처약'];
+console.log(findBestBall(balls2)); // "수퍼볼"
+
+let balls3 = ['몬스터볼', '상처약', '해독제'];
+console.log(findBestBall(balls3)); // "몬스터볼"
+```

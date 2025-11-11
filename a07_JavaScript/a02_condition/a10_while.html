@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>while/do while</h2>"
+/*
+# while/do while을 위해 놀이 공원 입장.
+1. while : 키 제한이 까다로운 놀이기구(선검사, 후탑승)
+2. do...while : 일단 입장하는 유령의 집(선입장, 후검사)
+
+# while 반복문(까다로운 놀이기구)
+1. while은 조건을 먼저 확인하고, 맞으면 실행합니다.
+	- 놀이기구 타기 전에 직원이 먼저 키를 잽니다. (while 키가 120cm 넘나요?)
+	- 키가 안되면(조건이 false이면) 단 한번도 태워주지 않습니다.(코드가 한 번도 실행되지 않을 수 있음)
+2. 기본 형식
+	while(조건식){
+		조건식이 true인 동안 무한 반복 실행
+		언젠가는 조건식이 false가 되도록 하는 코드가 내부에 꼭 필요!!		
+	}
+	- while (~하는 동안에)
+	- 일단 풀어보고 통과하면 들여보내 준다.	
+*/
+prtStr += "<h3>3초 카운트 발사</h3>"  
+// 3, 2, 1 발사! 외칩니다.
+let count =3;
+while(count > 0){  // count가 0보다 클때까지 반복
+	prtStr+=`<h4>${count}!!!</h4>`
+	count--;
+}
+prtStr+=`<h4>발사!!!</h4>`
+//ex)  cnt변수를 1로 설정 후, 카운트업!! 1~10까지 출력.. KO!!
+let cnt = 1
+while(cnt <=10){
+	prtStr+=`<h4>카운트업!! ${cnt}</h4>`
+		cnt++;	
+}
+prtStr+=`<h4>KO!!</h4>`
+
+// 물건 구매 목록을 입력받게 하고, 더 이상 입력할게 없으면 null일 때, 중단 처리..
+/*
+let product = ""
+let buyList = ""
+while( product!=null ){ //취소를 클릭시 반복문을 벗어남..
+	product=prompt("구매할 물건을 입력하세요! 구매를 중단시 취소","")
+	if(product!=null){ // 취소를 누르기 않을 때까지 구매리스트에 누적 할당..
+		buyList+=product+", "	
+	}
+}
+prtStr+="<h3>구매물품리스트</h3>"
+prtStr+=buyList+"<br>"
+*/
+//ex) 중국집 방문 주문(order), 주문리스트(orderList)를 만들어 출력해보세요..
+let order = ""
+let orderList = ""
+while( order != null){
+	order = prompt("중국집 방문! 주문하세요!! 주문이 끝나면 취소!")
+	if(order!=null){ // null 입력 방지 처리..
+		orderList+=order+" "
+	}
+}
+prtStr+="<h3>주문 목록 리스트</h3>"
+prtStr+=orderList+"<br>"
+
+
+
+
+
+
+
+document.body.innerHTML=prtStr
+
+
+
+
+
+</script>
+</html>

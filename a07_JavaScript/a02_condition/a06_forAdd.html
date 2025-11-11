@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>누적 연산처리(전역변수/지역변수)</h2>"
+/*
+# for을 활용한 누적 처리(데이터를 모으는 저금통)
+1. 누적 처리는 for문 같은 반복문이랑 환상의 짝꿍입니다. 반복문이 동전을 하나씩 줄 때마다,
+	그걸 차곡차곡 모으는 돼지 저금통이죠..
+2. 일단, 저금통부터 (초기화)
+	1) 동전을 모으려면 반드시 빈 저금통이 먼저 있어야 합니다.
+	2) 반복문 바깥(전역변수)에 let sum = 0 (숫자 저금통) let text="" (글자 저금통)을 만듭니다.
+3. 차곡차곡!! (누적)
+	1) 반복문 안에서 저금통에 계속 값을 더합니다.
+	2) sum = sum + i (기존 저금통액 + 새 동전 = 새 저금통액.)
+	   sum += i 줄여 쓸 수 있습니다.
+	   text += "안녕" 도 문자열을 연결해서 누적 처리..
+	   
+	
+*/
+// 1부터 5까지 모두 더한 숫자 저금통
+// 1. 일단 저금통부터 (빈 숫자 저금통)
+let sum = 0     // 전역변수 아래 {} 중괄호 밖에 전역적으로 사용하는 개념으로 변수 선언
+// 2. for 1, 2, 3, 4, 5라는 동전을 차례로 줍니다.
+for( let i = 1; i <= 5; i++){  // i {}중괄호 안에서 사용하는 개념으로 지역변수..
+	// 차곡차곡
+	sum = sum + i  // sum + i   // 전역변수에 지역변수를 누적처리한다.
+	prtStr += `<h3>${i} : ${sum}</h3>`
+}
+prtStr += `<h3>누적된 최종 변수:${sum}</h3>`
+//let countAll 로 전역변수 선언하고, let count로 1~10까지 증가하면서 최종값을 출력하세요.. 
+let countAll = 0
+for( let count = 1; count<=10; count++){
+	countAll += count
+	prtStr += ` ${count} - ${countAll} <br>`
+}
+prtStr += `<h3>누적된 최종 변수:${countAll}</h3>`
+
+let fovorHeart = "";
+for( let count = 1; count<=5; count++){
+	fovorHeart += "💗"
+}
+prtStr += `<h3>최종 좋아요:${fovorHeart}</h3>`
+
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

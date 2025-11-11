@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>반복문과 조건문 처리</h2>"
+/*
+# for/if - 깐깐한 과장 공장 검수원
+1. for와 if의 조합을 과자 공자 컨베이어 벨트와 검수원
+	- for : 컨베이어 벨트
+		정해진 횟수(과자 10개)만큼 물건을 하나씩 차례대로 검수원에게 보냅니다.
+		1번부터 10번까지 전부다
+	- if (조건문) : 깥깐한 검수원
+		벨트에서 넘어온 과자를 보고 특정 조건에 맞는지 판단합니다.
+		만약 과자가 부서졌다면
+	- for + if = 공장 가동
+		컨베이어 벨트(for)가 과자를 하나씩 보내면, 검수원(if)이 그걸 보고 부서졌는지(if)
+		아닌지(else)판단해서 분류하는 작업
+		
+*/
+// 1~10 데이터 중에 짝수와 홀수 분류해보기..
+// 1단계 for문을 이용해서 컨베이어 벨트에 1~10까지 올립니다.
+prtStr += "<h2>1~10 홀/짝 분류</h2>"
+for(let cnt = 1; cnt <= 10 ;cnt++){
+	// 2단계  짝수 검수원 출력
+	if( cnt % 2 == 0){
+		prtStr += `<h3> ${cnt}번 짝수 </h3>`
+	}else{
+		prtStr += `<h3> ${cnt}번 홀수 </h3>`
+	}
+}
+// ex) 1~30까지 반복하면서 3의 배수(cnt%3 == 0)만 출력하세요..
+// 1. 1~30 반복문 생성(for)
+prtStr += `<h3> 1~30 까지. </h3>`
+for(let cnt = 1; cnt<=30;cnt++){
+	// 2. 조건문 처리..    cnt%3 ==> 1, 2, 0, 1, 2, 0....
+	if(cnt%3 == 0){
+		prtStr += `<span> [ 짝! ] </span>`
+	}else{
+		prtStr += `<span> [ ${cnt} ] </span>`
+	}
+}
+
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

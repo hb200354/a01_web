@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>반복문의 break와 continue</h2>"
+/*
+# 반복문에서 break와 continue (10일간 훈련 미션)
+1. break : 훈련 완전 중단
+	1) break는 브레이크를 밟고 멈춘다고 생각하세요
+		- 미션(loop)자체를 완전히 탈출(escape)합니다.
+		- 훈련 3일차(day == 3)에 심각한 부상을 당했습니다.
+		- 훈련 중단! 집으로 돌아가!!
+		- 3일차에 break를 만나면 for 문이 그 즉시 종료입니다. 4일차, 5일차 훈련은 아예
+			싱행조차 되지 않습니다.
+2. continue : 이번 턴만 패스
+	1) continue는 컨디션이 안 좋으니 이번만 컨너뛰고 계속(continue)한다는 말입니다.
+	2) 현재 턴을 즉시 중단하고, 다음 턴으로 건너뛰기(skip)합니다.
+	3) 상황예시 : 훈련 5일차 (day == 5)가 비가 너무 많이 옵니다.
+	4) 행동 : 오늘은 도저히 못하겠다. 오늘 훈련은 건너뛰기, 내일 6일차 부터 다시 하자!!
+	5) 결과 : 5일차에 continue를 만나면, 5일차의 남은 코드를 무시하고 for의 다음 차례(6일차)로
+		바로 이동합니다. 훈련loop 자체가 중단되지는 않습니다.
+*/
+prtStr += `<h3>훈련 I</h3>`	
+for(let day = 1; day<=10;day++){
+	prtStr += `<h3>${day}차 훈련</h3>`		
+	prtStr += `<h4>${day}차 훈련 진행</h4>`
+	if(day==3){
+		prtStr += `<h4>심각한 부상으로 집에 돌아가!</h4>`
+		break;
+	}
+	prtStr += `<h4>${day}차 훈련 종료</h4>`	
+}
+prtStr += `<h3>훈련 II</h3>`	
+for(let day = 1; day<=10;day++){
+	prtStr += `<h3>${day}차 훈련</h3>`	
+	if(day == 5){
+		prtStr += `<h4> 비가 너무 많이 옵니다.!</h4>`
+		prtStr += `<h4>  오늘은 도저히 못하겠다. !</h4>`
+		continue;
+	}
+	prtStr += `<h4>${day}차 훈련 진행</h4>`	
+	prtStr += `<h4>${day}차 훈련 종료</h4>`	
+}
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

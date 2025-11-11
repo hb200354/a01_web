@@ -1,0 +1,602 @@
+## 📚 실습 문제 1세트 풀이
+
+### 1\. "새싹 농부의 수확일지"
+
+```javascript
+let totalApples = parseInt(prompt("총 수확할 사과의 개수를 입력하세요:"));
+let prtStr = "";
+
+for (let i = 1; i <= totalApples; i++) {
+    if (i % 5 === 0) {
+        prtStr += `🍎 ${i}번째 사과 수확! 바구니에 담기!<br>`;
+    } else {
+        prtStr += `🍏 ${i}번째 사과 수확.<br>`;
+    }
+}
+document.body.innerHTML = prtStr;
+```
+
+### 2\. "비밀 요원 코드명 부여"
+
+```javascript
+let team = prompt("소속팀을 입력하세요 ('Alpha', 'Bravo', 'Charlie'):");
+let prtStr = "";
+let codeName = "";
+
+switch (team) {
+    case 'Alpha':
+        codeName = "독수리";
+        break;
+    case 'Bravo':
+        codeName = "사자";
+        break;
+    case 'Charlie':
+        codeName = "호랑이";
+        break;
+    default:
+        codeName = "소속 불명";
+}
+
+prtStr = `당신의 코드명: ${codeName}`;
+document.body.innerHTML = prtStr;
+```
+
+### 3\. "놀이공원 입장권 계산기"
+
+```javascript
+let ageStr = prompt("나이를 입력하세요:");
+let coupon = prompt("쿠폰 종류를 입력하세요 ('VIP', 'BASIC', 'NONE'):");
+let age = parseInt(ageStr);
+let prtStr = "";
+
+if (age >= 19 && coupon === 'VIP') {
+    prtStr = "최우선 탑승권(성인)이 발급되었습니다.";
+} else if (age >= 19) {
+    prtStr = "일반 탑승권(성인)이 발급되었습니다.";
+} else if (age < 19 && age >= 8 && (coupon === 'VIP' || coupon === 'BASIC')) {
+    prtStr = "최우선 탑승권(청소년)이 발급되었습니다.";
+} else {
+    prtStr = "입장이 불가능합니다.";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 4\. "디지털 몬스터 진화"
+
+```javascript
+let level = parseInt(prompt("몬스터의 레벨을 입력하세요:"));
+let stones = parseInt(prompt("현재 보유한 '진화의 돌' 개수를 입력하세요:"));
+let prtStr = "";
+
+if (level >= 15 && stones >= 3) {
+    prtStr = "진화에 성공했습니다! 2단계 몬스터가 되었습니다!";
+} else {
+    prtStr = "진화 조건이 부족합니다.";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 5\. "헬스 트레이너의 루틴"
+
+```javascript
+let prtStr = "";
+
+for (let day = 1; day <= 30; day++) {
+    if (day % 3 === 0) {
+        prtStr += `<h3>${day}일차: 오늘은 하체 운동! (스쿼트)</h3>`;
+    } else if (day % 2 === 1) { // 3의 배수가 아니면서 홀수
+        prtStr += `<h3>${day}일차: 오늘은 상체 운동! (푸시업)</h3>`;
+    } else { // 3의 배수가 아니면서 짝수
+        prtStr += `<h3>${day}일차: 오늘은 유산소 운동! (달리기)</h3>`;
+    }
+}
+document.body.innerHTML = prtStr;
+```
+
+### 6\. "카페 키오스크 주문"
+
+```javascript
+let size = prompt("음료 사이즈를 입력하세요 ('Small', 'Medium', 'Large'):");
+let prtStr = "";
+
+switch (size) {
+    case 'Large':
+        prtStr = "시럽 3번 제공";
+        break;
+    case 'Medium':
+        prtStr = "시럽 2번 제공";
+        break;
+    case 'Small':
+        prtStr = "시럽 1번 제공";
+        break;
+    default:
+        prtStr = "해당 사이즈는 없습니다.";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 7\. "우리 반 출석부"
+
+```javascript
+let totalStudents = parseInt(prompt("우리 반 총 학생 수를 입력하세요:"));
+let prtStr = "";
+
+for (let i = 1; i <= totalStudents; i++) {
+    prtStr += `<li>${i}번 학생 출석 확인</li>`;
+}
+
+document.body.innerHTML = `<ul>${prtStr}</ul>`;
+```
+
+### 8\. "로그인 시스템 (3항 연산자)"
+
+```javascript
+let id = prompt("아이디를 입력하세요:");
+let pw = prompt("비밀번호를 입력하세요:");
+
+let result = (id === "admin" && pw === "1234") ? "로그인 성공" : "로그인 실패";
+
+document.body.innerHTML = result;
+```
+
+### 9\. "시험 합격/불합격 결정"
+
+```javascript
+let score1 = parseInt(prompt("필기 점수를 입력하세요:"));
+let score2 = parseInt(prompt("실기 점수를 입력하세요:"));
+let avg = (score1 + score2) / 2;
+let prtStr = "";
+
+if ((score1 >= 80 || score2 >= 80) || avg >= 70) {
+    prtStr = "합격";
+} else {
+    prtStr = "불합격";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 10\. "별점 피라미드 만들기"
+
+```javascript
+let num = parseInt(prompt("숫자를 입력하세요:"));
+let prtStr = "";
+let stars = "";
+
+for (let i = 1; i <= num; i++) {
+    stars += "*";
+    prtStr += stars + "<br>";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 11\. "카운트다운 타이머"
+
+```javascript
+let startNum = parseInt(prompt("시작할 숫자를 입력하세요:"));
+let prtStr = "";
+
+for (let i = startNum; i >= 1; i--) {
+    prtStr += `카운트다운: ${i}<br>`;
+}
+prtStr += "<b>발사!</b>";
+document.body.innerHTML = prtStr;
+```
+
+### 12\. "우리 집 엘리베이터" (Fall-through 활용)
+
+```javascript
+let floor = parseInt(prompt("가고 싶은 층을 입력하세요 (1~5):"));
+let prtStr = "";
+
+switch (floor) {
+    case 1:
+        prtStr = "약국으로 이동합니다.<br>";
+        // 의도적인 fall-through
+    case 2:
+        // 1층에서 왔다면 prtStr에 "약국..."이 이미 담겨있음
+        // 2층으로 바로 왔다면 prtStr을 "소아과..."로 설정
+        prtStr = (floor === 2 ? "소아과로 이동합니다.<br>" : prtStr);
+        prtStr += "<b>저층입니다.</b>";
+        break;
+    case 3:
+        prtStr = "내과로 이동합니다.<br>";
+        // 의도적인 fall-through
+    case 4:
+        prtStr = (floor === 4 ? "정형외과로 이동합니다.<br>" : prtStr);
+        prtStr += "<b>고층입니다.</b>";
+        break;
+    case 5:
+        prtStr = "관리실입니다.";
+        break;
+    default:
+        prtStr = "존재하지 않는 층입니다.";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 13\. "쇼핑몰 배송비 계산"
+
+```javascript
+let price = parseInt(prompt("총 구매 금액을 입력하세요:"));
+let prtStr = "";
+
+// 1. if-else 문
+let shippingFee1 = 0;
+if (price >= 50000) {
+    shippingFee1 = 0;
+} else {
+    shippingFee1 = 2500;
+}
+let total1 = price + shippingFee1;
+prtStr += `if-else 총 결제 금액: ${total1}원<br>`;
+
+// 2. 3항 연산자
+let shippingFee2 = (price >= 50000) ? 0 : 2500;
+let total2 = price + shippingFee2;
+prtStr += `3항 연산자 총 결제 금액: ${total2}원`;
+
+document.body.innerHTML = prtStr;
+```
+
+### 14\. "자동 온도 조절 시스템"
+
+```javascript
+let temp = parseInt(prompt("현재 온도를 입력하세요:"));
+let prtStr = "";
+
+if (temp < 18) {
+    prtStr = "히터를 강하게 작동합니다.";
+} else if (temp < 22) { // 18 이상 22 미만
+    prtStr = "히터를 약하게 작동합니다.";
+} else if (temp < 26) { // 22 이상 26 미만
+    prtStr = "쾌적한 온도입니다.";
+} else { // 26 이상
+    prtStr = "에어컨을 작동합니다.";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 15\. "홀짝 게임"
+
+```javascript
+// 확인(true) = 홀, 취소(false) = 짝
+let userChoiceIsOdd = confirm("게임 시작: 홀(확인) / 짝(취소)을 선택하세요.");
+let num = parseInt(prompt("1~100 사이의 숫자를 입력하세요."));
+
+let isEven = (num % 2 === 0); // 짝수면 true, 홀수면 false
+let prtStr = "";
+
+// 승리 조건:
+// 1. 사용자가 '홀'(true)을 선택했고, 숫자가 '홀수'(isEven === false)일 때
+// 2. 사용자가 '짝'(false)을 선택했고, 숫자가 '짝수'(isEven === true)일 때
+//
+// 위 두 조건은 (userChoiceIsOdd !== isEven)와 같습니다.
+// (true !== false) => true (승)
+// (false !== true) => true (승)
+//
+// (true !== true) => false (패)
+// (false !== false) => false (패)
+
+if (userChoiceIsOdd !== isEven) {
+    prtStr = "승리!";
+} else {
+    prtStr = "패배!";
+}
+
+let userPick = userChoiceIsOdd ? "홀" : "짝";
+let numType = isEven ? "짝수" : "홀수";
+prtStr += ` (당신의 선택: ${userPick}, 숫자: ${num} -> ${numType})`;
+
+document.body.innerHTML = prtStr;
+```
+
+-----
+
+## 🚀 실습 문제 2세트 풀이
+
+### 1\. "최고/최저 점수 찾기"
+
+```javascript
+let count = parseInt(prompt("총 몇 명의 학생 점수를 입력받을까요?"));
+// 최고점은 가장 낮은 값으로, 최저점은 가장 높은 값으로 초기화
+let maxScore = 0; // 0점보다 낮은 점수는 없다고 가정
+let minScore = 100; // 100점보다 높은 점수는 없다고 가정
+
+for (let i = 1; i <= count; i++) {
+    let score = parseInt(prompt(`${i}번째 학생의 점수를 입력하세요:`));
+
+    if (score > maxScore) {
+        maxScore = score; // 최고점 갱신
+    }
+    if (score < minScore) {
+        minScore = score; // 최저점 갱신
+    }
+}
+
+document.body.innerHTML = `최고점: ${maxScore}점, 최저점: ${minScore}점`;
+```
+
+### 2\. "디지털 금고"
+
+```javascript
+let pw1 = prompt("1차 비밀번호 (숫자 4자리)를 입력하세요:");
+let pw2 = prompt("2차 비밀번호 (문자)를 입력하세요:");
+let prtStr = "";
+
+let conditionA = (pw1 === '1234' && pw2 === 'GOLD');
+let conditionB = (pw1 === '9999' && pw2 === 'MASTER');
+
+if (conditionA || conditionB) {
+    prtStr = "금고가 열렸습니다.";
+} else if (pw1 === '1234' || pw1 === '9999' || pw2 === 'GOLD' || pw2 === 'MASTER') {
+    prtStr = "보안 경보! 1단계 인증 실패";
+} else {
+    prtStr = "불법적인 접근입니다.";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 3\. "369 게임" (1의 자리 단순화)
+
+```javascript
+let num = parseInt(prompt("1~100 사이의 숫자를 입력하세요:"));
+let prtStr = "";
+
+for (let i = 1; i <= num; i++) {
+    let onesDigit = i % 10; // 1의 자리수
+
+    if (onesDigit === 3 || onesDigit === 6 || onesDigit === 9) {
+        prtStr += "<b>짝!</b> ";
+    } else {
+        prtStr += i + " ";
+    }
+    
+    // 10의 배수마다 줄바꿈 (가독성)
+    if (i % 10 === 0) {
+        prtStr += "<br>";
+    }
+}
+document.body.innerHTML = prtStr;
+```
+
+### 4\. "월별 테마 여행 추천" (Fall-through)
+
+```javascript
+let month = parseInt(prompt("월을 입력하세요 (1~12):"));
+let prtStr = "";
+
+switch (month) {
+    case 3:
+    case 4:
+    case 5:
+        prtStr = "벚꽃 구경 (봄)";
+        break;
+    case 6:
+    case 7:
+    case 8:
+        prtStr = "해수욕장 (여름)";
+        break;
+    case 9:
+    case 10:
+    case 11:
+        prtStr = "단풍 놀이 (가을)";
+        break;
+    case 12:
+    case 1:
+    case 2:
+        prtStr = "눈썰매장 (겨울)";
+        break;
+    default:
+        prtStr = "1~12 사이의 숫자를 입력해주세요.";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 5\. "구구단 역순 출력"
+
+```javascript
+let dan = parseInt(prompt("출력할 구구단 '단'을 입력하세요:"));
+let prtStr = `<h3>${dan}단 (역순)</h3>`;
+
+for (let i = 9; i >= 1; i--) {
+    prtStr += `${dan} x ${i} = ${dan * i}<br>`;
+}
+document.body.innerHTML = prtStr;
+```
+
+### 6\. "식당 웨이팅 리스트"
+
+```javascript
+let isWaiting = confirm("현재 웨이팅이 있습니까?");
+let prtStr = "";
+
+if (isWaiting) { // '확인' (true)
+    let teams = parseInt(prompt("몇 팀이 대기 중인가요?"));
+    let listStr = "";
+    for (let i = 1; i <= teams; i++) {
+        listStr += `<li>${i}번 손님 대기 중</li>`;
+    }
+    prtStr = `<ul>${listStr}</ul>`;
+} else { // '취소' (false)
+    prtStr = "<h2>바로 입장 가능합니다.</h2>";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 7\. "성적 등급 계산기 (Advanced)"
+
+```javascript
+let score = parseInt(prompt("점수를 입력하세요 (0~100):"));
+let grade = "";
+
+if (score >= 95) {
+    grade = "A+";
+} else if (score >= 90) { // 90~94
+    grade = "A";
+} else if (score >= 85) { // 85~89
+    grade = "B+";
+} else if (score >= 80) { // 80~84
+    grade = "B";
+} else if (score >= 70) { // 70~79
+    grade = "C";
+} else if (score >= 60) { // 60~69
+    grade = "D";
+} else { // 60 미만
+    grade = "F";
+}
+document.body.innerHTML = `당신의 등급은 ${grade}입니다.`;
+```
+
+### 8\. "회원 등급별 혜택"
+
+```javascript
+let grade = prompt("회원 등급을 입력하세요 ('GOLD', 'SILVER', 'BRONZE'):");
+let prtStr = "";
+
+switch (grade) {
+    case 'GOLD':
+        prtStr = "무료 음료 쿠폰 2장, 10% 할인";
+        break;
+    case 'SILVER':
+        prtStr = "무료 음료 쿠폰 1장, 5% 할인";
+        break;
+    case 'BRONZE':
+        prtStr = "5% 할인";
+        break;
+    default:
+        prtStr = "비회원입니다. 혜택이 없습니다.";
+}
+document.body.innerHTML = `혜택: ${prtStr}`;
+```
+
+### 9\. "대출 가능 여부 확인"
+
+```javascript
+let income = parseInt(prompt("연 수입(만원)을 입력하세요:"));
+let credit = parseInt(prompt("신용 등급(1~10)을 입력하세요:"));
+// '확인'(true) = 대출 있음, '취소'(false) = 대출 없음
+let hasLoan = confirm("현재 대출을 보유하고 있습니까?"); 
+let prtStr = "";
+
+let condition1 = (income >= 5000 && credit <= 5);
+let condition2 = (income >= 3000 && credit <= 3 && !hasLoan); // !hasLoan (대출 없음)
+
+if (condition1 || condition2) {
+    prtStr = "대출 승인 (1등급)";
+} else {
+    prtStr = "대출 심사 거절";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 10\. "총합과 평균 구하기"
+
+```javascript
+let count = parseInt(prompt("몇 개의 숫자를 더할까요?"));
+let total = 0;
+
+for (let i = 1; i <= count; i++) {
+    let num = parseInt(prompt(`${i}번째 숫자를 입력하세요:`));
+    total += num; // 누적 합산
+}
+
+let avg = total / count;
+
+document.body.innerHTML = `
+    <h3>입력한 숫자들의 총합: ${total}</h3>
+    <h3>평균: ${avg}</h3>
+`;
+```
+
+### 11\. "2의 배수와 3의 배수 찾기"
+
+```javascript
+let num = parseInt(prompt("1~100 사이의 숫자를 입력하세요:"));
+let prtStr = "";
+
+for (let i = 1; i <= num; i++) {
+    if (i % 6 === 0) { // 2와 3의 공배수 (가장 먼저 체크)
+        prtStr += `2와 3의 공배수 (${i})<br>`;
+    } else if (i % 2 === 0) { // 2의 배수
+        prtStr += `2의 배수 (${i})<br>`;
+    } else if (i % 3 === 0) { // 3의 배수
+        prtStr += `3의 배수 (${i})<br>`;
+    } else {
+        prtStr += `${i}<br>`;
+    }
+}
+document.body.innerHTML = prtStr;
+```
+
+### 12\. "환영 메시지 3번"
+
+```javascript
+let prtStr = "";
+for (let i = 0; i < 3; i++) {
+    prtStr += "<h2>환영합니다! 방문을 진심으로 환영합니다!</h2>";
+}
+document.body.innerHTML = prtStr;
+```
+
+### 13\. "택시 요금 계산기"
+
+```javascript
+let distance = parseFloat(prompt("이동 거리(km)를 입력하세요:"));
+let fee = 0;
+
+if (distance <= 2) {
+    fee = 3800; // 기본 요금
+} else {
+    let extraDistance = distance - 2; // 2km 초과 거리
+    // 초과 거리에 대한 요금 계산 (예제는 km 단위로 계산)
+    // 만약 100m당 요금이면 계산이 달라져야 하지만, 문제의 예시를 따름
+    let extraFee = extraDistance * 1000;
+    fee = 3800 + extraFee;
+}
+
+document.body.innerHTML = `총 요금: ${fee}원`;
+```
+
+### 14\. "윤년 계산기"
+
+```javascript
+let year = parseInt(prompt("연도(year)를 입력하세요:"));
+let prtStr = "";
+
+// 1. 4의 배수이고(year % 4 === 0)
+// 2. 100의 배수가 아니거나(year % 100 !== 0)
+// 3. 400의 배수일 때(year % 400 === 0)
+//
+// (1번 AND 2번) OR 3번
+if ((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)) {
+    prtStr = `${year}년은 윤년입니다.`;
+} else {
+    prtStr = `${year}년은 평년입니다.`;
+}
+document.body.innerHTML = prtStr;
+```
+
+### 15\. "최종 보스 던전 입장"
+
+```javascript
+let level = parseInt(prompt("현재 레벨을 입력하세요:"));
+// '확인'(true) = 완료, '취소'(false) = 미완료
+let questDone = confirm("필수 퀘스트('성스러운 검')를 완료했습니까?");
+let prtStr = "";
+
+if (level >= 99 && questDone) {
+    prtStr = "던전 입장에 성공했습니다.";
+} else {
+    // 실패 사유 분석
+    // 3항 연산자를 사용하여 첫 번째 실패 요인을 찾습니다.
+    let reason = (level < 99) ? "레벨 부족" : "퀘스트 미완료";
+
+    // (참고) 만약 두 가지 이유를 모두 표시해야 한다면:
+    // let reason = "";
+    // if (level < 99) reason += "레벨 부족 ";
+    // if (!questDone) reason += "퀘스트 미완료";
+    
+    prtStr = `입장 실패: ${reason}`;
+}
+document.body.innerHTML = prtStr;
+```

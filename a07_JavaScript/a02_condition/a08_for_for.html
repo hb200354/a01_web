@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>for문안에 for문</h2>"
+/*
+# 반복문 안에 반복문 - 아날로그 시계
+1. 이중 for문을 가장 쉽게 이해하는 방법은 시계를 생각하는 것입니다.
+	1) 바깥쪽 for문 : 시침(시간)
+	2) 안쪽 for문 : 분침(분)
+2. 시계가 어떻게 작동하나요?
+	1) 시침이 1시에서 2시로 딱 한 칸 움직일 때, 분침은 1분부터 60분까지 전부 돕니다.
+	2) 그리고 시침이 2시에서 3시로 한 칸 움익이면, 분침은 또 1분부터 60까지 전부 다시 돕니다.
+	==> 이중 for문의 핵심
+	바깥쪽 루프가 1번 실행될 때마다, 안쪽 루프는 처음부터 끝가지 전체 사이클을 완료합니다.
+	
+*/
+for(let h = 0; h < 24 ; h++	){
+	for(let m=0; m < 60; m++){
+		prtStr += `<h3>${h}시 ${m}분 </h3>`
+	}
+}
+//ex)1) 구구단의 단수 2~9    @@ 단  grade
+//   2) 곱하기를   @@ x @@ 1~9   출력 처리  cnt
+//  --------------------------------------
+//   3)  @@ x @@ = @@   출력 처리
+for(let grade = 2; grade <=9;grade++){
+	prtStr += `<h3>${grade}단</h3>`
+	for(let cnt = 1; cnt <=9;cnt++){
+		prtStr += `<h3>${grade} x  ${cnt} = ${grade*cnt}</h3>`
+	}	
+}
+document.body.innerHTML=prtStr
+</script>
+</html>

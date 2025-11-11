@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>반복문 처리</h2>"
+/*
+# for 반복문
+1. for 반복문은 정해진 횟수만큼 코드를 반복 실행하라고 시키는 엄격한 개인 PT 트레이너라고 상상해 보세요.
+2. 왜 필요한가요?
+	1) 만약 안녕하세요를 100번 출력해야 한다면?
+	2) console.log('안녕하세요')를 100번 복사/붙여넣기 하실 건가요? 끔찍하죠!
+	3) 이 때 pt 트레이터(for)에게 시키는 겁니다. 이거 100번 해!
+3. for문의 기본형식
+	1) 가장 헷갈리는 것이 for(;;) 안에 있는 세미콜론(;) 3가지 요소의 순서입니다.
+		이것만 기억하세요 헬스장 2-3-4 반복 법칙
+	2) for(1일차 등록;2회원확인;4끝나고 도장){
+		  3 오늘 운동하기
+	   }
+		1 일차 등록 : 한번만 수행
+		2 회원확인 : 3오늘 운동하기 전에 회원확인서..
+		3 오늘 운동하기
+		4 끝나고 도장 
+		이후에 2,3,4를 계속 반복 수행..
+*/
+for(let i = 0; i < 5 ; i++ ){  //0~4까지 반복해 출력하고, 5가 되는 순간 i<5 반복조건에 맞지
+	// 않기에 반복문이 수행되지 않다...
+	prtStr += `<h3>카운트 - ${i}번째</h3>`
+}
+//ex) let cnt = 1 부터 해서  10까지 출력 해보세요..
+///   cnt <= 10  :반복조건..
+//    cnt ++ 
+for(let cnt=1;cnt<=10;cnt++){
+	prtStr += `<h3>[ ${cnt} ]번째 카운트업</h3>`
+}
+prtStr += `<h3>초기값 변경(5)</h3>`
+for(let cnt=5;cnt<=10;cnt++){
+	prtStr += `<span>[ ${cnt} ]</span>`
+}
+//ex) 초기값을 count를 써서 3으로 시작 해서 10까지 출력..
+prtStr += `<h3>초기값 변경(3)</h3>`
+for(let count=3;count<=10;count++){
+	prtStr += `<span>[ ${count} ]</span>`
+}
+prtStr += `<h3>한계치 변경(20)</h3>`
+for(let cnt=1;cnt<=20;cnt++){
+	prtStr += `<span>[ ${cnt} ]</span>`
+}
+//ex) 초기값을 val를 써서 1으로 시작 해서 55까지 출력..
+prtStr += `<h3>한계치 변경(55)</h3>`
+for(let val=1;val<=55;val++){
+	prtStr += `<span>[ ${val} ]</span>`
+}
+
+
+prtStr += `<h3>증감 변경(2씩)</h3>`
+for(let cnt=1;cnt<=10;cnt+=2){
+	prtStr += `<span>[ ${cnt} ]</span>`
+}		
+// ex) 초기값 data  3씩 증가하여 1부터 15까지 출력..
+prtStr += `<h3>증감 변경(3씩)</h3>`
+for(let data=1;data<=15;data+=3){
+	prtStr += `<span>[ ${data} ]</span>`
+}	
+prtStr += `<h3>감소 처리(100~80)</h3>`
+for(let cnt=100; cnt>=80; cnt--){ // 감소할 때는 >= 비교연산자의 등호를 변경..
+	prtStr += `<span>[ ${cnt} ]</span>`
+}	
+prtStr += `<h3>감소 처리(100~30, 5단위로 감소)</h3>`
+	for(let cnt=100; cnt>=30; cnt-=5){ // 감소할 때는 >= 비교연산자의 등호를 변경..
+		prtStr += `<span>[ ${cnt} ]</span>`
+	}			
+
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

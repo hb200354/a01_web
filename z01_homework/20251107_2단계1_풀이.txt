@@ -1,0 +1,530 @@
+### 문제 1: 황금 버섯을 찾아라\! 🍄
+
+```javascript
+console.log("### 문제 1: 황금 버섯을 찾아라! 🍄");
+for (let n = 1; n <= 20; n++) {
+  console.log(`${n}번 숲 탐험 중...`);
+  if (n === 13) {
+    console.log("황금 버섯 발견!");
+    break; // n이 13이 되는 순간 반복문을 탈출
+  }
+}
+// 핵심 로직: n이 13일 때 break를 만나 14~20은 실행되지 않습니다.
+```
+
+-----
+
+### 문제 2: 너무 무거운 돼지 저금통 🐷
+
+```javascript
+console.log("\n### 문제 2: 너무 무거운 돼지 저금통 🐷");
+let sum = 0;
+for (let n = 1; n <= 10; n++) {
+  sum += n;
+  console.log(`${n}원 저금. (총액: ${sum}원)`);
+  if (sum > 20) {
+    console.log("저금통이 너무 무거워! 중단!");
+    break; // sum이 20을 초과하는 순간(n=6, sum=21) 탈출
+  }
+}
+// 핵심 로직: 1+2+3+4+5+6 = 21. n=6일 때 sum이 21이 되어 break 합니다.
+```
+
+-----
+
+### 문제 3: 암호 해독 전문가 🔑
+
+```javascript
+console.log("\n### 문제 3: 암호 해독 전문가 🔑");
+const codes = ["qW", "aR", "p!", "sT", "zX"];
+for (let i = 0; i < codes.length; i++) {
+  console.log(`해독 시도: ${codes[i]}`);
+  if (codes[i] === "p!") {
+    console.log(`해제 코드 발견! (${i + 1}번째)`);
+    break; // "p!"를 찾았으므로 불필요한 "sT", "zX" 탐색을 멈춤
+  }
+}
+// 핵심 로직: "p!"를 찾으면 break를 만나 "sT", "zX"는 시도조차 하지 않습니다.
+```
+
+-----
+
+### 문제 4: 첫 번째 짝수 찾기 (거꾸로)
+
+```javascript
+console.log("\n### 문제 4: 첫 번째 짝수 찾기 (거꾸로)");
+for (let n = 100; n >= 1; n--) {
+  if (n % 2 === 0) {
+    console.log(`발견! 첫 짝수는 ${n}`);
+    break; // 100은 짝수이므로, 100을 출력하고 즉시 탈출
+  }
+}
+// 핵심 로직: n=100일 때 100 % 2 === 0이 참이므로 즉시 break 됩니다.
+```
+
+-----
+
+### 문제 5: 로켓 발사 카운트다운 중단\! 🚀
+
+```javascript
+console.log("\n### 문제 5: 로켓 발사 카운트다운 중단! 🚀");
+for (let n = 10; n >= 1; n--) {
+  console.log(`카운트: ${n}`);
+  if (n === 3) {
+    console.log("엔진 결함! 발사 중단!");
+    break; // n이 3일 때 탈출하여 2, 1이 출력되지 않음
+  }
+}
+// 핵심 로직: n=3일 때 break 하여 2, 1 카운트가 실행되지 않습니다.
+```
+
+-----
+
+### 문제 6: 도서관 책 검색 📚 (Flag 변수 활용)
+
+```javascript
+console.log("\n### 문제 6: 도서관 책 검색 📚");
+const books = ["과학", "수학", "역사", "영어"];
+const searchTarget = "코딩";
+let found = false; // Flag 변수
+
+for (let i = 0; i < books.length; i++) {
+  if (books[i] === searchTarget) {
+    found = true; // 책을 찾았다는 표시
+    break; // 찾았으니 더 이상 탐색할 필요 없음
+  }
+}
+
+// for 문이 끝난 후, flag 변수의 최종 값으로 판단
+if (found) {
+  console.log("검색 완료: 책을 찾았습니다!");
+} else {
+  console.log("검색 완료: 책을 찾지 못했습니다.");
+}
+// 핵심 로직: for 문이 끝난(break 되거나, 다 돌거나) 후, found 변수의 값으로 결과를 출력합니다.
+```
+
+-----
+
+### 문제 7: 7의 배수이자 5의 배수인 첫 숫자
+
+```javascript
+console.log("\n### 문제 7: 7의 배수이자 5의 배수인 첫 숫자");
+for (let n = 1; n <= 1000; n++) {
+  if (n % 7 === 0 && n % 5 === 0) {
+    console.log(`찾았다! ${n}`);
+    break; // 7과 5의 공배수(35)를 찾는 즉시 탈출
+  }
+}
+// 핵심 로직: n=35일 때 && 조건이 처음 참이 되어 break 합니다.
+```
+
+-----
+
+### 문제 8: 공장 라인 정지\! (컨베이어 벨트) 🏭
+
+```javascript
+console.log("\n### 문제 8: 공장 라인 정지! 🏭");
+const line = ["정상", "정상", "정상", "불량", "정상"];
+for (let i = 0; i < line.length; i++) {
+  console.log(`${i + 1}번째 제품 검수...`);
+  if (line[i] === "불량") {
+    console.log(`${i + 1}번째에서 불량 발견! 라인 정지!`);
+    break; // '불량'을 발견한 4번째에서 탈출
+  }
+}
+// 핵심 로직: i=3 ("불량")일 때 break 하여 5번째 "정상"은 검수되지 않습니다.
+```
+
+-----
+
+### 문제 9: 예산 초과\! 장바구니 🛒
+
+```javascript
+console.log("\n### 문제 9: 예산 초과! 장바구니 🛒");
+const cart = [5000, 8000, 3000, 10000];
+let cartSum = 0;
+
+for (let i = 0; i < cart.length; i++) {
+  let price = cart[i];
+  
+  // 물건을 담기 *전*에, 이 물건을 담으면 초과하는지 *미리* 확인
+  if (cartSum + price > 15000) {
+    console.log(`예산 초과! ${price}원짜리 못 담음! (현재 총액: ${cartSum}원)`);
+    break;
+  }
+  
+  // 초과하지 않으면 담는다.
+  cartSum += price;
+  console.log(`${price}원 담음. (총액: ${cartSum}원)`);
+}
+// 핵심 로직: 5000(sum:5000) -> 8000(sum:13000) -> 3000원(price)을 더하기 *전*,
+// 13000 + 3000 > 15000 (true)가 되어 "3000원짜리 못 담음!" 출력 후 break.
+```
+
+-----
+
+### 문제 10: 비밀번호 3회 오류 🔒 (시나리오: 3회째 성공)
+
+```javascript
+console.log("\n### 문제 10: 3회째 로그인 성공! 🔒");
+for (let i = 1; i <= 5; i++) {
+  console.log(`${i}회 로그인 시도...`);
+  if (i === 3) {
+    console.log("로그인 성공!");
+    break; // 3회째 성공했으므로 4, 5회 시도를 멈춤
+  }
+}
+// 핵심 로직: 문제 제목은 '오류'지만 시나리오는 '성공'입니다. i=3일 때 break 합니다.
+```
+
+-----
+
+### 문제 11: 좀비 서바이벌 🧟
+
+```javascript
+console.log("\n### 문제 11: 좀비 서바이벌 🧟");
+for (let day = 1; day <= 10; day++) {
+  console.log(`${day}일차 생존 중...`);
+  if (day === 7) {
+    console.log("안전지대 발견! 생존 성공!");
+    break; // 7일차에 발견 즉시 탈출
+  }
+}
+// 핵심 로직: day=7일 때 break 하여 8, 9, 10일차가 출력되지 않습니다.
+```
+
+-----
+
+### 문제 12: 제곱근 찾기
+
+```javascript
+console.log("\n### 문제 12: 제곱근 찾기");
+for (let n = 1; n <= 100; n++) {
+  if ((n * n) > 500) {
+    console.log(`제곱해서 500 넘는 첫 수: ${n}`);
+    break; // n=23일 때 529 > 500 이므로 탈출
+  }
+}
+// 핵심 로직: 22*22=484, 23*23=529. n=23일 때 break 합니다.
+```
+
+-----
+
+### 문제 13: 다운로드 오류 💾
+
+```javascript
+console.log("\n### 문제 13: 다운로드 오류 💾");
+for (let percent = 0; percent <= 100; percent++) {
+  console.log(`현재 ${percent}% 다운로드 중...`);
+  if (percent === 85) {
+    console.log("네트워크 오류! 다운로드 중단!");
+    break; // 85%가 되는 순간 탈출
+  }
+}
+// 핵심 로직: percent=85일 때 break 하여 86~100%가 출력되지 않습니다.
+```
+
+-----
+
+### 문제 14: 마라톤 중도 포기 🏃
+
+```javascript
+console.log("\n### 문제 14: 마라톤 중도 포기 🏃");
+for (let km = 1; km <= 42; km++) {
+  console.log(`${km}km 지점 통과!`);
+  if (km === 30) {
+    console.log("부상 발생! 경기 포기!");
+    break; // 30km 지점에서 탈출
+  }
+}
+// 핵심 로직: km=30일 때 break 하여 31~42km가 출력되지 않습니다.
+```
+
+-----
+
+### 문제 15: 용의자 수색 (이중 for문 + break) 🚨
+
+```javascript
+console.log("\n### 문제 15: 용의자 수색 (이중 for문 + break) 🚨");
+let stopSearch = false; // 이중 for문 탈출을 위한 '깃발(Flag)'
+
+for (let dong = 1; dong <= 3; dong++) {
+  for (let ho = 1; ho <= 5; ho++) {
+    console.log(`${dong}동 ${ho}호 수색 중...`);
+    
+    if (dong === 2 && ho === 3) {
+      console.log("용의자 발견! 수색 종료!");
+      stopSearch = true; // 깃발을 세움
+      break; // 1. 안쪽 for문 (호) 탈출
+    }
+  }
+  
+  if (stopSearch) {
+    break; // 2. 바깥쪽 for문 (동) 탈출
+  }
+}
+// 핵심 로직: 2동 3호에서 stopSearch=true가 되고 안쪽 break 실행.
+// 바깥쪽 for문이 2동 루프를 마친 후 if(stopSearch)를 확인, 바깥쪽 break 실행.
+```
+
+## ⏭️ `continue` : 이번 턴만 패스 실전 문제 풀이 (15문제)
+
+`continue`는 조건이 충족되면 **이번 반복(iteration)만 중단**하고, 즉시 **다음 반복으로 점프**합니다.
+
+-----
+
+### 문제 1: 짝수만 골라내기
+
+```javascript
+console.log("\n### 문제 1: 짝수만 골라내기");
+for (let n = 1; n <= 10; n++) {
+  // 홀수이면(짝수가 아니면)
+  if (n % 2 !== 0) {
+    continue; // 아래 "짝수 발견"을 실행하지 말고, 다음 n으로 점프
+  }
+  console.log(`짝수 발견: ${n}`);
+}
+// 핵심 로직: n이 1, 3, 5, 7, 9일 때 continue를 만나 console.log가 실행되지 않습니다.
+```
+
+-----
+
+### 문제 2: 3의 배수 빼고 저금하기 💸
+
+```javascript
+console.log("\n### 문제 2: 3의 배수 빼고 저금하기 💸");
+let sumContinue = 0;
+for (let n = 1; n <= 10; n++) {
+  if (n % 3 === 0) {
+    console.log(`${n}일차: 3의 배수(불운)라 건너뛰기!`);
+    continue; // sumContinue += n 코드를 실행하지 않고 다음 n으로 점프
+  }
+  sumContinue += n;
+}
+console.log(`최종 저금액: ${sumContinue}`); // 1+2 + 4+5 + 7+8 + 10 = 37
+// 핵심 로직: n이 3, 6, 9일 때 continue를 만나 sum에 더해지지 않습니다.
+```
+
+-----
+
+### 문제 3: 스팸 메일 거르기 🚫
+
+```javascript
+console.log("\n### 문제 3: 스팸 메일 거르기 🚫");
+const mails = ["[광고]", "회의", "안부", "[광고]", "중요"];
+for (let i = 0; i < mails.length; i++) {
+  if (mails[i] === "[광고]") {
+    console.log("스팸 메일 건너뛰기");
+    continue; // "메일 확인"을 실행하지 않고 다음 i로 점프
+  }
+  console.log(`메일 확인: ${mails[i]}`);
+}
+// 핵심 로직: "[광고]"일 때 continue를 만나 "메일 확인:"이 실행되지 않습니다.
+```
+
+-----
+
+### 문제 4: 매진된 상품 건너뛰기 (거꾸로)
+
+```javascript
+console.log("\n### 문제 4: 매진된 상품 건너뛰기 (거꾸로)");
+for (let n = 10; n >= 1; n--) {
+  if (n === 7 || n === 3) {
+    console.log(`${n}번 상품 매진 (건너뛰기)`);
+    continue; // "재고 확인"을 실행하지 않고 다음 n으로 점프
+  }
+  console.log(`${n}번 상품 재고 확인`);
+}
+// 핵심 로직: n이 7 또는 3일 때 ||(OR) 조건이 참이 되어 continue 합니다.
+```
+
+-----
+
+### 문제 5: 오늘은 휴일\! (주말 건너뛰기) 📅
+
+```javascript
+console.log("\n### 문제 5: 오늘은 휴일! (주말 건너뛰기) 📅");
+for (let n = 1; n <= 30; n++) {
+  if (n % 7 === 0) {
+    console.log(`${n}일은 휴일! (업무 건너뛰기)`);
+    continue; // "업무 처리"를 실행하지 않고 다음 n으로 점프
+  }
+  console.log(`${n}일차 업무 처리`);
+}
+// 핵심 로직: 7, 14, 21, 28일일 때 continue를 만나 "업무 처리"가 실행되지 않습니다.
+```
+
+-----
+
+### 문제 6: '대출 중'인 책 건너뛰기 📖
+
+```javascript
+console.log("\n### 문제 6: '대출 중'인 책 건너뛰기 📖");
+const library = ["대출 가능", "대출 중", "대출 가능", "대출 중", "대출 가능"];
+for (let i = 0; i < library.length; i++) {
+  if (library[i] === "대출 중") {
+    continue; // "책 대출!"을 실행하지 않고 다음 i로 점프
+  }
+  console.log(`${i + 1}번째 책 대출!`);
+}
+// 핵심 로직: "대출 중"일 때 continue를 만나 "대출 가능"한 책만 출력됩니다.
+```
+
+-----
+
+### 문제 7: 블랙리스트 손님 제외하기 👤
+
+```javascript
+console.log("\n### 문제 7: 블랙리스트 손님 제외하기 👤");
+const guests = ["VIP", "일반", "블랙리스트", "일반", "VIP", "블랙리스트"];
+let count = 0;
+
+for (let i = 0; i < guests.length; i++) {
+  if (guests[i] === "블랙리스트") {
+    continue; // count++를 실행하지 않고 다음 i로 점프
+  }
+  count++; // 블랙리스트가 아닌 손님만 카운트
+}
+console.log(`총 입장 가능 인원: ${count}명`); // 4명
+// 핵심 로직: "블랙리스트"일 때 continue를 만나 count++가 실행되지 않습니다.
+```
+
+-----
+
+### 문제 8: '정상' 제품만 골라내기 (반대 로직)
+
+```javascript
+console.log("\n### 문제 8: '정상' 제품만 골라내기 (반대 로직)");
+const products = ["정상", "불량", "정상", "정상", "불량"];
+for (let i = 0; i < products.length; i++) {
+  if (products[i] === "정상") {
+    continue; // '정상'이면 건너뛰고, '불량'일 때만 아래로 내려감
+  }
+  // '정상'이 아닐 때(불량일 때)만 이 코드가 실행됨
+  console.log(`${i + 1}번째 제품 불량! 보고!`);
+}
+// 핵심 로직: "정상"일 때 continue 하여 "불량"일 때만 console.log가 실행됩니다.
+```
+
+-----
+
+### 문제 9: 환불 금액 제외하고 계산하기 💳
+
+```javascript
+console.log("\n### 문제 9: 환불 금액 제외하고 계산하기 💳");
+const transactions = [5000, -1000, 3000, 8000, -2000];
+let salesSum = 0;
+
+for (let i = 0; i < transactions.length; i++) {
+  if (transactions[i] < 0) {
+    console.log(`환불(${transactions[i]}원) 내역 건너뛰기`);
+    continue; // 음수(환불)일 경우, sum에 더하지 않고 다음 i로 점프
+  }
+  salesSum += transactions[i];
+}
+console.log(`총 매출: ${salesSum}`); // 5000 + 3000 + 8000 = 16000
+// 핵심 로직: 음수일 때 continue를 만나 salesSum에 더해지지 않습니다.
+```
+
+-----
+
+### 문제 10: 좀비 피해가기 🧟‍♀️
+
+```javascript
+console.log("\n### 문제 10: 좀비 피해가기 🧟‍♀️");
+for (let n = 1; n <= 10; n++) {
+  if (n === 3 || n === 6) {
+    console.log(`${n}일차: 좀비 출몰! (건너뛰기)`);
+    continue; // "식량 확보"를 실행하지 않고 다음 n으로 점프
+  }
+  console.log(`${n}일차 식량 확보!`);
+}
+// 핵심 로직: n이 3 또는 6일 때 continue 하여 "식량 확보!"가 실행되지 않습니다.
+```
+
+-----
+
+### 문제 11: 마라톤 급수 지점 💧 (반대 로직)
+
+```javascript
+console.log("\n### 문제 11: 마라톤 급수 지점 💧 (반대 로직)");
+for (let n = 1; n <= 42; n++) {
+  // 5의 배수가 *아니면* 건너뛰기
+  if (n % 5 !== 0) {
+    continue;
+  }
+  // 5의 배수일 때만 이 코드가 실행됨
+  console.log(`${n}km 지점! 물 마시기!`);
+}
+// 핵심 로직: 5의 배수가 아닐 때 continue 하여, 5의 배수(5, 10...)일 때만 출력됩니다.
+```
+
+-----
+
+### 문제 12: 13의 배수만 출력하기
+
+```javascript
+console.log("\n### 문제 12: 13의 배수만 출력하기");
+for (let n = 1; n <= 100; n++) {
+  // 13의 배수가 *아니면* 건너뛰기
+  if (n % 13 !== 0) {
+    continue;
+  }
+  console.log(`행운의 숫자: ${n}`);
+}
+// 핵심 로직: 13의 배수가 아닐 때 continue 하여 13, 26, 39...만 출력됩니다.
+```
+
+-----
+
+### 문제 13: 손상된 파일 건너뛰고 압축하기 📦
+
+```javascript
+console.log("\n### 문제 13: 손상된 파일 건너뛰고 압축하기 📦");
+for (let n = 1; n <= 10; n++) {
+  if (n === 4 || n === 8) {
+    console.log(`${n}번 파일 손상! (압축 건너뛰기)`);
+    continue; // "압축..."을 실행하지 않고 다음 n으로 점프
+  }
+  console.log(`${n}번 파일 압축...`);
+}
+// 핵심 로직: n이 4 또는 8일 때 continue 하여 "압축..."이 실행되지 않습니다.
+```
+
+-----
+
+### 문제 14: 결석한 학생 건너뛰기 🙋‍♂️
+
+```javascript
+console.log("\n### 문제 14: 결석한 학생 건너뛰기 🙋‍♂️");
+for (let n = 1; n <= 30; n++) {
+  if (n === 7 || n === 12 || n === 25) {
+    console.log(`${n}번 학생 결석 (건너뛰기)`);
+    continue; // "과제 배부"를 실행하지 않고 다음 n으로 점프
+  }
+  console.log(`${n}번 학생 과제 배부`);
+}
+// 핵심 로직: 7, 12, 25일 때 ||(OR) 조건이 참이 되어 continue 합니다.
+```
+
+-----
+
+### 문제 15: 알레르기 유발 재료 빼고 요리하기 🍳 (이중 for문 + continue)
+
+```javascript
+console.log("\n### 문제 15: 구구단 4단 빼기 🍳 (이중 for문 + continue)");
+for (let dan = 2; dan <= 9; dan++) {
+  console.log(`--- ${dan}단 ---`);
+  for (let cnt = 1; cnt <= 9; cnt++) {
+    // 안쪽 for문에서 cnt가 4일 때
+    if (cnt === 4) {
+      console.log(`${dan} x 4 = ? (숫자 4는 싫어! 건너뛰기)`);
+      continue; // 안쪽 for문의 다음 반복(cnt=5)으로 점프
+    }
+    console.log(`${dan} x ${cnt} = ${dan * cnt}`);
+  }
+}
+// 핵심 로직: cnt=4일 때 continue는 *안쪽 for문*에만 적용됩니다.
+// (dan은 유지, cnt만 5로 점프)
+```

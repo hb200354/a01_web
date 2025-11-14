@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>배열과 반복문</h2>"
+/*
+# 배열과 반복문
+1. 기본 배열 for문
+	for(let idx=0;idx<배열.length;idx++){
+		idx : index
+		배열명[idx] : 배열의 값..
+	}
+*/
+let subjects = ['국어','영어','수학']
+for(let idx=0;idx<subjects.length;idx++){
+	prtStr += `<h3>${idx } - ${subjects[idx]}</h3>`
+}
+prtStr += `<h3>for in 구문 처리</h3>`
+for(let idx in subjects){
+	prtStr += `<h3>${idx } - ${subjects[idx]}</h3>`
+}
+//ex) 사과 바나나 딸기 오렌지를 할당할 수 있는 fruits 배열 선언하고
+//   위 형식으로 리스트를 출력하세요.
+let fruits = ['사과','바나나','딸기','오렌지']
+for(let i=0; i<fruits.length;i++){
+	prtStr += `<h3>${i} - ${fruits[i]}</h3>`
+}
+// for in 구문으로 처리하여 출력..
+prtStr += `<h3>for in 구문 처리</h3>`
+for(let i in fruits){
+	prtStr += `<h3>${i} - ${fruits[i]}</h3>`
+}
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

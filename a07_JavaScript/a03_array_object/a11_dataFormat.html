@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>좋은 하루</h2>"
+/*
+# 숫자형 데이터 소숫점 이하 처리..
+1. 특정한 경우에 소수점 이하자리를 반올림해서 처리해야 하는 경우가 있는데, 자바스크립트에서는
+	로직으로 처리해야 하는 내용이 많다.
+2. 단, 숫자.toFixed(소수점이하자리수)를 활용하면 문자열로 해당 데이터를 자리수 형태로 보여준다.
+*/
+let no1 = 10;
+let no2 = no1/3
+prtStr += `<h3>${no2}</h3>`
+prtStr += `<h3>${no2.toFixed(2)+10}</h3>`
+prtStr += `<h3>${Number( no2.toFixed(2) )+10}</h3>`
+let date = new Date()
+prtStr += `<h3>${date}</h3>`
+prtStr += `<h3>${date.toLocaleString()}</h3>`
+prtStr += `<h3>${date.toLocaleDateString()}</h3>`
+prtStr += `<h3>${date.toLocaleTimeString()}</h3>`
+prtStr += `<h3>${date.toISOString()}</h3>`
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

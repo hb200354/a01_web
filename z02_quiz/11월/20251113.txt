@@ -1,0 +1,198 @@
+Good morning QUIZ!
+오늘도 힘찬 하루 되시길~~
+
+### 1부. 객관식 문제 (총 20문제)
+
+**[데이터 구조, 배열, 객체 기초]**
+
+1.  `let person = {name:"홍길동", age:25}`와 같이 '이름표'(key)와 '값'(value)을 쌍으로 묶어 관리하는 데이터 구조는 무엇인가요?
+    1) 배열 (Array)
+    2) 함수 (Function)
+    #3) 객체 (Object)
+    4) 메서드 (Method)
+
+2.  `let prices = [3000, 2000, 5000]`와 같이 여러 개의 데이터를 '순서'대로 묶어서 관리하는 데이터 구조는 무엇인가요?
+    1) 객체 (Object)
+    #2) 배열 (Array)
+    3) 변수 (Variable)
+    4) `this`
+
+3.  `let fruits = ['사과', '바나나', '딸기']` 배열에서 '바나나'에 접근하는 올바른 방법은 무엇인가요?
+    1) `fruits[0]`
+    #2) `fruits[1]`
+    3) `fruits[2]`
+    4) `fruits["바나나"]`
+
+4.  `let warrior = {name:"썬더", level:1}` 객체가 있습니다. "썬더"라는 값에 접근하는 올바른 방법은 무엇인가요?
+    1) `warrior[0]`
+    #2) `warrior.name` //  warrior['name']
+    3) `warrior(name)`
+    4) `warrior["level"]`
+
+5.  `let warrior = {level:1}` 객체의 `level` 값을 2로 *변경*하는 올바른 코드는 무엇인가요?
+    1) `warrior.level(2)`
+    2) `warrior(level: 2)`
+    #3) `warrior.level = 2`
+    4) `warrior[1] = 2`
+
+6.  `let student = {name:"김민준"}` 객체에 `grade: 2`라는 *새로운 속성*을 *추가*하는 올바른 코드는 무엇인가요?
+    1) `student.push(grade: 2)`
+    #2) `student.grade = 2`
+    3) `student(grade: 2)`
+    4) `let student = {grade: 2}`
+
+**[함수]**
+
+7.  자판기처럼 '입력'(매개변수)을 받아 '결과'(리턴값)를 처리해주는 기능형 모듈은 무엇인가요?
+    1) 객체 (Object)
+    2) `for`
+    3) `this`
+    #4) 함수 (Function)
+
+8.  `function fun01(a, b){ ... }` 에서 `a`와 `b`처럼 함수에 전달되는 '재료' 값을 무엇이라고 부르나요?
+    1) 리턴값 (Return Value)
+    2.  메서드 (Method)
+    #3) 매개변수 (Parameter)
+    4) 속성 (Property)
+
+9.  함수(기계)가 `alert`와 같이 화면에 출력만 하는 것이 아니라, 계산된 '결과값'을 함수를
+	 호출한 곳으로 돌려줄 때 사용하는 명령어는 무엇인가요?
+    #1) `return`
+    2) `this`
+    3) `push`
+    4) `function`
+
+10. `function add(a, b) { return a + b; }` 함수를 올바르게 *호출*하고 그 결과(7)를
+    `result` 변수에 담는 코드는?
+    1) `let result = add;`
+    2) `let result = add 3, 4;`
+    #3) `let result = add(3, 4);`  let result = 7
+    4) `let result = function add(3, 4);`
+
+**[객체 메서드와 'this']**
+
+11. `let dog = { name: "바둑이", bark(){...} }`와 같이 객체(리모컨)에 소속되어 
+     '행동'(동사)을 정의하는 함수(버튼)를 무엇이라고 부르나요?
+     	bark:function(){}
+     	bark(){}
+    1) 속성 (Property)
+    #2) 메서드 (Method)
+    3) 매개변수 (Parameter)
+    4) 배열 (Array)
+
+12. `dog.bark()` 메서드 내부에서 `this.name`을 사용했습니다. 여기서 
+	`this`가 가리키는 것은 무엇인가요?
+    1) `bark` 함수 자체
+    2) `name` 속성
+    #3) `dog` 객체 자신   this이유는 이 객체 가지고 있는 속성/메서드를 접근해서 사용/호출하기 위해서
+    					쓴다.
+    4) `window` (전역 객체)
+
+13. `let counter = { value: 0, increase() { ++this.value; } }` 객체의 
+		`increase` 메서드를 올바르게 *호출*하는 방법은?
+    #1) `counter.increase()`
+    2) `increase(counter)`
+    3) `counter(increase)`
+    4) `increase.counter()`
+
+**[반복문]**
+
+14. `let subjects = ['국어', '영어', '수학']` 배열을 순회하며 `subjects[idx]`로 값에
+     접근할 때, `idx` 값의 범위로 올바른 것은?
+    1) 1, 2, 3
+    #2) 0, 1, 2
+    3) "국어", "영어", "수학"
+    4) 0, 1, 2, 3
+
+15. `let warrior = {name:"썬더", level:1}` 객체를 `for(let prop in warrior){ ... }`
+     로 반복할 때, `prop` 변수에 차례대로 할당되는 값은 무엇인가요?
+    1) "썬더", 1
+    #2) "name", "level"
+    3) `warrior.name`, `warrior.level`
+    4) 0, 1
+    let subjects = ['국어', '영어', '수학'] 
+    	subjects[0]  subjects[1]  subjects[2]  index로 구분 0,1,2
+    let warrior = {name:"썬더", level:1}
+    	subjects.name, subjects['level'] 속성으로 구분 name, level
+    
+    for(let data in subjects){
+    	data : '0' '1' '2'
+    	subjects[data] : '국어', '영어', '수학'
+    }	
+    for(let data in warrior){
+    	data : 'name' 'level' 
+    	warrior[data]  : "썬더", 1
+    }    
+    
+    
+
+16. 위 15번 문제의 `for...in` 반복문 안에서 "썬더", 1과 같은 *실제 값*에 접근하는 방법은?
+    1) `prop`
+    #2) `warrior[prop]`
+    3) `warrior.prop` : 주의 for in 구문에서 prop 공통으로는 사용할 수 없다..
+    					warrior.name   warrior.level
+    4) `prop.value`
+
+17. `deptList.forEach(function(dept, idx){ ... })` 코드에서 `dept` 매개변수가 
+    의미하는 것은 무엇인가요?
+    1) `deptList` 배열 전체
+    2) 배열의 인덱스 번호 (0, 1, 2...)
+    #3) 배열의 각 요소 (단일 객체) 
+    4) `forEach` 함수 자체
+
+18. 위 17번 문제의 코드에서 `idx` 매개변수가 의미하는 것은 무엇인가요?
+    1) `deptList` 배열 전체
+    #2) 배열의 인덱스 번호 (0, 1, 2...)
+    3) 배열의 각 요소 (단일 객체)
+    4) `forEach` 함수 자체
+
+**[객체 배열]**
+
+19. `let students = [{name:"홍길동", kor:70}, {name:"마길동", kor:80}]` 
+      배열이 있습니다. "마길동" 학생의 정보(객체)에 접근하는 방법은?
+    1) `students[0]`
+    #2) `students[1]`
+    3) `students.name`
+    4) `students[name="마길동"]`
+
+20. 위 19번 문제의 `students` 배열에서 "홍길동" 학생의 `kor` 점수(70)에 접근하는 방법은?
+    #1) `students[0].kor`
+    2) `students[1].kor`
+    3) `students.kor[0]`
+    4) `students[0]["name"]`
+
+---
+
+### 2부. 주관식 문제 (총 5문제)
+
+**[지시]** 빈칸에 들어갈 정확한 *코드* 또는 *단어*를 작성하세요.
+
+1.  `let fruits = ['사과', '바나나', '딸기']` 배열의 길이를 확인하기 위해 
+      `for(let i=0; i < fruits.______; i++)` 와 같이 코드를 작성했습니다. 빈칸에 들어갈 속성은 무엇인가요?
+    * **정답:**
+		length : 배열의 길이/문자열 길이
+2.  `let post = { author: "HappyUser", likes: 10 }` 객체의 `likes` 값을 1 증가시키려고
+   합니다. `post.likes` 뒤에 `++` 또는 `+= 1`을 붙이거나, `post.likes = 11`처럼 값을
+    할당합니다. `likes`가 아닌 `author` 값을 "NewUser"로 *변경*하는 코드를 한 줄 쓰세요.
+    * **정답:**
+    post.author="NewUser"  기존에 있는 속성을 변경할 때 사용..
+
+3.  `function fun12(totPay, buyPay){ ... }` 함수가 잔액(`totPay - buyPay`)을 
+  *결과값으로 돌려주도록* 하려고 합니다. `...` 부분에 `return`을 포함하여 한 줄의 코드로 완성하세요.
+    * **정답:**
+    return totPay-buyPay;
+
+4.  `let dog = { name: "바둑이", bark(){ alert(____.name); } }` 메서드 안에서 
+   `dog` 객체 자신의 `name` 속성("바둑이")에 접근하려고 합니다. 빈칸에 들어갈 키워드는 무엇인가요?
+    * **정답:**
+	this.
+	
+5.  `let students = [{name:"홍길동", kor:70}, {name:"마길동", kor:80}]` 배열에서,
+    "마길동" 학생의 `kor` 점수(80)에 접근하는 코드를 `students[1].kor` 형식으로 완성하세요.
+    * **정답:**
+    
+    students[1].kor
+    
+    
+    
+    

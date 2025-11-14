@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>자바스크립트의 내장 객체</h2>"
+/*
+# 내장 객체
+1. 내장 함수가 함수단위로 만들어진 함수를 호출한다면 내장객체는 객체단위로 만들어진 객체의 여러가지
+	속성과 메서드를 사용할 수 있게 한다는 의미이다.
+2. 주요 내장 객체 종류
+	1) String : 문자열 - 텍스트 조각가
+	2) Array : 마법의 기차
+	3) Math : 수학 도구 상자
+	4) Date : 시간 기록관
+	5) Number : 숫자 품질 검사원
+	등이 주로 많이 사용되는 내장 객체이고, 이 내장 객체에 포함되는 속성이나 기능메서드를 통해서
+	다양한 기능처리를 할 수 있다.
+# String(문자열) - 텍스트 조각가
+1. 한번 새기면 변하지 않는 텍스트 조각상이라고 생각하면 됩니다.
+2. String은 글자들의 묶음입니다. 가장 큰 특징은 불변셩(Immutable)입니다.
+3. 문자열은 마치 돌에 새긴 글자와 같습니다.
+	원본 Hello를 직접 수정할 순 없어요
+	.toUpperCase() 대문자로 변경나 slice() 잘라내기 같은 메서드를 쓰면, 원복을 복사해서
+	새로운 조각상을 만들어내는 것과 같습니다.
+	1) .length : 조각상의 총 글자 수 (길이)
+	2) .slice(시작, 끝) : 시작 위치로 부터 끝 위치까지 잘라서 새 조각상(새 문자열)을 만듭니다.
+	3) .trim() : 조각상 앞뒤에 붙은 이끼(공백)를 깔끔하게 깎아냅니다.
+	4) .splice('기준') : 기준 문자(망치)로 조각상을 쪼개서 여러 조각(배열)으로 만듭니다.
+	5) .indexOf("A") : 'A'라는 글자가 몇 번째 위치에 있는지 돋보기로 찾습니다.
+	
+
+*/
+let msg = "내장된 String 객체의 메서드"
+prtStr += `<h3>${msg}</h3>`
+let messyId = "  SuperMan123    "
+prtStr += `<h3>${messyId}문자열의 초기 길이:${messyId.length}</h3>`
+// 공백을 잘라내고 다시 새로운 문자열 trimId에 할당
+let trimId = messyId.trim()
+prtStr += `<h3>변경된 문자열 길이:${trimId.length}, 공백제어된 문자열:${trimId}</h3>`
+prtStr += `<h3>대문자로 변경:${trimId.toUpperCase()}</h3>`
+prtStr += `<h3>소문자로 변경:${trimId.toLowerCase()}</h3>`
+// 문자열을 특정한 구분문자로 구분해서 배열 만들기..
+let tagString = "자바스크립트, 프로그래밍, 코딩, KDT"
+let tagArry = tagString.split(',')
+for(let idx in tagArry){    // for(구성요소구분자 in 객체)
+	prtStr += `<h3>${idx} -  ${tagArry[idx]}</h3>`
+}
+
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

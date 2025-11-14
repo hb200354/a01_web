@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>시간관련 함수</h2>"
+/*
+# setTimeout, setInterval 시간 조정 함수..
+1. setTimeout : 일회성 알람 마법
+	1) setTimout은 전자레인지 같아요. 3분 뒤에 한번만 땡 울려줘하고 예약하는 거는 마법이죠.
+	2) set Time(시간이) out(종료)
+		타이머를 설정(set)하고, 한 번(Time)울리면 끝(out)
+	3) 핵심 키워드
+		콜백 함수(callback) : 시간이 다 되면 뭘 할 건데(실행할 주문)
+		딜레이(Delay) : 얼마나 기다렸다가?(단위 : 밀리초 1000ms = 1초)
+		한 번만 실행 : 딱 한 번만 실행되고 끝나요
+		clearTimeout(ID) : 앗! 취소!! 예약한 마법을 취소하는 주문(id가 필요해요..)
+	4) 기본형식
+		let st01 = setTimeout(function(){ 수행할 내용 }, 1/1000초 시간 후)
+		1/1000초 후에 수행할 내용을 함수에 정의해 놓는다..
+		clearTimeout(st01) : 수행한 내용을을 종료 처리한다(메모리 회수)
+2. setInterval : 반복 알람 마법
+	1) setInterval은 뻐꾸기 시계 같아요
+		매 10초마다 계속 반복해서 뻐꾹 물어줘!! 하고 시키는 마법이죠.
+	2) setInterval : 정해진 간격(Interval)마다 계속 반복 이라고 생각합시다.
+	3) 기본 형식
+		let cnt = 1;
+		let si01 = setInterval(function(){ 
+			// 반복수행할 내용..
+			if(cnt==10){
+				alert("반복 수행 중단")
+				clearInterval( si01 )
+			}
+			cnt++
+		}, 1/1000반복수행할 시간)
+		
+*/
+// 시작 후 3000ms (3초) 뒤에 alert()함수를 한번 실행해줘!!
+function call(){
+	let st01 = setTimeout( function(){
+		alert("3초후에 안녕!!^^")
+		clearTimout(st01) // 수행한 내용을 종료 처리..
+	}, 1000)
+}
+let msg = "안녕하세요 클릭해보세요!!"
+prtStr += `<h3 onclick="call()">${msg}</h3>`
+
+function examStart(){
+	let st02 = setTimeout(function(){
+		alert("10초 후 시험 종료..")
+		clearTimout(st02)
+	}, 10000)
+}
+prtStr += `<h3 onclick="examStart()">시험시작</h3>`
+//ex) h4로 시험을 시작합니다.~~ 클릭하여 10초후 시험을 종료합니다. 출력 처리
+
+let cnt = 0
+let color = ['red', 'yellow','green', 'orange', 'pink']
+let si01 = setInterval(function(){
+	let rIdx = Math.floor(Math.random()*color.length)
+	document.body.style.background=color[rIdx]
+	document.body.innerHTML+=`<span style="background:${color[rIdx]}">[${cnt}]</span>`
+	if(cnt==10){
+		clearInterval(si01) // 해당 내용을 메모리를 회수함으로 중단을 처리..
+		alert("반복 수행 중단 처리..")
+	}
+	cnt++
+},1000)
+
+
+// 
+
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

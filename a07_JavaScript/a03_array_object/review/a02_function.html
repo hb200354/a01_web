@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>함수</h2>"
+/*
+# 함수
+1. 자판기와 같이 특정한 입력을 넣으면 원하는 결과 데이터 처리해주는 기능형모듈이다.
+2. 기본형식
+	1) function 함수명(매개변수1, 매개변수2...){
+			매개변수로 데이터를 받았을 때, 처리할 내용
+		    return 결과값 처리..
+	   }
+	2) let 함수명 = function(매개변수1, 매개변수2){
+			처리
+			return 결과..
+		}
+*/
+let msg = "안녕하세요!!"
+function fun01(){	// 매개변수x, 리턴값 x  출력 프로세스 처리..
+	alert("안녕하세요")
+}
+//fun01() // 호출해서 위에서 정의된 함수 처리..
+function fun02(a, b){	// 매개변수o, 리턴값 x  출력 프로세스 처리..
+	alert(`${a} + ${b} = ${a+b}` )  // 값을 받아서 출력 처리 alert()
+}
+//fun02(10,20)
+//fun02(15,25)
+// ex) 매개변수를 받아서 alert()출력하는 함수.. fun12()   가격, 갯수를 받아서 
+//     물건가격 : @@, 물건 갯수 : @@  총계 : @@ 출력하는 함수를 선언하고 호출하세요..
+function fun12(price, cnt){
+	alert(`물건가격 : ${price}, 물건 갯수 : ${cnt}  총계 : ${price*cnt}`)
+}
+//fun12(3000, 3)
+//fun12(5000, 5)
+
+function fun03(a, b){  //a: 400  b: 500
+	return a + b; // 900
+}
+prtStr += `<h3>함수의 리턴값1:${ fun03(300,400) }</h3>` // 700 출력..
+let sum01 = fun03(400,500)  // let sum01 = 900
+prtStr += `<h3>함수의 리턴값2:${ sum01 }</h3>` // 900 출력..
+// ex) fun13으로 하여  총비용 구매비용을  매개변수로 전달하고, 잔액을 받는 함수를 정의해서
+//     출력하세요.. 잔액(종비용 - 구매비용) (바로출력/변수에 할당후 출력)
+function fun12(totPay, buyPay){
+	return totPay - buyPay
+}
+prtStr += `<h3>함수의 리턴값1:${ 4000 }</h3>` // 바로 출력
+let sum02 = 4000
+prtStr += `<h3>함수의 리턴값2:${ sum02 }</h3>` // 다른 변수에 할당 후, 출력..
+prtStr += `<h3>함수의 리턴값1:${ fun12(10000, 3000 ) }</h3>` // 7000
+let sum03 = fun12(15000, 9000 )  // let sum03 = 6000
+prtStr += `<h3>함수의 리턴값2:${ sum03 }</h3>` // 다른 변수에 할당 후, 출력..
+
+let discount = function(price, disRatioPer){
+	// 가격과 할인율
+	alert(`입력된 가격:${price}원, 할인율:${disRatioPer}%`) // 출력과 리턴값을 혼돈하면 안된다.
+	let disRatio = disRatioPer/100
+	return parseInt( price - (price*disRatio) ) // 할인율이 적용된 결과 가격
+}
+// 변수형 함수는 이 함수는 위에 반드시 선언 후에, 호출하여야 한다.
+prtStr += `<h3>가격은 12000, 할인율 30% 적용 최종금액:${ discount(12000,30) }</h3>`
+
+
+
+
+
+
+
+
+
+
+prtStr += `<h3>${msg}</h3>`
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>숫자형 데이터 처리 함수</h2>"
+/* 
+# 문자열을 숫자로 바꾸는 삼총사
+1. 겉보기엔 비슷하지만, 성격(역할)이 완전히 다르다.
+2. parseInt(): 깐깐한 정수 보안관(진수 체크)
+	1) 문자열에서 정수만 쏙 뽑아내는 깐깐한 보안관
+	2) 숫자를 만나면 통과
+	3) 소수점이나 문자(ps, emp)를 만나는 즉시 멈춰! 여기까지!를 외치고, 그 앞까지만 숫자로 인정한다.
+	4) 가장 큰 특징은 진수(Radix)라는 특별한 게스트 목록을 가질 수 있다는 것
+	==> 나는 parseInt()보안관 소수점이나 글자는 못 들어온다. 딱 정수만! 그리고 내 손에 들린 진수 목록!
+	parseInt(값,2)? 오늘은 2진수(0,1)만 입장 parseInt(값,16)? 오늘은 16진수(0~9, A~F)만 입장
+	parseInt(값,10), parseInt()오늘은 10진수만
+*/
+let msg = "안녕하세요!!"
+prtStr += `<h3>${msg}</h3>`
+// px같은 문자는 멈추고 그 앞까지만!!
+let cssWidth = "120px" // 숫자로 시작해서 문자가 나올 때까지만 숫자 추출
+let width = parseInt(cssWidth)
+prtStr += `<h3>넓이x120 : ${width*120}</h3>`
+// 소수점(.)도 정수가 아니므로 멈춤
+let scoreFloatStr = "95.5점"
+let scoreInt = parseInt(scoreFloatStr)
+prtStr += `<h3>점수(정수만-문자열에서) : ${scoreInt}</h3>`
+
+let scoreFloat = 95.57
+let scoreInt2 = parseInt(scoreFloat)
+prtStr += `<h3>점수(정수만-실수에서) : ${scoreInt2}</h3>`
+
+// ex) 문자열로 75점  80점 95.7점 3개 변수를 선언하고 위 parseInt()를 이용하여 정수형으로 형변환 후,
+// 총점과 평균을 출력하세요
+let korStr = "75점"
+let engStr = "80점"
+let mathStr = "95.7점"
+let kor = parseInt(korStr)
+let eng = parseInt(engStr)
+let math = parseInt(mathStr)
+let tot = kor+eng+math
+let avg = parseInt(tot/3)
+
+prtStr += `<h3>총점:${tot}, 평균:${avg}</h3>`
+let mathFloat = parseFloat(mathStr) // 문자열의 실수를 추출..
+prtStr += `<h3>실수데이터 처리 : ${mathFloat}</h3>`
+// Number() :  실수도 정수형 문자열 둘다 변환해주지만, 문자열이 포함되면 NaN 발생..
+let price = Number("3000") // 정수형변환
+let disRatio = Number("0.2") // 20% 할인율..  실수형변환
+let disRatioPer = Number("20%") // %라는 문자열이 포화되어 에러발생(NaN)
+let lastPrice = price - parseInt(price*disRatio)
+prtStr += `<h3>할인율적용된 최종금액 : ${lastPrice}, ${disRatioPer}</h3>`
+
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

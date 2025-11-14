@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>좋은 하루</h2>"
+/*
+# 객체란?(살아있는 만능 로봇)
+1. 자바스크립트의 모든 것이라 할 수 있는 데이터 묶음
+2. 이 만능로봇( {} )은 이름표(key)가 붙은 서랍(value)을 여러 개 가지고 있다. 이 로봇은
+js 프로그램 안에서 살아 움직이면, 데이터를 담을 수도(속성) 있고, 특정 행동 (메소드/함수)을 할 수도 있다.
+3. 핵심 키워드
+	1) let obj = {"키":"값", "함수(메서드)":function(){}}
+	2) 나는 js 객체 로봇({})내 서랍 이름(키)은 name이고, 그 안에 홍길동이 들어있지, 심지어 나는 sayHello()
+	라는 말하기 함수 기능도 탑재하고 있어
+	ex) let myRobot = {"name":"홍길동","sayHello":function(){alert("안녕하세요")}}
+		console.log("나의 이름:"+myRobot.name) // 속성 name 호출
+		myRobot.sayHello() // 메서드 sayHello()호출
+	3) 속성(특징)
+		키(key) : 따옴표 생략 가능(ex name:"홍길동")
+		값(value) : 모든 것이 올 수 있음(숫자, 문자, 배열, 심지어 다른 객체나 함수까지)
+*/
+let msg = "객체"
+prtStr += `<h3>${msg}</h3>`
+// person이라는 객체 로봇 사용
+let person = {name:"김철수", age:25, isStudent:true} 
+// name은 김철수, age는 25, isStudent는 true
+// 로봇의 데이터(속성) 사용하기..
+prtStr += `<h3>${person.name}, ${person.age}, ${person.isStudent}</h3>`
+// ex) let product로 물건의 이름, 가격, 갯수를 설정하고, 해당 물건 정보를 출력하세요..
+let product = {name:"사과", price:3000, cnt:5, 
+				show:function(){ alert(`${this.name}, ${this.price}, ${this.cnt}`) }}
+// product.name : 데이터..
+prtStr += `<h3>${product.name}, ${product.price}, ${product.cnt} </h3>`
+product.show() // 객체명.함수명() ==> 객체안에 함수명을 메서드라 함
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

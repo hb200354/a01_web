@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>좋은 하루</h2>"
+/*
+# 똑똑한 '덧셈 기계' 투입구 o, 추출구 o
+1. 숫자 2개를 재료로 받아서, 아이디와 패스워드를 받아서 로그인 성공 여부를 처리.
+2. 함수 정의(설계도 만들기)
+	id, pwd라는 재료 2개를 투입구로 ()로 받습니다.
+	조건문(3항연산자)를 처리하여 id와 pwd가 himan/7777일 때는 로그인 성공 그 외는 로그인 실패를
+	문자열로 뱉어냅니다.
+	function login(id, pwd){
+		let result = id == 'himan' && pwd =='7777' ?"로그인 성공" : "로그인 실패"
+		return result;
+	}
+*/
+let msg = "안녕하세요!!"
+function login(id, pwd){ // id = 'himan', pwd = "7777"
+	let result = id == 'himan' && pwd =='7777' ?"로그인 성공" : "로그인 실패"
+	return result;
+}
+let result = login('himan', '8888') // "로그인 성공"
+prtStr += `<h3>${result}</h3>`
+// ex) 함수로 물건가격과 갯수을 입력받아 총계를 리턴하게 하여, 결과값을 출력하세요..
+function buy(price, cnt){
+	// 물건가격과 갯수을 받아서, 곱한값을 총계로 호출하는 곳에 전달..
+	return price*cnt
+}
+let tot = buy(3000, 2)  // 3000과 2를 전달하면 곱한값 6000을 tot에 전달...
+prtStr += `<h3>구매 총액:${tot}</h3>`
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

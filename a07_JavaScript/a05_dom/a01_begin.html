@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  	<h1>안녕하세요!!</h1>	
+  	<h3></h3>
+  	<h2></h2>
+</body>
+<script type="text/javascript">
+	// 1. 위 body안에 있는 h1 선택.
+	let h1Ob = document.querySelector("h1")
+	// ex) h3를 선택하고..
+	let h3Ob = document.querySelector("h3")
+	// ex) h2를 객체를 선택하고  레이블    h2 DOM입니다. 출력..
+	///    h2를 클릭시, 글자색상 yellow/배경색상 navy
+	let h2Ob = document.querySelector("h2")
+	h2Ob.innerText = "h2 DOM입니다."
+	h2Ob.onclick=function(){
+		this.style.color="yellow"
+		this.style.background="navy"
+	}
+	
+	
+	// 2. 속성을 통해서 조작
+	h1Ob.innerText = "변경합니다!"
+	// ex) h3에 레이블로 반갑습니다. ^^ 
+	h3Ob.innerText = "반갑습니다. ^^"
+	
+	// 3. 반응처리. 클릭했을 때 이벤트 처리..
+	let aligns = ['right','center','left']
+	let cnt=0;
+	h1Ob.onclick=function(){
+		// 반응을 통한 조작..
+		this.innerText = aligns[ cnt%3 ]
+		this.align=aligns[ cnt++%3 ] // 현재 객체 this의 align속성을 오른쪽으로 처리..
+		// [0] [1] 반복되어 속성이 right/left 
+	}
+	//ex) 이벤트 처리 h3Ob를 클릭시, 	와우 touch me not!! 출력.. style 배경색 pink로 변환
+	h3Ob.onclick=function(){
+		this.innerText = "와우 touch me not!!"
+		this.style.background="pink"
+	}
+	
+
+
+/*
+# DOM(Document Object Model)
+1. DOM(Document Object Model)은 웹 페이지를 프로그래밍 언어(javascript)가 제어할 수 있도록
+설계도처럼 만들 객체 모델입니다.
+	1) html 문서 : 건물의 설계도(뼈대)
+	2) css : 건물의 인테리어(디자인)
+	3) javascript : 건물을 제어하는 스마트홈 제어판..
+	이 때 DOM은 바로 그 스마트홈 제어판입니다. 자바스크립트 이 제어판(DOM)을 이용해서 1번 방(h1태그)
+	불 켜(글자 바꾸기)! 또는 2번방(div 태그) 벽지 색 바꿔(스타일 변경) 같은 명령을 내릴 수 있습니다.
+2. DOM 조작의 모든 것은 이 3단계로 귀결됩니다.
+	1) 선택 : Select (누구를)
+		먼저 제어할 대상을 선택해야 합니다.
+	2) 조작 : Manipulate(어떻게)
+		선택한 대상의 내용을, 스타일, 속성을 조작합니다
+	3) 반응 : React(언제?)
+		사용자의 행동(클릭, 마우스 올리기 등)에 반응하여 조작을 실행합니다.
+		==> 이벤트 처리..
+3. 핵심 키워드
+	1) 선택자
+		document.getElementById("아이디") : 가장 빠릅니다. id로 요소1개를 찾습니다.
+		document.querySelector("css선택자") : 가장 만능 css선택 #id, .class, tag 이외에
+			css에서 사용하는 모든 선택로 선택가능 ==> 단일 1개 선택시..
+		document.querySelectorAll("css선택자") : 전부 다 찾습니다. css 선택자로 일치히는
+			모든 요소를 배열처럼 가져옵니다.
+		==> $("선택..") : jquery
+	2) 조작
+		ele.innerHTML : 요소에 html자체를 읽거나 씁니다.    $("").html()
+		ele.innerText( ele.textContent ) : 요소 안에 순수 텍스트만 읽거나 씁니다. $("").text()
+		ele.속성 : 요소의 고유속성 h1 align, img src		$("").attr("속성","속성값")
+		ele.style.속성 : css 스타일 속성 설정			$("").css("속성","속성값")
+		ele.classList.add("클래스명") : css 클래스 추가.
+			<h1 class="cls1">
+			<h1 class="cls1 cls2"> cls2 추가
+		ele.classList.remove("클래스명") : css 클래스 삭제
+			<h1 class="cls1 "> 위에서 cls2 삭제
+	3) 반응 : react : 이벤트를 듣는 도구
+		ele.addEventListener("이벤트종류", 실행할 함수)   $("").click(function(){})
+			click : 사용자가 클릭했을 때					 $("").on("이벤트명":function(){})
+			mouseover : 마우스를 요소 위에 올렸을 때
+			keydown : 키보드를 눌렀을 때.
+			
+		
+			
+*/
+
+
+
+</script>
+</html>

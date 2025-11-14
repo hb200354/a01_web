@@ -1,0 +1,650 @@
+### 테마 1: 신나는 놀이공원 🎡 (Math, DOM)
+
+**1. 키 제한 검사기**
+
+```javascript
+let heightStr = prompt("키를 입력하세요 (예: 139.7):");
+let height = parseFloat(heightStr);
+
+// Math.ceil(): 무조건 올림
+let ceilHeight = Math.ceil(height);
+prtStr(`안전을 위해 ${ceilHeight}cm로 간주합니다.`);
+
+// Math.floor(): 무조건 내림
+let floorHeight = Math.floor(height);
+prtStr(`탑승 가능한 키는 ${floorHeight}cm입니다.`);
+```
+
+**2. 자유이용권 가격 계산**
+
+```javascript
+let total = 105000;
+let people = 3;
+
+// 105000 / 3 = 34999.999...
+let pricePerPerson = total / people;
+
+// .toFixed(0): 소수점 0자리에서 반올림 (결과는 "35000" 문자열)
+let priceStr = pricePerPerson.toFixed(0);
+
+// Number(): 문자열을 다시 숫자로 변환
+let finalPrice = Number(priceStr);
+
+prtStr(`1인당 최종 정산 금액: ${finalPrice}원`);
+```
+
+**3. 오늘의 퍼레이드카 뽑기**
+
+```javascript
+let cars = ['사자', '돌고래', '공룡', '로봇', '유니콘'];
+
+// 배열 랜덤 인덱스 공식
+// 0 ~ 4.999... -> 0 ~ 4
+let randomIndex = Math.floor(Math.random() * cars.length);
+
+let selectedCar = cars[randomIndex];
+prtStr(`오늘의 선두 차량: ${selectedCar}!`);
+```
+
+**4. 기념품 가게 가격표**
+
+```javascript
+// HTML: <input id="item1" ...>, <input id="item2" ...>, <input id="item3" ...>, <button id="btn">, <div id="show">
+
+// 1. 요소 선택
+let item1 = document.querySelector("#item1");
+let item2 = document.querySelector("#item2");
+let item3 = document.querySelector("#item3");
+let btn = document.querySelector("#btn"); // 버튼 ID가 'btn'이라고 가정
+let show = document.querySelector("#show");
+
+// 2. 이벤트 설정
+btn.onclick = function() {
+    // 3. 값 읽기 및 숫자로 변환
+    let price1 = parseFloat(item1.value);
+    let price2 = parseFloat(item2.value);
+    let price3 = parseFloat(item3.value);
+
+    // 4. Math.max/min 사용
+    let maxPrice = Math.max(price1, price2, price3);
+    let minPrice = Math.min(price1, price2, price3);
+
+    // 5. 출력
+    show.innerHTML = `가장 비싼 상품: ${maxPrice}원 <br> 가장 싼 상품: ${minPrice}원`;
+};
+```
+
+**5. 회전목마 탑승 시간**
+
+```javascript
+// HTML: <h2 id="timer"></h2>
+
+let timerDisplay = document.querySelector("#timer");
+
+// setTimeout: 3000ms (3초) 뒤에, 함수를 *한 번* 실행
+setTimeout(function() {
+    timerDisplay.innerHTML = "탑승 시간이 종료되었습니다!";
+}, 3000);
+```
+
+-----
+
+### 테마 2: 실시간 우주 정거장 🚀 (Date, Timers, DOM)
+
+**6. 정거장 현재 시각 보고**
+
+```javascript
+let now = new Date();
+
+let year = now.getFullYear(); // 2025
+let month = now.getMonth() + 1; // 0~11 이므로 +1
+let date = now.getDate();
+
+// (참고) 5월 -> '05'로 보이고 싶다면 padStart 사용
+// let monthStr = String(month).padStart(2, '0');
+// let dateStr = String(date).padStart(2, '0');
+
+prtStr(`현재 정거장 시각: ${year}-${month}-${date}`);
+```
+
+**7. 산소 잔량 경고 타이머**
+
+```javascript
+// 10000ms (10초) 뒤에 alert 함수를 한 번 실행
+setTimeout(function() {
+    alert("!! 산소 부족: 10% !!");
+}, 10000);
+```
+
+**8. 도킹 카운트다운**
+
+```javascript
+// HTML: <h1 id="dockingStatus"></h1>
+
+let dockingStatus = document.querySelector("#dockingStatus");
+let count = 5;
+
+// 1000ms (1초) 마다 함수를 *반복* 실행
+let dockingTimer = setInterval(function() {
+    if (count > 0) {
+        dockingStatus.innerHTML = `${count}초...`;
+        count--; // 1 감소
+    } else {
+        // 카운트가 0이 되었을 때
+        dockingStatus.innerHTML = "도킹 완료!";
+        clearInterval(dockingTimer); // 타이머 중지
+    }
+}, 1000);
+```
+
+**9. 임무 요일 계산기**
+
+```javascript
+let missionDay = new Date(); // 일단 오늘 날짜로 생성
+
+// 날짜 재설정
+missionDay.setFullYear(2026);
+missionDay.setMonth(2); // 3월은 '2' (0-indexed)
+missionDay.setDate(1);
+
+let days = ["일요일", "월요일", "화요일", "수요일", "목요일", "금요일", "토요일"];
+
+// .getDay(): 해당 날짜의 요일 인덱스(0~6) 반환
+let dayIndex = missionDay.getDay();
+
+prtStr(`임무 수행일은 ${days[dayIndex]}입니다.`);
+```
+
+**10. 실시간 정거장 시계 (복합)**
+
+```javascript
+// HTML: <h2 id="liveClock"></h2>
+
+let liveClock = document.querySelector("#liveClock");
+
+// 1초마다 반복
+setInterval(function() {
+    // *내부에서* Date 객체를 매번 새로 생성해야 현재 시간이 갱신됨
+    let now = new Date();
+    
+    // 'ko-KR' (한국) 로케일 기준 시간 문자열 (예: "오후 5:30:01")
+    let timeString = now.toLocaleTimeString('ko-KR');
+    
+    liveClock.innerHTML = timeString;
+}, 1000);
+```
+
+-----
+
+### 테마 3: 웹사이트 UI/UX 개선 💻 (DOM, Timers, Style)
+
+**11. 다크 모드/라이트 모드 토글**
+
+```javascript
+// HTML: <button id="modeBtn">다크 모드 전환</button>
+
+let modeBtn = document.querySelector("#modeBtn");
+let isDarkMode = false; // 현재 모드 상태 저장 변수
+
+modeBtn.onclick = function() {
+    if (isDarkMode === false) {
+        // -> 다크 모드로 전환
+        document.body.style.background = "black";
+        document.body.style.color = "white";
+        modeBtn.innerText = "라이트 모드 전환";
+        isDarkMode = true;
+    } else {
+        // -> 라이트 모드로 전환
+        document.body.style.background = "white";
+        document.body.style.color = "black";
+        modeBtn.innerText = "다크 모드 전환";
+        isDarkMode = false;
+    }
+};
+```
+
+**12. 로그인 버튼 활성화**
+
+```javascript
+// HTML: <button id="nextBtn" disabled>다음</button>
+
+let nextBtn = document.querySelector("#nextBtn");
+
+// 10초(10000ms) 뒤에
+setTimeout(function() {
+    // disabled 속성을 false로 만들면 버튼이 활성화됨
+    nextBtn.disabled = false;
+}, 10000);
+```
+
+**13. 자동 배경화면 체인저**
+
+```javascript
+let colors = ['#FFDDC1', '#FFFACD', '#D0F0C0', '#C9EBFD'];
+
+// 3초(3000ms)마다 반복
+setInterval(function() {
+    // colors 배열의 랜덤 인덱스 뽑기
+    let randomIndex = Math.floor(Math.random() * colors.length);
+    
+    // body의 배경색 변경
+    document.body.style.background = colors[randomIndex];
+}, 3000);
+```
+
+**14. 폼 유효성 검사**
+
+```javascript
+// HTML: <input id="pw">, <button id="joinBtn">가입</button>, <div id="msg"></div>
+let pwInput = document.querySelector("#pw");
+let joinBtn = document.querySelector("#joinBtn");
+let msgDiv = document.querySelector("#msg");
+
+joinBtn.onclick = function() {
+    // input의 현재 값(value)의 길이(length)
+    let passwordLength = pwInput.value.length;
+
+    if (passwordLength < 8) {
+        msgDiv.innerHTML = "<h3 style='color:red;'>비밀번호가 너무 짧습니다!</h3>";
+    } else {
+        msgDiv.innerHTML = "<h3 style='color:green;'>사용 가능한 비밀번호입니다.</h3>";
+    }
+};
+```
+
+**15. 사라지는 환영 메시지**
+
+```javascript
+// HTML: <h1 id="welcome">로그인 성공! 환영합니다!</h1>
+
+let welcomeMsg = document.querySelector("#welcome");
+
+// 3초(3000ms) 뒤에
+setTimeout(function() {
+    // style.display = 'none'은 요소를 화면에서 숨김
+    welcomeMsg.style.display = "none";
+}, 3000);
+```
+
+-----
+
+### 테마 4: 미니 게임 제작 🎮 (Math, DOM, Timers)
+
+**16. 가위바위보 게임**
+
+```javascript
+// HTML: <button id="rockBtn">바위</button>, <div id="result"></div>
+let rockBtn = document.querySelector("#rockBtn");
+let resultDiv = document.querySelector("#result");
+let choices = ['가위', '바위', '보'];
+
+rockBtn.onclick = function() {
+    // 1. 플레이어 선택
+    let playerChoice = "바위";
+
+    // 2. 컴퓨터 선택
+    let compIndex = Math.floor(Math.random() * choices.length); // 0, 1, 2
+    let compChoice = choices[compIndex];
+
+    // 3. 승/무/패 판별
+    let gameResult = "";
+    if (compChoice === "가위") {
+        gameResult = "승";
+    } else if (compChoice === "바위") {
+        gameResult = "무";
+    } else { // '보'
+        gameResult = "패";
+    }
+
+    // 4. 출력
+    resultDiv.innerHTML = `플레이어: ${playerChoice}, 컴퓨터: ${compChoice} <br> 결과: ${gameResult}`;
+};
+```
+
+**17. 10초 안에 버튼 연타하기**
+
+```javascript
+// HTML: <button id="clickBtn">클릭!</button>, <h2 id="score">0</h2>, <h3 id="timer">10초</h3>
+let clickBtn = document.querySelector("#clickBtn");
+let scoreDisplay = document.querySelector("#score");
+
+let score = 0; // 점수 카운터
+
+// 1. 10초 뒤 게임 종료 타이머
+setTimeout(function() {
+    alert("게임 종료! 최종 점수: " + score);
+    clickBtn.disabled = true; // 버튼 비활성화
+}, 10000);
+
+// 2. 버튼 클릭 이벤트
+clickBtn.onclick = function() {
+    score++; // 점수 1 증가
+    scoreDisplay.innerHTML = score; // 화면 갱신
+};
+```
+
+**18. 복권 번호 생성기 (1\~45)**
+
+```javascript
+// 1~45 사이의 랜덤 정수 1개를 반환하는 함수
+function getLottoNumber() {
+    // Math.random() * 45 -> 0 ~ 44.99...
+    // Math.floor(...) -> 0 ~ 44
+    // ... + 1 -> 1 ~ 45
+    return Math.floor(Math.random() * 45) + 1;
+}
+
+// 6번 호출
+let n1 = getLottoNumber();
+let n2 = getLottoNumber();
+let n3 = getLottoNumber();
+let n4 = getLottoNumber();
+let n5 = getLottoNumber();
+let n6 = getLottoNumber();
+
+prtStr(`오늘의 번호: ${n1}, ${n2}, ${n3}, ${n4}, ${n5}, ${n6}`);
+```
+
+**19. 숨겨진 보물찾기**
+
+```javascript
+// HTML: <div id="box0"></div>, <div id="box1"></div>, <div id="box2"></div>
+
+// 1. 보물 위치(0, 1, 2 중 하나)를 미리 랜덤으로 정함
+let treasureIdx = Math.floor(Math.random() * 3);
+
+// 2. 상자 3개 선택
+let box0 = document.querySelector("#box0");
+let box1 = document.querySelector("#box1");
+let box2 = document.querySelector("#box2");
+
+// 3. 3개의 상자에 각각 클릭 이벤트 설정
+box0.onclick = function() {
+    if (0 === treasureIdx) {
+        alert("보물 발견!");
+    } else {
+        alert("꽝!");
+    }
+};
+
+box1.onclick = function() {
+    if (1 === treasureIdx) {
+        alert("보물 발견!");
+    } else {
+        alert("꽝!");
+    }
+};
+
+box2.onclick = function() {
+    if (2 === treasureIdx) {
+        alert("보물 발견!");
+    } else {
+        alert("꽝!");
+    }
+};
+```
+
+**20. 캐릭터 스탯 랜덤 생성기**
+
+```javascript
+// HTML: <button id="createBtn">캐릭터 생성</button>, <div id="stat"></div>
+
+let createBtn = document.querySelector("#createBtn");
+let statDiv = document.querySelector("#stat");
+
+// 3 ~ 18 사이의 스탯을 굴리는 함수
+function rollStat() {
+    // 18 - 3 = 15.
+    // 3, 4, ..., 18 (총 16개)
+    // Math.random() * 16 -> 0 ~ 15.99...
+    // Math.floor(...) -> 0 ~ 15
+    // ... + 3 -> 3 ~ 18
+    return Math.floor(Math.random() * 16) + 3;
+}
+
+createBtn.onclick = function() {
+    let str = rollStat();
+    let dex = rollStat();
+    let int = rollStat();
+
+    statDiv.innerHTML = `힘: ${str}, 민첩: ${dex}, 지능: ${int}`;
+};
+```
+
+-----
+
+### 테마 5: 웹 쇼핑몰 관리 🛍️ (DOM, Date, Math, Timers)
+
+**21. 수량 변경 및 총액 계산**
+
+```javascript
+// HTML: <input id="price" value="15000" readonly>, <input id="qty" type="number" value="1">, <h2 id="total"></h2>
+let priceInput = document.querySelector("#price");
+let qtyInput = document.querySelector("#qty");
+let totalDisplay = document.querySelector("#total");
+
+// 총액을 계산하고 업데이트하는 함수
+function updateTotalPrice() {
+    let price = parseFloat(priceInput.value); // 15000
+    let qty = parseFloat(qtyInput.value);   // 1
+    
+    // 만약 qtyInput이 비어있으면 qty는 NaN이 될 수 있음
+    if (isNaN(qty)) {
+        qty = 0; // 0으로 처리
+    }
+    
+    totalDisplay.innerHTML = `총액: ${price * qty}원`;
+}
+
+// onkeyup: 키보드에서 키를 눌렀다 뗄 때마다 함수 실행
+qtyInput.onkeyup = updateTotalPrice;
+
+// (선택) 페이지 로드 시 초기 총액 계산
+updateTotalPrice();
+```
+
+**22. 오늘의 특가 상품 알림**
+
+```javascript
+let items = ["노트북", "키보드", "마우스", "모니터"];
+let itemsLength = items.length; // 4
+
+// 오늘 날짜 (1~31)
+let todayDate = new Date().getDate(); 
+
+// 나머지(%) 연산자 사용
+// 13 % 4 = 1
+// 14 % 4 = 2
+// 15 % 4 = 3
+// 16 % 4 = 0
+let itemIndex = todayDate % itemsLength;
+
+prtStr(`오늘의 특가: ${items[itemIndex]}`);
+```
+
+**23. 마감 임박\! 타임 세일**
+
+```javascript
+// HTML: <div id="saleTimer"></div>
+let saleTimer = document.querySelector("#saleTimer");
+
+let timerInterval = setInterval(function() {
+    // 1. 기준 시간 (항상 *내부에서* 새로 계산)
+    let now = new Date(); // 현재 시간
+    
+    // 2. 목표 시간 (내일 자정)
+    let tomorrow = new Date();
+    tomorrow.setDate(now.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0); // 시간, 분, 초, ms를 0으로
+
+    // 3. 차이 계산 (밀리초)
+    let diff = tomorrow - now;
+
+    if (diff <= 0) {
+        saleTimer.innerHTML = "타임 세일 종료!";
+        clearInterval(timerInterval);
+        return;
+    }
+
+    // 4. 밀리초 -> 시/분/초 변환 (수동 계산)
+    let hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    let minutes = Math.floor((diff / 1000 / 60) % 60);
+    let seconds = Math.floor((diff / 1000) % 60);
+
+    // 5. '0' 채우기 (padStart)
+    let h = String(hours).padStart(2, '0');
+    let m = String(minutes).padStart(2, '0');
+    let s = String(seconds).padStart(2, '0');
+    
+    // 6. 출력
+    saleTimer.innerHTML = `마감까지: ${h}:${m}:${s}`;
+}, 1000);
+```
+
+**24. 구매 건수 랜덤 표시**
+
+```javascript
+// HTML: <div id="liveUsers"></div>
+let liveUsers = document.querySelector("#liveUsers");
+
+// 2초(2000ms)마다 반복
+setInterval(function() {
+    // 10 ~ 50 사이의 랜덤 정수
+    // (50 - 10 = 40. 10부터 50까지 41개)
+    // Math.random() * 41 -> 0 ~ 40.99...
+    // Math.floor(...) -> 0 ~ 40
+    // ... + 10 -> 10 ~ 50
+    let userCount = Math.floor(Math.random() * 41) + 10;
+    
+    liveUsers.innerHTML = `현재 ${userCount}명이 보고 있습니다.`;
+}, 2000);
+```
+
+**25. 쿠폰 코드 생성기**
+
+```javascript
+let chars = "ABCDEFGHIJKLMN0123456789";
+let couponCode = ""; // 빈 문자열로 시작
+
+// 10번 반복
+for (let i = 0; i < 10; i++) {
+    // chars 문자열의 랜덤 인덱스
+    let randomIndex = Math.floor(Math.random() * chars.length);
+    
+    // 랜덤 인덱스에 해당하는 글자 1개를 couponCode에 추가
+    couponCode = couponCode + chars[randomIndex];
+    // couponCode += chars[randomIndex]; 와 동일
+}
+
+prtStr(`발급된 쿠폰: ${couponCode}`);
+```
+
+-----
+
+### 테마 6: 종합 DOM 제어 🎨 (DOM + Events)
+
+**26. 글자 크기 조절기**
+
+```javascript
+// HTML: <h1 id="title">제목</h1>, <button id="biggerBtn">+</button>, <button id="smallerBtn">-</button>
+let title = document.querySelector("#title");
+let biggerBtn = document.querySelector("#biggerBtn");
+let smallerBtn = document.querySelector("#smallerBtn");
+
+let fontSize = 20; // 현재 글자 크기 상태
+title.style.fontSize = fontSize + 'px'; // 초기값 적용
+
+// + 버튼 클릭 시
+biggerBtn.onclick = function() {
+    fontSize++; // 1 증가
+    title.style.fontSize = fontSize + 'px'; // '21px' 처럼 단위를 꼭 붙여야 함
+};
+
+// - 버튼 클릭 시
+smallerBtn.onclick = function() {
+    fontSize--; // 1 감소
+    title.style.fontSize = fontSize + 'px';
+};
+```
+
+**27. 이미지 갤러리 (간단 버전)**
+
+```javascript
+// HTML: <img id="mainImg" src="img1.jpg">, <button id="nextBtn">다음</button>
+let mainImg = document.querySelector("#mainImg");
+let nextBtn = document.querySelector("#nextBtn");
+
+let images = ["img1.jpg", "img2.jpg", "img3.jpg"];
+let currentIdx = 0; // 현재 인덱스 (0 -> img1.jpg)
+
+nextBtn.onclick = function() {
+    // 1. 인덱스 증가
+    currentIdx++;
+
+    // 2. 인덱스 검사 (3이 되면 0으로)
+    if (currentIdx === images.length) { // 3이 되면
+        currentIdx = 0; // 0으로 초기화
+    }
+
+    // 3. 이미지 src 속성 변경
+    mainImg.src = images[currentIdx];
+};
+```
+
+**28. 체크박스 동의**
+
+```javascript
+// HTML: <input type="checkbox" id="agreeChk">, <button id="submitBtn" disabled>제출</button>
+let agreeChk = document.querySelector("#agreeChk");
+let submitBtn = document.querySelector("#submitBtn");
+
+// 체크박스를 클릭할 때마다
+agreeChk.onclick = function() {
+    // agreeChk.checked: 체크되면 true, 아니면 false
+    if (agreeChk.checked === true) {
+        submitBtn.disabled = false; // 버튼 활성화
+    } else {
+        submitBtn.disabled = true; // 버튼 비활성화
+    }
+    
+    // (축약형)
+    // submitBtn.disabled = !agreeChk.checked;
+};
+```
+
+**29. 경고 메시지 창 띄우기**
+
+```javascript
+// HTML: <button id="dangerBtn">삭제</button>, <div id="alertBox" style="display:none;">...</div>
+let dangerBtn = document.querySelector("#dangerBtn");
+let alertBox = document.querySelector("#alertBox");
+
+dangerBtn.onclick = function() {
+    // style="display:none;"을 "block"으로 변경하여 보이게 함
+    alertBox.style.display = "block";
+};
+```
+
+**30. DOM 총 연습 (계산기)**
+
+```javascript
+// HTML: <input id="num1">, <input id="num2">, <button id="addBtn">+</button>, <h2 id="result">결과: 0</h2>
+let num1Input = document.querySelector("#num1");
+let num2Input = document.querySelector("#num2");
+let addBtn = document.querySelector("#addBtn");
+let resultDisplay = document.querySelector("#result");
+
+addBtn.onclick = function() {
+    // .value는 문자열이므로 parseFloat()로 숫자로 변환
+    let val1 = parseFloat(num1Input.value);
+    let val2 = parseFloat(num2Input.value);
+    
+    // 만약 입력이 숫자가 아니면 0으로 처리 (오류 방지)
+    if (isNaN(val1)) val1 = 0;
+    if (isNaN(val2)) val2 = 0;
+
+    let sum = val1 + val2;
+
+    resultDisplay.innerHTML = `결과: ${sum}`;
+};
+```

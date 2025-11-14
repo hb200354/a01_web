@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>날짜 처리 객체 Date</h2>"
+/*
+# Date
+1. 비서 채용하기(new Date())
+	1) new Date() 코드를 작성하는 것은 시간 비서를 새로 고용하는 것과 같습니다.
+	2) 비서를 고용하는 순간(new Date()), 그 비서는 현재 지금 이 순간의 날짜와 시간
+		(년, 월, 시, 분, 초)를 즉시 체크해서 머릿속에 기억합니다.
+	3) let mySecretary = new Date()  // mySecretary라는 이름의 비서 고용
+2. 비서에게 질문하기(get... 메서드)
+	1) 비서에게 정보를 물어볼 수 있습니다. 지금 몇 년도죠? 오늘 무슨 요일이예요?
+	2) getXXX으로 시작하는 모든 명령가 바로 이 질문하기!입니다.
+	3) mySecretary.getFullYear()  비서가 2025년입니다. 라고 대답합니다.
+	4) mySecretary.getMonth() 비서가 11월( 10 )입니다.
+3. 비서에제 지시하기(set.. 메서드)
+	1) 비서가 기억하는 시간을 강제 바꿀 수도 있습니다. 내년 크리스마스로 시간을 설정해요!!
+	2) set.... 으로 시작하는 명령어가 지시하기입니다.
+	3) mySecretary.setFullYear(2026) // 비서가 기억하는 시간 2026년으로 변경..
+4. 키워드 및 메서드
+	1) 비서 채용 : new Date()  - 현재 날짜와 시간으로 새로운 시간 비서 객체를 만듭니다.
+	2) 질문하기(getters) 
+		- getFullYear() - 몇 년도인가요? (예:2025)
+		- getMonth() - 몇 월인가요?   0~11까지(index) ==> getMonth()+1 월
+		- getDate() - 몇 일인가요? (1~31까지 월에 따라 다름)
+		- getDay() - 무슨 요일  0~6(index)  Sun, Mon, tues....
+		- getHours() - 몇 시인가요? 0~23
+		- getMinutes() - 몇 분인가요? 0~59
+		- getSeconds() - 몇 초인가요? 0~59
+	3) 지시하기(setters)
+		- setFullYear(@@@) - 년도를 이걸로(@@@) 바꿔요
+		- setMonth(@@@) - 월 이걸로 바꿔요.... (0~11)  3월을 입력 2로 처리..
+		- setDate() - 일을 이걸로 바꿔요..
+		그외 setHours(), setMinutes(), setSeconds()가 있음.
+		주의) 그러나 setDay()는 처리되지 않음 요일은 날짜에 의해서 가져오는 것이기에
+			요일을 변경해서 특정 날짜를 변경할 수 없기에 설정 불가..
+
+*/
+// 시간 비서를 고용합니다.(현재 시간기준으로 만들어짐)
+let today = new Date()
+prtStr += `<h3>전체 시간:${today}</h3>`
+prtStr += `<h3>연도:${today.getFullYear()}</h3>`
+prtStr += `<h3>월:${today.getMonth()+1}</h3>` // 0~11  + 1   1월 ~ 12월
+prtStr += `<h3>일:${today.getDate()}</h3>`
+let days = ["일","월","화","수","목","금","토"]
+prtStr += `<h3>요일: ${days[ today.getDay() ]}요일</h3>`  // 0~6
+prtStr += `<h3>시:${today.getHours()}</h3>`
+prtStr += `<h3>분:${today.getMinutes()}</h3>`
+prtStr += `<h3>초:${today.getSeconds()}</h3>`
+// ex) 현재 날짜와 시간을 아래 형식으로 출력해보세요
+//     @@@년 @@월 @@일 @@요일  @@:@@:@@
+prtStr += `<h3>${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일
+	           ${days[ today.getDay() ]}요일
+	           ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}
+			</h3>`
+today.setFullYear(2026)
+today.setMonth(0)  // 변경시는 반대로 0~11 범위이므로  1적게 처리.
+today.setDate(2)
+today.setHours(9)
+today.setMinutes(0)
+today.setSeconds(0)
+prtStr += `<h3>${today.getFullYear()}년 ${today.getMonth()+1}월 ${today.getDate()}일
+	           ${days[ today.getDay() ]}요일
+	           ${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}
+			</h3>`
+let someDay = new Date()
+//ex) 2026년 5월 5일을 설정하고 출력하세요..
+someDay.setFullYear(2026)
+someDay.setMonth(5-1)
+someDay.setDate(5)
+prtStr += `<h3>${someDay.getFullYear()}년 ${someDay.getMonth()+1}월 ${someDay.getDate()}일
+	           ${days[ someDay.getDay() ]}요일 
+			</h3>`
+document.body.innerHTML=prtStr
+
+</script>
+</html>

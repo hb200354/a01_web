@@ -1,0 +1,923 @@
+## 1부: 함수, 조건문, 내장 함수 (1\~6번)
+
+### 1\. 🏰 마법의 성 입장 암호
+
+```javascript
+function checkCastleGate(code, password) {
+  if (code === 777 && password === '열려라참깨') {
+    return "환영합니다, 용사님!";
+  } else {
+    return "암호가 틀렸습니다.";
+  }
+}
+
+// --- 3항 연산자 버전 ---
+function checkCastleGateTernary(code, password) {
+  return (code === 777 && password === '열려라참깨') 
+    ? "환영합니다, 용사님!" 
+    : "암호가 틀렸습니다.";
+}
+
+console.log(checkCastleGate(777, '열려라참깨')); // "환영합니다, 용사님!"
+console.log(checkCastleGate(777, 'hello'));   // "암호가 틀렸습니다."
+```
+
+### 2\. 💎 고대 유물 감정가
+
+```javascript
+function appraiseArtifact(itemPriceStr) {
+  let value = parseInt(itemPriceStr);
+  
+  if (isNaN(value)) {
+    return "가치를 측정할 수 없는 유물입니다.";
+  } else {
+    return `${value} 골드의 가치가 있습니다.`;
+  }
+}
+
+console.log(appraiseArtifact("3500골드")); // "3500 골드의 가치가 있습니다."
+console.log(appraiseArtifact("알수없음")); // "가치를 측정할 수 없는 유물입니다."
+console.log(appraiseArtifact("무가치"));   // "가치를 측정할 수 없는 유물입니다."
+```
+
+### 3\. 🚀 우주선 연료 계산기
+
+```javascript
+function calculateFuel(distanceStr, efficiencyStr) {
+  let distance = parseFloat(distanceStr);
+  let efficiency = parseFloat(efficiencyStr);
+
+  if (isNaN(distance) || isNaN(efficiency)) {
+    return "입력 오류: 유효한 숫자가 아닙니다.";
+  } else {
+    return distance * efficiency;
+  }
+}
+
+console.log(calculateFuel("150.7 광년", "0.8")); // 120.56
+console.log(calculateFuel("200", "0.5"));       // 100
+console.log(calculateFuel("알수없음", "0.8"));   // "입력 오류: 유효한 숫자가 아닙니다."
+```
+
+### 4\. 🎢 놀이공원 키 제한 검사기
+
+```javascript
+function checkHeight(heightInput) {
+  let height = parseInt(heightInput);
+
+  if (isNaN(height)) {
+    return "키를 숫자로 다시 입력하세요.";
+  } else if (height < 120) {
+    return "탑승 불가입니다.";
+  } else {
+    return "탑승 가능합니다.";
+  }
+}
+
+// --- 3항 연산자 버전 ---
+function checkHeightTernary(heightInput) {
+  let height = parseInt(heightInput);
+  
+  return isNaN(height)
+    ? "키를 숫자로 다시 입력하세요."
+    : (height < 120 ? "탑승 불가입니다." : "탑승 가능합니다.");
+}
+
+
+console.log(checkHeight("140cm"));  // "탑승 가능합니다."
+console.log(checkHeight("110"));    // "탑승 불가입니다."
+console.log(checkHeight("키모름")); // "키를 숫자로 다시 입력하세요."
+```
+
+### 5\. 🔑 16진수 암호 해독기
+
+```javascript
+function decodeHex(hexCode) {
+  let decimalValue = parseInt(hexCode, 16);
+
+  if (decimalValue > 100) {
+    return `${decimalValue}: 최상급 보안 필요!`;
+  } else {
+    return `${decimalValue}: 일반 보안 등급`;
+  }
+}
+
+console.log(decodeHex("FF")); // "255: 최상급 보안 필요!"
+console.log(decodeHex("A"));  // "10: 일반 보안 등급"
+console.log(decodeHex("64")); // "100: 일반 보안 등급"
+```
+
+### 6\. 🧾 평균 점수 계산기 (Number() 활용)
+
+```javascript
+function calculateAverage(korStr, engStr, mathStr) {
+  let kor = Number(korStr);
+  let eng = Number(engStr);
+  let math = Number(mathStr);
+
+  if (isNaN(kor) || isNaN(eng) || isNaN(math)) {
+    return "유효하지 않은 점수가 포함됨";
+  } else {
+    return (kor + eng + math) / 3;
+  }
+}
+
+console.log(calculateAverage("80", "90.5", "100")); // 90.16666666666667
+console.log(calculateAverage("80점", "90", "100"));  // "유효하지 않은 점수가 포함됨"
+console.log(calculateAverage("70", "NaN", "80"));    // "유효하지 않은 점수가 포함됨"
+```
+
+-----
+
+## 2부: String 및 Array 객체 메서드 (7\~12번)
+
+### 7\. 🕵️‍♂️ 비밀요원 코드네임 추출
+
+```javascript
+function getAgentInfo(data, prtStr) {
+  let cleanData = data.trim();
+  let infoArray = cleanData.split(',');
+
+  infoArray.forEach(function(info) {
+    let pair = info.split(':');
+    let value = pair[1];
+    prtStr += `<h3>${value}</h3>`; // 실제 출력은 prtStr 누적
+    console.log(value); // 콘솔 확인용
+  });
+  
+  return prtStr; // 누적된 문자열 반환 (HTML 출력용)
+}
+
+let prtStr_7 = ""; // prtStr가 있다고 가정
+prtStr_7 = getAgentInfo("  agent:James_Bond,code:007,dept:MI6  ", prtStr_7);
+// 콘솔 출력:
+// James_Bond
+// 007
+// MI6
+// prtStr_7 에는 "<h3>James_Bond</h3><h3>007</h3><h3>MI6</h3>" 가 담김
+```
+
+### 8\. 📂 파일 경로 분석기
+
+```javascript
+let filePath = "C:/Users/Documents/MyReport.pdf";
+
+// 1. 파일명 추출 (split 활용)
+let parts = filePath.split('/');
+let fullFileName = parts[parts.length - 1]; // "MyReport.pdf"
+
+// 2. 파일명, 확장자 분리
+let dotIndex = fullFileName.indexOf('.');
+let fileName = fullFileName.slice(0, dotIndex); // "MyReport"
+let extension = fullFileName.slice(dotIndex + 1); // "pdf"
+
+// 3. 확장자 대문자 변환
+let upperExtension = extension.toUpperCase(); // "PDF"
+
+// 4. 출력
+let prtStr_8 = `<h3>파일명: ${fileName}, 확장자: ${upperExtension}</h3>`;
+console.log(prtStr_8); // "<h3>파일명: MyReport, 확장자: PDF</h3>"
+```
+
+### 9\. 🗣️ 고객 불만 키워드 검색
+
+```javascript
+function checkKeyword(text, keyword) {
+  let cleanText = text.trim().toLowerCase();
+  let searchKeyword = keyword.toLowerCase(); // 키워드도 소문자로 통일
+
+  if (cleanText.indexOf(searchKeyword) !== -1) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+let complaint = "  배송이 너무 느려요! 환불해주세요.  ";
+console.log(checkKeyword(complaint, "환불")); // true
+console.log(checkKeyword(complaint, "배송")); // true
+console.log(checkKeyword(complaint, "쿠폰")); // false
+console.log(checkKeyword(complaint, "REFUND")); // false (키워드도 소문자화 필요)
+
+// 키워드 소문자화가 적용된 함수 버전
+function checkKeyword_v2(text, keyword) {
+  let cleanText = text.trim().toLowerCase();
+  let searchKeyword = keyword.toLowerCase(); // 키워드도 소문자로 통일
+
+  return cleanText.indexOf(searchKeyword) !== -1;
+}
+console.log(checkKeyword_v2(complaint, "환불")); // true
+```
+
+### 10\. 🛒 장바구니 아이템 관리
+
+```javascript
+// 함수 외부에 cart 배열 선언
+let cart = ['사과', '바나나', '우유'];
+let prtStr_10 = ""; // 출력을 위한 prtStr
+
+function manageCart(item, action) {
+  switch (action) {
+    case "add":
+      cart.push(item);
+      return cart;
+    case "remove":
+      let removedItem = cart.pop();
+      return removedItem;
+    case "list":
+      prtStr_10 = ""; // 목록 출력 시마다 초기화
+      cart.forEach(function(cartItem, index) {
+        prtStr_10 += `<h3>${index + 1}. ${cartItem}</h3>`;
+      });
+      console.log(prtStr_10); // 콘솔 확인
+      return prtStr_10; // HTML 출력용
+    default:
+      return "잘못된 action입니다.";
+  }
+}
+
+console.log(manageCart("오렌지", "add")); // [ '사과', '바나나', '우유', '오렌지' ]
+console.log(manageCart(null, "remove"));   // '오렌지'
+console.log(cart);                       // [ '사과', '바나나', '우유' ]
+manageCart(null, "list");                  // 콘솔에 목록 출력
+                                           // <h3>1. 사과</h3><h3>2. 바나나</h3><h3>3. 우유</h3>
+```
+
+### 11\. 🏷️ 지저분한 태그 정리하기
+
+```javascript
+let tagString = "  #KDT, #자바스크립트 , #코딩 ,#웹개발  ";
+
+// 1. 양쪽 공백 제거
+let trimStr = tagString.trim();
+
+// 2. 쉼표 기준 분리
+let tagArray = trimStr.split(',');
+
+// 3. 새 배열 생성
+let cleanTags = [];
+
+// 4. 순회하며 내부 공백 제거 후 push
+tagArray.forEach(function(tag) {
+  cleanTags.push(tag.trim());
+});
+
+// 5. 결과 확인
+console.log(cleanTags); // [ '#KDT', '#자바스크립트', '#코딩', '#웹개발' ]
+```
+
+### 12\. 🍿 스낵바 재고 관리 (Push & Pop)
+
+```javascript
+let snacks = ['초코바'];
+let prtStr_12 = "";
+
+// 1. push "감자칩"
+snacks.push("감자칩");
+// 2. push "콜라"
+snacks.push("콜라");
+
+// 3. 현재 상태 출력
+prtStr_12 += `<h3>현재 재고: ${snacks.toString()}</h3>`;
+
+// 4. pop 실행
+let lastItem = snacks.pop(); // '콜라'
+
+// 5. 판매 메시지 출력
+prtStr_12 += `<h3>${lastItem}이 판매되었습니다.</h3>`;
+
+// 6. 현재 상태 출력
+prtStr_12 += `<h3>현재 재고: ${snacks.toString()}</h3>`;
+
+console.log(prtStr_12);
+/*
+<h3>현재 재고: 초코바,감자칩,콜라</h3>
+<h3>콜라이 판매되었습니다.</h3>
+<h3>현재 재고: 초코바,감자칩</h3>
+*/
+```
+
+-----
+
+## 3부: 객체(Object)와 JSON (13\~18번)
+
+### 13\. ⚔️ RPG 캐릭터 생성기
+
+```javascript
+function createCharacter(name, job, hp) {
+  let character = {
+    name: name,
+    job: job,
+    hp: hp,
+    attack: function() {
+      alert(`${this.name}이(가) ${this.job} 스킬로 공격합니다!`);
+      console.log(`${this.name}이(가) ${this.job} 스킬로 공격합니다!`); // alert 대신 콘솔
+    }
+  };
+  return character;
+}
+
+let wizard = createCharacter("간달프", "마법사", 500);
+let warrior = createCharacter("아라곤", "검사", 800);
+
+wizard.attack(); // "간달프이(가) 마법사 스킬로 공격합니다!"
+warrior.attack(); // "아라곤이(가) 검사 스킬로 공격합니다!"
+```
+
+### 14\. 🚗 자동차 대시보드 객체
+
+```javascript
+let car = {
+  fuel: 50,
+  maxFuel: 100,
+  speed: 0,
+  accelerate: function(value) {
+    this.speed += value;
+    console.log(`속도 ${value} 증가. 현재 속도: ${this.speed}`);
+  },
+  refuel: function(amount) {
+    this.fuel += amount;
+    if (this.fuel > this.maxFuel) {
+      this.fuel = this.maxFuel;
+    }
+    console.log(`주유 ${amount}. 현재 연료: ${this.fuel}`);
+  }
+};
+
+console.log("초기 상태:", JSON.stringify(car));
+car.accelerate(30); // 속도 30 증가. 현재 속도: 30
+car.refuel(60);     // 주유 60. 현재 연료: 100 (50 + 60 = 110 이지만 maxFuel 100으로 제한)
+console.log("최종 상태:", JSON.stringify(car)); // {"fuel":100,"maxFuel":100,"speed":30}
+```
+
+### 15\. 💾 게임 설정 저장 (JSON.stringify)
+
+```javascript
+let gameSettings = { 
+  difficulty: "Hard", 
+  volume: 80, 
+  controls: { 
+    jump: "Space", 
+    attack: "Click" 
+  } 
+};
+
+// JSON 문자열로 변환
+let jsonString = JSON.stringify(gameSettings);
+
+let prtStr_15 = "";
+prtStr_15 += `<h3>${jsonString}</h3>`;
+prtStr_15 += `<h3>${typeof(jsonString)}</h3>`;
+
+console.log(prtStr_15);
+/*
+<h3>{"difficulty":"Hard","volume":80,"controls":{"jump":"Space","attack":"Click"}}</h3>
+<h3>string</h3>
+*/
+```
+
+### 16\. 🌦️ 서버 날씨 응답 해석 (JSON.parse)
+
+```javascript
+let weatherJson = '{"city":"수원","temp":25.5,"condition":"맑음","forecast":[{"day":"내일","temp":26},{"day":"모레","temp":24}]}';
+
+// 1. JSON 문자열을 객체로 변환
+let weatherData = JSON.parse(weatherJson);
+
+let prtStr_16 = "";
+
+// 2. 기본 속성 출력
+prtStr_16 += `<h3>도시: ${weatherData.city}</h3>`;
+prtStr_16 += `<h3>현재 상태: ${weatherData.condition}</h3>`;
+
+// 3. 중첩된 배열의 객체 속성 출력
+prtStr_16 += `<h3>내일의 기온: ${weatherData.forecast[0].temp}°C</h3>`;
+// (참고) 모레의 기온: weatherData.forecast[1].temp
+
+console.log(prtStr_16);
+/*
+<h3>도시: 수원</h3>
+<h3>현재 상태: 맑음</h3>
+<h3>내일의 기온: 26°C</h3>
+*/
+```
+
+### 17\. 📦 상품 재고 객체
+
+```javascript
+let product = {
+  name: "사과",
+  price: 3000,
+  stock: 10, // 재고
+  
+  sell: function(count) {
+    if (this.stock >= count) {
+      this.stock -= count;
+      console.log(`${count}개 판매. 남은 재고: ${this.stock}`);
+    } else {
+      console.log(`재고 부족. (현재 재고: ${this.stock})`);
+    }
+  },
+  
+  fill: function(count) {
+    this.stock += count;
+    console.log(`${count}개 입고. 현재 재고: ${this.stock}`);
+  },
+  
+  display: function() {
+    let msg = `상품명: ${this.name}, 가격: ${this.price}, 재고: ${this.stock}`;
+    alert(msg);
+    console.log(msg); // alert 대신 콘솔
+  }
+};
+
+product.display(); // "상품명: 사과, 가격: 3000, 재고: 10"
+product.sell(3);   // "3개 판매. 남은 재고: 7"
+product.fill(5);   // "5개 입고. 현재 재고: 12"
+product.sell(15);  // "재고 부족. (현재 재고: 12)"
+product.display(); // "상품명: 사과, 가격: 3000, 재고: 12"
+```
+
+### 18\. 🧑‍🏫 JS 객체와 JSON의 차이점 설명
+
+```javascript
+let jsObject = { name: "홍길동", age: 30 };
+let jsonString = '{"name":"홍길동","age":30}';
+
+let prtStr_18 = "";
+prtStr_18 += "<h3>JS 객체와 JSON의 차이점</h3>";
+prtStr_18 += "<h3>1. 데이터 타입: JS 객체는 'object' 타입이지만, JSON은 'string' (문자열) 타입입니다.</h3>";
+prtStr_18 += "<h3>2. 키(Key) 표기: JS 객체는 키에 따옴표를 생략할 수 있지만, JSON은 반드시 '큰따옴표(\"\")'로 키를 감싸야 합니다.</h3>";
+prtStr_18 += "<h3>3. 포함 가능 값: JS 객체는 함수(메서드)를 값으로 포함할 수 있지만, JSON은 데이터 전송이 목적이므로 함수를 포함할 수 없고, 문자열, 숫자, boolean, 배열, 다른 객체 등 순수 데이터만 포함할 수 있습니다.</h3>";
+
+console.log(prtStr_18);
+```
+
+-----
+
+## 4부: 객체 배열과 반복문 (19\~24번)
+
+### 19\. 👾 몬스터 부대 생성
+
+```javascript
+let monsterParty = [
+  { name: "고블린", hp: 100, item: "단검" },
+  { name: "오크", hp: 250, item: "철퇴" },
+  { name: "슬라임", hp: 50, item: "젤리" }
+];
+
+let prtStr_19 = "";
+
+for (let i = 0; i < monsterParty.length; i++) {
+  prtStr_19 += `이름: ${monsterParty[i].name}, 드랍템: ${monsterParty[i].item}<br>`;
+}
+
+console.log(prtStr_19);
+/*
+이름: 고블린, 드랍템: 단검<br>
+이름: 오크, 드랍템: 철퇴<br>
+이름: 슬라임, 드랍템: 젤리<br>
+*/
+```
+
+### 20\. 🧑‍🎓 학생 명단에서 특정 학생 찾기
+
+```javascript
+let studentList_20 = [
+  { id: 101, name: "김철수" }, 
+  { id: 102, name: "이영희" }, 
+  { id: 103, name: "박지성" }
+];
+
+function findStudentName(studentId) {
+  let foundName = null; // 찾은 이름을 저장할 변수
+
+  studentList_20.forEach(function(student) {
+    if (student.id === studentId) {
+      foundName = student.name;
+    }
+  });
+
+  if (foundName) {
+    return foundName;
+  } else {
+    return "학생을 찾을 수 없음";
+  }
+}
+
+// --- for 루프 (return 즉시 종료) 버전 (더 효율적) ---
+function findStudentName_for(studentId) {
+  for (let i = 0; i < studentList_20.length; i++) {
+    if (studentList_20[i].id === studentId) {
+      return studentList_20[i].name; // 찾으면 바로 함수 종료
+    }
+  }
+  return "학생을 찾을 수 없음"; // 루프가 다 돌아도 못 찾음
+}
+
+console.log(findStudentName(102)); // "이영희"
+console.log(findStudentName(104)); // "학생을 찾을 수 없음"
+console.log(findStudentName_for(103)); // "박지성"
+```
+
+### 21\. 🛒 e-커머스 장바구니 총액 계산
+
+```javascript
+let cartItems = [
+  { name: "사과", price: 1500, quantity: 3 }, 
+  { name: "바나나", price: 1000, quantity: 5 }, 
+  { name: "우유", price: 2500, quantity: 1 }
+];
+
+function calculateTotal(cartArray) {
+  let total = 0; // 총액을 저장할 변수
+
+  cartArray.forEach(function(item) {
+    total += (item.price * item.quantity);
+  });
+
+  return total;
+}
+
+console.log(calculateTotal(cartItems)); // 12000 (4500 + 5000 + 2500)
+```
+
+### 22\. 🎖️ 특정 레벨 이상 유저 필터링
+
+```javascript
+let userList_22 = [
+  { name: "전사", level: 50 }, 
+  { name: "마법사", level: 99 }, 
+  { name: "궁수", level: 45 }, 
+  { name: "도적", level: 80 }
+];
+
+function filterHighLevelUsers(users, minLevel) {
+  let highLevelUsers = []; // 1. 빈 배열 생성
+
+  users.forEach(function(user) { // 2. 순회
+    if (user.level >= minLevel) { // 3. 조건 확인
+      highLevelUsers.push(user); // 3. push
+    }
+  });
+
+  return highLevelUsers; // 4. 반환
+}
+
+console.log(filterHighLevelUsers(userList_22, 60));
+/*
+[
+  { name: '마법사', level: 99 },
+  { name: '도적', level: 80 }
+]
+*/
+console.log(filterHighLevelUsers(userList_22, 100)); // []
+```
+
+### 23\. 💽 객체 배열 저장 및 불러오기 (JSON)
+
+```javascript
+let monsterParty_23 = [
+  { name: "고블린", hp: 100, item: "단검" },
+  { name: "오크", hp: 250, item: "철퇴" },
+  { name: "슬라임", hp: 50, item: "젤리" }
+];
+
+// 1. 객체 배열 -> JSON 문자열
+let jsonString_23 = JSON.stringify(monsterParty_23);
+
+// 2. 출력
+console.log("JSON String:", jsonString_23);
+// JSON String: [{"name":"고블린","hp":100,"item":"단검"},{"name":"오크","hp":250,"item":"철퇴"},{"name":"슬라임","hp":50,"item":"젤리"}]
+
+// 3. JSON 문자열 -> 객체 배열
+let parsedArray = JSON.parse(jsonString_23);
+
+// 4. 복원 확인
+console.log("Parsed Array (2번째 몬스터 이름):", parsedArray[1].name); // "오크"
+console.log(parsedArray);
+```
+
+### 24\. 🧾 동적 HTML 테이블 생성 (객체 배열)
+
+```javascript
+// (이 코드는 HTML 파일의 <script> 태그 내에서 실행되어야 합니다)
+let empList = [
+  { empno: 7789, ename: "홍길동", sal: 3500 },
+  { empno: 7790, ename: "김길동", sal: 4500 },
+  { empno: 7791, ename: "신길동", sal: 5500 }
+];
+
+// 1. 테이블 시작
+let prtStr_24 = "<table border='1' width='50%'>";
+
+// 2. 헤더 추가
+prtStr_24 += "<tr><th>사원번호</th><th>사원명</th><th>급여</th></tr>";
+
+// 3. forEach 루프로 데이터 행 추가
+empList.forEach(function(emp) {
+  prtStr_24 += `<tr>
+                  <td>${emp.empno}</td>
+                  <td>${emp.ename}</td>
+                  <td>${emp.sal}</td>
+                </tr>`;
+});
+
+// 4. 테이블 종료
+prtStr_24 += "</table>";
+
+// 5. HTML 본문에 적용
+// document.body.innerHTML += prtStr_24; // (기존 내용을 덮어쓰지 않으려면 +=)
+
+console.log(prtStr_24); // 콘솔에서 생성된 HTML 문자열 확인
+```
+
+-----
+
+## 5부: 복합 실전 문제 (25\~30번)
+
+### 25\. 🧹 오염된 데이터 정제하기 (String -\> Object Array)
+
+```javascript
+function parseUserData(dataStr) {
+  let userList = [];
+  
+  // 1. | 기준으로 분리
+  let userStrings = dataStr.split('|');
+
+  // 2. | 로 나뉜 배열 순회
+  userStrings.forEach(function(userString) {
+    // 3. , 기준으로 분리 (trim() 필수)
+    let properties = userString.trim().split(',');
+    
+    let userObject = {}; // 4. 빈 객체 생성
+
+    // 3번 배열을 순회하며 객체 속성 채우기
+    properties.forEach(function(prop) {
+      let pair = prop.split(':'); // 4. : 기준으로 키/값 분리
+      let key = pair[0];   // 예: "id"
+      let value = pair[1]; // 예: "user1"
+
+      // 4. age는 숫자로 변환
+      if (key === 'age') {
+        userObject[key] = parseInt(value);
+      } else {
+        userObject[key] = value;
+      }
+    });
+    
+    // 5. 완성된 객체를 배열에 push
+    userList.push(userObject);
+  });
+
+  // 6. 배열 반환
+  return userList;
+}
+
+let rawData = "  id:user1,age:25,loc:seoul|id:user2,age:30,loc:busan| id:user3,age:21,loc:incheon  ";
+console.log(parseUserData(rawData));
+/*
+[
+  { id: 'user1', age: 25, loc: 'seoul' },
+  { id: 'user2', age: 30, loc: 'busan' },
+  { id: 'user3', age: 21, loc: 'incheon' }
+]
+*/
+```
+
+### 26\. 📊 학생 성적표와 평균 메서드 (객체 배열 + this)
+
+```javascript
+function createStudent(name, scores) {
+  return {
+    name: name,
+    scores: scores,
+    getAverage: function() {
+      let sum = 0;
+      for (let i = 0; i < this.scores.length; i++) {
+        sum += this.scores[i];
+      }
+      return sum / this.scores.length;
+    }
+  };
+}
+
+// 1. 객체 생성 시 메서드 포함
+let studentList_26 = [
+  createStudent("김철수", [80, 90, 100]), // 90
+  createStudent("이영희", [100, 95, 98])  // 97.666...
+];
+
+let prtStr_26 = "";
+
+// 2. 순회하며 메서드 호출
+studentList_26.forEach(function(student) {
+  prtStr_26 += `학생: ${student.name}, 평균: ${student.getAverage().toFixed(2)}<br>`;
+});
+
+console.log(prtStr_26);
+/*
+학생: 김철수, 평균: 90.00<br>
+학생: 이영희, 평균: 97.67<br>
+*/
+```
+
+### 27\. 🏦 미니 뱅킹 시스템 (Object, Method, Validation)
+
+```javascript
+let account = { 
+  owner: "홍길동", 
+  balance: 10000, 
+  log: [],
+  
+  transaction: function(type, amountStr) {
+    // 1. 입력값 검증
+    let amount = parseInt(amountStr);
+    if (isNaN(amount) || amount <= 0) {
+      this.log.push(`[입력 오류] 유효하지 않은 금액: ${amountStr}`);
+      return; // 함수 종료
+    }
+    
+    // 2. 입금
+    if (type === "deposit") {
+      this.balance += amount;
+      this.log.push(`[입금] ${amount}원 (잔액: ${this.balance})`);
+    } 
+    // 3. 출금
+    else if (type === "withdraw") {
+      // 4. 잔액 부족 검사
+      if (this.balance < amount) {
+        this.log.push(`[출금 실패] 잔액 부족 (시도: ${amount}원, 잔액: ${this.balance})`);
+      } 
+      // 5. 출금 가능
+      else {
+        this.balance -= amount;
+        this.log.push(`[출금] ${amount}원 (잔액: ${this.balance})`);
+      }
+    } else {
+      this.log.push(`[오류] 알 수 없는 거래 유형: ${type}`);
+    }
+  },
+  
+  showLog: function() {
+    console.log(`--- ${this.owner}님의 거래 내역 ---`);
+    this.log.forEach(function(entry) {
+      console.log(entry);
+    });
+    console.log(`--- 최종 잔액: ${this.balance}원 ---`);
+  }
+};
+
+account.transaction("deposit", "5000");
+account.transaction("withdraw", "3000");
+account.transaction("withdraw", "20000"); // 잔액 부족
+account.transaction("deposit", "백원");    // 입력 오류
+account.transaction("withdraw", "-500");  // 입력 오류
+
+account.showLog();
+/*
+--- 홍길동님의 거래 내역 ---
+[입금] 5000원 (잔액: 15000)
+[출금] 3000원 (잔액: 12000)
+[출금 실패] 잔액 부족 (시도: 20000원, 잔액: 12000)
+[입력 오류] 유효하지 않은 금액: 백원
+[입력 오류] 유효하지 않은 금액: -500
+--- 최종 잔액: 12000원 ---
+*/
+```
+
+### 28\. 📚 도서관 검색 엔진 (객체 배열, String.indexOf, 대소문자)
+
+```javascript
+let books = [
+  { title: "JavaScript 완벽 가이드", author: "김작가" }, 
+  { title: "모두의 파이썬", author: "이작가" }, 
+  { title: "자바(JAVA)의 정석", author: "박작가" }
+];
+
+function searchBooks(keyword) {
+  let results = []; // 1. 빈 배열
+  let searchKey = keyword.toLowerCase(); // 키워드도 소문자화
+
+  books.forEach(function(book) { // 2. 순회
+    let bookTitle = book.title.toLowerCase(); // 3. 제목 소문자화
+    
+    // 3. indexOf로 포함 여부 확인
+    if (bookTitle.indexOf(searchKey) !== -1) {
+      results.push(book); // 4. push
+    }
+  });
+  
+  return results; // 4. 반환
+}
+
+console.log("--- 'java' 검색 (JavaScript, 자바(JAVA)) ---");
+console.log(searchBooks("java")); 
+// [ { title: 'JavaScript 완벽 가이드', ... }, { title: '자바(JAVA)의 정석', ... } ]
+
+console.log("--- '파이썬' 검색 ---");
+console.log(searchBooks("파이썬"));
+// [ { title: '모두의 파이썬', author: '이작가' } ]
+
+console.log("--- 'C++' 검색 ---");
+console.log(searchBooks("C++")); // []
+```
+
+### 29\. 📜 CSV 데이터 파싱 (String.split, Array.forEach, Object)
+
+```javascript
+let csvData = "name,age,job\nAlice,30,Developer\nBob,25,Designer";
+
+function parseCSV(csvStr) {
+  let resultList = [];
+  
+  // 1. 줄바꿈 기준 분리
+  let lines = csvStr.split('\n');
+  
+  // 2. 헤더 분리
+  let headers = lines[0].split(','); // ["name", "age", "job"]
+  
+  // 3. 데이터 줄 순회 (slice(1) 사용)
+  let dataLines = lines.slice(1);
+  dataLines.forEach(function(rowStr) {
+    // 4. 데이터 값 분리
+    let values = rowStr.split(','); // ["Alice", "30", "Developer"]
+    
+    let obj = {}; // 5. 빈 객체 생성
+    
+    // 5. headers 배열을 기준으로 객체 생성
+    headers.forEach(function(header, index) {
+      let value = values[index];
+      
+      // 5. age는 숫자로 변환 (또는 header === 'age')
+      if (header === 'age') {
+        obj[header] = parseInt(value);
+      } else {
+        obj[header] = value;
+      }
+    });
+    
+    // 6. 리스트에 push
+    resultList.push(obj);
+  });
+  
+  return resultList;
+}
+
+console.log(parseCSV(csvData));
+/*
+[
+  { name: 'Alice', age: 30, job: 'Developer' },
+  { name: 'Bob', age: 25, job: 'Designer' }
+]
+*/
+```
+
+### 30\. 🧪 아이템 조합기 (Object, Array.pop, Function)
+
+```javascript
+// 전역 변수로 선언 (함수가 접근 가능하도록)
+let inventory = ['마력석', '빈 병', '허브']; // pop을 위해 순서를 맞춤 ('허브'가 맨 뒤)
+let player = { name: "모험가", mana: 50 };
+
+function craftPotion() {
+  // 1. 재료 확인 (pop은 맨 뒤 아이템을 제거하므로 순서가 중요)
+  // '허브'가 맨 뒤, '빈 병'이 그 앞
+  let hasHerb = inventory[inventory.length - 1] === '허브';
+  let hasBottle = inventory[inventory.length - 2] === '빈 병';
+
+  // 2. 마나 확인
+  let hasMana = player.mana >= 10;
+
+  // 3. 모든 조건 충족
+  if (hasHerb && hasBottle && hasMana) {
+    // 재료 제거 (pop 2회)
+    inventory.pop(); // '허브' 제거
+    inventory.pop(); // '빈 병' 제거
+    
+    // 마나 감소
+    player.mana -= 10;
+    
+    // 아이템 추가
+    inventory.push("체력 물약");
+    
+    console.log(`현재 인벤토리: ${inventory}, 남은 마나: ${player.mana}`);
+    return "체력 물약 조합 성공!";
+  } 
+  // 4. 조건 불충족
+  else {
+    if (!hasMana) return "조합 실패: 마나가 부족합니다.";
+    if (!hasHerb || !hasBottle) return "조합 실패: 재료가 부족하거나 순서가 맞지 않습니다.";
+    return "조합 실패";
+  }
+}
+
+console.log(craftPotion()); // "체력 물약 조합 성공!"
+// 콘솔 출력: 현재 인벤토리: 마력석,체력 물약, 남은 마나: 40
+console.log(player); // { name: '모험가', mana: 40 }
+console.log(inventory); // [ '마력석', '체력 물약' ]
+
+console.log(craftPotion()); // "조합 실패: 재료가 부족하거나 순서가 맞지 않습니다."
+player.mana = 5;
+console.log(craftPotion()); // "조합 실패: 마나가 부족합니다."
+```

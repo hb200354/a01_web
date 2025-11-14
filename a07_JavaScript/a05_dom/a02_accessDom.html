@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+ 	<h2>계산처리</h2>
+ 	물건명:<input type="text" id="name" /><br> 
+ 	가격:<input type="text" id="price"/><br> 
+ 	갯수:<input type="text" id="cnt"/><br>
+ 	<input type="button" value="구매" id="btn"/>
+ 	<div id="show"></div> 
+</body>
+<script type="text/javascript">
+let nameOb = document.querySelector("#name")
+let priceOb = document.getElementById("price")
+let cntOb = document.querySelector("#cnt")
+let btnOb = document.querySelector("#btn")
+let showOb = document.querySelector("#show")
+btnOb.onclick=function(){
+	showOb.innerHTML =`
+		<h2>구매 정보</h2>
+		<h3>물건명:${nameOb.value}</h3>
+		<h3>가격:${priceOb.value}</h3>
+		<h3>갯수:${cntOb.value}</h3>
+		<h3>총합:${priceOb.value*cntOb.value}</h3> 
+	`
+	showOb.style.background="yellow"
+	// 자바스트립트의 축복 : 자동형변환  '300' * '2' ==> 600
+}
+
+
+</script>
+</html>

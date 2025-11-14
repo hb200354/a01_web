@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>동적변경 처리..</h2>"
+/*
+# 자바스크립트.
+*/
+let cnt = 1
+function call(){
+	// setInterval을 이용해서 자동을 1초당 카운트 업되게 처리하여 10까지 출력되게 하세요..
+	// 1. 기본형 설정
+	let si01 = setInterval(function(){
+		document.body.innerHTML+=`<span>[카운트 업:${cnt}]</span>`
+		if(cnt == 10){
+			clearInterval(si01)
+			alert("카운트 업 중단!!")
+		}
+		cnt++	
+		
+	}, 1000)
+	// 2. 반복수행 할 코드 범위 function(){} 안에 할당.
+	// 3. 특정 조건에서 메모리 중단 setInterval
+
+}
+let msg = "클릭하면 반복 수행!!"
+prtStr += `<h3 onclick="call()">${msg}</h3>`
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

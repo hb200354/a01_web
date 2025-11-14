@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>객체의 구성요소 함수(메서드) 사용</h2>"
+/*
+# 객체 안에 메서드
+1. 자바스트크립트 객체(object)는 나만의 기능이 잔뜩 달린 리모컨이라고 상상해 보세요.
+2. 이 리모턴에는 두 가지 종류의 버튼이 있습니다.
+	1) 속성(property) : 리모컨의 상태나 정보를 보여주는 액정 화면입니다.
+		예) TV모델명: "삼성", 현재채널:5, 볼륨:10
+		이것들은 그냥 값(data)이 저장된 것입니다.
+	2) 메서드(method) : 리모컨의 동작이나 기능을 실행하는 실제 버튼입니다.	
+		예) 전원켜기(), 채널올리기(), 볼륨줄이기()
+		이것들은 일(function)을 하는 것입니다.
+	메서드(method)는 객체(리모컨)에 소속된 행동(동사)입니다.
+3. 핵심 키워드
+	1) this(바로 나!!)
+	이제 가장 중요한 순간입니다. 리모컨의 채널올리기() 버튼을 놀렀다고 상상해 보세요
+	이 버튼은 대체 누구의 채널을 올려야 하지?라고 물을까요? 아니죠! 버튼은 당연히 이 리모컨에
+	연결된 TV의 채널을 올립니다.
+	여기서 this가 등장합니다.
+		this = "바로 나" 또는 "이 리모컨 자체!!""
+	메서드(기능 버튼) 안에서 this키워드를 사용하면, 그 메서드를 소유하고 있는 객체(리모컨) 자신을
+	가리킵니다.
+	채널돌리기() 버튼이 내부적으로 이렇게 동작하는 거죠..
+		OK! 나(this)의 현재채널(this.currentChannel)값을 1올리자
+	2) 정리
+		객체		리모컨본체		관련 데이터(정보)와 기능(행동)의 묶음
+		속성		액정화면(정보)	객체의 상태나 값( name:"홍길동")
+		메서드	버튼(행동)		객체가 수행할 수 있는 동작( greet())
+		this	바로나		메서드 안에서, 그 메서드를 소유한 객체 자신
+		호출(.)  버튼누리기		remote.channelUp() 리모컨의 채널올리기 버튼을 누르다
+
+	
+*/
+let msg = "메서드 이해하기"
+prtStr += `<h3>${msg}</h3>`
+// ex) 강아지 객체에 속성으로 이름(name), 나이(age), 짖다() bark-메서드를 정의하고 
+//     메서드 안에서 멍멍!! 제 이름은 @@@입니다    
+let dog = {
+	// 속성(정보)
+	name : "바둑이",
+	age:3,
+	// 메서드(행동)
+	// bark라는 이름의 버튼을 정의합니다. 
+	bark(){ // bark:function(){}와 동일..
+		// 버튼을 눌렀을 때 실행될 코드
+		document.body.innerHTML += `<h3>멍멍!! 제 이름은 ${this.name}입니다</h3>`
+	}
+	
+}
+
+// 2. 메서드 호출(버튼 누르기)
+dog.bark()
+prtStr += `<h3 onclick="dog.bark()">클릭으로 강아지 호출</h3>`
+//ex)  let counter 속성 value :0,  increase() ++this.value 증가 하면 출력..
+let counter = {
+	value:0,
+	increase(){
+		console.log(`증가된 현재 카운트 ${++this.value}입니다`)
+		//document.body.innerHTML += `<h3>증가된 현재 카운트 ${++this.value}입니다</h3>`
+	}
+}
+counter.increase()
+prtStr += `<h3 onclick="counter.increase()">클릭으로 카운트 증가</h3>`
+
+document.body.innerHTML=prtStr
+
+</script>
+</html>

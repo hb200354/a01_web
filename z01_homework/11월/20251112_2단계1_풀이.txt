@@ -1,0 +1,471 @@
+## 🚀 2단계 실습 문제 풀이
+
+### 테마 1: RPG 게임 어드벤처 ⚔️
+
+**1. 파티원 HP 업데이트**
+
+```javascript
+let party = [{name: "전사", hp: 150}, {name: "마법사", hp: 100}, {name: "궁수", hp: 120}];
+
+party.forEach(function(member) {
+  member.hp += 50; // 각 파티원(member)의 hp를 50씩 증가시킵니다.
+});
+
+// (확인용)
+// console.log(party);
+// 출력: [{name: "전사", hp: 200}, {name: "마법사", hp: 150}, {name: "궁수", hp: 170}]
+```
+
+**2. 몬스터 도감 필터링**
+
+```javascript
+let monsters = [{name: "슬라임", type: "물"}, {name: "고블린", type: "땅"}, {name: "리자드맨", type: "물"}];
+
+monsters.forEach(function(monster) {
+  if (monster.type === "물") {
+    prtStr += `<h3>${monster.name}</h3>`;
+  }
+});
+```
+
+**3. 인벤토리 아이템 합계**
+
+```javascript
+let inventory = [{item: "포션", price: 50, qty: 10}, {item: "검", price: 500, qty: 1}, {item: "방패", price: 300, qty: 1}];
+let totalPrice = 0; // 합계를 저장할 변수를 0으로 시작합니다.
+
+inventory.forEach(function(item) {
+  totalPrice += (item.price * item.qty);
+});
+
+// (확인용)
+// console.log(totalPrice); // 1300
+// prtStr += `<h3>총 가격: ${totalPrice}</h3>`;
+```
+
+**4. 스킬 데미지 계산기 (함수 + 객체)**
+
+```javascript
+let character = {name: "버서커", str: 20};
+
+// '힘(str)'을 매개변수로 받는 함수 정의
+function powerStrike(strStat) {
+  let damage = strStat * 5;
+  return `파워 스트라이크! ${damage}의 데미지!`;
+}
+
+// 함수 호출 및 prtStr에 추가
+prtStr += `<h3>${powerStrike(character.str)}</h3>`;
+```
+
+**5. 퀘스트 상태 변경 (객체 + 메서드)**
+
+```javascript
+let quest = {
+  title: "슬라임 10마리 잡기",
+  status: "대기 중",
+  accept: function() {
+    this.status = "진행 중"; // 'this'는 quest 객체 자신을 가리킵니다.
+  },
+  complete: function() {
+    this.status = "완료";
+  }
+  /* 축약형 메서드
+  accept() {
+    this.status = "진행 중";
+  },
+  complete() {
+    this.status = "완료";
+  }
+  */
+};
+
+// (사용 예시)
+// quest.accept(); // quest.status가 "진행 중"으로 변경됨
+// quest.complete(); // quest.status가 "완료"로 변경됨
+```
+
+-----
+
+### 테마 2: 우주 탐사선 '프론티어'호 🪐
+
+**6. 승무원 상태 보고 (for...in)**
+
+```javascript
+let crew1 = {name: "제인", role: "조종사", condition: "양호"};
+
+for (let key in crew1) {
+  // key 변수에는 'name', 'role', 'condition'이 차례로 들어옵니다.
+  // crew1[key]를 사용해 해당 key의 값에 접근합니다.
+  prtStr += `<h3>속성: ${key} - 값: ${crew1[key]}</h3>`;
+}
+```
+
+**7. 행성 자원 스캔 (객체 배열 + forEach)**
+
+```javascript
+let planets = [{name: "A-1", resource: "철"}, {name: "B-2", resource: "물"}, {name: "C-3", resource: "가스"}];
+
+planets.forEach(function(planet) {
+  if (planet.resource === "물") {
+    prtStr += `<h3>${planet.name}</h3>`;
+  }
+});
+```
+
+**8. 우주선 부품 추가 (객체 속성 추가)**
+
+```javascript
+let spaceship = {name: "프론티어", engine: "이온"};
+
+// 객체에 없는 속성 이름을 쓰고 값을 할당하면 '추가'됩니다.
+spaceship.warpDrive = "탑재 완료";
+
+prtStr += `<h3>${spaceship.warpDrive}</h3>`;
+```
+
+**9. 산소 탱크 레벨 조절 (객체 메서드 + this)**
+
+```javascript
+let o2Tank = {
+  level: 100,
+  use: function() {
+    this.level -= 10;
+  },
+  fill: function() {
+    this.level += 20;
+  }
+};
+
+o2Tank.use(); // level: 90
+o2Tank.use(); // level: 80
+
+prtStr += `<h3>현재 산소 레벨: ${o2Tank.level}</h3>`;
+```
+
+**10. 외계 생명체 조우 기록 (객체 배열 + 함수)**
+
+```javascript
+let alienLog = []; // 빈 배열 (전역 변수)
+
+function logEncounter(name, type) {
+  // 매개변수로 받은 값으로 새 객체 생성
+  let newAlien = {name: name, type: type};
+  // 전역 배열인 alienLog에 추가
+  alienLog.push(newAlien);
+}
+
+logEncounter("크리처", "액체형");
+
+// alienLog 배열의 0번째 객체의 name 속성 출력
+prtStr += `<h3>${alienLog[0].name}</h3>`;
+```
+
+-----
+
+### 테마 3: 비밀의 마법 상점 🔮
+
+**11. 포션 재고 목록 출력 (클래식 for문)**
+
+```javascript
+let potions = ["HP 포션", "MP 포션", "투명 포션"];
+
+for (let i = 0; i < potions.length; i++) {
+  prtStr += `<h3>상품 ${i}번: ${potions[i]}</h3>`;
+}
+```
+
+**12. 마법서 정보 변경 (객체 속성값 수정)**
+
+```javascript
+let spellBook = {title: "초급 화염 마법", price: 50, stock: 5};
+
+// 기존 속성에 새 값을 할당하여 '수정'합니다.
+spellBook.price = 100;
+spellBook.stock -= 1; // 또는 spellBook.stock--;
+
+prtStr += `<h3>변경된 가격: ${spellBook.price}</h3>`;
+prtStr += `<h3>남은 재고: ${spellBook.stock}</h3>`;
+```
+
+**13. 오늘\_의\_특가\_상품\_소개 (함수 + 객체 반환)**
+
+```javascript
+function createSpecialItem(itemName, price) {
+  // 새 객체를 만들고 'return' 키워드로 반환합니다.
+  let newItem = {
+    item: itemName,
+    price: price,
+    special: true
+  };
+  return newItem;
+}
+
+let todaySpecial = createSpecialItem("빛나는 돌", 10);
+
+prtStr += `<h3>특가 상품: ${todaySpecial.item}</h3>`;
+prtStr += `<h3>특가 여부: ${todaySpecial.special}</h3>`;
+```
+
+**14. 장바구니 총액 계산 (객체 배열 + forEach + 계산)**
+
+```javascript
+let cart = [{item: "HP 포션", price: 50}, {item: "마법 스크롤", price: 200}];
+let totalSum = 0;
+
+cart.forEach(function(item) {
+  totalSum += item.price;
+});
+
+prtStr += `<h3>장바구니 총액: ${totalSum}</h3>`; // 250
+```
+
+**15. 상점의 모든 기능 (객체와 메서드)**
+
+```javascript
+let magicShop = {
+  isOpen: false,
+  gold: 1000,
+  open: function() {
+    this.isOpen = true;
+  },
+  sell: function(price) { // 'price'를 매개변수로 받습니다.
+    this.gold += price;
+  }
+};
+
+magicShop.open(); // isOpen을 true로 변경
+magicShop.sell(150); // gold를 1000에서 1150으로 변경
+
+prtStr += `<h3>상점 개점 상태: ${magicShop.isOpen}</h3>`;
+prtStr += `<h3>상점 보유 골드: ${magicShop.gold}</h3>`;
+```
+
+-----
+
+### 테마 4: 명탐정 셜록의 수사 🕵️
+
+**16. 용의자 목록 출력 (배열 + forEach)**
+
+```javascript
+let suspects = ["모리아티", "허드슨 부인", "레스트레이드 경감"];
+
+suspects.forEach(function(name) {
+  prtStr += `<h3>용의자: ${name}</h3>`;
+});
+```
+
+**17. 단서 분석 (객체 + for...in)**
+
+```javascript
+let clue = {item: "회중시계", owner: "J.M.", condition: "파손됨"};
+
+for (let key in clue) {
+  prtStr += `<h3>단서(${key}): ${clue[key]}</h3>`;
+}
+```
+
+**18. 알리바이 검증 (함수 + 객체 + return)**
+
+```javascript
+// 'person' 객체를 매개변수로 받는 함수
+function verifyAlibi(person) {
+  // 'person' 객체의 'alibi' 속성이 "확실함"과 같은지 비교(===)
+  // 비교 결과(true 또는 false)를 반환(return)
+  return person.alibi === "확실함";
+}
+
+// 함수 호출 및 결과 출력
+let isVerified = verifyAlibi({name: "스미스", alibi: "불확실함"});
+prtStr += `<h3>알리바이 검증 결과: ${isVerified}</h3>`; // false
+```
+
+**19. 증거물 목록에 추가 (객체 속 배열 수정)**
+
+```javascript
+let evidenceBox = {caseFile: "No.221B", items: ["독극물 병"]};
+
+// 'evidenceBox' 객체의 'items' 배열에 접근하여 'push'
+evidenceBox.items.push("수수께끼의 쪽지");
+
+// 1번 인덱스(두 번째) 아이템 출력
+prtStr += `<h3>새로 추가된 증거: ${evidenceBox.items[1]}</h3>`;
+```
+
+**20. 범인 추론 (객체 배열 + forEach + if)**
+
+```javascript
+let people = [{name: "왓슨", alibi: "확실함"}, {name: "모리아티", alibi: "불확실함"}];
+
+people.forEach(function(person) {
+  if (person.alibi === "불확실함") {
+    prtStr += `<h3>범인은... ${person.name}!</h3>`;
+  }
+});
+```
+
+-----
+
+### 테마 5: SNS 피드 만들기 📱
+
+**21. '좋아요' 누르기 (객체 메서드 + this)**
+
+```javascript
+let post = {
+  content: "오늘 날씨 좋다",
+  likes: 10,
+  addLike: function() {
+    this.likes++; // this.likes = this.likes + 1 과 동일
+  }
+};
+
+post.addLike(); // '좋아요' 1 증가 (10 -> 11)
+
+prtStr += `<h3>현재 좋아요: ${post.likes}</h3>`;
+```
+
+**22. 댓글 목록 출력 (객체 내 배열 + forEach)**
+
+```javascript
+let article = {title: "맛집 추천", comments: ["와, 가고 싶네요!", "여기 어디인가요?"]};
+
+// 객체의 'comments' 배열에 'forEach'를 사용
+article.comments.forEach(function(comment) {
+  prtStr += `<h3>댓글: ${comment}</h3>`;
+});
+```
+
+**23. 새 팔로워 추가 (함수 + 객체 속 배열 수정)**
+
+```javascript
+let user = {id: "codingKing", followers: ["user1"]};
+
+// 'userAccount' 객체와 'newFollowerName' 문자열을 매개변수로 받음
+function addFollower(userAccount, newFollowerName) {
+  userAccount.followers.push(newFollowerName);
+}
+
+addFollower(user, "user2"); // 'user' 객체 원본의 followers 배열이 변경됨
+
+prtStr += `<h3>현재 팔로워: ${user.followers}</h3>`; // "user1,user2"
+```
+
+**24. 모든 게시물의 '좋아요' 총합 (객체 배열 + forEach)**
+
+```javascript
+let feed = [{likes: 15}, {likes: 42}, {likes: 9}];
+let totalLikes = 0;
+
+feed.forEach(function(post) {
+  totalLikes += post.likes;
+});
+
+prtStr += `<h3>총 좋아요 합계: ${totalLikes}</h3>`; // 66
+```
+
+**25. 사용자 태그하기 (객체 메서드 + 매개변수)**
+
+```javascript
+let newPost = {
+  content: "새 게시물",
+  tags: [], // 비어있는 배열
+  addTag: function(username) { // 'username'을 매개변수로 받음
+    this.tags.push(username);
+  }
+};
+
+newPost.addTag("friend1");
+newPost.addTag("friend2");
+
+prtStr += `<h3>태그된 사용자: ${newPost.tags}</h3>`; // "friend1,friend2"
+```
+
+-----
+
+### 테마 6: 나만의 작은 카페 ☕
+
+**26. 메뉴판 가격 인상 (객체 배열 + forEach)**
+
+```javascript
+let menu = [{name: "아메리카노", price: 3000}, {name: "라떼", price: 3500}];
+
+menu.forEach(function(item) {
+  item.price += 500; // 원본 배열의 객체 값이 직접 변경됨
+});
+
+prtStr += `<h3>인상된 아메리카노 가격: ${menu[0].price}</h3>`; // 3500
+```
+
+**27. 오늘의 커피 추천 (함수 + 객체 return)**
+
+```javascript
+function recommendCoffee(name, origin) {
+  // 새 객체를 생성하여 반환(return)
+  return {
+    name: name,
+    origin: origin,
+    isRecommended: true
+  };
+}
+
+let recommended = recommendCoffee("과테말라", "안티구아");
+
+// 객체를 출력하면 보통 [object Object]로 나옵니다.
+// 여기서는 의도를 파악하여 속성값을 출력합니다.
+prtStr += `<h3>추천 커피: ${recommended.name} (원산지: ${recommended.origin})</h3>`;
+```
+
+**28. 주문 내역 확인 (객체 + for...in)**
+
+```javascript
+let order = {item: "카푸치노", qty: 2, isTakeout: true};
+
+for (let key in order) {
+  prtStr += `<h3>주문(${key}): ${order[key]}</h3>`;
+}
+```
+
+**29. 쿠폰 사용 (객체 메서드 + this)**
+
+```javascript
+let customer = {
+  name: "단골손님",
+  coupon: 10,
+  useCoupon: function() {
+    this.coupon--; // this.coupon = this.coupon - 1 과 동일
+  }
+};
+
+customer.useCoupon(); // coupon: 9
+customer.useCoupon(); // coupon: 8
+customer.useCoupon(); // coupon: 7 (세 번 호출)
+
+prtStr += `<h3>남은 쿠폰 수: ${customer.coupon}</h3>`;
+```
+
+**30. [최종 도전] 카페 결산 (객체 배열 + forEach + 함수 + this)**
+
+```javascript
+let pos = {
+  totalSales: 0,
+  calculateDay: function(orders) { // 'orders' (객체 배열)를 매개변수로 받음
+    let dayTotal = 0;
+    
+    // 1. 주문 배열(orders)을 순회하며 오늘의 총합(dayTotal) 계산
+    orders.forEach(function(order) {
+      dayTotal += order.price;
+    });
+    
+    // 2. 계산된 오늘의 총합을 'this.totalSales' (POS 기계의 총 매출)에 누적
+    this.totalSales += dayTotal;
+  }
+};
+
+let todayOrders = [{price: 5000}, {price: 4500}];
+
+// pos 기계의 calculateDay 메서드 호출
+pos.calculateDay(todayOrders);
+
+prtStr += `<h3>현재 총 매출: ${pos.totalSales}</h3>`; // 9500
+```
+

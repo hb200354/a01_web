@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>객체 사용</h2>"
+/*
+# 객체 사용1
+1. let 객체명 = {속성:속성값, 속성2:속성2값}
+   객체명.속성 ==> 속성값 호출..
+   객체명.속성3 = 속성3의값  ==> 특정 속성이 추가가 되는 처리.
+   객체명.속성2 = 속성2의값  ==> 특정 속성이 변경이 되는 처리.
+   
+*/
+let msg = "객체의 속성 처리"
+prtStr += `<h3>${msg}</h3>`
+
+let warrior = {name:"썬더", level:1, hp:100}
+prtStr += `<h3>이름 접근:${warrior.name}</h3>`
+// 기존 속성의 값 변경..
+warrior.level++
+prtStr += `<h3>현재레벨:${warrior.level}</h3>`
+// 기존에 없는 속성과 속성값 할당. - 객체의 속성이 추가됨..
+warrior.weapon = "나무 칼(wood sword)"
+for(let prop in warrior){
+	// 속성 - 속성값    객체[속성] :속성값..
+	prtStr += `<h3>${prop} - ${warrior[prop]}</h3>`	
+}
+// ex) 학생의 기록부로 이름과 학년, 과목을 기본적으로 설정하고
+//     학생의 이름을 출력 후, 학년을 진급시키고, 추가적으로 취미 속성으로 '축구'를 설정하고
+//     전체 속성/속성값을 for in 구문으로 출력하세요.
+let student = {
+	name:"김민준", grade:2, subject:"수학"	
+}
+prtStr += `<h3>학생의 이름:${student.name}</h3>`
+student.grade++
+prtStr += `<h3>학생의 학년:${student.grade}</h3>`
+student.hobby = "축구"
+prtStr += `<h2>학생 정보</h2>`
+for(let prop in student){ // 
+	prtStr += `<h3>${prop} - ${student[prop]}</h3>`
+}
+// ex) 내가 올린 SNS게시물 좋아요가 눌리고, 공유상태 추가되는 상황
+// 객체 생성 : 방금 올린 게시물  게시자(HappyUser), 내용(오늘 날씨 정말 좋다), 좋아요(10)
+// 1. 작성자 출력
+// 2. 좋아요 증가
+// 3. 공유여부 속성/속성값  isShare = true
+// 4. for in 구문에 의해 출력..
+let post = {
+	author : "HapperUser",
+	content : "오늘 날씨 정말 좋다",
+	likes:10
+}
+prtStr += `<h3>SNS 작성자:${post.author}</h3>`
+post.likes++
+prtStr += `<h3>SNS 좋아요:${post.likes}</h3>`
+post.isShare = true
+prtStr += `<h2>SNS 게시물 정보</h2>`
+for(let prop in post){
+	prtStr += `<h3>${prop} - ${post[prop]}</h3>`	
+}
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

@@ -1,0 +1,158 @@
+코딩 마법 학교의 모든 문제를 풀러 오셨군요\! 잘하셨습니다.
+여기에 17개 문제의 풀이(정답)를 정리해 드릴게요.
+
+-----
+
+## 🧐 개념(Concept) 문제 풀이
+
+1.  [개념] (사물함의 이름표)
+
+      * **정답:** `name`
+      * (설명: "홍길동" 값을 꺼내려면 `person1.name` 이라고 부르면 됩니다.)
+
+2.  [개념] (마법 주문 외우기)
+
+      * **정답:** `fun01();`
+      * (설명: 함수 이름 뒤에 `()` 괄호를 붙여주면 "호출(실행)"하라는 뜻입니다.)
+
+3.  [개념] (캐릭터 레벨 업\! ✨)
+
+      * **정답:** `warrior.level++;`
+      * (설명: 또는 `warrior.level = warrior.level + 1;` 이나 `warrior.level += 1;` 이라고 써도 똑같이 1이 올라갑니다.)
+
+4.  [개념] (기차의 총 칸 수 세기)
+
+      * **정답:** `length`
+      * (설명: `subjects.length` 라고 쓰면 배열의 칸 수(개수)를 알려줍니다.)
+
+5.  [개념] (결과물 배출구 🎁)
+
+      * **정답:** `return`
+      * (설명: `return`은 함수를 그 즉시 종료하고 "결과물"을 밖으로 돌려주는 명령어입니다.)
+
+6.  [개념] (리모컨의 기능 버튼)
+
+      * **정답:** **메서드 (Method)**
+      * (설명: 객체(물건)에 소속된 함수(행동)를 특별히 '메서드'라고 불러요.)
+
+7.  [개념] (이 리모컨\!)
+
+      * **정답:** `this`
+      * (설명: `this`는 "바로 나 자신(객체)"을 가리키는 특별한 이름입니다.)
+
+8.  [개념] (학생 명부 만들기)
+
+      * **정답:** **객체 배열 (Array of Objects)**
+      * (설명: 객체(학생 프로필)들을 배열(학급 명단)에 담았다고 해서 '객체 배열'이라고 부릅니다.)
+
+9.  [개념] (자동 명단 호명)
+
+      * **정답:** `deptList` 배열 안에 있는 **객체 하나하나**
+      * (설명: `forEach`가 반복할 때마다, 첫 번째 객체 `{deptno:10, ...}`를 `dept`에, 두 번째 객체 `{deptno:20, ...}`를 `dept`에 넣어줍니다.)
+
+-----
+
+## 💻 실습(Practice) 문제 풀이
+
+2.  [실습] (우리 밴드 악기 세팅 🎸)
+
+    ```javascript
+    let instruments = ['기타', '베이스', '드럼', '키보드'];
+    ```
+
+3.  [실습] (마법사의 스펠 캐스팅 🪄)
+
+    ```javascript
+    // 1. 함수 만들기(정의)
+    function castSpell(spellName) {
+      alert(`주문을 외운다! ${spellName}!`);
+    }
+
+    // 2. 함수 사용하기(호출)
+    castSpell("파이어볼");
+    ```
+
+4.  [실습] (나만의 비밀 레시피 수정 🍳)
+
+    ```javascript
+    let recipe = { title: "김치찌개", time: 30 };
+
+    // 1. 끓이는 시간 변경
+    recipe.time = 40;
+
+    // 2. 난이도 속성 추가
+    recipe.difficulty = "초급";
+    ```
+
+5.  [실습] (여행 위시리스트 점검 ✈️)
+
+    ```javascript
+    let wishlist = ['파리', '교토', '뉴욕', '스위스'];
+
+    // (prtStr 변수는 이미 있다고 가정합니다)
+    for (let i = 0; i < wishlist.length; i++) {
+      prtStr += `<h3>${i} - ${wishlist[i]}</h3>`;
+    }
+    ```
+
+6.  [실습] (시간을 분으로\! 환전소)
+
+    ```javascript
+    function convertHoursToMinutes(hours) {
+      return hours * 60;
+    }
+
+    // (사용 예시)
+    // let twoHours = convertHoursToMinutes(2); // twoHours 에는 120이 저장됨
+    ```
+
+7.  [실습] (자동차 시동 걸기 🚗)
+
+    ```javascript
+    let car = {
+      model: "제네시스",
+      startEngine: function() {
+        // 'this'는 'car' 객체 자신을 가리킵니다.
+        alert(`부르릉... 제 차는 ${this.model}입니다.`);
+      }
+      /*
+      // 최신 JavaScript 방식 (축약형)
+      startEngine() {
+        alert(`부르릉... 제 차는 ${this.model}입니다.`);
+      }
+      */
+    };
+
+    // (사용 예시)
+    // car.startEngine(); // "부르릉... 제 차는 제네시스입니다." 알림창이 뜸
+    ```
+
+8.  [실습] (영화 정보 스크랩 🎬)
+
+    ```javascript
+    let movie = { title: "코딩 어드벤처", director: "김감독", year: 2025 };
+
+    // (prtStr 변수는 이미 있다고 가정합니다)
+    for (let key in movie) {
+      // key 변수에는 'title', 'director', 'year'가 차례로 들어옴
+      prtStr += `<h3>${key} - ${movie[key]}</h3>`;
+    }
+    ```
+
+9.  [실습] (모험가의 인벤토리 정리 🎒)
+
+    ```javascript
+    let inventory = [
+      { name: "붉은 물약", qty: 5 },
+      { name: "강철 검", qty: 1 },
+      { name: "해독제", qty: 3 }
+    ];
+
+    // (prtStr 변수는 이미 있다고 가정합니다)
+    inventory.forEach(function(item) {
+      // item 변수에 {name:"붉은 물약", ...} 객체가 차례로 들어옴
+      prtStr += `<h3>아이템: ${item.name}, 수량: ${item.qty}</h3>`;
+    });
+    ```
+    
+    

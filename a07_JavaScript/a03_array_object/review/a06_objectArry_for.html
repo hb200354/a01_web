@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+<style>
+	td{text-align:center;}
+</style>
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+// prtStr : 전역변수..
+let prtStr = "<h2>객체형 배열의 forEach구문..</h2>"
+/*
+# 객체형 배열과 forEach 함수 처리
+1. 기본 형식
+	배열.forEach(function(단일객체, index){
+		
+	})
+*/
+let deptList = [
+	{deptno:10,dname:"인사",loc:"서울"},
+	{deptno:20,dname:"재무",loc:"부산"},
+	{deptno:30,dname:"회계",loc:"광주"}
+]
+deptList.forEach(function(dept, idx){
+	// deptList 안에 있는 객체 하나씩을 dept에 할당후, 
+	// dept.속성을 통해서 출력 처리..
+	prtStr += `<h3>${dept.deptno} - ${dept.dname} - ${dept.loc}</h3>`
+})
+//  ex) students  이름, 국어, 영어   할당하여 3개의 객체형 배열을 만들고,
+//      화면에 출력하세요..
+let students = [
+	{name:"홍길동",kor:70,eng:80},
+	{name:"김길동",kor:80,eng:85},
+	{name:"마길동",kor:90,eng:70}
+]
+prtStr += `<h2>학생 성적 통계</h2>`
+prtStr += `<table border width="50%">`
+students.forEach(function(stud, idx){
+	
+	if(idx==0){ // 첫행에 한번만 수행 처리 (타이틀을 위해서)
+		prtStr += `<tr><th>번호</th>`
+		for(let prop in stud){
+			prtStr += `<th>${prop}</th>`
+		}
+		prtStr += `<th>합산</th><th>평균</th></tr>`
+	}
+	let tot = stud.kor + stud.eng
+	let avg = parseInt(tot/2)
+	prtStr += `<tr><td>${idx+1}</td><td>${stud.name}</td><td>${stud.kor}</td>
+					<td>${stud.eng}</td><td>${tot}</td><td>${avg}</td></tr>`
+	
+})
+prtStr += `</table>`
+
+document.body.innerHTML=prtStr  // 상단에 전역변수로 선언하고 반복되어 추가된 문자열이 최종적으로
+// html코드를 할당해서 화면에 출력..
+
+/*
+<style>
+	td{text-align:center;}
+</style>
+*/
+
+
+
+
+</script>
+</html>

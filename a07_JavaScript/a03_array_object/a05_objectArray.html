@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>객체형 배열 </h2>"
+/*
+# 자바스크립트의 객체형 배열
+1. 객체가 여러 개의 속성을 가진 하나의 단일형 데이터라고 하면, 이것이 모여서 여러속성을 가진 여러개의
+	객체를 사용할 수 있다.
+2. 객체형 배열은 이름 그대로 객체(object {})들을 배열(Array [])안에 차곡차곡 담아높은 선물 세트
+	같은 겁니다.
+	1) 객체 {} (선물1개) : 이름, 나이, 직업처럼 여러 관련 정보를 묶어놓은 하나의 아이템입죠.
+		{name:"아이언맨", age:40}
+	2) 배열 [] (선물세트) : 이 선물(객체)들을 순서대로 담아놓은 큰 상자이죠..
+	
+	왜 이걸 쓸까요? 엑셀시트를 생각해봅시다. 한 줄(row)에 한 사람의 정보(이름, 나이, 점수)가 쭈르륵
+	있죠? 그 한 줄이 바로 객체이고, 그 시트 전체(여러 줄의 묶음)가 배열이랍니다.
+	즉, 관련된 정보(객체)들의 목록(배열)을 다룰 때 사용합니다.(예, 학생명부, 장바구니 목록, 게임 케릭터 목록)
+3. 예시 아파트
+	객체형 배열 = 아파트 건물([])
+*/
+let msg = "객체형 배열(아파트 건물)!!"
+prtStr += `<h3>${msg}</h3>`
+const aptBuilding = [ // 아파트 건물(배열)
+	{room:101, owner:"김철수"},   //1층(index 0)
+	{room:102, owner:"이영희"},   //2층(index 1)
+	{room:103, owner:"박지성"},   //3층(index 2)
+]
+// [] 대괄호 : 아파트 건물 자체입니다. 모든 호실을 감싸고 있죠
+// {} 중괄호 : 아파트 호실 하나입니다. (101호, 102호...)
+// key : value  속성:호실 안에 정보입니다. (방번호 101, 주인:김철수)
+// .length : 아파트의 총 층수
+// index 0,1,2   아파트의 층 번호..
+// ex) aptBuilding[1] 아파트 건물(aptBuilding)의 2층([1])으로 가자
+//      결과  {room:102, owner:"이영희"}
+//     aptBuilding[1].owner
+//       아파트 건물(aptBuilding)의 2층([1])으로 가서, 주인(owner)이 누구지 확인해
+//       결과는 이영희
+//    배열이름[층수].정보이름..
+// ex) 3층의 방번호를 확인할려면.. ==> aptBuilding[2].room
+//     김철수를 접근할려면  ==> aptBuilding[0].owner
+prtStr += `<h3>2층의 소유자 접근:${aptBuilding[1].owner}</h3>`
+prtStr += `<h3>3층의 방번호 접근:${aptBuilding[2].room}</h3>`
+prtStr += `<h3>1층의 소유자 접근:${aptBuilding[0].owner}</h3>`
+prtStr += `<h3>아파트에 사는 사람들!!</h3>`
+prtStr += `<table width="40%" border>`	 
+prtStr += `<tr><th>층</th><th>방번호</th><th>소유자</th></tr>`
+for(let idx =0; idx<aptBuilding.length;idx++){
+	prtStr += `<tr><th>${idx+1}</th>
+				   <th>${aptBuilding[idx].room}</th>
+				   <th>${aptBuilding[idx].owner}</th></tr>`
+}
+prtStr += `</table>`	 
+
+// ex) 사원정보  사원번호, 사원명, 급여    데이터를 3개정도 객체형 배열로 선언하고,
+//     테이블로 해당 내용을 출력하세요..
+let empList = [
+	{empno:7789, ename:"홍길동",sal:3500 },
+	{empno:7790, ename:"김길동",sal:4500 },
+	{empno:7791, ename:"신길동",sal:5500 }
+]
+prtStr += `<h3>사원정보!!</h3>`
+	prtStr += `<table width="40%" border>`	 
+	prtStr += `<tr><th>사원번호</th><th>사원명</th><th>급여</th></tr>`
+	for(let idx =0; idx<empList.length;idx++){
+		prtStr += `<tr><th>${empList[idx].empno}</th>
+					   <th>${empList[idx].ename}</th>
+					   <th>${empList[idx].sal}</th></tr>`
+	}
+	prtStr += `</table>`	
+
+
+
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>

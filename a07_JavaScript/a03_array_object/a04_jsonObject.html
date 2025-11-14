@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>좋은 하루! 발전하는 하루!</title>
+
+
+</head>
+<body>
+  
+
+
+</body>
+<script type="text/javascript">
+let prtStr = "<h2>객체 속성 데이터 처리 연습..</h2>"
+/*
+# 부서정보
+	부서번호(deptno), 부서명(dname), 부서위치(loc)
+	10				인사			  수원
+	dept 테이블의 컬럼명과 데이터를 활용해서 객체를 생성하고,
+	화면에 위 정보를 출력하세요..
+# json 개념 : 데이터 여권은 왜 필요할까요?
+1. javascript에서 우리는 흔히 쓰는 객체(object)는 내 가방과 같습니다.
+	내 가방 (javascript 객체)
+	let myBackpack={
+		book:"자바스크립트 책",
+		pens : 3,
+		isStudents:true
+	}
+	// 가방에서 펜 꺼내기
+	console.log(myBackpack.pens)
+2. 내 가방은 내가 쓰기 편하지만, 이 가방을 통째로 다른 컴퓨터(서버)나 다른 프로그램(파이썬, 자바)
+	에게 보낼 수는 없습니다. 공항 검색대에서 가방을 통과시킬 수 없는 것과 같죠.
+3. 이 때 필요한 것이 데이터 여권(JSON)입니다.
+	JSON(javascript object notation)은 javascript 객체 모양을 본뜬, 전 세계 데이터 표기법
+	입니다. 즉, 내 가방 속 물건들을 전 세계 공항(어떤 컴퓨터나 언어)이든 통괗라 수 있도록 엄격한
+	규칙에 맞춰 적은 문서(텍스트)입니다.
+4. 데이터 여권(json) 2대 철칙
+	1) JSON은 내 가방(객체)가 정말 비슷하게 생겼지만, 여권기기 때문에 반드시 지켜야 할 2가지 엄격한
+		규칙이 있습니다.
+		- 철칙1 : 모든 이름표(KEY)는 "큰따옴표"로 감싼다.
+			- 여권에 '이름'이라고 손으로 쓰는 게 아니라, "Name"이라고 공식 인쇄된 것과 같습니다.
+			- {book:"책" }  json형식 x, js객체
+			- {'book':"책" }  json형식 x, js객체
+			- {"book":"책","price":3000} json형식 o, JSON 규칙에 맞음.
+		- 철칙2 : 전체가 하나의 문자열로 취급된다.
+			- 여권은 결국 종이(텍스트)입니다. 컴퓨터가 다룰 수 있는 데이터 덩어리(객체)가 아니라,
+				전송을 위한 긴 글자(문자열)입니다.
+			- let data = { name:"홍길동"}  x 이건 그냥 js 객체
+			- let jsonText = `{"name":"홍길동"}` o 이게 바로 json 문자열
+	2) 내 가방(javascript 객체) 	vs		데이터 연결(JSON 문자열)
+		내 프로그램 안에서 사용				다른 컴퓨터와 데이터 교환
+		따옴표 없어도 됨					반드시 큰따옴표
+		메모리 속객체						``,"",'' 로 감싸인 문자열 텍스트
+5. 여권 발급과 입국 심사(js 함수)
+	내 가방(객체)를 여권(JSON)으로, 또는 여권(JSON)을 내 가방(객체)으로 바뀌야 합니다.
+	1) JSON.stringify(가방) : "여권 발급" - 직렬화
+		string-ify 는 문자열로 만든다는 뜻입니다..
+		내 자바스크립트 객체(가방) ==> JSON 문자열(여권)으로 변환합니다.
+		내 가방을 stringify (쫙 펴서) 여권용 사진을 찍어 텍스트로 만든다.
+	2) JSON.parse(여권) : 입국 심사(파싱)
+		parse 는 분석해서 이해한다는 뜻입니다.
+		다른 곳에서 받은 JSON 문자열(여권) ==> javascript 객체(내 가장)로 변환합니다.
+		받은 여권(텍스트)를 parse (분석해서) 내 가장에 물건을 채워 넣는다.
+	
+*/
+
+let msg = "부서 정보"
+prtStr += `<h3>${msg}</h3>`
+let dept = {deptno:10, dname:"인사",loc:"수원"}
+prtStr += `<table border>
+				<tr><th>부서번호</th><th>부서명</th><th>부서위치</th></tr>
+				<tr><th>${dept.deptno}</th><th>${dept.dname}</th>
+					<th>${dept.loc}</th></tr>
+           </table>`
+prtStr += `<h3>json <==> javascrpt object</h3>`      
+//1. 내 가방(js object)
+let player = { id :"hero123", level:15, items:["물약","검"]}
+console.log("# 자바스크립트 객체 #")
+console.log(typeof(player))
+console.log(player)
+//2. 여권 발급(JSON 문자열로 변환)
+let jsonString = JSON.stringify(player)
+console.log("# json 문자열 #")
+console.log(typeof(jsonString))
+console.log(jsonString)
+prtStr+=`<h3>발급된 여권(json 문자열)</h3>`           
+prtStr+=`<h3>${jsonString}</h3>`           
+           
+document.body.innerHTML=prtStr
+
+
+</script>
+</html>
